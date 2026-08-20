@@ -169,6 +169,59 @@ doc, mas têm contrato consultável pelo MCP, que é fonte melhor que a aula.
 
 ## Menores adicionais
 
+### L22 — Existe um gatilho "Monitorar Mudanças"? (pode dispensar o watermark)
+**Impacto: ALTO.** `Introducao/conceitos.md § Nó` `[CONFIRMADO-DOC]` lista **"Monitorar
+Mudanças"** entre os gatilhos. `m1:65` `[UI-OBSERVADA]` mostra **"Monitoramento"** na biblioteca
+de gatilhos. `m3-2A` cita **"Monitorar tabelas"**, dizendo que tem "aula específica". Mas
+`list_nodes` `[CONFIRMADO-MCP]` **não devolve nenhum dos três** — os únicos `trigger` são
+`manual`, `webhook` e `cron`.
+
+**Por que é alto impacto:** se existe um gatilho que reage a mudança em tabela, o piloto pode
+não precisar de polling a cada 5 minutos **nem de marca d'água** — o que reescreveria §5.1 e §5.3
+do plano-mestre e eliminaria L1 (execução concorrente) e L3 (watermark) de uma vez.
+
+**O que falta descobrir:** o nó existe hoje? Se sim, por que `list_nodes` o omite — whitelist
+`allowed_tools` da chave, feature flag, ou versão? Se existe, como detecta mudança (trigger de
+banco? polling interno? CDC?) e qual a granularidade.
+
+### L23 — Nós citados na doc que o MCP não devolve
+**Impacto: médio.** Além de L22, `conceitos.md § Nó` cita nós ausentes de `list_nodes`:
+**Dead Letter** (categoria Banco de Dados), **Gmail (enviar e-mail)** e **WhatsApp via Z-API**
+(categoria Integrações), **Analista IA** e **Decisão IA** (categoria IA), **Nota** e **Grupo**
+(categoria Outros). `visao-geral.md` reforça e-mail e WhatsApp ("mandar por e-mail ou WhatsApp ao
+final do fluxo").
+
+Além disso a própria descrição de `list_nodes` `[CONFIRMADO-MCP]` contradiz a doc:
+*"Integrações não são uma categoria: procure pelo NOME do serviço"*.
+
+**Leitura parcial:** "Nota" e "Grupo" são elementos de organização do canvas e provavelmente não
+são nós de engine; "Dead Letter" já se sabe que é recurso de execução, não nó (ver L10). Restam
+sem explicação **Gmail, WhatsApp e os dois nós de IA**.
+**Relevância para o piloto:** notificação de falha (`sub-notificar-falha` em `_compartilhado/`)
+depende de saber se há nó de e-mail ou WhatsApp.
+
+### L24 — Exportação: JSON ou YAML?
+**Impacto: médio.** `m1:58` `[VÍDEO]` diz que exporta e importa **"através de JSON"**.
+`guias-de-uso/exportar-e-importar.md` `[CONFIRMADO-DOC]` diz que há 4 formatos e **round-trip só
+em YAML**, sendo o "Exportar JSON (canvas)" um *"formato legado"* e SQL/Python somente leitura.
+**Registrado nos dois lados.** Falta confirmar o que o botão da interface faz hoje — decide o
+formato de versionamento do repositório (Fase 3).
+
+### L25 — Mapper: dois recursos da UI sem equivalente no contrato
+**Impacto: baixo.** A UI do Mapeamento oferece **"De Para"** (com Adicionar equivalência +
+Fallback) e **"Padrão"** (valor default se nulo/vazio) `[UI-OBSERVADA]` `m3-3A`, que não constam
+na lista de transforms do MCP. Provável que compilem para `CASE WHEN` e `coalesce`, mas
+**não confirmado**.
+Relacionado: em `m3-3A` uma tentativa de usar `COALESCE` no modo Expressão **falhou** e exigiu o
+copiloto para corrigir — apesar de `coalesce` **constar** nos transforms do MCP. Falta descobrir
+a diferença entre o modo Expressão da UI e a `expression` do executor.
+
+### L26 — `conceitos.md` tem frase truncada sobre o que vive num Espaço
+**Impacto: baixo.** `conceitos.md § Espaço` termina em *"é nele que vivem"* — a enumeração
+**não existe** no documento. Pelas aulas, ao menos: conexões, bases internas, arquivos, modelos
+de entrada, formulários, fluxos-template, nós personalizados e grupos econômicos. Falta a lista
+canônica.
+
 ### L14 — Relay é obrigatório para SQL Server on-premise?
 Não documentado. O relay é agnóstico de banco (só TCP), mas as funções de **borda**
 (extract/apply em Parquet) têm allowlist e dialeto **só Oracle** (`RELAY_*_dialect: oracle`,

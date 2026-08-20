@@ -17,15 +17,45 @@ Estado em 2026-08-20, ao fim da **Fase 0**. A extração estruturada é a Fase 1
 
 | Arquivo | Conteúdo |
 |---|---|
-| [lacunas.md](../lacunas.md) | **21 lacunas** ordenadas por impacto no piloto de margem. 4 já fechadas ou refutadas |
+| [lacunas.md](../lacunas.md) | **26 lacunas** ordenadas por impacto no piloto de margem. 4 fechadas ou refutadas |
 
-## A produzir na Fase 1
+## Extraído (Fase 1)
 
-| Destino | Conteúdo | Fonte |
+### Glossário
+[glossario.md](glossario.md) — termos da plataforma com definição e a coluna **interface vs.
+MCP/API**. Cobre a hierarquia completa, as três peças (conexão, fluxo, nó), categorias de nó e
+termos de execução. **Lote 1.**
+
+### Nós — `nos/`
+Nome do arquivo = **tipo canônico do MCP** (o identificador que `describe_node` aceita).
+
+| Arquivo | Tipo | Categoria | Risco | Lote |
+|---|---|---|---|---|
+| [manual.md](nos/manual.md) | `manual` | trigger | read_only | 1 |
+| [csv-input.md](nos/csv-input.md) | `csv_input` | input | read_only | 1 |
+| [mapper.md](nos/mapper.md) | `mapper` | transform | read_only | 1 |
+| [bulk-insert.md](nos/bulk-insert.md) | `bulk_insert` | database | **write** | 1 |
+
+*4 de 63 nós catalogados.* Índice completo dos 63 em
+[mcp-catalogo-nos.md](../validacao/mcp-catalogo-nos.md).
+
+### Procedimentos — `procedimentos/`
+
+| Arquivo | Cobre | Lote |
 |---|---|---|
-| `glossario.md` | Termos da plataforma: interface vs. API/MCP | Docs + aulas + MCP |
-| `nos/<tipo>.md` | Um arquivo por nó — o que faz, quando usar, config, entradas, saídas, erros | `describe_node` + aulas + `guias-de-uso/nos/` |
-| `procedimentos/<nome>.md` | Passo a passo imperativo de tarefas completas | Aulas (módulos 1, 2 e 4) |
+| [criar-espaco.md](procedimentos/criar-espaco.md) | Criar e configurar Espaço (sistemas, cor, ícone, favorito) | 1 |
+| [criar-fluxo.md](procedimentos/criar-fluxo.md) | Criar fluxo, organizar por pasta/tag, exportar e importar | 1 |
+| [primeiro-fluxo-csv-para-tabela.md](procedimentos/primeiro-fluxo-csv-para-tabela.md) | Fluxo ponta a ponta: Manual → CSV → Mapeamento → Inserção em Massa | 1 |
+
+## A produzir nos lotes seguintes
+
+| Destino | Conteúdo | Lote previsto |
+|---|---|---|
+| `procedimentos/conceder-acesso.md` | Dar acesso de usuário ao espaço | 2 |
+| `procedimentos/configurar-conexao-*.md` | Conexão direta, TNS, relay, por conjunto de arquivos | 2 e 3 |
+| `procedimentos/publicar-e-agendar.md` | Publicar, alternar teste/produção, agendar | 4 |
+| `procedimentos/monitorar-execucao.md` | Ler execução, rejeições, dead-letter | 4 e 12 |
+| `nos/*.md` | Os 59 nós restantes | 4 a 11 |
 
 ---
 
