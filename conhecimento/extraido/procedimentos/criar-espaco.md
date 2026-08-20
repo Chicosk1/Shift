@@ -45,5 +45,5 @@ time".
 `[VÍDEO]` **Não há transferência de fluxo entre espaços** (`m1:58`). O contorno é exportar e
 importar. Ver `procedimentos/criar-fluxo.md`.
 
-`[LACUNA]` Não foi demonstrado como **conceder acesso** de outro usuário ao espaço recém-criado.
-A aula `m2p2` cobre isso (Configurações → perfil Administrador) e será extraída no lote 2.
+Como **conceder acesso** de outro usuário ao espaço: ver
+[conceder-acesso.md](conceder-acesso.md) (extraído no lote 2).

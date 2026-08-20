@@ -102,12 +102,61 @@ banco de um concorrente (ConstruShow), com uso do copiloto para minerar o schema
 caso de uso de preço/margem** — o termo "preço" aparece 1 vez e "margem" nenhuma. Ele fecha a
 lacuna de "caso ponta a ponta com inserção real", mas **não** contribui para L4.
 
-### L9 — Hierarquia divergente entre três documentos
-**Impacto: médio.** `Introducao/conceitos.md` diz Organização → Espaço → Grupo econômico →
-Projeto. `documentacao-tecnica/controle-de-acesso.md` diz Organização → Workspace → Projeto e
-afirma que Cliente **não** é nível de acesso. `entidade-cliente.md` traz uma terceira variante.
-**Leitura provável (a confirmar):** são hierarquias de propósitos diferentes — organização de
-trabalho vs. permissão. Resolver no lote 2, antes que contamine o glossário.
+### L29 — Quem é o usuário efetivo numa execução disparada por `cron`? ⚠️
+**Impacto: ALTO.** `controle-de-acesso.md § Gate de produção` `[CONFIRMADO-DOC]`: executar workflow
+que toca conexão com `environment = produção` **exige `ADMIN` do workspace**; qualquer outro papel
+recebe `403`. A checagem inspeciona as conexões referenciadas **no momento da execução**.
+
+**O problema:** o piloto é agendado. Numa execução disparada por `cron`, **quem é o usuário cujo
+papel é avaliado?** O criador do fluxo? Quem publicou? Um usuário de serviço? Nada nas fontes
+responde.
+
+Se o gate se aplicar a execução agendada e a conexão do ERP for Produção, **o fluxo precisa ter
+sido publicado por um `ADMIN`** — ou falha silenciosamente a cada 5 minutos com `403`.
+
+**Agravantes:**
+- **`get_connection` não devolve `environment`.** Não há como saber pelo MCP se as duas conexões
+  Oracle deste ambiente são produção.
+- A própria doc lista como pendência aberta: *"Backfill/obrigatoriedade reforçada de
+  `Connection.environment` (o gate de produção depende dele estar correto)"*. O gate depende de um
+  campo cujo preenchimento não foi garantido.
+
+**Como resolver:** perguntar à Viasoft, e conferir na interface o Ambiente das duas conexões.
+
+### L30 — Quem cria cliente e projeto: `EDITOR` ou `ADMIN`?
+**Impacto: baixo** (afeta planejamento de acesso, não o funcionamento do fluxo).
+Três fontes, duas respostas:
+
+| Fonte | Resposta |
+|---|---|
+| `controle-de-acesso.md § Matriz de capacidades` | **`EDITOR`** |
+| `entidade-cliente.md § Permissões` | **`MANAGER`** (= `ADMIN`) |
+| MCP `create_project` | *"Requer role MANAGER no workspace"* (= `ADMIN`) |
+
+Dois contra um a favor de `ADMIN`, mas o documento que se declara *"implementado"* é o que diz
+`EDITOR`. **Não escolhido.** Planejar com `ADMIN` é o caminho seguro.
+
+**Sub-item:** o MCP diz que `create_workflow` requer *"CONSULTANT no workspace e **EDITOR no
+projeto**"*, mas `controle-de-acesso.md` afirma que o nível de projeto **só tem `OBSERVADOR`**.
+Falta descobrir de onde vem um "EDITOR no projeto".
+
+### L9 — ~~Hierarquia divergente entre três documentos~~ RESOLVIDA (2026-08-20, lote 2)
+**Status: fechada — não era conflito.** São **dois eixos diferentes**, e a própria documentação
+faz a reconciliação. `controle-de-acesso.md § Hierarquia` diz literalmente que *"Cliente (grupo
+econômico) é uma **ENTIDADE de organização do trabalho, não um nível de acesso**"*, e
+`§ Cliente (entidade)` completa: *"Ler/escrever dados de um cliente segue a permissão de
+**workspace**. Não há mais membership de cliente."*
+
+- **Organização/dados (4 níveis):** Organização → Espaço → **Grupo econômico** → Projeto. É o que
+  se navega na interface (`conceitos.md`, `m1`, `entidade-cliente.md`).
+- **Acesso (3 níveis):** Organização → Workspace → Projeto.
+
+**Evidência independente do MCP:** existem `list_projects`, `get_project` e
+`list_project_members`, e **nenhuma ferramenta de grupo econômico**.
+
+`[LACUNA remanescente]` A migração `c7d8e9f0a1b2`, que remove `client_members`, é **destrutiva e
+não foi aplicada** — o desenho acima é o do código, e o estado de cada ambiente pode ser o antigo.
+Ver L18.
 
 ### L10 — Como abortar/falhar um fluxo deliberadamente
 **Impacto: médio.** Pré-requisito de L5. **`dead_letter` NÃO é um tipo de nó** — `list_nodes`

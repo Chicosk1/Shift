@@ -62,12 +62,31 @@ CNPJs existe para validação de licença. — `m1:41`
 hierarquia. Dentro dele: estabelecimentos, arquivos, formulários, conexões, janelas, histórico,
 e **Projetos**. — `m1:51-53`
 
-> ⚠️ **CONFLITO (D1 / L9)** — `documentacao-tecnica/controle-de-acesso.md § Hierarquia` afirma
-> que a hierarquia de **acesso** tem 3 níveis (Organização > Workspace > Projeto) e que *"Cliente
-> continua existindo como entidade, mas não tem mais membership de acesso"*. Já `conceitos.md`
-> e `m1` apresentam 4 níveis com o Grupo econômico dentro. **Não escolhi**: a leitura provável é
-> que sejam hierarquias de propósitos diferentes (organização de dados vs. permissão), mas
-> **falta confirmar**.
+> ✅ **CONFLITO D1 / L9 — RESOLVIDO (lote 2).** **Não era conflito: são dois eixos diferentes, e a
+> própria documentação faz a reconciliação.** `controle-de-acesso.md § Hierarquia` diz
+> literalmente:
+>
+> > *"Cliente (grupo econômico) é uma **ENTIDADE de organização do trabalho, não um nível de
+> > acesso**. […] `Cliente` continua existindo como entidade (grupo econômico,
+> > estabelecimentos/CNPJ), mas **não tem mais membership de acesso**. O acesso externo se dá no
+> > **projeto**."*
+>
+> Ou seja:
+> - **Hierarquia de organização/dados (4 níveis):** Organização → Espaço → **Grupo econômico** →
+>   Projeto. É a de `conceitos.md`, `m1` e `entidade-cliente.md`, e é o que se navega na interface.
+> - **Hierarquia de acesso (3 níveis):** Organização → Workspace → Projeto. O grupo econômico
+>   **não é degrau de permissão**.
+>
+> `controle-de-acesso.md § Cliente (entidade)` fecha: *"Ler/escrever dados de um cliente segue a
+> permissão de **workspace** (VIEWER lê, EDITOR escreve). Não há mais membership de cliente."*
+>
+> **Evidência independente do MCP:** existem `list_projects`, `get_project` e
+> `list_project_members`, e **nenhuma ferramenta de grupo econômico** — coerente com cliente não
+> ser nível de acesso.
+>
+> ⚠️ **Ressalva operacional:** a migração `c7d8e9f0a1b2` que remove `client_members` é
+> **destrutiva e ainda não foi aplicada**. O desenho acima é o implementado em código; o estado
+> de cada ambiente pode ainda ser o antigo. Ver L18.
 
 | Interface | MCP/API |
 |---|---|
@@ -138,10 +157,26 @@ duas conexões Oracle diretas (host `192.168.90.218`). Ver `divergencias.md §0`
 Regra de bolso declarada: na dúvida, **grupo econômico**, porque o banco quase sempre é do
 cliente. — `conceitos.md § Conexão`
 
-> ⚠️ **CONFLITO (D10)** — o MCP não expõe esse escopo de 3 valores. `get_connection` devolve
-> **`Publica: Sim/Não`** e **`Workspace: <uuid>`**, sem nenhum campo de grupo econômico ou
-> projeto. `[LACUNA]` Falta saber se `Publica` + ausência de `client_id`/`project_id` **é** a
-> representação do escopo "Espaço", ou se o MCP só não expõe os outros dois.
+> ✅ **D10 RESOLVIDO (lote 2).** São **duas dimensões independentes**, e o `get_connection` mostra
+> uma de cada:
+>
+> **1. Dono (o escopo).** `[CONFIRMADO-DOC]` `entidade-cliente.md § Hierarquia de dados`: a
+> conexão é *"recurso transversal com exatamente UM proprietário"* — `workspace_id` (compartilhada
+> do workspace), `client_id` (do cliente, **novo**) ou `project_id` (**legado**). A migração
+> adicionou *"nova CheckConstraint: exatamente um dos três campos deve ser NOT NULL"*. É o modelo
+> de 3 escopos de `conceitos.md`, em forma de coluna.
+>
+> **2. Público vs. privado (a visibilidade).** `[VÍDEO]` `m2p1:29-32`: *"a visualização é sempre
+> pra baixo, e a permissão, o bloqueio de permissão, é sempre pra cima"*. Conexão **pública** num
+> nível é vista pelos níveis de baixo; **privada** fica no nível onde foi criada.
+> `[UI-OBSERVADA]` `m2p2:16` — privada é **nível de usuário**: *"visível apenas para você"*.
+>
+> No `get_connection` das 2 conexões Oracle reais: `Workspace: fd9cff30…` (dono = workspace) e
+> `Publica: Sim` (desce para grupo econômico e projeto). **Bate com o modelo.**
+>
+> `[VÍDEO]` Demonstrado com dois usuários em `m2p2:73-78`: com a conexão privada, o segundo
+> usuário não vê nada; ao torná-la pública, ela aparece no espaço e desce até o cliente. E a
+> criada **no grupo econômico não sobe** para o espaço.
 
 `[VÍDEO]` Credencial sozinha não faz nada — "ganha vida dentro de um fluxo". — `m1:38`
 
@@ -200,6 +235,138 @@ conhecidas" no próprio contrato — visíveis via `describe_node`. São **três
 |---|---|
 | Nó, caixinha | `node` / `node_id`; o tipo é `node_type` (ex.: `bulk_insert`) |
 | Ligação entre nós | `edge` / `edge_id`, com `sourceHandle` e `targetHandle` |
+
+---
+
+## Papéis e permissões
+
+`[CONFIRMADO-DOC]` Fonte: `controle-de-acesso.md`. **Status declarado: implementado** (branch
+`feat/access-redesign`) — com uma pendência que muda tudo, no fim desta seção.
+
+`[CONFIRMADO-DOC]` **Dois públicos que nunca se confundem:** o **Consultor Viasoft**, que opera a
+plataforma (org/workspace), e o **Cliente final**, que apenas acompanha um projeto (Observador)
+ou preenche formulário por link — *"nunca administra nada"*. — `§ Princípio condutor`
+
+### `OrganizationRole`
+
+| Papel | O que pode | Herda acesso a espaços? |
+|---|---|---|
+| `OWNER` | Único. Billing, transferência, deletar a org | **Sim — herda `ADMIN` em todos** |
+| `ADMIN` | Gerencia workspaces, membros e catálogo | **Não** — precisa de `WorkspaceMember` explícito (que ele mesmo pode se conceder) |
+| `MEMBER` | Faz parte da org, sem privilégio administrativo | **Não** |
+
+> A separação existe para distinguir *"administrar a org"* de *"trabalhar no espaço"*, e permite
+> escopar qualquer usuário — inclusive Admin — a espaços específicos. — `§ Regras de herança`
+
+### `WorkspaceRole` — o princípio de cada degrau
+
+| Papel | Princípio declarado | Engloba |
+|---|---|---|
+| `VIEWER` | *"Lê tudo, muda nada"* | ver clientes, projetos, workflows, execuções, logs (sem segredos); **testar conexão** |
+| `EDITOR` | *"Dono do **trabalho de consultoria**"* | criar/editar/deletar cliente, projeto, workflow, conexão, execução; **executar em não-produção**; ferramentas de autoria; provisionar Observadores |
+| `ADMIN` | *"Governa o **workspace em si**"* | membros, convites, chaves de API, webhooks, templates compartilhados, storage; **executar em produção**; deletar o workspace |
+
+`[CONFIRMADO-DOC]` `WorkspaceMember.is_owner` — **1 por workspace**, com o privilégio de
+transferir a propriedade; exibido com ícone de coroa. Remover o membership do owner só é
+permitido após transferir.
+
+### Projeto — `OBSERVADOR`
+
+`[CONFIRMADO-DOC]` **Somente leitura** do andamento/status/execuções de **um** projeto. Não vê
+outros projetos, não vê segredos, não edita. É usuário convidado e nomeado, com login,
+provisionado pelo consultor. **É o único papel do nível de projeto.**
+
+Formulários **não** dependem dele: são **links tokenizados** (`/f/{token}`).
+
+### Resolução de acesso a projeto
+
+`[CONFIRMADO-DOC]` — `§ Projeto`, na ordem:
+
+1. Tem `WorkspaceMember`? → acesso conforme o papel do workspace.
+2. Senão, é `ProjectObserver` deste projeto? → somente leitura deste projeto.
+3. Senão → **`403`**.
+
+### ⚠️ Gate de produção — importa para o piloto
+
+`[CONFIRMADO-DOC]` — `§ Gate de produção`:
+
+- `EDITOR` executa workflow livremente contra **não-produção**.
+- Executar workflow que toca conexão marcada como **produção exige `ADMIN`**.
+- O gate se baseia no campo **`Connection.environment`**, que *"passa a ser obrigatório e
+  confiável (idealmente imutável após a criação ou alterável só por ADMIN, com auditoria)"*.
+- A checagem inspeciona **as conexões referenciadas pelo workflow no momento da execução**; se
+  qualquer uma for de produção e o usuário não for ADMIN → **`403`**.
+
+`[UI-OBSERVADA]` O campo aparece como **Ambiente**, com três valores — **Sandbox**, **Homologação**
+e **Produção** — e uma **"temperatura" / pontuação de risco de execução**: Produção acende como
+**"Hot"**. `m2p2:16`
+
+> ⚠️ **`[LACUNA]` dupla, e as duas afetam o piloto:**
+> 1. O próprio documento lista como **pendência operacional**: *"Backfill/obrigatoriedade
+>    reforçada de `Connection.environment` (**o gate de produção depende dele estar correto**)"*.
+>    Ou seja, o gate depende de um campo cujo preenchimento ainda não foi garantido.
+> 2. **`get_connection` não devolve `environment`.** Não há como saber pelo MCP se as duas
+>    conexões Oracle do ambiente são produção. Ver L29.
+
+### Vocabulário legado — ✅ resolve D3/D4
+
+`[CONFIRMADO-DOC]` `§ Mapeamento de strings legadas`: o `AuthorizationService` **aceita as strings
+antigas e normaliza**. Não são contradição, são aliases:
+
+| Legado | Novo |
+|---|---|
+| `MANAGER` | `ADMIN` |
+| `OWNER` (workspace) | `ADMIN` |
+| `OWNER` (client) | `ADMIN` |
+| `CONSULTANT` | `EDITOR` |
+| `OPERATOR` | `VIEWER` |
+| `GUEST` | `MEMBER` |
+
+Role fora do vocabulário aceito devolve **`422`**, não 500.
+
+**Consequência:** quando o MCP diz *"requer role MANAGER"*, leia **`ADMIN`**; quando diz
+*"CONSULTANT"*, leia **`EDITOR`**. O que parecia divergência era alias.
+
+> ⚠️ **CONFLITO REMANESCENTE (novo neste lote) — quem cria cliente e projeto?**
+> - `controle-de-acesso.md § Matriz de capacidades`: *"Criar/editar/deletar cliente, projeto,
+>   estabelecimento"* → **`EDITOR`** ✅
+> - `entidade-cliente.md § Permissões`: *"Criar / editar / deletar cliente"* → **`MANAGER`**
+>   (= `ADMIN`)
+> - **MCP** `create_project`: *"Requer role MANAGER no workspace"* (= `ADMIN`)
+>
+> Dois documentos e o MCP contra um. **Registrado sem escolher** — ver L30. Na prática, planejar
+> com `ADMIN` é o caminho seguro.
+>
+> Detalhe adicional: o MCP diz que `create_workflow` *"requer role CONSULTANT no workspace e
+> **EDITOR no projeto**"*. Mas `controle-de-acesso.md` afirma que o nível de projeto **só tem
+> `OBSERVADOR`**. `[LACUNA]` De onde vem um "EDITOR no projeto"?
+
+### Convites
+
+`[CONFIRMADO-DOC]` Plataforma **100% por convite**, sem signup público. Fluxo "link-first": o
+admin gera o convite e recebe um `invite_url` copiável.
+
+| Escopo | Quem pode criar | Membership após aceite |
+|---|---|---|
+| `ORGANIZATION` | Org `OWNER`/`ADMIN` | `OrganizationMember` |
+| `WORKSPACE` | Workspace `ADMIN` | `WorkspaceMember` |
+| `PROJECT` | Workspace `EDITOR`+ | `ProjectObserver` (read-only) |
+
+O escopo `CLIENT` foi **removido**, substituído por `PROJECT`. O papel do convite `PROJECT` é
+sempre `OBSERVER`.
+
+`[CONFIRMADO-DOC]` **E-mail é opcional** e funciona como restritor: informado, só um usuário com
+aquele e-mail aceita (case-insensitive); nulo, qualquer usuário logado aceita.
+Limites: **50 convites por usuário por hora**, **50 `PENDING` por escopo**, e `/auth/register`
+com 5 req/min.
+
+### Enforcement
+
+`[CONFIRMADO-DOC]` *"Todo endpoint que lê ou escreve um recurso armazenado enforça a matriz na
+própria rota"* — checagem só na camada de serviço **não conta** como fonte de verdade, e isso é
+critério de revisão de PR. As ferramentas de autoria sem escopo no path (`/code-node/*`,
+`/nodes/duckdb-preview`, `/connections/diagnose`) usam `require_consultant`, o que bloqueia
+Observador externo — *"fechando o uso do `diagnose` como sonda de rede interna"*.
 
 ---
 

@@ -17,7 +17,7 @@ Estado em 2026-08-20, ao fim da **Fase 0**. A extração estruturada é a Fase 1
 
 | Arquivo | Conteúdo |
 |---|---|
-| [lacunas.md](../lacunas.md) | **28 lacunas** ordenadas por impacto no piloto de margem. 7 fechadas ou refutadas |
+| [lacunas.md](../lacunas.md) | **30 lacunas** ordenadas por impacto no piloto de margem. 8 fechadas ou refutadas |
 
 ## ⚠️ Escopo de banco: **somente Oracle**
 
@@ -63,6 +63,8 @@ Nome do arquivo = **tipo canônico do MCP** (o identificador que `describe_node`
 |---|---|---|
 | [criar-espaco.md](procedimentos/criar-espaco.md) | Criar e configurar Espaço (sistemas, cor, ícone, favorito) | 1 |
 | [criar-fluxo.md](procedimentos/criar-fluxo.md) | Criar fluxo, organizar por pasta/tag, exportar e importar | 1 |
+| [configurar-conexao-direta.md](procedimentos/configurar-conexao-direta.md) | Conexao direta Oracle: Easy Connect e TNS, esquemas, ambiente, teste | 2 |
+| [conceder-acesso.md](procedimentos/conceder-acesso.md) | Acesso a espaco, convites por escopo, Observador de projeto | 2 |
 | [primeiro-fluxo-csv-para-tabela.md](procedimentos/primeiro-fluxo-csv-para-tabela.md) | Fluxo ponta a ponta: Manual → CSV → Mapeamento → Inserção em Massa | 1 |
 
 ## A produzir nos lotes seguintes
