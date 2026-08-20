@@ -1,0 +1,496 @@
+(AÇÃO: Tela exibe slide com "SHIFT DATA IN MOTION", "Módulo 3", "Fluxos", "VIASOFT")
+Então agora nós vamos começar um novo módulo, que é o módulo 3.
+Esse módulo, eh, nós vamos entrar a fundo aí, eh, na questão dos fluxos, tá.
+Então a gente vai conhecer a fundo ali por dentro cada nó, o que cada nó faz, e as possibilidades ali de, de construção dentro dos fluxos antes de ir pra criação de alguns, alguns, eh, exemplos de fluxo.
+Então o que que nós vamos ver nesse módulo 3?
+(AÇÃO: Tela exibe slide "O que veremos no MÓDULO 3?" com 5 partes)
+Também separada, separada em partes. A parte 1 a gente vai dar uma olhada em todos os recursos da tela, então vamos entender ali como que funciona a tela, os recursos dela a fundo e todas as possibilidades.
+Segunda parte, nós vamos entrar nos catálogos de nós, começando pelo gatilho, entradas e bancos de dados.
+Depois nós vamos falar sobre os nós de transformações.
+Parte 4, saídas e lógica e por último IA, Copiloto e o acompanhamento das execuções.
+Então vamos começar aí pela parte 1, conhecendo a tela.
+(AÇÃO: Tela exibe slide "Módulo 3", "Parte 1 - Conhecendo a Tela")
+Beleza, vamos lá pra dentro do SHIFT.
+(AÇÃO: Tela exibe a plataforma SHIFT na aba "Visão Geral")
+Então o fluxo, ele está presente, né, sempre em um espaço, no caso nosso espaço treinamento, ou dentro de um projeto, tá.
+(AÇÃO: Navega pelo menu lateral "Workspace" e depois acessa "Projetos" -> "Implantação")
+Então aqui dentro de um cliente eu posso ter um projeto e lá dentro desse projeto eu ter os fluxos.
+(AÇÃO: Clica em "Fluxos" no menu lateral dentro de "Projetos")
+Então, ele mora nesses dois locais.
+O fluxo, eu tenho aqui o cadastro dele, eu vou cadastrar aqui em nível de espaço mesmo.
+(AÇÃO: Volta para o menu "Workspace" -> "Treinamento" -> "Fluxos")
+Eh, quando eu adiciono um novo, posso criar... gerar a partir de um template ou em branco.
+(AÇÃO: Clica em "+ Novo Fluxo" e um modal "Criar Novo Fluxo" é aberto)
+Dar um nome pra ele, definir se ele é visível pro time ou é só pra mim, e aqui mais algumas opções como tags e informações que são usadas depois pra você filtrar e tudo mais.
+(AÇÃO: Demonstra as opções no modal de criação do fluxo)
+Então, vamos dar uma olhada na tela ali. Vamos criar um novo fluxo, sei lá, vou colocar um nome aqui como se fosse "Migração de Pessoas".
+(AÇÃO: Preenche o "NOME DO FLUXO" com "Migração de Pessoas" e clica em "Criar")
+Aqui dentro da tela do canvas, ele começa sempre vazio.
+Então aqui você, quando você cria um novo fluxo você vai enxergar o canvas vazio, e vamos dar uma olhada nas opções aqui.
+Essas opções aqui na lateral superior esquerda são opções de atalho e funcionalidades de manipulação da tela aqui. Além de ter a biblioteca e tudo mais, tá.
+Então a mãozinha aqui, ela... eh... deixa eu adicionar um nó aqui só pra gente verificar.
+(AÇÃO: Clica em "Adicionar nó" e arrasta o nó "Manual" para o canvas)
+Então a mãozinha eu posso afastar e aumentar aqui, né. E a mãozinha ela te dá a possibilidade aqui de você, eh, movimentar, né, a tela aqui pra você mudar a posição dela.
+(AÇÃO: Seleciona a ferramenta "Mão" e movimenta a tela do canvas)
+Eh, ela pode ser acessada pelo atalho H, então, por exemplo, se eu tiver aqui num no mouse e clicar H, ele vai voltar pra mãozinha.
+(AÇÃO: Demonstra o atalho 'H' para a ferramenta Mão)
+No mouse, né, ele é mais pra seleção.
+Então você, se eu tivesse por exemplo dois nós aqui, e eu precisasse fazer alguma coisa com eles usando o nó de seleção, eu posso selecionar os dois ao mesmo tempo e dar um delete aqui, por exemplo, pra deletar.
+(AÇÃO: Adiciona outro nó "CSV", seleciona a ferramenta "Seta" (mouse), seleciona os dois nós e deleta o nó "CSV")
+Eh, aqui no L é a biblioteca de nós.
+(AÇÃO: Clica no ícone 'L' (Biblioteca de Nós) na barra lateral esquerda)
+Então eu posso verificar em card aqui, mudar a visualização pra lista e tudo mais.
+(AÇÃO: Alterna a visualização da biblioteca entre lista e cards)
+Aqui eu tenho o filtro de busca, então eu tenho separação aí de, dos grupos de gatilho, entrada, transformação de dados, lógica, banco de dados, saídas e IA e outros, né.
+(AÇÃO: Rola pela biblioteca de nós mostrando as categorias)
+Então aqui, isso aqui permite você eh, filtrar aqui, você pode filtrar, pode estar verificando todos os nós, todos os nós que existem dentro da nossa biblioteca.
+(AÇÃO: Usa o campo de busca na biblioteca)
+Aqui na parte de organizar nós em grupos, eu posso ter aqui, vamos supor que eu tenho aqui... eu vou criar aqui, eh, vamos supor que aqui eu tenha uma parte de CSV e daí depois eu tenho um nó de inserir dados aqui, tá.
+(AÇÃO: Arrasta os nós "CSV" e "Inserção em Massa" para o canvas, conectando-os)
+Aqui eu só vou não vou fabricar nada, é só pra enfatizar. Aqui, e eu tenho outra ramificação aqui que ela também fa... aqui vamos supor, pega eh funcionário... carrega funcionários.
+(AÇÃO: Renomeia o nó "CSV" para "Carrega Funcionarios")
+E aqui eu... insere funcionários.
+(AÇÃO: Renomeia o nó "Inserção em Massa" para "Insere funcionarios")
+E daí eu tenho outro... outra ramificação aqui que vai fazer a mesma coisa, então eu já até vamos pegar aqui.
+(AÇÃO: Seleciona os nós "Carrega Funcionarios" e "Insere funcionarios")
+Botão direito, eu posso duplicar.
+(AÇÃO: Clica com o botão direito e seleciona "Duplicar selecionados")
+Então o botão direito tem algumas opções também, ó, desativar, eh, duplicar selecionado, agrupar selecionados, tá.
+(AÇÃO: Mostra o menu de contexto do botão direito)
+Eh, ou aqui, né, ó, mesmo quando eu clico em um, tanto aqui na mãozinha quanto no mouse, tá.
+(AÇÃO: Clica em um nó com o botão direito mostrando o menu)
+E aqui, vamos supor que eu tivesse outra ramificação aqui que aqui eu faria, por exemplo, a parte de clientes.
+Então aqui eu tenho, ao invés de funcionários, um Carrega Cliente, opa.
+(AÇÃO: Renomeia o nó duplicado "Carrega Funcionarios" para "Carrega Clientes")
+E... insere clientes.
+(AÇÃO: Renomeia o nó duplicado "Insere funcionarios" para "Insere Clientes")
+Beleza, então eu tenho esses dois, essas duas ramificações aqui.
+A, a tela ela permite também você ter um controle maior de, de alinhamento, né, pra aquelas pessoas que não gostam de coisas desalinhadas, né.
+Então vocês notem que quando ele chega nas extremidades aí coincidentes a outros campos, ó, então ela habilita como se fosse um ancoramento ali pra facilitar você deixar as coisas alinhadas, ó.
+(AÇÃO: Move os nós para mostrar as linhas de alinhamento automáticas)
+Então isso é só uma questão visual aí que tem na plataforma.
+Mas voltando aqui, então eu tenho esses dois caras aqui.
+Vamos supor que eu fosse criando demais fluxos aqui. Eh... aqui dentro, eu tenho a possibilidade de melhorar a visualização da seguinte forma: eu posso selecionar, por exemplo, aqui esses dois, e notem que eu alterno entre a mãozinha e o selecionar através dos atalhos no, no teclado, ó.
+(AÇÃO: Seleciona os nós "Carrega Funcionarios" e "Insere funcionarios")
+Então eu tô usando, e eu... concorrentemente isso facilita bastante pra trabalhar, né, é, você alternar aqui pelos atalhos.
+Então vou selecionar esses cara aqui, e vou agrupar eles.
+(AÇÃO: Clica no botão de agrupar nós na barra esquerda)
+Então, coloquei isso aqui dentro de um grupo, e eu posso definir ele como um grupo de Funcionários.
+(AÇÃO: Renomeia o grupo para "Funcionarios")
+E... também selecionei esse outro grupo aqui e vou agrupar eles, e selecionar ele... definir eles aqui como um grupo de Clientes.
+(AÇÃO: Seleciona "Carrega Clientes" e "Insere Clientes", agrupa e renomeia o grupo para "Clientes")
+Então, pra que que servem esses agrupamentos, tá? Esses agrupamentos, é por isso que tem essa tela aqui, se você tiver um nó fora, você pode tá organizando eles aqui... eh... inserindo ele dentro de um agrupamento, ó, por isso que esse daqui tá sem grupo, ó.
+(AÇÃO: Clica no ícone "Organizar nós em grupos" na barra lateral e mostra o painel à direita, demonstrando como mover um nó para um grupo)
+Então é pra isso que serve aquela opção aqui.
+Mas eu já vou adicionar... já vou adiantar esse assunto dos grupos.
+Quando eu faço um agrupamento aqui, eu posso... quando eu defino os nós dentro de um grupo, eles ficam presos dentro daquele agrupamento, tá?
+(AÇÃO: Movimenta um nó dentro do grupo "Funcionarios" para mostrar que ele não sai da área delimitada)
+Da mesma forma esse aqui, ó, fica preso ali dentro.
+E pra ter uma... uma visualização menor, eu poderia estar adicionando aqui um, sei lá, depois eu que... eu quero aguardar a execução de tudo isso aqui, né... depois a gente vai ter um, uma definição maior do que que é cada um desses nós e as configurações, aqui é mais uma questão de tela.
+(AÇÃO: Adiciona o nó "Aguardar Todos" e conecta aos grupos)
+Então eu posso continuar o fluxo aqui.
+Eh, mas isso aqui eu quis agrupar pra que daí eu tenha uma visualização menor... melhor aqui. Então eu posso até dar uma cor aqui, ó, Funcionários vai ser roxo.
+(AÇÃO: Altera a cor do grupo "Funcionarios" para roxo)
+E Clientes aqui vai ser vermelho, tá.
+(AÇÃO: Altera a cor do grupo "Clientes" para vermelho)
+E aqui eu posso simplesmente colapsar isso aqui, ó.
+(AÇÃO: Clica no botão de minimizar em cada grupo)
+Então, toda aquela lógica de fluxo, ela ficou aqui dentro.
+Então se nós pegarmos aqui, ó, até vou mostrar lá no oficial.
+(AÇÃO: Alterna para a aba da plataforma oficial do SHIFT)
+Eh... aqui dentro do ConstruShow, que já tá sendo usado pra migração de dados, se a gente pegarmos, por exemplo, eu acho que tem aqui dentro de produto, um fluxo aqui que foi criado, ó.
+(AÇÃO: Acessa o projeto ConstruShow -> Migração ConstruShow - Produtos e abre o fluxo "ITENS - CORE")
+É um fluxo gigante. Eu acho que esse aqui não tem nenhum agrupamento, vamos pegar um que tem agrupamento aqui.
+(AÇÃO: Retorna à lista de fluxos e procura outro)
+Eu acho que o de pessoas até tem.
+Então eu venho aqui, eh... pessoas core.
+(AÇÃO: Acessa o fluxo "PESSOAS - CORE")
+Ó, esse tem agrupamento. Ele poderia ter criado mais agrupamentos aqui, se você quiser, mas, por exemplo, aqui eles têm esse agrupamento aqui, ó: "Gera Novo IDPES".
+(AÇÃO: Dá zoom em uma parte do fluxo mostrando o grupo "GERA NOVO IDPES")
+Então desse... dentro desse agrupamento aqui, né, ele tem toda uma lógica aqui, ó, que se ele não tivesse dentro desse agrupamento ele estaria aqui, né, tipo, tornando esse fluxo muito maior.
+(AÇÃO: Maximiza o grupo "GERA NOVO IDPES", revelando a complexidade interna)
+Então isso é uma questão visual. A gente tem também a opção de trabalhar com subfluxos, né, e... mas tem situações que você não precisa criar um subfluxo, você só quer organizar melhor a tua tela, então você pode estar utilizando os agrupamentos pra isso.
+Mas voltando aqui na nossa base de homologação.
+(AÇÃO: Alterna para a aba do ambiente de homologação)
+Aqui, basicamente, ele vai dar um resumo, eh, dos nós que têm aqui, né, 2 nós dentro desse grupo, tem duas conexões.
+(AÇÃO: Passa o mouse sobre o grupo "Funcionarios" minimizado, mostrando os detalhes: "2 nós", "2 conexões")
+Eh, e aqui você tem algumas opções, tá.
+Você pode desagrupar, ou seja, clicando aqui ele remove o grupo e e traz tudo pra fora.
+(AÇÃO: Aponta para o botão "Desagrupar")
+Você pode desativar, por exemplo: "Ah, eu preciso testar alguma coisa aqui, e eu quero que ele só faça o caminho de clientes aqui". Você pode desativar, e todos os nós aqui dentro desse grupo eles ficarão desativados, ó.
+(AÇÃO: Clica no botão "Desativar" no grupo "Funcionarios")
+Então se eu expandir aqui, ó, eles ficaram desativados. Quando eles ficam sem cor assim, ó, eles estão desativados.
+(AÇÃO: Maximiza o grupo "Funcionarios" e mostra os nós desativados)
+Se eu ativar de volta eles...
+(AÇÃO: Clica em "Ativar")
+Né, vem aqui e ativar de volta. Então, se eu visualizar aqui, eles vão estar ativados.
+(AÇÃO: Maximiza novamente para mostrar os nós ativados)
+Eh, além disso, quando ele tá assim, quando ele tá recolhido, e eu não quero expandir ele, mas eu preciso fazer alguma manutenção aqui dentro dele, eu tenho a opção também de focar nesse grupo.
+(AÇÃO: Minimiza o grupo "Funcionarios" e aponta para o botão "Focar no grupo")
+Então, por exemplo, aqui eu tenho esse botão focar no grupo, ele muda aqui o canvas pro foco dentro do que tá em grupo, e você pode trabalhar aqui.
+(AÇÃO: Clica no botão "Focar no grupo")
+Vamos supor que você precisasse colocar aqui no meio uma transformação. Eu vou pegar aqui um mapeamento, ah, antes de inserir eu preciso fazer um tratamento de dados.
+(AÇÃO: Adiciona o nó "Mapeamento" e tenta colocá-lo entre os nós existentes no grupo)
+Então você viria aqui, né, faria as alterações necessárias dentro desse teu grupo, e quando você voltar, agora aqui vai tá atualizado, eh... aqui.
+(AÇÃO: Conecta os nós dentro da visualização do grupo e clica em "Voltar")
+Isso aqui é três nós e duas conexões pra fora do grupo, que é essa de entrada e essa de saída. Se tivesse, por exemplo, mais um aqui saindo pra fora, né, daí você teria mais.
+(AÇÃO: Mostra as informações atualizadas no grupo "Funcionarios" minimizado: "3 nós", "2 conexões")
+Mas vocês notem que eu consegui segregar aqui dentro desse grupo, eh... os nós assim, e deixando o meu fluxo muito menor, ó.
+(AÇÃO: Ajusta as conexões e os grupos na tela)
+Então o que antes seria tudo isso aqui, né... eh, tem que tomar cuidado aqui, ó, porque precisa de espaço aqui pra você expandir, né. Sempre ter essa ciência aqui.
+(AÇÃO: Tenta maximizar o grupo "Funcionarios" e ocorre uma sobreposição. Ele move os elementos para criar espaço e tenta novamente)
+Ó. Mas aqui você pode redirecionar, isso aqui vai ficar, e daí ele salva, vai salvando conforme você vai organizando, tá.
+(AÇÃO: Ajusta os nós e as conexões dentro do grupo expandido)
+Eh, você pode aumentar aqui.
+(AÇÃO: Redimensiona o grupo "Funcionarios" clicando e arrastando a borda)
+Mas notem que, se eu não tivesse agrupamento, a visualização do meu fluxo seria essa... do meu fluxo seria essa aqui, ó.
+(AÇÃO: Maximiza ambos os grupos, mostrando a complexidade sem agrupamento)
+Então, teria... já tive que dar um, um, um afastar aqui pra conseguir ter uma visualização menor, melhor, né?
+(AÇÃO: Afasta o zoom da tela)
+Eh, e aqui com o grupo, você não tem essa necessidade, você simplesmente colapsa aqui, né, ó.
+(AÇÃO: Minimiza ambos os grupos)
+E você vai ter uma organização melhor. E se você precisar fazer algo dentro de um grupo, você simplesmente pode focar nele.
+(AÇÃO: Organiza os grupos minimizados na tela)
+Eh, beleza, mas vamos tirar esses grupos aqui.
+(AÇÃO: Seleciona e deleta os dois grupos)
+Eh... crie... cliquei ali em tirar, joguei isso aqui pra fora, não vamos precisar agora disso aí.
+(AÇÃO: Desagrupa e remove os nós excedentes, deixando apenas a estrutura inicial com os nós "Manual", "CSV" e "Inserção em Massa")
+É só uma questão de organização aí pra fluxos maiores.
+Eh... beleza, vamos pra próxima opção aqui.
+Então, eh, a próxima opção que a gente tem aqui é esse N, que são blocos de notas.
+(AÇÃO: Clica no ícone "Adicionar nota" na barra lateral)
+Então vamos supor que você precise criar alguma coisa, e você precisa deixar claro o motivo que você definiu daquela forma ali.
+Então aqui você pode criar um bloco de notas, posicionar onde você quiser aqui, ah, por exemplo nessa parte aqui, e dar um duplo clique aqui, pode colocar um título: "Por que fiz assim?".
+(AÇÃO: Adiciona o bloco de notas e digita o título "Por que fiz assim")
+E aqui você pode b... botar uma descrição: "Foi separado funcionários de clientes, pois no concorrente eram tabelas separadas", sei lá, por exemplo isso, né?
+(AÇÃO: Digita a descrição no bloco de notas)
+Então aqui isso aqui serve pra você, eh, poder fazer qualquer... qualquer coisa aqui de... relativa à anotação.
+(AÇÃO: Mostra opções do bloco de notas como formatar texto, duplicar, deletar)
+Então onde você posiciona isso aqui no canvas, ele vai ficar ali, né, ó, junto e fixo, ó.
+(AÇÃO: Move o bloco de notas para mostrar que ele é livre na tela)
+Pra você ter opções aí de anotações quando precisar. Por exemplo, aqui você pode até definir uma cor, pra... pra você ter aqui uma anotação melhor.
+(AÇÃO: Altera a cor do bloco de notas para rosa)
+E pra remover basta clicar na lixeirinha.
+(AÇÃO: Clica na lixeira e deleta o bloco de notas)
+Essa parte de desfazer é o control z e o control shift z. Então, por exemplo, quando você faz alguma coisa aqui, ó, eu excluí e quero... né, é uma questão de facilidade, né, excluiu sem querer... eh... ou voltar.
+(AÇÃO: Aponta para os botões Desfazer/Refazer. Exclui a conexão entre os nós para demonstrar)
+Então, no control z, ele vai voltar, e o control shift z, ele vai ir pra frente.
+(AÇÃO: Usa os atalhos Ctrl+Z (restaura a conexão) e Ctrl+Shift+Z (remove novamente))
+Então, ah, o que que é o pra frente? Eu tinha excluído, então se eu dar um control shift z ele vai excluir de volta. O que que é o control z? Ah, é antes da minha exclusão, tá?
+(AÇÃO: Usa Ctrl+Z novamente)
+Então aqui o com... você tem esses atalhos.
+O F aqui é se você quiser, eh, trabalhar mais limpo, né.
+(AÇÃO: Clica no ícone "Tela cheia")
+Aqui a tela ela já tá bem otimizada, sabe?
+Mas se você ainda quiser mais espaço, você pode dar um, um F aqui e ele vai deixar só o canvas aqui, né, e óbvio aqui o que você precisa pra trabalhar. Salvar e executar.
+(AÇÃO: Entra no modo tela cheia e mostra que os menus laterais desaparecem)
+Pra que daí você tenha uma, um canvas ainda maior pra você poder trabalhar.
+Então você tem aqui um espaço bem legal de trabalho pra você tá criando aí os seus fluxos.
+(AÇÃO: Clica novamente em Tela cheia para sair do modo)
+Além disso, aqui nós temos zoom... eh... zoom out e zoom in, né, pra você aumentar ou diminuir o zoom.
+(AÇÃO: Clica nos botões "+" e "-")
+Ou dando um scroll aqui, não precisa de control, nada, tá. É só scroll, ele já, já vai aqui pra... pra aumentar ou diminuir, tá.
+(AÇÃO: Usa o scroll do mouse para dar zoom)
+Então... você tem aí a possibilidade de dar zoom.
+Aqui é, por exemplo, ah, eu tô muito pra fora aqui pra mim não ficar fazendo isso aqui, ó, arrastando.
+(AÇÃO: Arrasta a tela para longe dos nós)
+Se você tá muito fora aqui, você clicar aqui, ele vai voltar pra onde tem a maior área aí tentando deixar sempre ajustado... dentro da tela todo o teu fluxo, tá.
+(AÇÃO: Clica no botão "Ajustar tela" e a visualização retorna e centraliza nos nós)
+Beleza, aqui opções de menu.
+(AÇÃO: Move o mouse para a barra de menu superior central)
+Vamos pra aqui em cima, tá.
+Eh... vou apagar esse bloco de notas e vou salvar aqui, beleza.
+(AÇÃO: Deleta um bloco de notas residual e clica em "Salvar")
+Aqui em cima a gente tem o modo Copiloto, que nós vamos ter uma aula especificamente pra isso.
+(AÇÃO: Clica na aba "Copiloto" no menu superior)
+Mas o modo Copiloto vai nos permitir eh, pedir ajuda pro copiloto, eh, sobre determinadas informações, eh, e ele vai te ajudando sobre a plataforma, ele vai criando fluxos pra você.
+(AÇÃO: Demonstra o painel do Copiloto à direita)
+Então vocês percebam que no modo Copiloto ele habilita essa janela aqui.
+Aqui eu posso, ela pode vir fixada ou flutuante. Então se eu clico aqui, eu posso posicionar isso aqui em qualquer lugar da tela.
+(AÇÃO: Clica no botão para desfixar a janela do Copiloto e a move pela tela)
+Tá? Eh, e se eu esconder aqui, ele fica mais ainda.
+(AÇÃO: Clica em "Minimizar" na janela flutuante do Copiloto)
+Então, por exemplo, ah, eu tô trabalhando aqui, eu quero deixar no modo copiloto, eu quero ir trabalhando e só quando eu tiver alguma dúvida eu... já tá aqui pra mim fazer a pergunta. Então você pode mandar aqui.
+(AÇÃO: Mostra a janela do Copiloto minimizada no canto inferior direito)
+Eh... isso aqui ele vai acontecer mais quando tiver um histórico, né. Se tiver um histórico maior, o ele vai ficando aqui um pouco maior.
+(AÇÃO: Aponta para a janela do Copiloto)
+Então quando você faz isso aqui, ele... ele vai esconder e ficar só essa janelinha aqui embaixo, pra você posicionar na... num lugar onde você achar melhor.
+Eh, se você... aqui você consegue ver o histórico de conversas, né, que você teve sobre esse fluxo aqui. Começar uma nova conversa. Enfim, tem algumas opções aí.
+(AÇÃO: Clica em "Ver conversas" e "Nova conversa" no painel do Copiloto)
+O fixar ele sempre vai fixar nesse espaço aqui, tá?
+(AÇÃO: Clica no botão "Anexar barra lateral direita" e o painel volta para a direita)
+Então, é... padrão ele fixar dentro desse espaço aqui.
+Tá, ele tá escondendo aqui o... a opção de zoom in, zoom out. Eu vou até fazer uma melhoria pra ele empurrar pra cá esses carinhas aí, mas de qualquer forma aqui você consegue, eh, usar.
+(AÇÃO: Mostra que a barra de ferramentas inferior esquerda está sobreposta pelo painel)
+Depois nós vamos ter um treinamento só sobre o copiloto e a gente vai poder falar mais sobre ele.
+Clicando aqui ele volta, some, ó. Então ele é... é dinâmico.
+(AÇÃO: Clica na aba "Editor" e o painel do Copiloto desaparece)
+A parte de Execuções. Então, tudo o que eu rodo, vamos pegar aquela, aquele fluxo, eh, O Inserir Funcionários que a gente fez lá. Lá nas outras aulas.
+(AÇÃO: Sai do fluxo atual e vai para Workspace -> Treinamento -> Fluxos e abre o fluxo "Inserir Funcionarios")
+Isso aqui a gente já rodou, lembra que a gente gravou na nossa base de dados interna lá de funcionários que a gente criou?
+Então aqui em Execuções, eu consigo avaliar todas as execuções que foram feitas.
+(AÇÃO: Clica na aba "Execuções" no menu superior)
+Então nós fizemos duas execuções, uma... todas hoje, né?
+As, uma 11h37 e outra 11h38. Todas em modo teste e foi um gatilho manual.
+(AÇÃO: Mostra a lista de execuções no painel esquerdo)
+Clicando aqui, eu vou ter mais informações. Aqui ela foi completada. Né? Foi manual. Quanto tempo levou? Quem que foi o executor? Aonde que ele executou? No espaço treinamento. Quantas... quantos nós tiveram sucesso, quantas linhas processadas, né?
+(AÇÃO: Clica na execução mais recente e o painel central exibe detalhes "COMPLETED", "2.8s", "3/3 com sucesso", etc.)
+Então aqui eu consigo ver um... uma visualização aqui do resultado de cada nó.
+(AÇÃO: Mostra o painel "Ver resultados" na aba "Dados")
+Então, CSV, ó. Então aqui eu posso clicar em ver resultados e ele vai, eh, trazer aqui os dados que foram usados, né.
+(AÇÃO: Clica em "Ver resultados" no nó CSV e abre uma nova janela "Resultado: CSV")
+Então a... ele traz 300, eh... 300 linhas ali. Traz uma prévia, né?
+Mas você pode se tiver mais, no caso, né, tiver mais dados aqui, ele tra- trazia uma prévia de 100, desculpa. Ele tem 300 itens, mas ele traz uma prévia de 100.
+(AÇÃO: Mostra a tabela de dados com os 100 primeiros registros exibidos)
+Mas se você precisa do conteúdo completo, você pode vir aqui baixar em CSV, em Parquet, ou xlsx, que é planilha, né.
+(AÇÃO: Mostra os botões de download CSV, Parquet e XLSX no canto superior direito)
+Então, todo... a maioria dos nós, não é todos que ele tem o Gravar Resultados, por exemplo, esse Gravar Base Interna, ele não... não grava o resultado, mas não tem necessidade, eu posso pegar no nó anterior, então assim tem alguns nós estratégicos que vocês vão ver eles e Ver Resultados, que depois você pode utilizar pra outras coisas, enfim, nós vamos analisar isso melhor mais pra frente.
+(AÇÃO: Volta para a tela de execução e mostra o nó "Gravar Base Interna" sem a opção "Ver resultados")
+Então aqui você tem essa visualização.
+Ainda você pode definir uma documentação, tá.
+(AÇÃO: Clica na aba "Documentação" no menu superior)
+Por exemplo, você tenha documentação... você tem fluxos aí que você... eh... quer criar uma documentação, né? "Ah, os blocos de notas não serão suficientes, eu quero uma documentação, né, de sobre essa... esse fluxo". Você pode vir aqui, tá escrevendo, né... eh, em markdown.
+(AÇÃO: Entra no campo de edição da Documentação)
+Né, ou você pode ter com base no teu fluxo, eh... eu acho que ele não vai gerar aqui porque ele tá usando o 5.4, eu tenho que mudar ele. Que não é mais pra ele gerar o... é, mudou minha chave aqui.
+(AÇÃO: Clica em "Gerar com IA" e um erro ocorre)
+Eh, eu tô usando Anthropic agora e nesse caso aqui eu não vinculei a chave, mas tudo bem. Aqui você pode estar gerando com IA, que ele vai analisar, né, a sua, o seu fluxo e vai gerar uma documentação aqui pra você.
+(AÇÃO: Mostra o botão "Gerar com IA")
+Ou você pode tá editando aqui, né, por exemplo, vou colocar aqui: "Eh... Inserir funcionários. Como funciona? Esse fluxo foca em buscar os dados de funcionários no CSV e inserir em uma tabela interna. Utilizamos mais para: 1. Saber quem são nossos funcionários. 2. ...".
+(AÇÃO: Digita um texto em markdown no editor)
+E aí, óbvio, tem aqui toda a questão de formatação markdown, né, então você pode utilizar aí ferramentas, né, de markdown pra poder estar fazendo isso aí pra você ter uma formatação melhor aí e só colar aqui, né.
+(AÇÃO: Mostra a barra de formatação markdown acima do editor)
+Eh, salvando isso aqui vai ficar visível aqui fora.
+(AÇÃO: Clica em "Salvar")
+Então aqui quando eu ter Inserir... Ah, antes de eu entrar e eu analisar o que é, eu posso vir aqui em Ver documentação, né. E eu posso ver a documentação que foi criada pra esse fluxo.
+(AÇÃO: Volta para Workspace -> Treinamento -> Fluxos, clica no ícone "Ver documentação" no fluxo "Inserir Funcionarios" e visualiza o modal)
+Eh... Então aqui, a parte de documentação.
+(AÇÃO: Retorna ao "Editor de Fluxo")
+Falando um pouquinho dessas outras opções.
+O executar, né, é executar, ele vai executar o fluxo.
+(AÇÃO: Aponta para o botão "Executar" no canto superior direito)
+Salvar, é o salvar, né. Esses aqui já são autoexplicativos.
+(AÇÃO: Aponta para o botão "Salvar")
+Aqui a parte de Teste. Como que funciona, tá.
+(AÇÃO: Clica no botão que exibe "Teste" e abre o menu suspenso de "EXECUÇÃO")
+Aqui, o teste, eu já até comentei em outro treinamento, que o teste, ele sempre vai rodar uma janela de 500... 500 linhas de dados, tá.
+Então por mais que a consulta que você rode retorne 100.000 linhas, ele vai sempre executar 500. Porque teste é pra performance, é pra você testar.
+Quando você muda pra produção, é outra história.
+(AÇÃO: Aponta para a opção "Produção")
+O produção, quando você está em produção, é necessário... ele sempre vai executar na sua totalidade, tá.
+Então quando você executa em produção, ele vai executar na sua totalidade.
+Aqui ainda a gente tem a parte de Template, o que que isso significa?
+(AÇÃO: Aponta para o toggle "Template" na seção "ALCANCE")
+Se eu marcar esse cara aqui, eu tô definindo... eu tô dizendo que esse fluxo, como eu tô num ambiente... eu tô no ambiente de espaço e esse fluxo eu deixei ele como template... lá dentro... e ele tá, obviamente, aqui ele tá, vou... eu deixo ele compartilhado, né?
+(AÇÃO: Ativa o toggle "Template" e clica no botão "Acesso e Visibilidade", mas depois cancela)
+Eh... quando ele é template ele já se autocompartilha, né.
+Mas o que que isso quer dizer? Quando ele é template, eu vou salvar ele aqui só pra vocês verem.
+(AÇÃO: Clica em "Salvar")
+Aqui dentro dos projetos...
+(AÇÃO: Vai para Workspace -> Treinamento -> Projetos -> Implantação -> Fluxos)
+Eu vou ter aqui, eh... eh... fluxos públicos, né.
+Ó, então percebam que o Inserir Funcionários veio pra cá e eu posso clonar ele, tá.
+(AÇÃO: Mostra o fluxo "Inserir Funcionarios" na lista com a tag "TEMPLATE" e o botão "Clonar")
+Então, quando é template, ele me permite usar ou clonar, tá? Eu... Mais pra frente vocês vão entender o que que é uma, o que que é outra.
+Mas, então, quando eu defino que ele é um template, eu consigo fazer isso. Por quê?
+Nós sempre vamos definir os fluxos padrões. Então, por exemplo, aqui no Constru eu tenho aqui a parte de migração de clientes.
+(AÇÃO: Vai para Projetos -> Migração ConstruShow - Pessoas -> Fluxos)
+O Pessoas Core aqui, sempre vai ser o mesmo. Sempre, sempre eu vou ter... eu vou esperar determinados dados, vou processar de alguma forma e vou inserir nas tabelas do meu sistema, do meu ERP.
+(AÇÃO: Abre o fluxo "PESSOAS - CORE")
+Então, o core, o tratamento core sempre vai ser a mesma coisa.
+Então eu sempre vou ter que reutilizar esses caras, né.
+Eh... Já, a única coisa que vai mudar é a entrada desses dados. Então, por exemplo, esse Carga Clientes, provavelmente tá chamando esse Pessoas Core.
+(AÇÃO: Volta para a lista de fluxos e abre "CARGA CLIENTES")
+Ó. Porque, a única coisa que tem de diferente aqui que ele faz uma consulta... acho que até essa aqui não é a atualizada, é essa aqui, ó.
+(AÇÃO: Mostra o nó "Chamar PESSOAS - CORE", depois fecha e abre o fluxo "CARGA CLIENTES" (outro com o mesmo nome na lista))
+Ele faz uma consulta num banco de dados de concorrente e chama o subfluxo Pessoas Core.
+(AÇÃO: Mostra o nó "GET CLIENTES" e "Chamar PESSOAS - CORE")
+Tá? Então assim, o core nunca vai mudar. Aqui a gente até definiu esse padrão de nomenclatura core, core é tudo que é do... do core mesmo do sistema, né? Então Pessoas, Notas, então, tudo que vai ter a mesma inserção de dados.
+E a única coisa que vai mudar é a entrada. Então, no caso, essa entrada aqui Carga Clientes. Essa entrada aqui ela é a partir dos dados desse sistema CISPIN aqui, ó.
+(AÇÃO: Clica no nó "GET CLIENTES" e mostra a conexão "CISPIN")
+Daí se criar outro... se eu criar outro... se eu vier outro concorrente, eu vou fazer a mesma coisa que esse cara aqui. A única coisa que vai mudar é esse... essa consulta aqui, porque às vezes eu vou precisar rodar três, quatro consultas, fazer algum tratamento, pra depois chamar o Pessoas Core. Porque o Pessoas Core ele já tem uma predefinição do que ele espera, tá?
+(AÇÃO: Volta a tela inteira do fluxo)
+Que é o... por isso que ele inicia aqui como uma entrada de fluxo, e eu já vou explicar mais a fundo sobre isso, tá.
+(AÇÃO: Retorna ao fluxo "PESSOAS - CORE" e mostra o nó "Entrada do Fluxo")
+Mas, então assim, eh... por isso que a gente tem o template.
+(AÇÃO: Retorna ao ambiente de homologação, no fluxo "Inserir Funcionarios")
+Porque, eh, situações que são core, não precisa o, o consultor, ou quem vai executar esse processo no cliente, reinventar a roda. Ele vem aqui, ou clona, ou usa, né?
+O clonar, ele traz aqui, o... ele traz o fluxo pra cá, ele copia, e daí você pode inserir, pode adicionar mais coisa, tratamento, personalizar.
+O Usar, ele vai usar sempre de maneira intacta o que o original está replicando, tá? Então essa é a diferença.
+Eh... voltando aqui pros fluxos, então.
+(AÇÃO: Retorna ao editor do fluxo "Inserir Funcionarios")
+Então aqui eu tenho essa definição.
+E se eu só quiser... se eu eu, ah, tem muitas coisas assim: "Ah, Cléber, eu tenho uma situação aqui que é nós aqui da Viasoft que desenvolvemos, mas o cliente não pode ver", por exemplo, em situações que, sei lá, que algum dia a gente vai... vai disponibilizar pro cliente poder comprar fluxos, né?
+Eh... o cliente não pode verificar isso ou, ou o próprio cliente cria alguma coisa e vai ter um espaço do cliente e ele cria alguma coisa e ele não quer que os funcionários vejam. Daí você vai deixar em 'Somente usar', tá?
+(AÇÃO: Ativa o toggle "Somente usar (Uncloned)")
+Porque daí o Somente Usar ele só usa, ele não consegue ver as lógicas que têm internamente aqui, tá. Eh, e daí ele não consegue copiar, que seria basicamente ele clonar isso aqui pra dentro do projeto dele.
+Então por isso que tem essa opção aqui também, Somente Usar, tá?
+Certo. Eh... beleza, então aqui acho que é isso.
+Aqui esse link aqui é pra você mudar a visibilidade, se tá publicado, se é, se vai tornar, eh, compartilhável somente com alguma pessoa.
+(AÇÃO: Clica no botão com dois usuários "Acesso e visibilidade")
+Então, eh... deixa eu salvar aqui. Ó, então você pode eh... definir também alguma pessoa específica que pode acessar esse template.
+Então, por exemplo, "Ah, na verdade isso aqui só pode ser compartilhado com o Tony" e tudo mais, né? Então você consegue aqui definir também, eh... se você precisar transferir a posse pra alguém, você consegue fazer aqui.
+(AÇÃO: Demonstra as opções no modal "Acesso e Visibilidade")
+Então é mais umas opções aí.
+Eh, beleza. Aqui eu acho que é isso.
+Vindo aqui pros três pontinhos.
+(AÇÃO: Clica nos três pontos no menu superior)
+Então aqui nós temos um resumo do fluxo, que nada mais é que um resumo mesmo, né.
+(AÇÃO: Clica em "Resumo do fluxo" e mostra o painel com as estatísticas)
+Ele traz aqui um resumo de tudo que tem dentro desse fluxo.
+Eh, nós temos aqui as Variáveis.
+(AÇÃO: Clica em "Variáveis")
+Que até ela não tá lá dentro do, não tá lá dentro do escopo do treinamento dos fluxos, mas nós vamos ter uma sessão só pra falar dessas variáveis, que são extremamente importantes, né?
+No... que de que sentido, o quê?
+Vamos supor que aqui na verdade fosse um insert num banco de dados.
+(AÇÃO: Exclui o nó "Gravar Base Interna")
+Hum... vamos supor que aqui fosse um insert num banco de dados.
+(AÇÃO: Adiciona o nó "Inserção em Massa" e conecta com o nó "CSV")
+Só que, eu não posso vir aqui e deixar a conexão, ah, sei lá, ConstruShow aqui, que é o meu banco local, e a tabela aqui, Funcionários, no caso, né?
+(AÇÃO: Abre o painel do nó "Inserção em Massa", seleciona a conexão "ConstruShow" e tenta buscar a tabela)
+Eu não posso deixar assim. Por quê? Porque ele sempre vai executar nesse banco aqui.
+(AÇÃO: Remove a conexão do campo)
+Tá. Ah, e daí quando eu uso uma variável, vamos até desativar aqui. Nesses três pontinhos eu tenho opções do... do próprio fluxo aqui, né. Eu vou desativar ele inicialmente.
+(AÇÃO: Clica nos três pontos do nó "Inserção em Massa" e seleciona "Desativar")
+Vou executar em teste pra mim poder ser mais rápido. Né. E poder visualizar.
+(AÇÃO: Muda a execução para "Teste" e clica em "Executar")
+Vou executar aqui pra carregar o schema, né, dessa... desses dados pra mim poder inserir.
+Eu vou lá dentro do nosso banco e só vou dar um truncate nessa tabela. Pra deixar ela zerada.
+(AÇÃO: Vai para o SQL Developer, executa o comando "TRUNCATE TABLE FUNCIONARIOS")
+E beleza. Então aqui eu tenho os meus dados. Agora eu vou ativar de volta a nossa inserção. Ativar aqui.
+(AÇÃO: Volta para o SHIFT, clica nos três pontos do nó e seleciona "Ativar")
+Tá. Eh, na verdade, bom, vamos deixar Upsert aqui. A chave é ID. Aqui eu vou automapear. Lembrando que aqui eu não vou passar o que é campo a campo, nós vamos ter treinamento específico de cada nó, tá.
+(AÇÃO: Configura o nó: Seleciona "Upsert", chave "ID" e clica em "Auto mapear")
+Eh, mas beleza. Então aqui, eu vou inserir esses dados. Vou salvar e vou executar.
+(AÇÃO: Clica em "Salvar" e "Executar")
+Aqui como tem 300 linhas só, ele vai executar todas, né?
+Então vamos só conferir aqui no nosso banco. Fazer um select.
+(AÇÃO: Vai para o SQL Developer e executa "SELECT * FROM FUNCIONARIOS")
+Então tá aí nosso... nossos dados aí.
+(AÇÃO: Retorna para o SHIFT)
+Só que, imagine assim, vamos supor que eu defini isso aqui como um template e quero usar no cliente novo.
+Se eu deixo o banco de dados aqui setado, fixo, eu não vou ter a possibilidade de variar esse valor, tá?
+Então é pra isso que servem as variáveis. A partir do momento que eu venho aqui em Variáveis, e adiciono uma Conexão ou Segredo aqui, ó, nesse caso, eu vou colocar aqui um nome, ConConstruShow.
+(AÇÃO: Clica em "Variáveis", na aba "CONEXÕES E SEGREDOS" clica em "+ Adicionar", seleciona o tipo "Conexão", preenche o nome "ConConstruShow")
+Que é obrigatória. Qual que é o tipo de conexão? É um tipo Oracle. Porque óbvio que eu vou saber o que que eu tô esperando, né. E um design. Qual que eu vou usar como design, só pra ele carregar as tabelas, né.
+(AÇÃO: Marca como obrigatória, seleciona o tipo "Oracle" e a conexão de design "ConstruShow")
+Então vou usar, pode ser usar um local mesmo aqui. Posso definir um valor padrão, opções, eh, informações de ajuda e tudo mais, mas beleza, é só isso. E vou dar um salvar.
+(AÇÃO: Clica em "Salvar variáveis")
+Qual que é a diferença agora? A partir do momento que eu tenho uma variável, e essa variável de conexão... e tem outros tipos de variáveis. Ele habilita essa janelinha aqui em cima pra mim setar uma variável.
+(AÇÃO: Fecha o painel de variáveis, clica no campo "Conexão" no nó "Inserção em Massa" e agora há a opção "Usar variável...")
+Então vou selecionar a variável ConstruShow. Vou salvar.
+(AÇÃO: Seleciona a variável "{{vars.ConConstruShow}}")
+E olhe o que que vai acontecer agora. Quando eu executo e tenho uma variável, ele antes de executar ele pede pra mim informar qual que é a conexão.
+(AÇÃO: Clica em "Executar" e a janela "Executar Workflow" aparece pedindo para selecionar a conexão)
+Então isso permite que você deixe esse fluxo reutilizável pra qualquer coisa. Por exemplo, se eu preciso hoje inserir nesse meu banco local, eu venho aqui, quando eu executar, obviamente, e vou inserir meu banco local.
+(AÇÃO: Seleciona a conexão "ConstruShow")
+Ó, ele é upsert, né, então ele até deu certo, ó, não reinseriu. Se a gente dar um count aqui, ó, vocês veem que ele atualiza, né.
+(AÇÃO: Vai para o SQL Developer, executa "SELECT COUNT(*) FROM FUNCIONARIOS", o resultado é 300)
+Então hoje eu preciso inserir no meu banco e amanhã em outro banco. A única coisa que eu tenho que fazer é ir lá cadastrar a conexão e rodar no outro banco, tá.
+(AÇÃO: Retorna ao SHIFT)
+Então, é muito importante. Eu acho que essa conexão não vou rodar porque não tem a tabela Funcionários lá, né, porque é uma tabela personalizada pra treinamento.
+Mas aqui a variável, então só pra explicar, eh, ela te dá esse tipo de... de liberdade.
+E você consegue diversos tipos de variáveis pra usar dentro do contexto aqui dos fluxos. Variáveis de texto, inteiro, número, booleano, objeto, lista. Eh... Então diversos tipos aí que você tem a possibilidade de... de definir, né?
+(AÇÃO: Mostra o painel de criação de variáveis com as opções de tipo: "Texto", "Inteiro", "Número", "Booleano", "Objeto", "Lista", "Conexão", "Arquivo", "Segredo", "Formulário")
+OK, vamos pra próxima aqui.
+Capacidades MCP. Isso aqui é utilizado eh, mais avançado, não vamos ver isso agora.
+(AÇÃO: Clica em "Capacidade MCP")
+Tags. A tag é basicamente pra questão de, de filtragem lá, se você esqueceu de de informar ou quer informar agora você pode informar por aqui.
+(AÇÃO: Clica em "Tags")
+Sistemas de origem também, se você não selecionou qual que é o sistema de origem.
+(AÇÃO: Clica em "Sistema de Origem")
+Né, isso aqui provavelmente vai sair de linha porque isso aqui era mais quando era focado em migração de dados.
+E um ponto importante aí é o que?
+Aqui vocês podem ver que eu tenho um reloginho: "6 alterações desde a última versão (ver histórico)", tá.
+(AÇÃO: Aponta para o relógio "Histórico de versões" com o contador de alterações não publicadas)
+Então o sistema ele já tem uma inteligência que ele vai salvando os históricos.
+Quando você tá rodando em teste, ele vai pegar sempre a versão de rascunho.
+Então por exemplo, agora que eu inseri o insert aqui, ele vai pegar a versão de rascunho que tá aqui, que é a que eu tô usando hoje.
+Agora, se ele tiver em produção, ele sempre vai rodar somente a versão última publicada.
+Nesse caso aqui é capaz de até dar erro, porque eu nunca publiquei nenhuma versão.
+Né, se a gente vir aqui e salvar, ó, esse aqui em Inserir Funcionários a parte de versão, ó, não tem nada.
+(AÇÃO: Vai para a lista de fluxos e mostra que a coluna "VERSÃO" do fluxo "Inserir Funcionarios" está com "-")
+Então o que que acontece, é capaz de até dar erro, ó. Vou tentar rodar de volta.
+(AÇÃO: Retorna ao editor do fluxo, muda para "Produção" e clica em "Executar")
+É, até deve... é... quando não tem uma publicação ele vai pegar sempre a atual, né.
+Então nesse caso, vamos publicar.
+(AÇÃO: Clica em "Publicar versão")
+Publicar ela. Então ó, ele já calcula automaticamente a primeira, a próxima versão. Não tem mais nenhuma, nenhuma alteração.
+(AÇÃO: Clica em "Publicar v1")
+E beleza. E eu vou eh... setar... eu vou setar... eu vou rodar ele nulo. Vou dar como tá de novo. Só pra ele... rodou normal, então tá pegando certo agora, não deu mais aquele erro, ou seja, a versão foi atualizada.
+(AÇÃO: Remove a conexão selecionada, roda e dá o erro de conexão obrigatória)
+Agora eu vou voltar aqui, ó. Vou voltar pra adicionar departamento e tudo mais. Vou salvar.
+(AÇÃO: Abre o nó de inserção e remapeia as colunas DEPARTAMENTO e DATA_ADMISSAO)
+Ó, então ele detectou uma mudança desde a última versão.
+(AÇÃO: Aponta para o relógio que agora mostra "1 alteração desde a última versão")
+Agora eu vou deletar, espero que funcione. Né, porque deveria funcionar.
+Eu vou deletar a tabela aqui. Então não tenho mais nada.
+E eu tirei lá as informações de... eu tirei as informações aqui de departamento e data de admissão.
+(AÇÃO: Exibe o SQL Developer e a tabela zerada após o TRUNCATE)
+Mas como eu não publiquei uma nova versão, teoricamente, ele deveria ainda inserir esses dados, porque tá na versão anterior.
+(AÇÃO: Volta para o SHIFT)
+Opa, deixa eu só remover minha variável, porque eu coloquei agora ela como conexão direta e a variável tava como obrigatória, então eu tenho duas alterações aqui desde a minha última versão, ó.
+(AÇÃO: Remove a variável "ConConstruShow" que exigia execução do painel "Variáveis")
+Então, vou executar.
+(AÇÃO: Clica em "Executar" na aba "Produção")
+Ó. Então, tá vendo que ainda tá... tá validando a variável, mesmo ela não existindo mais?
+(AÇÃO: Um erro "Variável 'ConConstruShow' é obrigatória" aparece no canto inferior direito)
+O sistema, ele tá na versão anterior, então ele tá ainda, ó, solicitando aquela variável em produção. Então por isso que, eh, tá dando esse erro.
+Se eu fosse em teste, beleza, ele ia rodar normalmente, ó.
+(AÇÃO: Muda para "Teste" e executa com sucesso)
+Por quê? Porque o teste, ele roda o que tá agora. Não interessa se a versão tá publicada ou não.
+Então inclusive, se a gente fizer aqui o nosso select de volta, departamento e data de admissão não vão estar, porque eu rodei em teste, né?
+(AÇÃO: Vai pro SQL Developer e executa "SELECT * FROM FUNCIONARIOS", mostrando as duas colunas nulas)
+Então, tá aqui, ó. Departamento tudo null e data de admissão também.
+Eh, deixa eu publicar essa versão. Vou colocar pra produção, vamos publicar ela.
+(AÇÃO: Volta ao SHIFT, clica em "Publicar versão", e a versão v2 aparece)
+Então, ele já calcula automaticamente a próxima versão, não tem mais nenhuma, nenhuma alteração.
+(AÇÃO: Clica em "Publicar v2")
+E beleza. Eu vou setar... eu vou setar... eu vou rodar ele nulo. Vou rodar como tá de novo, só pra ele... rodou normal, então tá pegando certo agora, não deu mais aquele erro, ou seja, a versão foi atualizada.
+(AÇÃO: Executa em produção e a execução é bem-sucedida)
+Agora eu vou voltar aqui, ó. Vou voltar pra adicionar departamento e tudo mais. Vou salvar.
+(AÇÃO: Abre o nó "Inserção em Massa" e seleciona as colunas DEPARTAMENTO e DATA_ADMISSAO novamente. Clica em "Salvar")
+Só que, tá na, uma versão pra trás, tá?
+Então, se eu deletar agora, vocês vão perceber que ele vai manter funcionários, departamento e data de admissão null, tá.
+(AÇÃO: Volta para o SQL Developer e dá um TRUNCATE na tabela)
+Que é aquilo que eu queria mostrar.
+Então beleza, rodou certinho.
+(AÇÃO: Volta pro SHIFT e executa em modo "Produção")
+Se eu vier aqui no select, ele manteve null, tá.
+(AÇÃO: Executa o SELECT no SQL Developer e os campos continuam nulos)
+Por quê? Porque em produção, né, ele não tá na versão atualizada.
+Então, eu posso vir aqui e publicar a versão.
+(AÇÃO: Volta ao SHIFT e clica em "Publicar versão")
+(AÇÃO: Clica em "Publicar v3")
+Agora, se eu rodar de novo... como ele é um upsert, né?
+(AÇÃO: Executa novamente no modo "Produção")
+Já atualizou.
+(AÇÃO: Executa o SELECT no SQL Developer e os dados das duas colunas aparecem)
+Beleza, então é muito importante essa dinâmica, entender essa dinâmica de publicação.
+Teste sempre vai considerar o que tá rascunho, produção sempre a versão publicada, tá.
+Eh... Schema de IO.
+(AÇÃO: Clica nos três pontos e aponta para "Schema de E/S")
+Que é input e output. Isso aqui é usado pra subfluxos. Eu vou falar mais à frente.
+Aqui históricos de versões que a gente já falou.
+(AÇÃO: Aponta para "Histórico de versões")
+Aqui se você quiser exportar esse, esse fluxo pra ser importado em outro espaço ou outra coisa, né? Você tem a opção aqui, tá.
+(AÇÃO: Aponta para as opções de "Importar" e "Exportar" JSON/YAML)
+Eh... E aqui nada mais é do que eu já tinha comentado, mas você pode ver aqui, eh, em diferentes formatos, no log.
+(AÇÃO: Clica no nó "Manual" na aba de Execução, mostrando o JSON na parte inferior)
+Né, o que que executou, o tempo de execução e tudo mais.
+Pode tá só deixando ele escondidinho aqui embaixo... eh... você pode fechar.
+(AÇÃO: Clica no botão "Apenas conteúdo" para esconder o log, e depois fecha o painel de resultados)
+Depois quando você executar ele vai abrir de novo, tá?
+Então é, é bem parecido, essa parte em si aqui é bem parecido com o n8n.
+E daí, obviamente, dando duplo clique você vai ter em cada nó aqui as suas configurações.
+(AÇÃO: Dá um duplo clique no nó "Manual" para abrir o painel de parâmetros)
+Aqui você tem atalhos de navegação entre nós, então, por exemplo, se eu tivesse mais um nó aqui... sei lá, um Excel aqui também... isso também reflete, eh, aqui, ó.
+(AÇÃO: Adiciona um nó "Excel" e mostra a navegação com os botões "Anterior" e "Próximo" nos painéis de parâmetros)
+Então eu tenho dois agora. Então aqui você, é uma navegação mais rápida aqui pra você navegar entre as opções aqui de nós sem precisar fechar e dar dois cliques... fechar e dar dois clique, né.
+Então também tem essas opções aí.
+Eh... então a parte da... da apresentação da tela, basicamente é isso.
+Aqui você pode editar o título também, a descrição, se você quiser.
+(AÇÃO: Aponta para o título do fluxo no canto superior esquerdo e clica na descrição)
+Então a parte de tela do... conhecendo a pra vocês conhecerem a tela do fluxo, é basicamente esse processo aqui.
+Vou deixar o meu fluxo bonitinho aqui que tá funcionando que é pegando os dados do CSV e inserindo no ConstruShow.
+(AÇÃO: Deleta o nó "Excel" e clica em "Salvar")
+OK? Então, até o próximo... o próximo vídeo aí.

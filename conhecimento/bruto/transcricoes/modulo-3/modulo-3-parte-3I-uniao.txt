@@ -1,0 +1,68 @@
+Beleza, vamos pra mais um... uma demonstração aí. Eu vou remover isso aqui tudo que a gente tem pra frente aqui.
+(AÇÃO: o usuário seleciona e exclui os nós que estavam à direita do nó "A Base Interna")
+E vamos manter aqui só na nossa base de dados interna.
+(AÇÃO: clica em Executar no nó "A Base Interna")
+Então vou executar pra nós recuperar nossos dados aqui e deixar tudo limpo.
+Então tá aqui, nossos... eh, os nossos dados. Vamos ver o que que a gente tem aqui pra fazer.
+Eh, o próximo nó aqui é o União, tá? Então a união, ele é basicamente o Union, tá? Dentro da... das informações aqui.
+Então o que que eu vou fazer aqui pra nós testar ele? Eu vou separar esses dados aqui por algumas cidades, vamos supor que... óbvio, o que eu vou fazer aqui não seria o... o cenário que vai acontecer, né, você separar pra depois unir.
+Mas vamos supor que viesse de maneira separada aí, de... vamos supor que for de tabelas diferentes. Então vamos encarar como se fossem selects diferentes de tabelas diferentes que trazem informações que depois pra nós a gente precisa unir.
+Imaginando um cenário de implantação. No Construshow, por exemplo, a gente... a tabela de cadastro de pessoas é uma só. Então é a pessoa doc.
+Mas vamos supor que no... o concorrente, ele tem o cadastro de cliente, cadastro de vendedor, cadastro de funcionário, cadastro de fornecedor, tudo em tabelas separadas.
+Então a gente teria que dar um jeito de pegar esses dados lá separados e depois unir eles numa... numa lógica só pra gente poder inserir no nosso banco. Então a união vem nesse sentido aí.
+Eh, mas aqui eu vou separar... eh, arbitrariamente. Eu vou colocar três filtros aqui, como se fossem três tabelas que tá vindo aqui.
+(AÇÃO: arrasta três nós do tipo "Filtro" para a área de trabalho e os renomeia consecutivamente para "Brasília", "Porto Alegre" e "São Paulo")
+Então eu vou colocar aqui o filtro Brasília, filtro Porto Alegre e o filtro São Paulo.
+Beleza. Então vou ligar aqui. Vou ligar aqui. Deixa eu esconder esse cara aqui. E vou ligar aqui.
+(AÇÃO: conecta a saída do nó "A Base Interna" a cada uma das entradas dos três nós "Filtro" recém-criados)
+Beleza, então aqui eu vou... filtrar Porto Alegre. Onde a cidade seja Porto Alegre.
+(AÇÃO: configura o nó do filtro "Porto Alegre", adicionando a condição de que a coluna "cidade" seja igual a "Porto Alegre")
+Aqui... Brasília. Então onde a cidade seja Brasília.
+(AÇÃO: configura o nó do filtro "Brasília", adicionando a condição de que a coluna "cidade" seja igual a "Brasília")
+E... já foi Brasília, Porto Alegre já foi, São Paulo. Onde a cidade seja São Paulo.
+(AÇÃO: configura o nó do filtro "São Paulo", adicionando a condição de que a coluna "cidade" seja igual a "São Paulo")
+Beleza. Vamos executar esses caras aqui.
+(AÇÃO: clica no botão "Executar" no canto superior direito da tela)
+Então eu tenho aqui... só dados de Brasília, só dados de Porto Alegre, só dados de São Paulo.
+(AÇÃO: clica nas opções de saída em cada um dos nós "Filtro" para demonstrar as tabelas resultantes, com os dados devidamente filtrados)
+Então ficou vários fora aí, né? Deu 30 aqui, 35 aqui, e 33 aqui, né? A gente tinha vários outros, Manaus e tudo mais, mas... Curitiba... Mas a gente, vamos supor que essas tabelas aqui, eh, seriam aqui fornecedores, eh, funcionários, e clientes, né? E aí eu tenho que juntar tudo isso.
+Então o União basicamente ele faz isso. Eu posso vir aqui... e definir várias entradas, ó. Então eu vou... juntar esse cara com esse aqui, esse aqui, e eu posso adicionar aqui mais uma junção, e vou adicionar o três.
+(AÇÃO: arrasta o nó "União" para a área de trabalho, clica no ícone "+" dentro de "Conectar entradas" no painel do nó para habilitar um terceiro ponto de conexão, e conecta a saída dos três filtros ao nó "União")
+Se tivesse mais um, eu viria aqui no... no mais, né? Então eu consigo fazer a união de vários dados aí.
+Eh, aqui eu posso fazer o modo de alinhamento, tá? Então aqui até tem uma descrição. Por nome: empilha as linhas alinhando colunas pelo nome. O que faltar de um lado vira NULL. Recomendado em quase todos os casos, tá?
+Eh, que basicamente ele vai ver, ah, tem nome aqui, tem id aqui, tem id aqui, tudo dentro do mesmo id. Tem nome aqui... Então por isso que é importante sempre vir, quando vai usar o União, as colunas sempre existir no mesmo, né.
+Então se tiver, por exemplo, o departamento, tiver só nesse aqui, ele ia inserir departamento e esses outros ia ficar como nulo, tá? Então tem essa... essa particularidade aí.
+E... Por posição: empilha pela ordem das colunas. Os schemas precisam ser idênticos, mesma quantidade de colunas, mesma ordem. Útil quando você sabe que os dois arquivos têm exatamente o mesmo formato, tá?
+Eh, aqui ele dá até uma dica, Para combinar dados com schemas diferentes, mas que têm uma chave em comum, use o nó de Junção Join em vez deste. Daí ele dá uma dica aqui, tá.
+Mas assim, vamos usar o por nome, que basicamente ele vai unir tudo e aquilo que não tiver, eh, ele deixaria como nulo. No nosso caso aqui, a gente tem todos, né? Então aqui tá batendo. Então dá pra deixar por aqui.
+Aqui você pode adicionar uma coluna indicando de qual entrada veio cada linha. Tá? Então, se você quiser aqui, você pode definir. Não... é muito utilizado.
+E você pode remover duplicadas após união. Então se tiver dados duplicados aqui, você pode vir aqui e definir qual que é a chave ali duplicada, né, e aqui se é pela primeira, pela última, da primeira entrada, da última entrada. Então aqui você pode remover também.
+Eh, algumas opções assim, mas... geralmente o União você vai usar pra união mesmo, né? Então vamos rodar aqui.
+(AÇÃO: clica em Executar dentro do painel lateral direito do nó "União")
+Então vamos ver aqui, ele gera uma tabela só. Agora a gente tem dados de Brasília, Porto Alegre e São Paulo juntos. Então basicamente o União funciona dessa forma. Você consegue fazer um union de vários selects com alguns critérios ali de...
+Aqui o por posição também funcionaria, né? Se você rodasse aqui. Como a gente tem exatamente a... a mesma... o mesmo schema, né, e a mesma ordem, isso é importante também, né? Ele também não dá erro, tá?
+(AÇÃO: muda a opção "MODO DE ALINHAMENTO" para "Por posição" no nó "União" e clica em Executar)
+Mas vamos supor que... vamos fazer um exemplo aqui... eh, de um outro cenário. Vamos supor que eu só tenha departamento aqui em Porto Alegre e Brasília. Vamos adicionar um nó aqui de mapeamento pra cada um também.
+(AÇÃO: arrasta três nós do tipo "Mapeamento" para a área de trabalho, inserindo-os no fluxo logo após cada um dos três nós "Filtro")
+Tá, então eu tenho aqui mapeamento, com esse aqui, tem aqui... com esse cara aqui. Eh, e tem esse cara aqui com esse aqui. Beleza.
+Eh, esse cara aqui eu vou passar pra frente tudo menos... departamento.
+(AÇÃO: no nó "Mapeamento" associado a Brasília, marca a opção para incluir os campos e remove a coluna "departamento")
+Esse cara aqui, eu vou passar tudo, menos... e-mail.
+(AÇÃO: no nó "Mapeamento_1" associado a Porto Alegre, marca a opção para incluir os campos e remove a coluna "email")
+Esse cara aqui, eu vou passar tudo, menos... cidade. Tá?
+(AÇÃO: no nó "Mapeamento_2" associado a São Paulo, marca a opção para incluir os campos e remove a coluna "cidade")
+Eh, então, beleza. Então todos tá faltando alguma coisa. Eu vou ligar, eu vou só executar primeiro aqui. Deixa eu desativar... executar, só pra ele carregar aqui e a gente poder trabalhar melhor.
+(AÇÃO: o usuário temporariamente desconecta as conexões entre os nós de mapeamento e o nó "União", e então clica em Executar no topo da tela)
+Eh, vou ativar de volta, e agora sim, vou ligar o um aqui, um aqui, e o outro aqui. Tá?
+(AÇÃO: recria as três conexões, ligando a saída dos três nós de mapeamento novamente ao nó "União")
+E aqui eu vou deixar por posição, vai dar erro. Ou não... vamos ver o que ele fez. É, por posição ele não dá erro, mas vocês percebem o que que aconteceu aqui, ó.
+(AÇÃO: com a configuração mantida em "Por posição", o usuário clica em Executar no nó "União" e depois clica para visualizar a tabela de saída gerada)
+Ele respeita a posição do primeiro, ó. Então é id, nome, ativo, email, cidade e salário. Então ele vê aqui, id, nome, ativo, usuário, cidade, salário.
+Daí já a partir do próximo aqui, que seria... eh, aqui seria Porto Alegre, ó, a sequência tá id, nome, ativo, cidade, ó. Então cidade tá na mesma posição do e-mail. Então por isso que ele veio Porto Alegre aqui, ó.
+Então a posição tem isso, tá? Eh, é importante que os dados sejam exatamente igual. Mas vamos usar por nome aqui. Então que daí ele vai fazer as comparações de nome.
+(AÇÃO: no painel do nó "União", altera a opção "MODO DE ALINHAMENTO" para "Por nome" e clica em Executar)
+Por nome, ele é um pouco diferente. Ou seja, departamento aqui, nesse primeiro aqui, ele não tem departamento, ó. Então veio tudo nulo.
+No segundo, ele não tem e-mail. Veio tudo nulo. E no terceiro, ele não tem, acho que é... cidade, ó, veio tudo nulo.
+Então ele não dá esse erro, ele não dá essas confusão ali de... do que o posição dá, né? Mas ele... ele insere os dados e só seta nulo ali onde tá faltando.
+Isso aí é bem também bem... bem tranquilo, né? Eh, pode ser que você tenha situações que você não tenha... não tenha os dados mesmo, né? Mas os... as colunas que tiverem exatamente o mesmo nome, ele vai conseguir aí, eh, fechar, né, os dados.
+Então, bas... basicamente o nó de União funciona dessa maneira aí.

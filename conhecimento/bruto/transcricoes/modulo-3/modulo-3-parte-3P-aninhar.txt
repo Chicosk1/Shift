@@ -1,0 +1,111 @@
+Certo, então vamos continuando aqui, agora a gente vai pro nosso próximo node de transformação e é o Aninhar aqui.
+(AÇÃO: Cursor do mouse clica e arrasta o node "Aninhar" do painel esquerdo para a área de fluxo central)
+O Aninhar é o...
+...irmão gêmeo ao contrário do Desaninhar, né?
+(AÇÃO: Cursor do mouse clica no node "Desaninhar" no fluxo, abrindo a tela de configuração do node)
+Então o que o Desaninhar pega um array e explode ele pra...
+...pra linhas e colunas aqui...
+(AÇÃO: Cursor do mouse clica no ícone de "X" no canto superior direito da tela de configuração para fechá-la)
+...o aninhar é justamente quando você precisa fazer o oposto, né?
+(AÇÃO: Cursor do mouse clica no node "Desaninhar" novamente, reabrindo a tela de configuração)
+Então vamos supor aqui que eu tenho...
+...eu fui... essa aqui é uma consulta, eu tenho uma, um webhook que eu disponibilizei pra um cliente...
+...que vai no banco, pega os dados de, de notas e ele retorna assim, ó.
+Um ID pedido, é, o cliente, e as quantidades assim.
+(AÇÃO: Cursor do mouse clica na aba "JSON" na seção "OUTPUT" do painel direito)
+Se você manda isso direto, né, ele vai gerar um JSON assim, ó.
+Ele vai gerar...
+...repetindo aqui, cliente, ó...
+(AÇÃO: Cursor do mouse seleciona os campos "cliente" no código JSON exibido na tela)
+...e repetindo aqui ID produto, tá?
+Então nesses casos eu quero mandar dessa forma aqui...
+(AÇÃO: Cursor do mouse clica na aba "JSON" na seção "INPUT" do painel esquerdo)
+...vamos supor que na minha API eu quero que vá dessa maneira aqui...
+...com, é, o cabeçalho e daí os itens dentro de uma lista, né?
+(AÇÃO: Cursor do mouse clica no ícone de "X" no canto superior direito para fechar a janela)
+Então o aninhar vem justamente pra isso.
+(AÇÃO: Cursor do mouse clica na bolinha do node "Desaninhar" e arrasta criando uma linha de conexão até o node "Aninhar")
+Então se eu ligar aqui, ó...
+(AÇÃO: Cursor do mouse clica no node "Aninhar", abrindo sua janela de configuração)
+Eu posso definir aqui vários níveis. Então nesse caso aqui eu posso até clicar no botão sugerir...
+(AÇÃO: Cursor do mouse clica no botão "Sugerir" no canto superior direito)
+...ele vai ver aqui, vai gerar uma sugestão de como que você poderia aninhar isso, né?
+(AÇÃO: Cursor do mouse clica no botão "Executar..." no topo da tela)
+Então aqui, ó, se eu executar na sugestão, o que que ele vai fazer...
+Eu defini uma chave. Qual que é a chave? A chave é cliente.
+Então o que vai ser mantido fora é o cliente, o resto ele aninhou, ó.
+Não, mas eu preciso de cliente e ID pedido, porque eu tenho situações que o ID pedido e cliente sempre vão ser o mesmo.
+(AÇÃO: Cursor do mouse clica no botão "id_pedido" em "AGRUPAR POR (CHAVES)")
+Então eu marco ali o ID pedido. Aqui é o nome do array que eu quero dar, né?
+(AÇÃO: Cursor do mouse clica no campo de texto "NOME DO ARRAY FILHO")
+Então aqui eu deixei 'itens', mas poderia ser aqui 'produtos' também, não tem problema nenhum, tá?
+(AÇÃO: Cursor do mouse apaga o texto "itens" e digita "produtos" no campo de texto)
+(AÇÃO: Cursor do mouse clica no botão "Executar..." no topo da tela)
+Ó.
+Então aqui eu consegui... eh, cliente, ID, eh, pedido e produtos, ó.
+(AÇÃO: Cursor do mouse clica no ícone de expandir o array de produtos da linha 1 no painel de Output)
+Então aqui agora eu venho com o produto, o Bruno tinha só um...
+(AÇÃO: Cursor do mouse clica no ícone de expandir o array de produtos da linha 2 no painel de Output)
+...e a Ana Costa tinha dois, ó. Então assim, eu posso transformar o que era uma tabela agora também, e daí sim esse JSON vai bem do jeitinho que eu quero, ó.
+(AÇÃO: Cursor do mouse clica na aba "JSON" na seção "OUTPUT" do painel direito)
+Então eu venho com o cabeçalho, o ID do pedido e os produtos.
+Cabeçalho, ID do pedido e os produtos, tá? Então isso permite fazer isso também.
+(AÇÃO: Cursor do mouse clica no ícone de "X" no canto superior direito para fechar a janela)
+Eh, quando tem mais níveis, vamos fazer um exemplo aqui, ó...
+(AÇÃO: Cursor do mouse clica no menu de três pontos do node "Manual" e seleciona "Editar")
+...deixa eu mudar aqui um pouco o que a gente tem aqui dentro.
+Vamos supor aí quando a gente tem, eh, mais níveis. Deixa eu pegar um exemplo aqui.
+Então aqui, ó, eu vou mudar esse, esse carinha aqui.
+(AÇÃO: Cursor do mouse seleciona todo o texto no campo de texto JSON e cola um novo código)
+Vamos ver o que que tem aqui na nossa tabela, né? Vamos supor que a nossa tabela do banco retorna isso aí.
+(AÇÃO: Cursor do mouse clica no botão "Executar..." no topo da tela)
+Então eu tenho aqui o número da nota, tenho o valor dessa nota, o cliente, o imposto, o item... ó, então tem várias coisas aqui que poderiam ser listas distintas, né?
+(AÇÃO: Cursor do mouse clica no ícone de "X" no canto superior direito para fechar a janela)
+Então o que que eu vou fazer aqui. Eu vou chamar o nosso nó Aninhar...
+(AÇÃO: Cursor do mouse clica no node "Aninhar", abrindo sua janela de configuração)
+...eu preciso mandar isso aqui pra uma API, mas eu preciso mandar o JSON corretamente.
+Então no nível um aí, eu vou agrupar por nota e cliente.
+(AÇÃO: Cursor do mouse remove "id_pedido" e "cliente" das chaves clicando no "x", depois clica em "nota" e "cliente" para adicioná-los em "AGRUPAR POR (CHAVES)")
+Tá? E vou deixar aqui como 'itens'. Vou só mudar aqui pra N, né?
+(AÇÃO: Cursor do mouse clica no campo de texto "NOME DO ARRAY FILHO", apaga "produtos" e digita "itens")
+(AÇÃO: Cursor do mouse clica no botão "Executar..." no topo da tela)
+Ó, então o que que vai acontecer? Eu tenho a nota, o cliente e aqui eu tenho os itens, ó.
+Mas aí aqui dentro do item eu tenho o valor, o imposto, o item ID, o produto e a alíquota, né? Então eu tenho informação de item e informação de imposto junto.
+Aqui, ó, a mesma coisa, ó. Então esse item ID aqui, ó, ele tem o imposto IPI e tem o imposto ICMS.
+Só que como não, eu não criei um segundo nível aqui, ó, ele repetiu o ID item duas vezes, né?
+Então eu posso agora adicionar aqui um novo, eh, nível.
+(AÇÃO: Cursor do mouse clica no botão "+ Adicionar nível")
+Então agora, com esse novo nível, ele só pega o que sobrou, ó.
+Então esses dois aqui já foi, já foi aninhado, ele nem aparece aqui, ó.
+Então o nível dois, eu quero fazer o quê? Eu quero, eu sei, o que que é único ali? É o ID item, tá, e o produto.
+(AÇÃO: Cursor do mouse clica nos botões "item_id" e "produto" em "AGRUPAR POR (CHAVES)" da seção "Nível 2")
+Eu poderia ser até só por ID item, né, mas é bom sempre adicionar os dois que são chave.
+Então eu vou vir aqui, vou dar um executar.
+(AÇÃO: Cursor do mouse clica no botão "Executar..." no topo da tela)
+Ah, esqueci do nome aqui.
+O nível um precisa de as... nome... no caso é o dois aqui, né?
+(AÇÃO: Cursor do mouse clica no campo de texto "NOME DO ARRAY FILHO" da seção "Nível 2")
+Vou colocar aqui o nome como 'impostos'.
+(AÇÃO: Cursor do mouse digita "impostos" no campo de texto)
+(AÇÃO: Cursor do mouse clica no botão "Executar..." no topo da tela)
+Ó, então olha só o que que gerou aqui, ó, a gente pode já até ver no schema aqui, ó.
+(AÇÃO: Cursor do mouse clica na aba "Schema" na seção "OUTPUT" do painel direito)
+Cabeçalho: nota e cliente. Dentro desses nota e cliente, eu tenho itens. E dentro desses itens, eu tenho impostos.
+Então é assim que funcionou, ó.
+(AÇÃO: Cursor do mouse clica na aba "Tabela" na seção "OUTPUT" do painel direito)
+Aqui, quando você vê em tabela, fica estranho assim, né, ó, eu tenho aqui, ó...
+...mas aqui, eu tenho até uma, uma opção aqui, quando você clica na coluna, ó, ele te dá um, uma visualização melhor aqui, ó.
+(AÇÃO: Cursor do mouse clica no ícone de colchetes na coluna "itens" da linha 1 para expandir o conteúdo)
+Então, no item, ó, eu tenho o item ID 1, monitor, e eu tive um imposto, que é o ICMS dentro desse item.
+Já aqui na, na nota da Ana Costa, eu vendi o ID item 2, que é o mouse.
+Aqui no, nesse primeiro aqui, eu tive somente ICMS.
+Mas já aqui no segundo, eu tive também ICMS e tive IPI.
+E daí, olha como que fica o JSON.
+(AÇÃO: Cursor do mouse clica na aba "JSON" na seção "OUTPUT" do painel direito)
+Então ele vai ficar a nota, os itens dentro de uma lista, e os impostos dentro de uma lista dentro de itens, tá?
+Então, isso aqui geralmente é como você consegue montar o padrão JSON aí pra você fazer respostas, eh, respostas HTTP request, né?
+Então, quando você vai mandar, eh, mandar um dado aí pra, pra determinado, pra responder uma API, né, você mandaria isso aqui no body, né?
+(AÇÃO: Cursor do mouse seleciona e destaca um bloco de texto do código JSON no painel direito)
+Mandaria isso aqui no body e daí ele consegue, eh, responder corretamente em JSON lá pro, pro, pra resposta HTTP request.
+Então, basicamente, o aninhar também funciona dessa maneira.
+(AÇÃO: Cursor do mouse clica no ícone de "X" no canto superior direito para fechar a janela)

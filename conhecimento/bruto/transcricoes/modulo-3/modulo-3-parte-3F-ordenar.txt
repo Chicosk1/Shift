@@ -1,0 +1,57 @@
+Então, mais um vídeo, vamos continuar aqui.
+Vamos voltar lá que agora a gente vai falar do nó ordenar.
+Então vamos voltar lá pra nossa tabelinha de funcionários.
+(AÇÃO: Usuário abre as configurações do nó "Manual" e logo depois as fecha)
+Deixa eu tirar isso aqui, não.
+Vamos usar produto que eu gosto, que tem mais dados.
+Então, vamos carregar nossa tabela interna de funcionários.
+(AÇÃO: Usuário clica no nó "Ler Base Interna", seleciona "funcionarios" e clica no botão "Executar")
+Então já está aqui.
+Vamos pegar aqui o nosso nó agora...
+(AÇÃO: Usuário fecha o painel de propriedades e arrasta o nó "Ordenar" do menu lateral para o fluxo)
+Bem simples esse nó, bem rápido vai ser esse vídeo, que é o nó de ordenar.
+Então, basicamente o que que ele faz? Ele permite você fazer a ordenação desses dados.
+(AÇÃO: Usuário clica no nó "Ordenar", seleciona a coluna "id" com a ordenação "ASC" e clica em "Executar")
+Então, sei lá, vim aqui pelo ID e vou fazer uma ordenação ASC.
+Então aqui se a gente pegar aqui ó, ele foi da última...
+É que o ID tá como texto, né.
+Então por isso que ele ficou assim, lá dentro do, daqui, ele tá como texto.
+Então vamos forçar uma conversão aqui com o mapeamento.
+(AÇÃO: Usuário arrasta o nó "Mapeamento" para a área de edição e o conecta entre o nó "Ler Base Interna" e o nó "Ordenar")
+Eu falo que o mapeamento é o que vocês mais vão usar.
+Então vamos forçar aqui...
+(AÇÃO: Usuário abre as configurações do nó "Mapeamento", seleciona a coluna "id" para conversão como tipo "Inteiro" e clica em "Executar")
+Uma conversão do ID aqui pra inteiro. E vamos só passar esses dados pra frente.
+Então o ID agora a hashtag virou inteiro.
+E agora vai funcionar melhor o nosso ordenar aqui.
+(AÇÃO: Usuário fecha as opções do "Mapeamento", abre as do nó "Ordenar", insere novamente a coluna "id" com ordem "ASC" e clica em "Executar")
+Então eu vou puxar o ID aqui.
+Ó, então ele já trouxe aqui ordenado ASC, né, no caso tá ordenado crescente.
+Mas eu posso mudar aqui pra DESC que é decrescente.
+(AÇÃO: Usuário altera a opção de ordenação da coluna "id" de "ASC" para "DESC" e clica em "Executar")
+Então tá do último pro primeiro, né.
+Eh, e o ASC é basicamente isso.
+(AÇÃO: Usuário exclui a ordenação pelo "id", adiciona a coluna "nome" com a ordem "ASC", adiciona a coluna "cidade" com a ordem "DESC" e clica em "Executar")
+Posso definir aqui por nome e cidade.
+Então nome da letra A a letra Z, e cidade da Z pra...
+Então vamos ver o que que vai dar aí, vai dar uma confusão né, de ordenação.
+Mas é uma coisa aqui, ó. O nome tá ASC então, começando com A.
+E cidade de baixo pra cima do S, depois por último foi Belo Horizonte que é a letra B, ó.
+Então, você consegue aí criar ordenações da maneira que você quiser.
+Você tem aqui um limite de linhas, mas geralmente você não vai precisar usar, tá.
+Pra ordenamento, né, então quando informado, retorna apenas n primeiros registros após a ordenação, tá.
+Então vamos supor que eu coloque 5 aqui, ó.
+(AÇÃO: Usuário preenche o campo "LIMITE DE LINHAS (OPCIONAL)" com o número "5" e clica em "Executar")
+É só um count aqui né, então trouxe só os cinco depois da ordenação, tá.
+Então aqui é importante que é após a ordenação.
+Então por isso que ele trouxe aqui os cinco primeiros que eu tinha aqui, o Eduardo, Kevin, Patrícia, Rafael e Larissa, né.
+Mas como eu ordenei e coloquei pra retornar só cinco, é só após a ordenação.
+Então é um recurso que tem, não é muito utilizado, mas você pode ordenar aqui.
+É preferível que se você precise ordenar, você ordene por esse nó.
+Se você ordena pela consulta, se torna muito mais lento o processo.
+É melhor ordenar aqui por dentro do Shift, tá.
+Trazer a consulta com o mínimo de parâmetros que você puder, que isso torna a consulta mais rápida.
+Obviamente, né, se tiver 1 milhão de linhas você trazer com o where que você precisa, mas não usar o order by, né.
+Porque lá no banco vai pesar esse processo.
+Então, é melhor você ordenar por aqui porque aqui o processo vai ser, né, sempre bem mais rápido.
+Então o ordenar é bem tranquilo, é basicamente isso.

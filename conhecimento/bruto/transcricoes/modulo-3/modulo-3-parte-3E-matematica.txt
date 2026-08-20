@@ -1,0 +1,169 @@
+Então, continuando aqui na nossa saga aí de, de nós, de transformação, vamos ir pro nó, próximo nó, e eu preparei uns dados diferentes aqui bem legais pra gente trabalhar com ele, que é o nosso nó Matemática.
+(AÇÃO: usuário clica na categoria "Matemática" no menu lateral esquerdo)
+(AÇÃO: usuário arrasta o nó "Manual" para a área de edição do fluxo)
+(AÇÃO: usuário arrasta o nó "Matemática" para a área de edição do fluxo)
+Então, adicionar aqui o nosso manual e o nosso nó Matemática. Depois a gente volta lá pros nossos clientes, tá?
+(AÇÃO: usuário clica duas vezes no nó "Manual" abrindo sua tela de configuração)
+Eh, aqui eu vou preparar, eu preparei um json aqui com alguns dados pra gente não precisar subir nenhuma tabela, nem nada, né, torna mais rápido.
+Então aqui basicamente o que que eu vou fazer?
+(AÇÃO: usuário clica no botão "Executar..." na tela de configuração do nó Manual)
+Eu vou executar aqui pra vocês verem.
+(AÇÃO: a execução é concluída e o resultado é exibido na aba Output)
+Então aqui o que que eu tenho?
+(AÇÃO: usuário clica na aba "Tabela" no painel de Output)
+Eu tenho um cliente, eu tenho um produto, eu tenho um desconto, é que nem, é uma tabela de vendas mesmo, né. Tem o preço unitário e a quantidade. Tá?
+(AÇÃO: usuário fecha a tela de configuração do nó Manual)
+Então o que que eu vou fazer aqui?
+(AÇÃO: usuário clica no nó "Matemática" abrindo sua tela de configuração)
+O nó Matemática ele serve pra você criar novas colunas baseadas em alguma coisa que você quer fazer, tá, que eu já vou mostrar.
+Então vamos supor que nesses dados aqui eu precisasse do valor total líquido de cada venda aqui.
+Então pra mim ter o valor total líquido eu preciso pegar o preço unitário, eh, multiplicar pela quantidade e diminuir o desconto, né, daí eu teria o valor líquido.
+Se eu quero bruto, vamos supor que eu preciso do bruto e do líquido. Beleza.
+(AÇÃO: usuário clica no botão "+ Adicionar expressão")
+Então vamos adicionar um aqui. E aqui vou dar um nome pra essa coluna:
+(AÇÃO: usuário digita "total_bruto" no campo de nome da nova coluna)
+total underline bruto.
+Que que eu preciso fazer? O bruto é basicamente preço unitário
+(AÇÃO: usuário arrasta o campo "preco_unitario" da esquerda para o primeiro campo de termo da expressão)
+o que que eu quero fazer? Qual que é o cálculo que eu quero fazer?
+Aqui é as opções, tá. Eu posso lincar ou posso informar um valor fixo, tá.
+Nesse caso a gente vai usar aqui uma coluna ou você pode vir aqui e arrastar, né.
+Então vou pegar o unitário,
+(AÇÃO: usuário clica no menu dropdown de operação e seleciona a opção de multiplicação "")
+vezes, aqui ó tem várias opções matemáticas, ó, vezes a quantidade, tá.
+(AÇÃO: usuário arrasta o campo "quantidade" para o segundo campo de termo da expressão)
+Aqui eh, se você quiser mais algum, né, nesse caso aqui não.
+Então aqui eu basicamente coloquei aqui que eu quero pegar o preço unitário vezes quantidade.
+(AÇÃO: usuário clica no menu dropdown de opções de envolvimento de cálculo "Sem ajuste")
+Aqui se eu quero fazer algum ajuste. Se eu quero arredondar, pegar só o inteiro pra cima, pra baixo, absoluto, a raiz quadrada, enfim.
+(AÇÃO: usuário seleciona a opção "Arredondar (2 casas)")
+Eu vou só arredondar aqui a valor.
+Eh, aqui ele até mostra a expressão que gera, né, tipo, o que que ele vai gerar por baixo dos panos é basicamente se fosse, como se fosse isso aqui, ó, round preço unitário vezes quantidade 2.
+(AÇÃO: usuário clica no botão "+ Adicionar expressão")
+Vou adicionar outra aqui que eu quero também gerar uma coluna chamada preço, eh, total líquido.
+(AÇÃO: usuário digita "total_liquido" no campo de nome da nova coluna)
+Então vou colocar aqui total underline líquido.
+Vou pegar aqui,
+(AÇÃO: usuário arrasta o campo "preco_unitario" para o primeiro campo de termo da expressão)
+então o total líquido é um pouco diferente, ele é o preço unitário,
+(AÇÃO: usuário clica para adicionar novos termos e arrasta os campos "quantidade" e "desconto", definindo as operações "" e "-" respectivamente)
+vezes a quantidade, e menos o desconto.
+(AÇÃO: usuário seleciona a opção "Arredondar (2 casas)" no menu dropdown de envolvimento de cálculo)
+Também vou arredondar pra duas casas decimais, tá.
+Eh, beleza. Eu vou executar isso aqui, vamos dar uma olhada o que que vai acontecer.
+(AÇÃO: usuário clica no botão "Executar")
+Então agora notem aqui que eu tenho o meu total bruto.
+Então, 3 mil e meio vezes 2 é exatamente 7 mil.
+49 e 90 vezes 10 é 499. Então o cálculo tá tudo certinho, né.
+Aqui, ó, 7 mil menos 200, 6800. Então aqui eu gerei novas colunas a partir de uma matemática feita através de outros dados aqui.
+Isso evita que você fique fazendo expressão matemática na consulta, traz os dados que você tem, se você precisa gerar algum valor, gera por aqui que é muito mais rápido e muito mais seguro e você consegue auditar e colocar mais regras aqui, né.
+Eh, deixa eu pensar... vamos colocar agora aqui, a gente tem outras opções, aqui é cálculo, né.
+(AÇÃO: usuário clica na aba "Condição" em uma nova expressão recém-adicionada, mas logo em seguida muda de ideia)
+Vamos usar um de condição agora.
+(AÇÃO: usuário clica em "+ Adicionar expressão")
+Vou adicionar uma nova aqui, e eu vou determinar aqui sei lá, com base, eh...
+Eu vou adicionar mais uma matemática. Eu vou fazer o seguinte, tive uma ideia. Eu vou adicionar, beleza,
+eu não consigo usar uma coluna sem ter gerado ela antes. Então eu quero usar uma dessas aqui agora, tá.
+(AÇÃO: usuário fecha a tela de configuração do nó Matemática)
+Então eu venho aqui, e, e uso mais um nó matemática, né,
+(AÇÃO: usuário arrasta um novo nó "Matemática" para a área de edição e o conecta ao primeiro nó Matemática)
+e vou agora, deixa eu só rodar aqui pra ele pegar...
+(AÇÃO: usuário abre a tela de configuração do novo nó Matemática)
+Ah não, tá aqui.
+(AÇÃO: usuário fecha a tela de configuração, clica com o botão direito no novo nó e seleciona "Desativar")
+Deixa eu desativar e rodar aqui.
+(AÇÃO: usuário clica no botão "Executar" na barra superior do fluxo)
+(AÇÃO: usuário ativa novamente o segundo nó Matemática e abre sua tela de configuração)
+Tá, então o que que eu preciso fazer agora?
+Agora eu quero definir uma faixa, tá.
+Eh, se eu fiz uma venda líquida com um valor... deixa eu ver qual que é os valores aqui que a gente tem.
+(AÇÃO: usuário observa a aba de dados de entrada Input -> Tabela)
+Tá, líquido, né.
+Se eu fiz uma venda...
+Ó, até aqui ele, ele deixou null, né. Os que tão sem desconto... total líquido, os que tão sem desconto ele tá, ele tá deixando null.
+Até vou anotar ali pra, pra resolver isso, se ele converter pra zero, né.
+Mas a gente poderia aqui antes tratar, né, eh, de maneira inteligente, obviamente, vir aqui, usar o mapeamento e tal.
+(AÇÃO: usuário fecha a configuração, arrasta o nó "Mapeamento", desconecta "Manual" de "Matemática", e interliga "Manual" -> "Mapeamento" -> "Matemática")
+(AÇÃO: usuário abre a tela de configuração do nó Mapeamento)
+Aqui dentro do mapeamento a gente eh faz o mapeamento aqui, a gente vai mexer só aqui na parte do... vamos colocar em todos, né.
+(AÇÃO: usuário configura valores padrão "0" para "preco_unitario" e "desconto", e "1" para "quantidade" no nó Mapeamento)
+Então aqui a gente coloca um padrão, né, zero. Unitário vamos colocar um padrão zero. Que é pra evitar esse tipo de coisa, né. Então notem que aqui dentro você consegue resolver já.
+Quantidade, se vier, eu vou definir um padrão 1, porque a quantidade, se eu tiver uma venda, não pode ser zero, né.
+E o desconto, né, é a regra que eu tô estabelecendo, né, mas você poderia estabelecer a tua regra.
+E aqui vou colocar um padrão zero também.
+(AÇÃO: usuário clica no botão "Executar" na configuração do Mapeamento)
+Beleza, então vamos ver... agora a gente não tem mais valores sem valor, né, sem eh com dados nulos. Eh...
+(AÇÃO: usuário fecha o Mapeamento e abre o primeiro nó Matemática)
+E aqui agora a gente já tá pegando o mapeamento, beleza, vamos rodar ver se não quebra.
+(AÇÃO: usuário clica no botão "Executar")
+Ele já substitui... Ah, não substituiu. Beleza.
+Como a gente refez a ligação, né, eu não precisava ter excluído, mas tudo bem, vamos fazer de volta.
+(AÇÃO: usuário refaz as configurações de expressões matemáticas para "total_bruto" e "total_liquido" que foram perdidas)
+total_bruto. Então a gente precisa da coluna preço_unitario vezes quantidade. Arredondar duas casas.
+total_liquido. A gente precisa preço_unitario vezes quantidade, e menos o desconto. Arredondar.
+(AÇÃO: usuário clica no botão "Executar")
+(AÇÃO: uma mensagem de erro vermelha aparece na tela indicando incompatibilidade de tipos nas funções)
+Ah, tá, tá. Aqui eu, perdão, falha minha. Aqui eu deixei eles...
+(AÇÃO: usuário fecha a configuração, volta para o nó Mapeamento e ajusta os tipos de dados das colunas)
+eh, aqui, tem que colocar, o desconto é decimal, decimal.
+Quantidade é inteiro, eh, data pedido... preço unitário decimal, ok, preço unitário decimal, data pedido vou manter, eh, quantidade é inteiro, desconto é decimal. Acho que é isso, né, que a gente precisava, vamos ver se ele converteu.
+(AÇÃO: usuário clica no botão "Executar" do nó Mapeamento)
+Aqui é até bom mostrar, ó, tá vendo que antes ele, antes ele ficou tudo como T aqui, ó, que ele era texto. E agora ele ficou com esse hashtag é número, ó. Então isso também é legal pra, pra analisar aí. Agora sim.
+(AÇÃO: usuário fecha o Mapeamento, abre o primeiro nó Matemática e clica em "Executar")
+Beleza, então agora eu tenho aqui meus valores, nenhum campo quebrado nem nada com nulo.
+(AÇÃO: usuário fecha o primeiro nó Matemática e abre o segundo, Matematica_1)
+Agora aqui no próximo, que que eu vou querer fazer?
+Então eu tinha falado que eu quero definir uma faixa, sei lá, do, do que eu tô vendendo.
+Eu quero definir que, eh, tudo o que eu comprei, as, tudo o que eu vendi no caso aqui acima de mil reais, eu vou definir que foi uma faixa alta.
+(AÇÃO: usuário clica no botão "+ Adicionar expressão")
+Então vou colocar até o nome aqui faixa. Então o nome da minha coluna vai ser faixa.
+(AÇÃO: usuário clica na aba "Condição")
+Ao invés de usar a matemática vou usar a condição.
+Então aqui na condição que que eu vou fazer?
+Se o total_liquido é maior que 1000, tá, eh eu vou adicionar um senão, tá.
+(AÇÃO: usuário configura a condição: se "total_liquido" for "maior que" "1000")
+Então aqui então, né. Então vou definir que ele foi um texto, um valor.
+Eu poderia colocar um valor ou um texto ou um campo lincado, né. Mas eu vou colocar um valor, vou definir que foi uma compra, uma venda alta.
+(AÇÃO: usuário digita "Alto" no campo de resposta "então")
+Se o total líquido for maior do que 500,
+(AÇÃO: usuário clica em "+ Adicionar senão se" e configura a segunda condição: "total_liquido" "maior que" "500")
+então eu vou colocar que for, foi médio.
+(AÇÃO: usuário digita "Médio" no respectivo campo "então")
+E se não, vai ser baixo.
+(AÇÃO: usuário digita "Baixo" no campo final "SENÃO")
+Então vamos ver o que que vai dar isso aí. Nem eu me entendi mais.
+(AÇÃO: usuário clica no botão "Executar")
+Ah, então vamos ver aqui, ó. É maior do que mil? Total líquido é, Alto.
+É maior do que mil e maior do que 500 aqui? Não. Então, se não, Baixo.
+É maior do que 500? É. E é maior do que mil? Não, então é médio. Alto, e então assim que funciona a parte de condição.
+Você pode concatenar aqui condições, é bem parecido com lá na transformação a gente tem algumas coisas parecidas, né, como o DE PARA lá, né, mas aqui você consegue encadear de maneira mais visual aqui o que você precisa, tá.
+Eh, beleza. Vamos ver outra opção aqui. Aqui eu tenho a parte de texto,
+(AÇÃO: usuário clica em "+ Adicionar expressão" e seleciona a aba "Texto")
+vamos adicionar mais uma aqui, que também ela é, tem algumas coisas que já tem lá no mapeamento.
+A parte de manipulação de texto eu prefiro lá, mas se você já tiver fazendo um tratamento aqui e você vai precisar fazer isso, você já pode fazer aqui.
+Então, por exemplo, eu posso pegar aqui o cliente, vou colocar aqui cliente_padronizado,
+(AÇÃO: usuário digita "cliente_padronizado" no nome da nova coluna)
+e a diferença é que a matemática ela sempre vai gerar uma nova coluna. Enquanto que o, o mapeamento ele vai se tornar aquela coluna, tá.
+Então aqui no momento que eu tô criando cliente padronizado vai passar pra frente cliente e cliente padronizado.
+E aqui vou adicionar a transformação.
+(AÇÃO: usuário seleciona o campo "cliente" no dropdown e clica no menu "+ Adicionar transformação")
+Então eu tenho algumas transformações aqui, maiúscula, minúscula, primeiros N caracter, juntar com outra coluna, que é como se fosse uma concatenação.
+Deixar a maiúscula aqui. Então basicamente é uma opção que a gente tem aqui também dentro do mapear, ah, no matemática, a diferença é que o matemática ele sempre gera uma nova coluna com o dado que você tá fazendo, tá.
+(AÇÃO: usuário seleciona a transformação "Maiúsculas")
+Eh, e o último avançado aqui é aquela questão de, de eu adicionar um novo aqui, o avançado é aquela questão de você poder fazer expressões aqui, tá.
+(AÇÃO: usuário clica em "+ Adicionar expressão" e seleciona a aba "Avançado")
+Então tem algumas opções aqui, ó, diferença em dias, data de hoje, tá, você pode fazer expressões aqui.
+(AÇÃO: usuário abre o menu dropdown "Funções")
+Eu vou fazer aqui tipo um resumo aqui, e vou fazer umas concatenação que eu já deixei pronta aqui, vamos ver se eu fiz certo aqui.
+(AÇÃO: usuário digita "resumo" no campo de nome da nova coluna)
+Então aqui eu vou colar uma expressão matemática aqui.
+(AÇÃO: usuário cola uma expressão SQL/código no campo principal da aba Avançado)
+Dar um executar.
+(AÇÃO: usuário clica no botão "Executar")
+Tá, então aqui, o que que eu fiz?
+Basicamente eu peguei o cliente, fiz um trim, depois um upper, daí eu usei a função concat, né, pra concatenar, daí vim aqui e coloquei uma vírgula, concatenei com R cifrão, arredondei a quantidade vezes o valor unitário menos o desconto, arredondei pra duas casas, e daí ele vai trazer um resumo aqui ó, então com base nessa expressão que eu fiz.
+Então ANA COSTA - 6800. Eh, tantos reais aqui, fica mais fácil de ver. Então aqui ele gerou o resumo pra mim.
+Certo, eh, matemática, basicamente isso.
+Então matemática é um nó aí bastante poderoso, principalmente pra você fazer cálculos, né, se você precisa fazer cálculos, eh, te traz outras ferramentas como condições e tudo mais, né, mas aqui você consegue, e a característica é que ele sempre vai gerar, né, uma nova coluna com a lógica que você aplicar.
+(AÇÃO: usuário fecha a tela de configuração do nó Matematica_1)
+Então a parte de matemática seria basicamente essa.

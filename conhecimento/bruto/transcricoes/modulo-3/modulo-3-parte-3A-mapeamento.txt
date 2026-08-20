@@ -1,0 +1,141 @@
+Então continuando aqui no nosso treinamento do Shift e explorando o catálogo de nós, nós vamos ir para o grupo onde a gente tem uma quantidade maior de nós disponíveis, que é o grupo de transformações.
+(AÇÃO: A tela muda do slide de apresentação para a interface do editor de fluxo do Shift)
+Então vamos lá. Aqui, vamos ir pro Shift. Então, vamos criar um novo fluxo aí. Catálogo de Nós - Transformações. Bora lá.
+(AÇÃO: O usuário clica em "Novo Fluxo", seleciona "Em branco" e preenche o nome como "Catálogo de Nós - Transformações", depois clica em "Criar")
+Então aqui dentro, nosso nó manual de praxe, e vamos ir para o grupo de transformação. Então ele conta com 18 recursos aí e nós vamos começar falando do mapeamento que provavelmente é o que vai ser mais utilizado.
+(AÇÃO: O usuário adiciona um nó "Manual" ao fluxo)
+(AÇÃO: O usuário abre a aba "Transformação" no menu lateral e arrasta o nó "Mapeamento" para o fluxo)
+Mas como é transformação, a gente vai precisar de dados. Então nada mais justo do que a gente carregar a nossa tabelinha ali de, eh, funcionários. Então vamos carregar ela aqui.
+(AÇÃO: O usuário abre a aba "Banco de Dados" no menu lateral e arrasta o nó "Ler Base Interna" para o fluxo, posicionando-o entre o "Manual" e o "Mapeamento")
+(AÇÃO: O usuário abre as configurações do nó "Ler Base Interna", seleciona a base de dados "funcionários" e executa o nó)
+Beleza, ela já tá num contexto aqui do nosso, do nosso fluxo. E vamos começar pelo nó de mapeamento. Então o nó de mapeamento geralmente ele vai ser um dos mais utilizados, tá?
+(AÇÃO: A execução é concluída e os dados são exibidos na aba "Output" do nó "Ler Base Interna")
+(AÇÃO: O usuário conecta os nós "Manual", "Ler Base Interna" e "Mapeamento" no fluxo)
+Eh, por quê? Aqui ele tem diversos recursos que vão permitir que você faça diversas transformações, tá? Então aqui eu posso, eh, arrastar algum campo pra cá, né, pra ele vincular.
+(AÇÃO: O usuário abre as configurações do nó "Mapeamento")
+(AÇÃO: O usuário arrasta o campo "id" da lista de campos de entrada para a área de mapeamento)
+Então aqui eu posso já forçar alguma conversão. Então, por exemplo, se eu quero forçar isso aqui pra inteiro, né? Eh, aqui eu posso definir, eh... esse "Explodir em colunas" aqui, né, ele vai transformar esses dados em colunas.
+(AÇÃO: O usuário clica no menu de opções do campo "id" e seleciona "Inteiro" para forçar a conversão)
+Tudo que vier aqui dentro em colunas, tá? Então, aqui eu posso também transformar ele. Então, quando eu clico em "Transformação" aqui, eu posso adicionar, além de variáveis prontas, eu posso setar a data e hora atual.
+(AÇÃO: O usuário clica no botão "+ Transformação" no campo "id")
+Então, vamos supor aqui que eu tenho um campo novo, ó, que é um campo que eu não vou arrastar. É um campo que não existe. Eu vou colocar aqui, sei lá, que teria numa tabela, "updated_at".
+(AÇÃO: O usuário clica em "Adicionar campo" e cria um novo campo chamado "updated_at")
+Que é a data e hora de atualização. Então aqui, DateTime e vou colocar o "Now".
+(AÇÃO: O usuário clica no menu de opções do campo "updated_at", seleciona a opção "DateTime" e depois a variável "Now")
+Eh, aqui eu posso fazer diversas transformações, então. É, maiúsculo, minúsculo, sem espaço...
+(AÇÃO: O usuário clica em "+ Transformação" em um novo campo e exibe o menu suspenso com as opções de transformação)
+...remover acentos, somente dígitos, remover caracteres especiais, substituir, tá, truncar, remover caracter.
+Né, que daí eu posso remover algum específico. Por exemplo... Vamos... aqui... Acho que no "id" a gente não precisa fazer nada. Eu poderia só ter um "somente dígitos", mas ele já vai ter dígitos. Vamos trabalhar aqui, talvez com o "nome", que a gente tem mais possibilidades.
+(AÇÃO: O usuário seleciona a opção "Remover caracteres" e depois a remove)
+(AÇÃO: O usuário arrasta o campo "nome" para a área de mapeamento)
+Então aqui eu posso colocar aqui, eh, eu vou deixar maiúsculo, eu vou tirar os espaços. Posso ir concatenando vários, tá? Eu posso remover acentos.
+(AÇÃO: O usuário clica em "+ Transformação" no campo "nome" e seleciona "Maiúsculo")
+(AÇÃO: O usuário clica novamente em "+ Transformação" no campo "nome" e seleciona "Sem espaços")
+(AÇÃO: O usuário clica em "+ Transformação" no campo "nome" e seleciona "Remover acentos")
+Eu posso remover caracteres especiais, acredito que não tenha. Substituir, tá? Depois vamos usar isso dentro aqui do, do departamento, tá?
+(AÇÃO: O usuário clica em "+ Transformação" no campo "nome" e seleciona "Remover caracteres especiais", depois "Substituir")
+Eh, remover caracteres, né, eu posso definir pra remover um caracter específico. Se eu não, se tiver traço e ponto, eu quero remover. E por último, aqui pra formatar data, padrão, a gente vai deixar, e um "De Para".
+(AÇÃO: O usuário clica em "+ Transformação" no campo "nome" e seleciona "Remover caracteres", digitando "-" e "." no campo de configuração)
+Beleza, por enquanto vamos deixar assim. O "nome", então, aqui eu posso renomear. Então, ah, a partir daqui eu quero que passe pra frente outro nome. Então, eu poderia colocar aqui "nome_cliente".
+(AÇÃO: O usuário clica no nome do campo "nome" e o renomeia para "nome_cliente")
+Então ele permite você renomear uma coluna também, tá? Eh, vamos pegar o "ativo" aqui e ver o que que nós podíamos fazer com ele. O "ativo", se a gente dar uma olhada aqui, ele vai vir "false" ou "true".
+(AÇÃO: O usuário arrasta o campo "ativo" para a área de mapeamento)
+Mas vamos supor que na minha tabela de destino, se vier "false", ele tem que ser, eh, um... tem que ser "F". E se for "true", ele tem que ser, eh, "T", né?
+Então, vamos supor assim. Então, eu posso usar aqui a transformação do tipo "De Para". Então aqui, eu posso, o valor de "false", eu posso mover, mudar ele pra "F".
+(AÇÃO: O usuário clica em "+ Transformação" no campo "ativo" e seleciona "De Para")
+(AÇÃO: O usuário preenche a configuração do "De Para": Valor "false" para "F")
+Vou adicionar mais um, o valor de "true", eu posso transformar ele em "T". É como se fosse um CASE aqui, tá? CASE tal coisa, então faça isso. CASE tal coisa, então use isso. Um CASE lá dentro do Oracle.
+(AÇÃO: O usuário clica em "Adicionar equivalência" no "De Para" e preenche: Valor "true" para "T")
+E um valor de fallback, né? Se caso não se encaixe em nenhum, eu vou deixar ele como "F". Eh, beleza. Vamos ver qual outra coluna a gente tem aqui.
+(AÇÃO: O usuário preenche o campo "Fallback" com o valor "F")
+E-mail. E-mail, a gente poderia truncar. Sei lá, deixar, vamos supor que a gente precisasse truncar ele pra 10 caracteres só. Eh, cidade... eu vou... que que nós poderíamos fazer aqui com cidade?
+(AÇÃO: O usuário arrasta o campo "email" para a área de mapeamento)
+(AÇÃO: O usuário clica em "+ Transformação" no campo "email", seleciona "Truncar" e define o "Tamanho" como 10)
+(AÇÃO: O usuário arrasta o campo "cidade" para a área de mapeamento)
+Hum... aqui, acho que não vai precisar fazer nada. Poderíamos, eh, substituir aqui. Ah, pode ser também. O substituir... eh, só, ele vai fazer uma substituição, né? O que vier com aquilo, ele vai substituir.
+(AÇÃO: O usuário clica em "+ Transformação" no campo "cidade" e seleciona "Substituir")
+Então, vamos supor que, se viesse "Brasília", ele vai substituir pra... Pato Branco. Eh, departamento aqui.
+(AÇÃO: O usuário preenche a configuração do "Substituir": De "Brasília" Para "Pato Branco")
+(AÇÃO: O usuário arrasta o campo "departamento" para a área de mapeamento)
+Também poderia fazer alguma coisa. Deixa eu ver. Departamento... vamos supor, eu poderia usar o "De Para". Se vier "Marketing", vamos supor, ah, não tenho isso aqui dentro do meu sistema. Se é "Marketing", tem que ser... se vier "Marketing"...
+(AÇÃO: O usuário clica em "+ Transformação" no campo "departamento" e seleciona "De Para")
+(AÇÃO: O usuário preenche a configuração do "De Para": Valor "Marketing" para...)
+É que daí eu vou ter que, eu vou ter que colocar todas as condições, né? Então aqui, ainda seria melhor substituir. Porque quando você usa o "De Para", você vai, ele vai fazer a verificação em todos, né?
+(AÇÃO: O usuário muda a transformação do campo "departamento" de "De Para" para "Substituir")
+Então se eu colocar aqui... ah... Mas vamos fazer igual, né? Vamos supor que, se for "Marketing", eu quero que ele mude pra "MKT". Se for "Vendas", quero que ele mude pra "VDA".
+(AÇÃO: O usuário muda novamente a transformação para "De Para" e preenche: Valor "Marketing" para "MKT")
+(AÇÃO: O usuário clica em "Adicionar equivalência" e preenche: Valor "Vendas" para "VDA")
+Eh, "Suporte", quero que ele mude pra "SUP". E o resto, vai ficar tudo em "Outro", "OUT". É, vamos supor que eu não trabalho com as outras. Vamos executar aqui, vamos ver o que que vai acontecer.
+(AÇÃO: O usuário clica em "Adicionar equivalência" e preenche: Valor "Suporte" para "SUP")
+(AÇÃO: O usuário preenche o campo "Fallback" com o valor "OUT")
+(AÇÃO: O usuário clica em "Executar")
+Ó, então, beleza. Trouxe pra cá. Ó, então o nosso "id", a gente não fez nada. Beleza. Tá aqui. O "updated_at", ele pegou aqui, a data e hora atual. 17:21, tá?
+(AÇÃO: A aba "Output" exibe a tabela com os dados transformados)
+Eh, aqui, no "nome", eu deixei maiúsculo, tirei espaço, removi acento. Então não vai ter nada disso aí.
+Eh... aqui, no "ativo", eu fiz o "De Para". Vamos ver se ele pegou. Ah, tá certo, ó. F, F, T. Então, mudou.
+Aqui, ó, se a gente perceber, ó, ele truncou. Ó, truncou o "email", que a gente tinha feito aqui, pra truncar. Isso aqui é importante pra quê? Por exemplo, quando você vai inserir numa tabela...
+(AÇÃO: O usuário clica na linha do campo "email" para exibir as configurações de transformação, mostrando a opção "Truncar" configurada para 10)
+...vamos supor que eu fosse inserir aqui na tabela "funcionários", né?
+(AÇÃO: A tela muda para o cliente de banco de dados mostrando um script SQL para a tabela "FUNCIONARIOS")
+As tabelas elas têm, principalmente, né, geralmente, né, quando é, principalmente... geralmente não, sempre quando é VARCHAR, você vai ter o tamanho do campo, né? Então é sempre bom você, antes de inserir no banco, você fazer esse truncamento direto ali.
+Porque se caso passar alguma coisa lá... que, vamos supor que, lá no sistema de origem, o departamento era 200 caracteres, né? E tem um departamento lá com 200 caracteres. Se chegar aqui no nosso banco, vai quebrar.
+Então esse truncamento é sempre bom você fazer esse tratamento lá dentro do, do Shift, né? Departamento aqui, vamos ver. Mudou ali, ó, pras descrições.
+(AÇÃO: Retorno à interface do Shift, visualizando os dados da coluna "departamento" no Output)
+Só aqui, né, acho que eu escrevi "Brasília" errado. Vou copiar daqui. Executar de volta. Ó, pegou "Pato Branco". Devia ter, devia ter escrito alguma coisa errada. Então a gente não tem mais "Brasília", tem só "Pato Branco".
+(AÇÃO: O usuário copia a palavra "Brasília" da tabela e cola no campo "De" da transformação "Substituir" do campo "cidade", em seguida executa novamente)
+(AÇÃO: A tabela de Output agora mostra "Pato Branco" na coluna "cidade" onde antes era "Brasília")
+Então o nó de mapeamento ele permite isso, tá? Eh, vamos fazer o seguinte, deixa eu fazer um, um exemplo aqui. Eh... com uma situação aqui que pode acontecer.
+Eu vou vim aqui na base de dados, "funcionários", e vou pegar aqui, ó... Deixa eu editar esse campo aqui, vou deixar esse cara aqui vazio.
+(AÇÃO: A tela muda para a interface de visualização da base de dados "funcionários" no Shift)
+(AÇÃO: O usuário edita a primeira linha da coluna "departamento", apagando o valor "Vendas" e deixando-o vazio, salvando a alteração)
+Onde tá nulo, né? Vamos voltar lá pro nosso fluxo. Vamos ver se o que eu imaginei aqui vai dar boa. Então, aqui dentro vamos carregar esse cara aqui.
+(AÇÃO: O usuário retorna para o fluxo no editor e executa o nó "Ler Base Interna" para carregar os dados atualizados)
+Então agora nós temos aqui, ó, um com nulo. Que é o departamento.
+(AÇÃO: A aba "Output" do nó "Ler Base Interna" mostra o primeiro registro com o campo "departamento" nulo)
+Então se for nulo, aqui, departamento, agora eu vou mudar um pouco aqui. Departamento, eu não vou fazer mais "De Para". Remover esse "De Para".
+(AÇÃO: O usuário acessa as configurações do nó "Mapeamento", vai até o campo "departamento" e remove a transformação "De Para")
+No departamento, agora, eu quero fazer um... uma outra opção que tem aqui, ó, que é a "Padrão". Então, o que que acontece? Se for nulo ou vazio, eu quero um valor padrão.
+(AÇÃO: O usuário clica em "+ Transformação" no campo "departamento" e seleciona a opção "Padrão")
+Então vou colocar aqui, vou até escrever, "PADRÃO". Então, tanto se for nulo, quanto se for vazio. Vamos executar aqui e ver o que que vai dar.
+(AÇÃO: O usuário preenche o campo "Valor padrão" da transformação com a string "PADRAO")
+(AÇÃO: O usuário clica em "Executar")
+Hum... é, departamento, né? Vamos ver isso aqui, ó. PADRÃO. Então, aonde tava nulo, ele pegou "PADRÃO".
+(AÇÃO: A aba "Output" exibe a tabela atualizada, mostrando "PADRAO" na coluna "departamento" do primeiro registro)
+E tem também aqui a opção "Por expressão", tá? Expressão é um pouco mais complexa, geralmente você tem que ter um conhecimento maior em SQL, né?
+(AÇÃO: O usuário clica no menu do campo "departamento" e muda de "Normal" para "Expressão")
+É mais pra uma situação que você precisa fazer alguma operação de banco mais complexa, tá? Por exemplo, um CAST... eu vou usar aqui, a maioria das opções que você tem, você vai ter aqui, tá? Tipo, você vai ter aqui.
+Mas a expressão ele permite você fazer algumas coisas. Eh, por exemplo, CASE, né? Se precisa de uns CASE mais, mais robusto aí e tudo mais. É... você tem aqui algumas coisas prontas já.
+Você precisa setar nulo, TRUE, FALSE, CURRENT_DATE... então aqui são, eh, variáveis de SQL.
+(AÇÃO: O usuário clica em "Adicionar equivalência" no campo de expressão, abrindo um menu com variáveis SQL prontas)
+Aqui a expressão permite você fazer variáveis de SQL. Então vou fazer aqui, por exemplo, um COALESCE... então o COALESCE, se eu não me engano, é assim, né?
+(AÇÃO: O usuário digita "COALESCE()" no campo de expressão)
+Eh, se esse campo for nulo, né... se departamento... Então, COALESCE for nulo... Eu quero que ele mude para "PADRÃO".
+(AÇÃO: O usuário arrasta o campo "departamento" para dentro dos parênteses da função COALESCE)
+(AÇÃO: O usuário digita ", 'PADRAO'" após a variável departamento dentro da função COALESCE)
+Então que seria basicamente o que eu fiz ali. Se não me engano, é isso aqui que o COALESCE faz. Vamos executar pra ver se vai dar certo. Se eu escrevi certo...
+(AÇÃO: O usuário clica em "Executar")
+Hum... né, acho que... vamos pedir ajuda pro Copilot.
+(AÇÃO: A execução falha e uma mensagem de erro é exibida. O usuário clica no botão "Copilot" no canto superior direito)
+Então, só fui ativar ali a, a minha chave, eh, da API, pra gente poder utilizar o Copilot. Eu não sei o que eu fiz de errado aqui, então já é uma demonstração aqui, vamos ver se o Copilot ajuda nós.
+(AÇÃO: O chat do Copilot é aberto. O usuário digita "VERIFIQUE SE ESSE COALESCE ESTÁ CORRETO NO MEU NÓ DE MAPEAMENTO, PARECE QUE NÃO APLICOU")
+Eu não sei se eu escrevi certo aqui, porque "por expressão", que nem eu falei, tem que ter um conhecimento maior, eh... OK, então ele já leu aqui, viu o que tá errado, tá, tá, tá.
+(AÇÃO: O Copilot responde identificando o erro na expressão SQL e fornecendo a correção e explicações)
+Então vou pedir "Pode aplicar". Então ele falou que vai aplicar a correção, vamos ver se ele consegue resolver.
+(AÇÃO: O usuário clica no botão "Pode aplicar" na resposta do Copilot)
+Então ele trouxe aqui, né, um texto. "A expressão em si está correta? Sim, a expressão está correta. tã tã tã... retorna o departamento... nã nã nã nã nã nã..."
+(AÇÃO: O texto no campo de expressão é atualizado pelo Copilot, mas com um texto explicativo em vez de apenas o código SQL)
+Vamos aguardar ele terminar ali dos, dos ajustes, né? Então aqui, ele pediu pra mim confirmar a alteração e vamos executar pra ver. Vamos ver se ele é melhor do que eu em configurar o sistema.
+(AÇÃO: O usuário clica em "Aplicar" na interface do Copilot para confirmar a alteração do código)
+(AÇÃO: O usuário clica em "Executar" no nó "Mapeamento")
+Ou pode ser alguma falha também no COALESCE, ó, parece que o COALESCE por expressão não tá pegando. Mas aqui, mais para enfatizar, que essa opção aqui de expressão ela também funciona pra esse tipo de situação, tá?
+(AÇÃO: A execução resulta em um erro relacionado ao uso do COALESCE)
+Que você precise fazer... Até eu vou adicionar aqui dentro essas ajudas de opções, talvez... Mas aqui, eh, vai ser em últimos casos que vai ser usada. Acredito que aqui no normal você já tenha...
+(AÇÃO: O usuário apaga o conteúdo do campo de expressão e retorna o campo "departamento" para a configuração "Normal")
+Até a parte do COALESCE, né, ele já é resolvido aqui dentro com o, o valor padrão, né? Então, a maioria das opções que você vai usar no dia a dia, já vão estar contempladas aqui dentro, tá?
+(AÇÃO: O usuário clica em "+ Transformação" no campo "departamento", seleciona "Padrão" e define o valor como "PADRAO")
+Então... basicamente é isso. Então o nó de transformação é isso. Ele é um nó... provavelmente o que mais vai ser usado.
+(AÇÃO: O usuário fecha a aba de parâmetros do nó "Mapeamento" e retorna à visão geral do fluxo)
+Porque você consegue fazer diversos tratamentos e até para você, quando precisar recuperar dados ou definir quais colunas que quer passar para frente e tudo mais, você pode executar aqui.
+Por exemplo, a gente deixou, a gente deixou ali o salário de fora, né? Então você nota que ele também não veio para cá. Então ele serve também para você fazer como se fosse uma filtragem das colunas que você quer passar para a frente para o próximo nó, né? Então, a parte do nó de mapeamento é basicamente essa.
+(AÇÃO: O usuário abre os parâmetros do nó "Ler Base Interna" para mostrar as colunas originais e, em seguida, os parâmetros do nó "Mapeamento" para confirmar que o campo "salario" não foi incluído)
+(AÇÃO: O usuário fecha a aba de parâmetros e retorna à visualização principal do fluxo)

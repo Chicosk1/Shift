@@ -1,0 +1,160 @@
+Então indo pra mais uma parte aí do nosso módulo quatro,
+nosso módulo três desculpa né, a parte quatro agora
+dentro ainda dos catálogos de nós, nós vamos falar sobre saídas e lógica.
+E vamos começar pelas saídas né.
+(AÇÃO: O usuário clica em "Novo Fluxo" e preenche o nome como "Saídas e Lógica")
+Então aqui dentro do nosso Shift vamos criar um novo fluxo chamado é... saídas e... é... lógica.
+(AÇÃO: O usuário clica em "Criar")
+Vamos criar ele aqui.
+(AÇÃO: O usuário adiciona um nó "Manual" na tela)
+Vamos adicionar aqui o nosso nó manual e vamos ver qual que é o primeiro. Vamos começar por saídas.
+(AÇÃO: O usuário arrasta o nó "Saída do Fluxo" para a tela)
+A saída de fluxo, aquilo que eu já expliquei em em um vídeo anterior, que serve pra quando você tem um subfluxo e você precisa é... retornar esse resultado desse subfluxo pra dentro... pro pai que chamou esse subfluxo tá.
+Então, de maneira bem breve aqui como que seria.
+Eu vou pegar aqui e vou adicionar... então tem que ter um subfluxo então tem que ser uma entrada de subfluxo
+(AÇÃO: O usuário arrasta os nós "Entrada do Fluxo" e "Ler Base Interna")
+eu simplesmente vou vir aqui e vou ler uma tabela interna
+ler uma tabela interna e vou colar aqui. Então essa base interna aqui vai ser a de funcionários
+(AÇÃO: O usuário configura o nó "Ler Base Interna" selecionando a base "funcionarios")
+Ó, então aqui vai ser de funcionários. E eu vou adicionar isso aqui como saída, ó.
+Então... é... seria aqui ID, show.
+(AÇÃO: O usuário abre a ferramenta Paint para colar um print da tela)
+Vou tirar um print aqui pra mim conseguir pegar o nome das colunas, botar aqui no paint...
+Tá, então... aqui ó, eu coloquei aqui num paint aqui só pra mim ver o nome das colunas. E... tá aqui ó.
+(AÇÃO: O usuário clica em "Saída do Fluxo" e vai para o "SCHEMA DE E/S")
+Então eu vou criar aqui o esquema de output né, input a gente não vai exigir nada, só vamos chamar e a gente quer executar essa consulta e retornar na saída, então eu vou vir aqui,
+esquema de E/O, output, que é a minha saída.
+É... vou colocar aqui... funcionárias...
+(AÇÃO: O usuário preenche o nome do output como "funcionarias" e seleciona o tipo "table_reference")
+colocar aqui que vai ser uma tabela, então aqui a coluna que ele vai gerar então é a ID, que vai ser inteiro
+(AÇÃO: O usuário adiciona as colunas ID, nome, ativo, email, cidade, salario e departamento com seus respectivos tipos)
+vai ser o nome, que vai ser string, vai ser ativo, que é as colunas da minha tabela lá né, email, cidade, salário, e departamento.
+Eu vou deixar aqui... desmarcados. Por o ID, beleza, e vou aplicar.
+(AÇÃO: O usuário desmarca a obrigatoriedade das colunas e clica em "Aplicar")
+E daí aqui na saída, a gente só tem que definir aqui qual que vai ser o nó que vai gerar essa tabela funcionárias que é o ler tabela base.
+(AÇÃO: O usuário configura a "Saída do Workflow" selecionando "Ler Base Interna - internal_data_source")
+Certo. Fiz isso aqui, vou publicar,
+(AÇÃO: O usuário clica em publicar e altera a versão para produção)
+vou... é colocar em produção aqui...
+E como isso aqui é um subfluxo, eu só consigo chamar ele a partir de outro, então vou criar um...
+(AÇÃO: O usuário volta para a lista de fluxos e cria um novo chamado "Busca Funcionarios")
+busca... funcionários... e vou colocar aqui uma entrada manual, e... uma de lógica aqui já entrando né...
+(AÇÃO: O usuário adiciona o nó "Manual" e o nó "Chamar Fluxo")
+já até aproveitando que nós vamos no outro vídeo ver sobre lógica, mas então já aproveitando aqui, pra, esse de lógica aqui de chamar subfluxo é exatamente pra isso,
+que daí aqui dentro desse fluxo eu posso chamar um subfluxo, ou seja, outro fluxo que tá aqui. Que é o nosso Saídas e Lógica lá né.
+(AÇÃO: O usuário configura o nó "Chamar Fluxo" buscando e selecionando "Saídas e Lógica")
+Saídas e lógica.
+Beleza. Então vou executar aqui.
+(AÇÃO: O usuário clica em "Executar")
+Ó, então o que que acontece, quando você tem... e daí, óbvio eu poderia vir aqui e usar né. Então vamos ver aqui ó.
+(AÇÃO: O usuário adiciona o nó "Mapeamento" na tela)
+Então vamos supor que eu precisaria desses dados aqui.
+(AÇÃO: O usuário conecta o nó "Chamar Fluxo" ao nó "Mapeamento")
+Então o saída do fluxo ele é pra isso, pra que quando você tá dentro de um subfluxo aqui, e você... se você precisa fazer alguma coisa e não retornar nada você não precisa do saída.
+Agora você tá executando alguma coisa aqui dentro desse fluxo e você precisa retornar isso aqui pro pro fluxo pai,
+então aqui tem que ter a saída de subfluxo, do fluxo né, que daí ele vai repassar aqui os dados pra fora tá.
+Se eu não tivesse esse cara aqui, né, eu não teria esse resultado aqui da saída, tá. Então ele só ia fazer uma leitura de base e não ia passar nada pra frente tá.
+(AÇÃO: O usuário exclui o fluxo "Busca Funcionarios")
+É... então essa parte aqui do... do... até vou deletar esse aqui né. Essa parte então da saída do fluxo ele serve justamente pra isso.
+É continuando aqui nas nossas nós de saída, nós temos o exportar CSV.
+(AÇÃO: O usuário volta ao fluxo "Saídas e Lógica", exclui a "Saída do Fluxo" e arrasta o nó "Exportar CSV")
+Então esse aqui também é bem... bem simples né, basicamente ele vai gerar um arquivo CSV dos dados que você passar pra cá.
+(AÇÃO: O usuário preenche o nome como "funcionarios" e mantém o delimitador como vírgula)
+Vou colocar aqui o nome de funcionarios e aqui você define qual que é o delimitador que você quer. Por padrão geralmente é vírgula.
+Se você quer incluir cabeçalhos ou e os campos de texto você quer adicionar aspas em todos né. Então aqui você dá um executar...
+(AÇÃO: O usuário clica em "Executar")
+E aonde que fica esse arquivo que ele gerou, tá? Ó que você vê que ele... ah eu esqueci de salvar né. Como tá em produção...
+(AÇÃO: O usuário publica a nova versão do fluxo)
+Daí ele fica a versão anterior né. É... então o saída... o exportar CSV quando você executa ele ó, aqui ele só deu aqui um resultado. "Mas como que eu baixo?" Não é nesse botão aqui. Esse botão é pra baixar o preview.
+(AÇÃO: O usuário executa novamente e mostra o painel de resultados)
+Porque se você tiver, o preview é só 500 linhas, aqui tem só 301 nessa base né, mas o preview é 500 linhas no máximo.
+Se for um arquivo que tenha sei lá 2000 linhas o local correto de você baixar é aqui em execuções...
+(AÇÃO: O usuário clica na aba "Execuções" no menu superior)
+Daí nessa última execução ele vai ter aqui ó: arquivos gerados. E daí aqui sim é o arquivo completo, tá?
+(AÇÃO: O usuário clica em "Baixar" na aba de execuções)
+Então você pode vir aqui clicar em baixar, e você vai ter essa... esse arquivo aqui, tá?
+É... até o momento eu não tenho opção de você enviar isso aqui né é... de alguma maneira né,
+mas a ideia é que também no futuro a gente venha numas atualizações poder enviar isso aqui por email, eh subir isso em algum lugar, enfim.
+Então por enquanto ele te dá a opção de você vir aqui e pegar esse arquivo manualmente.
+O mesmo vale tá... pra... o mesmo vale aqui pro Excel.
+(AÇÃO: O usuário volta para a tela de edição do fluxo e arrasta o nó "Exportar Excel")
+Então aqui dentro da opção de saída, a gente tem também pra gerar uma planilha. Então é a mesma lógica do CSV ó.
+(AÇÃO: O usuário preenche o nome como "funcionarios_planilha" e nome da aba como "dados")
+Então eu posso dar o nome aqui... funcionarios_planilha...
+O nome da aba vou colocar deixar dados mesmo, aqui você pode definir um número do tamanho... é de quantidade máximo de linhas, pode deixar sempre máximo aqui...
+se você vai querer incluir índice, o que que é isso? Ele vai gerar uma coluna com 1, 2, 3, 4, sabe.
+(AÇÃO: O usuário desmarca a opção "Incluir coluna de índice" e percebe que precisa salvar)
+Então se você não quiser isso pode deixar desmarcado. E daí... ah eu tenho que só salvar aqui né, porque ele tá em produção, publicar a versão. E vou executar.
+(AÇÃO: O usuário publica a versão e clica em executar)
+Ah por que que cê tá em produção? Funciona em teste também tá, só... não tem nenhuma... nenhuma limitação de eu estar em produção.
+(AÇÃO: O usuário vai na aba "Execuções", clica em baixar e abre os arquivos gerados)
+Então aqui em execuções da mesma forma ó, ele gerou aqui planilhas xlsx.
+Então tanto a outr... as duas aqui, ó eu não abri, mas aqui ó, se eu abrir esse funcionarios csv aqui, ó ele vem o csv dos funcionarios...
+(AÇÃO: O usuário abre o arquivo CSV no Excel e depois no Notepad++)
+ou aqui né eu poderia estar editando aqui com o notepad...
+Então ele vê o csv normal, eh, e a parte de funcionários planilha... ele tá aqui.
+(AÇÃO: O usuário abre o arquivo XLSX no Excel)
+Então ele gera uma planilha com os dados.
+Então a parte de CSV aqui e... e planilha é basicamente a mesma lógica, só muda o tipo do arquivo né.
+Eh, vamos ver o que mais temos aqui, nós temos também a parte de gravar... gravar no Google Sheets, tá.
+(AÇÃO: O usuário arrasta o nó "Gravar Google Sheets" para a tela)
+Isso aqui vamos fazer o seguinte... eu vou... fazer o seguinte, nós temos aquela nossa planilha de funcionários lá no Google Sheets que nós criamos em alguma das aulas aqui né.
+(AÇÃO: O usuário abre uma nova aba no navegador e pesquisa pela planilha de funcionários no Google Sheets)
+Que a gente tem os mesmos dados aqui que a gente usou lá pros modelos de entrada né.
+Então o que que acontece, vamos adicionar aqui dentro dessa aqui, a gente tem uma nova né, que a gente criou numa aula manual.
+(AÇÃO: O usuário volta para o Shift e clica em executar o nó "Ler Base Interna")
+Se a gente rodar aqui a gente tem aqui o 301. 301.
+Então o que que eu vou fazer? Eu vou primeiro aqui... ajeitar... Então vou fazer um mapeamento...
+(AÇÃO: O usuário adiciona o nó "Mapeamento" conectando-o a "Ler Base Interna")
+pegar esses dados, vou converter o id pra inteiro... que ele tá em texto. E é só isso que eu preciso fazer.
+(AÇÃO: O usuário configura a coluna ID como "Inteiro" no Mapeamento)
+Se eu quisesse fazer outro tratamento poderia mas eu só quero fazer uma conversão ali.
+(AÇÃO: O usuário desativa os nós de exportar CSV e Excel)
+E... nós temos agora aqui nosso esquema. E eu vou filtrar só o trezen... o maior lá que é o último que eu adicionei. Então eu vou pegar o... filtro... e vou pegar o 301 lá.
+(AÇÃO: O usuário adiciona o nó "Filtro" e configura para filtrar o campo ID igual a 301)
+Então vou pegar o ID é igual a 301.
+Beleza. Então eu tenho esse... óbvio você teria aqui que criar uma lógica ali pra ver o que que não tem e ir lá buscar, depois verificar o que que não tem e daí inserir só o que não tem né, mas nesse caso pra ser mais rápido aqui eu vou filtrar, eu sei qual que não tem e vou filtrar.
+(AÇÃO: O usuário conecta o "Filtro" ao nó "Gravar Google Sheets")
+E o gravar em Google né, então basicamente ele permite você gravar. Então eu já te... eu desvinculei a minha conta, vou vincular ela de volta aqui.
+(AÇÃO: O usuário clica para conectar a conta Google no nó "Gravar Google Sheets")
+Aqui ele só pede permissão pra você deixa permitir aqui que tua conta seja utilizada. Aqui eu vou pegar nossa planilha de funcionários...
+(AÇÃO: O usuário seleciona a planilha "Funcionarios" e a página "Página1")
+vou pegar nossa Página1, tá, e aqui eu vou colocar como acrescentar.
+(AÇÃO: O usuário escolhe o modo "Acrescentar" e "Por cabeçalho")
+Daí aqui eu posso ter automático ou por cabeçalho, eu vou colocar por cabeçalho porque eu quero fazer a verificação ó. Então eh... ID vai pra ID...
+(AÇÃO: O usuário mapeia os campos deixando DATA_ADMISSAO em branco)
+Que mais que eu tenho aqui? ID, ativo... ah eu não tenho... eu não tenho aqui, ó... eu não tenho aqui a data de de admissão né. Então eu poderia até ignorar ela, vai inserir como nulo né.
+Vai deixar em branco. Eh vamos deixar assim pra ver o que que vai acontecer.
+(AÇÃO: O usuário clica em executar)
+Então eu vou executar isso aqui, e a gente vai dar uma olhada lá.
+Ó, então beleza ele diz que executou. Então se nós viermos aqui na nossa planilha, teoricamente é pra ter inserido ó.
+(AÇÃO: O usuário abre a aba do Google Sheets e mostra a linha 302 adicionada)
+Ó. Então ele já inseriu.
+Então basicamente o nó de saída ele permite você fazer algumas coisas aqui. Substituir...
+(AÇÃO: O usuário volta ao Shift e mostra os modos de gravação)
+daí ele vai pedir as chaves e tudo mais né. Você pode ser automático ou por cabeçalho.
+E o atualizar por chave né, é, inserir se não existir. Daí você define qual que é a chave ó.
+(AÇÃO: O usuário seleciona o modo "Atualizar por chave" e escolhe a chave "ID")
+Então no caso aqui ó, se eu tentar executar agora de volta...
+(AÇÃO: O usuário clica em executar novamente)
+ele não vai ter que ter inserido porque já existe ó.
+(AÇÃO: O usuário mostra a planilha Google Sheets onde a linha não foi duplicada)
+Então ele não duplicou.
+Agora se fosse um novo né, vamos vir aqui forçar ser um novo. Vamos vir aqui, eh no mapeamento...
+(AÇÃO: O usuário adiciona um novo nó "Mapeamento" após o "Filtro")
+vamos forçar um código novo aqui ó. Mais rápido.
+(AÇÃO: O usuário mapeia o campo ID com valor fixo 302)
+E aqui no ID vamos colocar 302.
+(AÇÃO: O usuário executa e verifica um erro, remove o mapeamento extra)
+Eh então vamos ver aqui, não precisava ter removido né, mas tudo bem.
+(AÇÃO: O usuário mostra que gerou o ID 302 para "Péricles Pereira")
+Ó é o 302, um outro Péricles vamos supor.
+(AÇÃO: O usuário reconfigura o nó "Gravar Google Sheets")
+Pegar minha conta que já tá vinculada. Funcionários, vou colocar atualizar por chave inserir se não existir.
+A planilha funcionários, página 1 e a chave vai ser o ID.
+(AÇÃO: O usuário clica em executar e depois volta para a planilha do Google)
+Então vou executar. Agora o 302 não existe né.
+Então 302 não existe. Então agora ele tá aqui.
+(AÇÃO: O usuário mostra a planilha com a nova linha do ID 302 inserida)
+Então basicamente é dessa forma que funciona. Então eh pra você poder ler dados de planilha e também você consegue lá do Google Sheet atualizar dados de planilha né com essas opções aqui.
+Então com isso a gente fechou aqui as opções que a gente tem até o momento de nós de saída né. Então no próximo vídeo a gente vai ver alguns aqui do nó de lógica.

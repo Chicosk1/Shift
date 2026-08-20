@@ -1,0 +1,128 @@
+Então vamos iniciar aqui mais um treinamento, e na última a gente viu a união, vamos ver... vou limpar aqui o nosso... nosso hall.
+(AÇÃO: clica e arrasta para selecionar os nós a partir de "A Base Interna", aperta delete, depois exclui "A Base Interna" também)
+Nosso canvas e vamos dar uma olhada qual que é o próximo. Próximo é o nó de Junção.
+Pra esse aqui, vamos deixar nossa tabela um pouco de lado e eu vou carregar... deixa eu ver, umas planilhas que eu tenho aqui.
+Vamos pegar aqui o nó de carregar dados em Excel.
+(AÇÃO: arrasta o nó "Excel" do menu lateral para a área de trabalho)
+Vamos fazer a ligação aqui... Ok. Fazer a ligação aqui. E vamos carregar.
+(AÇÃO: conecta a saída de "Manual" ao novo nó "Excel", duplica esse nó, e conecta "Manual" ao segundo "Excel")
+Esse aqui eu vou colocar Funcionários...
+(AÇÃO: seleciona o primeiro nó "Excel" e altera seu nome para "Funcionários")
+Esse aqui eu vou colocar que é As Vendas. Tá.
+(AÇÃO: seleciona o segundo nó "Excel" e altera seu nome para "Vendas")
+Então vamos pegar aqui, vamos enviar o arquivo... eu tenho ele aqui, nos meus exemplos...
+(AÇÃO: no nó "Funcionários", clica em "Enviar", seleciona o arquivo "join_funcionarios.xlsx" e abre)
+Aqui ó... aqui é o funcionário, join_funcionarios. E aqui eu vou pegar o vendas... join_vendas, né.
+(AÇÃO: no nó "Vendas", clica em "Enviar", seleciona o arquivo "join_vendas.xlsx" e abre)
+Certo. Agora vamos executar aqui pra nós vermos o que que tem de dados aí. Então vamos dar uma olhada o que que tem de dados nessas tabelas aqui.
+(AÇÃO: clica no botão "Executar" na barra superior)
+Vamos puxar um pouco mais pra cima aqui. Eh, Funcionários eu tenho aqui uma lista aqui de funcionários, nome, departamento, status, região e salário, né?
+(AÇÃO: clica em "Funcionários" no painel de resultados da execução e exibe a tabela correspondente)
+E aqui em Vendas eu tenho as vendas... aqui...
+(AÇÃO: clica em "Vendas" no painel de resultados e exibe a tabela correspondente)
+E eu tenho o id desse funcionário. Ótimo. Então o que que nós poderia fazer aqui? Vamos supor que eu precise gerar um relatório pra saber o total de vendas de cada funcionário.
+Mas aí como eu vou trazer isso num relatório, né? Eh, não seria ideal eu eh trazer o código do funcionário. Então nisso eu tenho que ir lá na tabela de funcionário e de fazer essa ligação, tá?
+Eh, beleza. Então vamos pegar o nosso nó de junção aqui. Tá. Então o nó de junção, ele sempre vai ser a partir de duas tabelas.
+(AÇÃO: arrasta o nó "Junção (Join)" para a área de trabalho)
+Ah, Cleber, vamos supor que eu precise fazer mais de uma junção. Eu tenho três join. Então você vem aqui e coloca depois desse join aqui, mais um.
+(AÇÃO: duplica o nó "Junção (Join)", criando um segundo nó)
+Então você eh liga os dois que você precisa aqui, faz o join, depois liga esse join aqui com o outro nó aqui que você precisaria.
+Vamos supor que fosse, sei lá, aqui mais um... um de Excel aqui, tivesse um terceiro. Tá?
+(AÇÃO: arrasta mais um nó "Excel" para a tela para simular uma terceira fonte de dados)
+Então assim, quando você precisa fazer um encadeamento de joins, é dessa forma que você tem que fazer. Faz a primeira junção, depois faz a segunda junção. Isso aqui representa... o que que representa? Como se fosse um...
+Pegar aqui o nosso bloco de notas. Isso aqui é como se fosse isso aqui, né. Então, por exemplo, tem aqui... FROM TABELA 1...
+(AÇÃO: abre o Bloco de Notas e começa a digitar uma query SQL para ilustrar a explicação)
+Daí JOIN, né, dependendo do que vier na frente, INNER JOIN, LEFT JOIN, RIGHT JOIN, TABELA 2.
+Então essa primeira junção, é como se fosse isso aqui. Tá? A terceira junção é como se fosse mais um JOIN. Tá?
+(AÇÃO: adiciona mais uma linha com "JOIN" na query do Bloco de Notas)
+Só que ele tem que fazer dessa forma encadeado aqui, tá? Então pra lógicas onde você precisa fazer mais de uma ligação, você tem que fazer essa cadeia aqui.
+Nesse caso aqui, vamos inicialmente fazer... depois eu vejo aqui se eu consigo gerar dados pra fazer mais um. Beleza. Eh... certo.
+(AÇÃO: minimiza o Bloco de Notas e remove os nós adicionais que havia criado para a explicação, deixando apenas os dois nós Excel e o primeiro nó de Junção)
+Então aqui vamos ver o que a gente vai ligar. Então eu quero trazer... vocês notem aqui, ó, que eu tenho... tem um aqui deles que tem um valor null aqui, ó. Isso aqui tá sem funcionário. Tá?
+(AÇÃO: clica em "Vendas" no painel de resultados e rola a tabela para mostrar o registro com "funcionario_id" nulo)
+Então, aqui o que que eu quero fazer? Eu... Qual que é o meu FROM? Eu quero trazer as vendas. Então aqui eu já vou inverter, ó. Porque o meu FROM é... é as vendas, né. A minha tabela principal sempre deve ficar no FROM.
+Então se eu tô fazendo uma análise de vendas, eu vou manter a Vendas aqui dentro do FROM. Tá? E o JOIN vai vir funcionários.
+(AÇÃO: conecta a saída do nó "Vendas" à entrada "FROM" do nó "Junção (Join)", e a saída do nó "Funcionários" à entrada "JOIN" do mesmo nó)
+Então eu quero trazer todas as vendas... Então eu quero trazer todas as vendas...
+(AÇÃO: seleciona o nó "Junção (Join)" para abrir seu painel de configuração)
+Eh, e eu quero trazer aqui e a junção, eu quero trazer o nome dos funcionários. E qual que é a chave de junção? Eu quero trazer só apenas linhas que correspondam.
+Tá? Então aquele que tá sem funcionário, ele nem vai trazer. Ou eu quero trazer aquilo que tem, né. Então ele vai trazer tudo daqui e se tiver aqui, ele vai trazer. Ou ao contrário, ele vai trazer tudo que tem aqui e trazer aqui. Da entrada da direita, e a esquerda, quando caso. E aqui tudo... quando tudo. Ele vai trazer tudo e daí quando não casa ele vai deixar nulo, né.
+Então geralmente usa-se muito o INNER e o LEFT. Tá? Então vou usar o INNER aqui primeiro. Então aqui o que eu faço, ó? Eu tenho que adicionar qual que são as chaves de junção, que é aquilo... eh... num SQL seria lá... ON TABELA 1 PONTO COLUNA SEJA IGUAL A, entendeu?
+(AÇÃO: abre novamente o Bloco de Notas e complementa a query SQL com a cláusula "ON TABELA 1.COLUNA = TABELA 2.COLUNA")
+Então TABELA 2 SEJA IGUAL PONTO COLUNA. Então, aqui é a mesma representatividade do SQL.
+(AÇÃO: minimiza o Bloco de Notas e volta para a configuração do nó "Junção (Join)")
+Então vou vir aqui, então, funcionário id, das Vendas, e da tabela Funcionários é o id.
+(AÇÃO: no painel "Junção (Join)", em "CHAVES DE JUNÇÃO", seleciona "funcionario_id" para a coluna da esquerda (Vendas) e "id" para a coluna da direita (Funcionários))
+Daí aqui eu posso definir as colunas de saída. Eu posso definir todas aqui ou avançado eu vir aqui e editar, né. Então por padrão ele sempre gera um alias pra essas tabelas, que é a que tá no FROM é o alias f, e o que tá no JOIN o alias j. Tá?
+(AÇÃO: mostra a opção "Avançado" em "COLUNAS DE SAÍDA", e depois volta para "Escolher")
+Vai ser difícil se você precisar mexer aqui, tá? Nessa personalização. Geralmente você pode fazer aqui. Aqui é caso você queira adicionar alguma... alguma expressão SQL a mais, tá?
+Eh, mas aqui você pode pegar aqui, ó, o que que eu quero manter aqui da Vendas? O venda_id, funcionário_id, departamento, o nome do cliente, tá?
+(AÇÃO: em "COLUNAS DE SAÍDA", aba "Escolher", seleciona os campos: "venda_id", "funcionario_id", "departamento", e "nome" do painel da esquerda (Vendas))
+Eh, aqui já... já vai... ele vai gerar o nome... um nome com alias, né? Vou manter o nome, tá, tá, tá... beleza, vou deixar tudo isso aqui. A única coisa que não vai entrar aqui, ele já tem uma inteligência, ó, de evidência... ah, não vai entrar o id porque ele já tem o funcionário_id.
+(AÇÃO: no painel da direita (Funcionários), seleciona os campos "nome" e "id_departamento")
+Mas aqui eu vou precisar só de... ah, eu quero saber só o nome e o departamento dele. Vamos executar.
+(AÇÃO: clica em Executar no painel do nó "Junção (Join)")
+Então, eh, quando o nome coincide, ele coloca um jota na frente, né? Então o funcionário 1 é a Ana Souza, o funcionário 1 aqui que vendeu o id 202 é... a Souza também. Tá?
+(AÇÃO: exibe a tabela de saída do nó "Junção (Join)", apontando as colunas "nome" e "j_nome")
+Eh, aqui, quem vendeu esse aqui foi o funcionário 2. Então até dá pra nós olhar aqui, ó, funcionários, funcionário 2, Bruno Lima. Então trouxe aqui, ó, Bruno Lima. E notem que aquela que tava sem lá, não trouxe, né.
+Agora se eu mudo pra LEFT aqui, ó...
+(AÇÃO: altera a opção "TIPO DE JUNÇÃO" de "Inner" para "Left" e clica em Executar)
+Ó, ele mantém aquele que tá como nulo, ó. Mas ele não traz aqui, né. Então... eh, essa parte do JOIN, ela é bem tranquila, é bem simples, né? Eh, é muito... eh, eh... na verdade assim, é um SQL, né? Só que é um SQL aqui que você consegue, através de uma interface, você configurar.
+(AÇÃO: mostra o registro na tabela de saída onde as informações do funcionário estão nulas, pois a venda não tinha "funcionario_id")
+Você não precisa entender de SQL, mas você tem que entender da lógica, pelo menos, né? O que que cada um desses aqui faz. Então até por isso que tem essas... essas informações aqui eh de ajuda, né? Pra você entender o que cada um faz aqui. Então a gente tem o Inner, tem o Left, tem o Right, tem o Full. A gente só não tem o Cross aqui, né, mas a gente tem em outro... outro nó ali.
+Então basicamente o... o JOIN aqui ele é isso. Deixa eu ver aqui se eu... deixa eu pensar aqui como eu queria... poderia criar um dado aqui pra mostrar um encadeamento.
+Quando eu preciso, por exemplo... vamos supor que eu não tivesse um departamento aqui, eh eu tivesse só o código do departamento e eu precisasse trazer também a descrição do departamento. Vamos... eu vou subir uma planilha aqui.
+Beleza, dei uma ajeitada aqui nas nossas... nas nossas planilhas aqui. Eu vou... vamos começar aqui de volta. Eu vou tirar esses outros nós aqui...
+(AÇÃO: exclui a aba do Bloco de Notas e os nós "Junção (Join)" e o segundo "Mapeamento" da área de trabalho)
+E vou adicionar mais um aqui de Excel. E aqui vou chamar ele de Departamentos.
+(AÇÃO: arrasta um terceiro nó "Excel" para o fluxo, conecta a ele a saída do nó "Manual" e altera seu nome para "Departamentos")
+Beleza, então eu só vou subir de volta aqui... trocar aqui a de join_vendas, porque eu tive que alterar ela também.
+(AÇÃO: no nó "Vendas", envia novamente o arquivo "join_vendas.xlsx" com as modificações feitas pelo usuário)
+O de funcionários eu vou substituir também. E eu criei uma terceira agora que é join_departamentos. Ótimo, vamos carregar aqui e ver o que que aconteceu agora.
+(AÇÃO: no nó "Funcionários", envia o arquivo "join_funcionarios.xlsx" atualizado. Depois, no nó "Departamentos", envia o arquivo "join_departamentos.xlsx" recém-criado. Em seguida, clica em "Executar" na barra superior)
+Então aqui em funcionários agora eu tenho o id do funcionário, o nome do funcionário e o id do departamento daquele funcionário.
+(AÇÃO: clica em "Funcionários" no painel de resultados, exibindo a nova tabela)
+Em vendas eu tenho... até aqui dava pra tirar, né? Esse departamento. Vamos fazer o seguinte, vamos... porque se eu tenho um funcionário, eu vou ter, obviamente, o departamento. Então vamos simular melhor ainda, que a gente nem tem o departamento ali na venda.
+(AÇÃO: clica em "Vendas" no painel de resultados e percebe a coluna "departamento")
+Deixa eu abrir rapidinho aqui, ó. O join de vendas... eh, vamos tirar esse cara aqui, excluir. Beleza. Vamos carregar nossas vendas de volta.
+(AÇÃO: abre o arquivo "join_vendas.xlsx" no Excel, exclui a coluna "departamento", salva o arquivo, volta ao n8n, reenvia o arquivo no nó "Vendas" e clica em Executar na barra superior)
+Vamos dar uma olhada aqui como que ficou a nossa organização. Então agora eu tenho o id do funcionário... eu tenho o id do departamento daquele funcionário. E eu tenho as vendas, eu tenho só o id do funcionário, e eu tenho o departamento que eu tenho o id do departamento.
+(AÇÃO: checa novamente os dados nas tabelas "Funcionários", "Vendas" e "Departamentos" para confirmar a exclusão e verificar os dados)
+Beleza. Então o primeiro ponto, a gente vai trazer... eh... só as vendas que tiveram... é... funcionário e trazendo... eh, aqui vamos supor que eu precisasse ter um relatório aí, alguma coisa, algum banco... alguma informação, referente a você ter ali por funcionário e por departamento, né?
+Então vamos pegar nosso nó de junção aqui. E aqui a gente vai explicar, vai mostrar agora como ficaria o encadeamento de join.
+(AÇÃO: arrasta um nó "Junção (Join)" para a área de trabalho)
+Então aqui eu poderia até colocar aqui, junção vendas versus funcionários. Então vou vir aqui... vamos fazer a nossa ligação, eu só quero trazer o que tenha mesmo.
+(AÇÃO: altera o nome do nó "Junção (Join)" para "Junção Vendas x Funcionários" e conecta as saídas dos nós "Vendas" (FROM) e "Funcionários" (JOIN) a ele)
+Eu vou pegar pelo funcionario_id e o id.
+(AÇÃO: no painel de configuração do novo nó de junção, mantém a opção "Inner" e em "CHAVES DE JUNÇÃO" seleciona "funcionario_id" e "id")
+Ok. O que que eu quero aqui? Eu quero mandar só o venda_id, funcionario_id, o nome... aqui... eh... acho que é isso, o valor aqui da... aqui é o vendas, né? Eh, aqui eu só não quero... o status, região e salário. Só o nome e departamento... e o id do departamento.
+(AÇÃO: em "COLUNAS DE SAÍDA", seleciona "venda_id", "funcionario_id", "nome", e "valor" de "Vendas". De "Funcionários", seleciona "nome", "id_departamento")
+Acho que é isso aí que a gente precisa. Vamos rodar aqui e dar uma olhada. Beleza, então eu tenho aqui minhas vendas, meus funcionários, o nome dos funcionários.
+(AÇÃO: clica em Executar no nó de junção e confere os dados de saída, notando que agora a tabela possui a coluna "id_departamento")
+Eu vou dar uma... antes de fazer a junção, eu gosto de organizar as coisas. Então vamos organizar aqui já, ó. Colocar um mapeamento aqui... eu vou colocar aqui um mapeamento organização.
+(AÇÃO: arrasta um nó "Mapeamento" para o fluxo, logo após a junção "Vendas x Funcionários", e altera seu nome para "Organização")
+Eu vou pegar aqui esses campos aqui, venda_id já tá número, funcionario_id já tá, aqui, ó, esse nome, eu vou colocar nome_cliente. Valor, status, j_nome, vou colocar aqui nome_funcionario. E aqui id_departamento. Show de bola.
+(AÇÃO: no nó "Organização", clica em "Mapear todos", renomeia "nome" para "nome_cliente" e "j_nome" para "nome_funcionario")
+Vamos dar um executar aqui só pra ficar bem... bem estruturado aqui o nosso exemplo, tá. Então venda_id, funcionário_id, nome do cliente, e até o nome do funcionário aqui, ó, eu vou jogar aqui pra... pra junto aqui.
+(AÇÃO: executa o nó "Organização" e confere o resultado. Em seguida, decide alterar a ordem das colunas no nó de mapeamento, subindo "nome_funcionario" para perto de "nome_cliente" e executa novamente)
+Então só reorganizar as colunas aqui também pra visualmente ficar melhor, venda_id, funcionário_id, nome do funcionário, nome do cliente, status, departamento_id... e o departamento_id agora está ali.
+E daí agora eu vou fazer mais um encadeamento. Aí eu poderia fazer direto aqui, né? Mas aqui, como eu falei, eu gosto de deixar organizado ali pelas nomenclaturas, pra não ter nenhum tipo de confusão, né.
+Eh, então vou pegar aqui o nó de junção de novo, agora eu vou ligar esse aqui lá com o meu departamento. Deixar alinhadinho aqui, ó. Eu gosto de deixar alinhado. Aí, tá bom.
+(AÇÃO: arrasta outro nó "Junção (Join)" para o fluxo, conecta a saída de "Organização" na entrada "FROM" e a saída de "Departamentos" na entrada "JOIN". Alinha os nós)
+E agora sim. Então agora a minha organização vai vir aqui, eu quero pegar o id do departamento e fazer um left agora, né? E com o... organização... id.
+(AÇÃO: configura o novo nó "Junção (Join)", seleciona a opção "Left", define as chaves de junção como "id_departamento" de "Organização" e "id" de "Departamentos")
+Então vou escolher, ah, não tem mais nenhuma chave, vou escolher as colunas que eu quero passar, aqui ele já setou departamento, beleza.
+(AÇÃO: em "COLUNAS DE SAÍDA", da parte do "Departamentos" (JOIN), seleciona "departamento", e clica em Executar)
+Ó. Então agora eu tenho aqui, além do meu... nome do meu funcionário, da primeira junção, eu tenho o departamento que ele pertence, ó.
+(AÇÃO: confere a tabela de saída e mostra a nova coluna "departamento")
+Então é assim que funciona o encadeamento, tá? Ah, tudo isso aqui você poderia pra não poluir, porque assim, às vezes você precisa fazer vários encadeamentos, e aí você tem que usar os recursos que a ferramenta dá.
+Então poderia vir aqui, simplesmente, e agrupar esses caras aqui... ah, vou colocar uma descrição aqui... Grupo de Vendas, tá? Botar uma cor vermelha aqui.
+(AÇÃO: seleciona com um retângulo todos os nós criados para esse fluxo, clica no ícone de opções (três pontos) no menu suspenso, escolhe "Agrupar selecionados", e altera o nome do grupo para "Grupo de Vendas", escolhendo a cor vermelha)
+E daí, sim, tá aqui bem organizadinho, poderia continuar pra frente aqui, várias outras coisas que eu poderia estar fazendo, e daí, ah, precisei alterar alguma coisa aqui, você pode dar o foco e trabalhar aqui dentro, né.
+Então com foco ali você consegue trabalhar aqui dentro aí de maneira isolada. Ou voltar aqui, continuar, expandir aqui e continuar, tá?
+(AÇÃO: mostra como recolher e expandir o grupo para melhorar a organização e visualização do fluxo de trabalho. Também mostra que o botão "Foco" permite visualizar os nós apenas do grupo atual)
+Então, aí, facilita bastante, né, o uso dessas ferramentas pra você visualmente conseguir deixar mais bem organizado. Aqui eu poderia deixar assim também, né?
+(AÇÃO: sai do "Foco" do grupo, e reposiciona a origem do fluxo (Manual e nós Excel) de forma que as linhas de conexão não passem por trás do grupo visualmente)
+Eu não gosto de esconder as linhas, então sempre tento deixar num local onde não esconda as linhas aqui, que daí eu consigo ter uma visualização melhor, eh, de como que tá o fluxo, né.
+Mas aqui é como ela não... ela faz esse percurso, óbvio, se você fazer assim, vai esconder, né. Mas se você deixa ela com espaço, ela sempre vai fazer o percurso correto aqui pra você ter o entendimento de como que tá seguindo esse fluxo aí, né?
+Então alguns... algumas dicas aí de como proceder. Então o nosso nó JOIN aí, ele é bem tranquilo, bastante usado, é bastante usado, um dos nós aí que você vai usar também bastante no dia a dia. E vamos pro próximo treinamento no próximo vídeo.

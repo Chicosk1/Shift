@@ -1,0 +1,202 @@
+Beleza, então agora nós vamos, eh, continuando aqui, né, no nosso catálogo de nós, na parte um, né, vamos chamar de um B agora. Eh, na verdade é a parte três B, né? Não, um B. Dois B. Que é a parte das entradas que nós vamos ver agora.
+(AÇÃO: A tela muda para o slide "MÓDULO 3 - Parte 3 - Catálogo de Nós -> Transformações")
+(AÇÃO: O slide transita para "MÓDULO 3 - Parte 2 - Catálogo de Nós -> Gatilhos, Entradas e Banco de Dados")
+Beleza, então aqui vamos voltar aqui no nosso fluxo aqui de teste, né, deixa ele em branco aqui pra nós começar do zero. Então, adicionar aqui um gatilho manual e nós vamos falar agora um pouquinho sobre esse grupo aqui que é as entradas.
+(AÇÃO: Retorno à interface do editor de fluxo no sistema Shift, mostrando a área de trabalho vazia)
+(AÇÃO: Abertura do menu lateral esquerdo "Catálogo de Nós" e inserção de um nó "Manual")
+Então alguns a gente já viu aqui, então a entrada CSV, né, como todos já puderam ver, eu posso definir aqui uma URL de um CSV aberto na internet, eh, de algum que tá no projeto, da área, tá?
+(AÇÃO: Abertura do painel de parâmetros do nó "CSV")
+Qual que é a diferença do projeto e da área? Do projeto é quando tá dentro do projeto, da área é dentro do espaço, tá? Então a gente tinha lá o nosso CSV lá que a gente usou. Eh, poder enviar um agora e através de uma variável, né?
+Se eu definir aqui uma variável do tipo arquivo, hã, aqui, ó, tipo arquivo, CSV, e botar aqui a extensão que eu espero ponto CSV...
+(AÇÃO: Abertura do painel de "Variáveis de Workflow" e clique em "Adicionar")
+(AÇÃO: Preenchimento do campo NOME com "cv_minha_conexao" e definição da extensão aceita como ".csv")
+salvar.
+Agora aqui eu posso selecionar essa variável aqui, né? E quando eu executar, ele vai pedir pra mim selecionar o arquivo, tá?
+(AÇÃO: Abertura da janela de seleção de arquivos do sistema operacional Windows)
+Então é assim que funciona.
+(AÇÃO: Execução do fluxo no Shift com sucesso, exibindo os tempos de resposta)
+Normalmente, né? Então quando eu precisar de alguma coisa que é referente à variável, ela funciona também através de entrada de arquivos.
+Então o nó CSV basicamente é isso, né? É bem simples aqui. Esses modelos de entrada a gente vai falar mais para a frente, tá? E aí depois a gente volta aqui.
+(AÇÃO: Visualização do painel de parâmetros do nó CSV mostrando a tabela de dados extraída no Output)
+Mas aqui eu posso definir o delimitador, se aquele CSV possui cabeçalho ou não, o encoding geralmente é o UTF-8, tá? Então aqui a gente tem essas configurações.
+Falando um pouquinho agora do nó, outro nó de entrada, Excel.
+(AÇÃO: Adição do nó "Excel" à tela do editor de fluxos)
+Então bem parecido com o nó, eh, com o nó aqui de, de CSV, né? A única diferença é que ele é XLSX e aqui você pode definir eh qual que é a aba que você quer pegar, se caso tenha mais de uma aba, né? Então.
+(AÇÃO: Abertura da janela de parâmetros do nó "Excel")
+E dar um executar aqui também bem simples isso quando você quer usar um CSV e obviamente, da mesma forma, se for uma entrada de dado que é variável, eh você pode estar adicionando variáveis ali, né?
+(AÇÃO: Exibição da tabela de dados resultante na aba Output do nó Excel)
+Eh, outro nó aqui que nós temos aqui na parte de entradas é o Google Sheets. Esse aqui é um pouquinho, vai ter um pouquinho mais de, de conversa aqui.
+(AÇÃO: Inserção do nó "Google Sheets" no fluxo de trabalho)
+Eh, quando é um Google Sheets, vamos criar uma, vamos entrar aqui no Google. Deixa eu pegar aqui, ó, vou vir aqui em Sheets. Vou criar uma nova aqui, chamar ela de funcionários.
+(AÇÃO: Abertura de uma nova aba no navegador na página inicial do Google)
+(AÇÃO: Acesso ao aplicativo Google Planilhas)
+(AÇÃO: Criação de uma nova planilha em branco renomeada para "funcionários")
+Vamos usar a nossa mesma aí, nossa mesma ideia de funcionários até aqui, aqui não é essa planilha, vamos pegar aqui a própria planilha que a gente usou funcionários lá e vamos jogar lá. Pra dentro do Google Sheets.
+(AÇÃO: Seleção e cópia de dados a partir de uma planilha do Microsoft Excel aberta localmente)
+(AÇÃO: Colagem dos dados, como "só valores", na nova planilha do Google Planilhas)
+Vamos lá. Nossa planilha e vamos só valores. Então aqui eu tenho minha planilha, vou deixar aqui uma outra cor, então como se fosse uma planilha aí de preenchimento normal do Google Sheets, né? E eu vou, eh, aqui ele já salva automaticamente, né?
+Então aqui dentro do Shift, fechar isso aqui. Aqui dentro do Shift, então a gente vai vir aqui e, primeiro de tudo, a gente tem que vincular nossa conta Google.
+(AÇÃO: Retorno à aba do sistema Shift com o nó Google Sheets na área de trabalho)
+Mesmo que, é que assim, tem a vinculação, vocês viram que eu faço login às vezes lá com o Google, mas aquela é a vinculação do login. Agora eu tenho que autorizar a minha conta a acessar os dados de planilhas, né? Então eu vou, como eu não tenho nenhuma configurada aqui, ele dá a opção de configurar aqui. Ele vai abrir, óbvio, aqui a parte do login do Google, né, de validação do login, e aqui a parte de autorização a acesso ao Google Planilhas.
+(AÇÃO: Abertura do modal de autenticação "Fazer login com o Google" sobre a interface do Shift)
+(AÇÃO: Conclusão da conexão e tela exibe a notificação "Conta conectada")
+Beleza. Então aqui já tá vinculado. Então ele pode vir aqui, você pode vir aqui simplesmente e colocar a URL ou o ID. Sendo bem sincero, eu nem sei qual que é o ID, deve ser esse aqui. Mas enfim, eu prefiro vir aqui e pegar da lista aqui, ó. Então já tá aqui a nossa funcionários.
+(AÇÃO: Seleção da planilha "funcionários" na lista de arquivos disponíveis)
+Aqui eu defino a aba, né, no caso eu só tenho uma, aqui se você quiser determinar um intervalo específico, né? Se a primeira linha é cabeçalho e eu posso executar.
+(AÇÃO: O nó é executado e os dados da planilha são exibidos na aba Output)
+Ó, então tá aí os nossos dados de funcionários a partir de uma planilha no Google Sheets.
+Lá no nó de saídas lá, vocês vão ver que a gente vai poder manipular também essas planilhas, mas aqui como a gente tá só vendo os nós de entrada, então basicamente você consegue recuperar dados a partir de uma planilha aí do Google Sheets.
+Beleza, vamos para o próximo aqui. Ah, uma coisa que é importante, a parte do Google Sheets aqui, agora se eu vier de volta aqui, adicionar de volta. A nossa conta, ela já fica salva aqui.
+(AÇÃO: Abertura dos parâmetros de um novo nó Google Sheets inserido, mostrando a conta já logada)
+Mas se em algum momento você quiser desvincular ela, ah eu não quero que essa minha conta ela fique mais ativa, você pode vir aqui no teu menu e vai ter aqui conexões de apps. E aí dentro dessas conexões de apps você pode simplesmente vir aqui e desconectar. Tá?
+(AÇÃO: Acesso ao menu de configurações do sistema e abertura da janela "Conexões de Apps")
+(AÇÃO: Clique em "Desconectar" na conexão da conta do Google Sheets)
+Então isso garante que você possa eh aí desconectar sua conta, caso você não queira mais usar. E daí ela não vai mais carregar aqui para você buscar os dados de lá. Então só um adendo aí sobre o Google Sheets.
+Eh, agora a parte do HTTP Request. Para esse caso aqui a gente vai precisar de uma API pública, né?
+(AÇÃO: Abertura da aba de parâmetros do nó "HTTP Request")
+Vamos ver se a gente acha uma aqui na internet. Vou abrir o Gemini aqui.
+(AÇÃO: Abertura de uma nova aba no navegador e acesso à interface do Google Gemini)
+APIs que posso usar para consultar CEP, por exemplo, públicas. Vamos ver o que ele vai me trazer.
+(AÇÃO: Digitação e envio do prompt sobre APIs públicas para consulta de CEP)
+Hum, a gente tem essa BrasilAPI aqui e ViaCEP. Vamos usar a BrasilAPI.
+(AÇÃO: O Gemini exibe resultados como BrasilAPI e ViaCEP)
+Gere o cURL do Brasil API.
+(AÇÃO: Envio de um novo prompt solicitando o comando cURL e visualização da resposta)
+Eu não tô, eu poderia fazer aqui pelo Copilot, tá? O Copilot ele não tem acesso à internet, mas eu poderia muito bem pedir para ele criar isso, mas como o foco nosso não é falar sobre o Copilot nesse treinamento, eu vou fazer manual aqui, tá?
+Então vou pegar aqui, ó, já coloquei aqui. A única coisa que eu vou fazer... eu vou colocar aqui o meu CEP. Vamos supor que ele tá vindo, esse CEP, de outro lugar, né?
+(AÇÃO: Retorno à aba do Shift e inserção da URL copiada nos parâmetros do nó HTTP Request)
+(AÇÃO: Abertura dos parâmetros do nó Manual e edição do Payload, inserindo um JSON com a chave "cep")
+Colocar aqui cep e vou colocar o CEP aqui da Viasoft, que eu não sei qual que é. CEP Viasoft.
+(AÇÃO: Busca no Google Search pela query "cep viasoft" para copiar o valor)
+Ó, então até vou deixar assim, vamos supor que eu precisasse, esse cara vai vir de outro lugar, eu vou precisar fazer um tratamento desse cara.
+(AÇÃO: Inserção do nó "Mapeamento" entre o nó Manual e o HTTP Request)
+Vamos rodar aqui, ele vai dar erro porque eu não mapeei nada ainda. Beleza, vai só para carregar o CEP aqui. Eh, e ele vai vir com esse traço, né? Mas a API provavelmente ela só espera número. Então vamos fazer uma transformação e somente dígitos.
+(AÇÃO: Abertura dos parâmetros do nó Mapeamento)
+(AÇÃO: Configuração de uma regra de transformação para "Somente dígitos" aplicada ao campo CEP)
+Tá lá o nosso CEP tratado. Beleza, vamos ligar agora com o nosso nó de HTTP Request. Valida ele novamente e aqui onde tá o CEP na mão a gente vai adicionar ele à variável aqui.
+(AÇÃO: Ligação do fluxo do nó Mapeamento para o nó HTTP Request)
+(AÇÃO: Abertura dos parâmetros do HTTP Request e mudança do campo URL de Fixo para Dinâmico)
+Eu vou mudar aqui para esse aqui ó, dinâmico. Deixa eu pegar nossa URL de volta aqui, colocar aqui. E eu puxo ele.
+Isso aqui é importante, tá? Até foi bom acontecer isso. Aqui, sempre que eu tenho um campo para ser informado, eu tenho três tipos. Valor fixo é vai tá assim. E valor, eh, eu posso ter valor fixo, eu posso ter um, um campo linkado, só que ele só aceita campo linkado, ou seja, ele só vai aceitar esse aqui, ou posso ter o dinâmico, que aqui eu posso vincular texto e também recursos variáveis.
+Beleza? Eh, GET, né? Aqui ele adicionou um header eh automático, application/json, porque quando tá no fixo e eu insiro um cURL ele já formata para mim, tá?
+Beleza, então agora vamos ver se a gente vai conseguir consultar esse CEP.
+(AÇÃO: O nó HTTP Request é executado e os dados recebidos da API são mostrados)
+Opa, tá lá ó. Então 85501-530, formatadinho porque formatamos aqui, estado Paraná, cidade Pato Branco, eh, não sei, isso aqui deve ser bairro, rua e serviço OpenCEP. Então a gente usou aí o BrasilAPI.
+Poderia usar outro aqui, vamos tentar usar um que traga mais dados aqui. É o V2, acho que o V2 tem mais dados, vamos dar aqui para o V2.
+(AÇÃO: Retorno à aba do Gemini para observar outras rotas da API e copiar a versão 2)
+(AÇÃO: Atualização da URL no nó HTTP Request para o endpoint V2)
+Salvar e executar.
+(AÇÃO: Reexecução do nó HTTP Request com a nova rota e visualização dos dados)
+Ó, é o V2 tem bem mais dados aqui... É, não tem tanto mais dados não. Mesma coisa. Então, beleza, talvez usar um ViaCEP ele traga mais dados, eh mas assim, de endereço é basicamente isso, né?
+Então o HTTP Request, né? Você pode definir o o método, tal, autenticação, tudo o que uma API necessita para você buscar dados, né? Então você pode tá definindo timeout, né? Eh, o status de erro, e tal. Então aqui tem várias configurações, mas geralmente você vai utilizar mais os métodos aqui, a URL, usar dados variáveis, os dados variáveis são aceitos em qualquer lugar, então aqui, ó, tá fixo, mas eu poderia ter um aqui que, sei lá, visse um, um token aqui, né? Que, que ele viesse de um outro lugar, eu poderia tá arrastando pra cá também, ó, tá?
+(AÇÃO: Visualização das opções no dropdown do campo "MÉTODO", mostrando GET, POST, PUT, DELETE, etc.)
+Então tem toda essa parte aí que te permite fazer personalizações aí de escopos de de APIs também. Então o nó de HTTP Request basicamente ele te dá esses poderes, digamos assim.
+Ok, vamos falar agora o que que tá no nosso módulo aqui. Falar também sobre os nós de bancos de dados, tá? Então vamos falar um pouquinho deles aqui.
+(AÇÃO: Exibição temporária da apresentação de slides no Canva)
+(AÇÃO: Visualização rápida da planilha de dados no Google Sheets)
+Então os nós de bancos de dados eles estão aqui dentro do grupo Banco de Dados, e nós temos o nó SELECT, ler base interna, SQL Script, limpar tabela, inserção em massa, destino SQL e gravar base. Esse aqui eu acho que até ele tá descontinuado, mas vamos dar uma olhada aí, e o gravar base interna. Beleza.
+(AÇÃO: Navegação e expansão do grupo "Banco de Dados" no catálogo lateral de nós)
+O que que eu vou fazer? Pra manipular isso, vamos, bom, vamos ver primeiro o... vamos limpar aqui, deixar nosso nosso fluxo pronto aqui pra nós trabalhar. E vamos começar aqui pelo nó SELECT, que é o mais óbvio, né?
+(AÇÃO: Limpeza do editor de fluxo e inclusão do nó "SELECT")
+Então aqui o nó SELECT eu posso simplesmente, por variável ou alguma coisa, colocar aqui um SELECT que vai me trazer dados do banco obviamente que eu selecionei. Então não tem nenhuma, nenhuma configuração.
+(AÇÃO: Abertura dos parâmetros do nó SELECT, preenchimento da conexão e adição da query SQL)
+Ele tem isso aqui, esse chunk size. Mas assim, para esse caso aqui ele tem bem pouca relevância, tá, para fazer SELECT. Porque ele já tem atrás... vocês vão ver que o nó Script ele também executa SQL.
+(AÇÃO: Execução do SELECT mostrando a tabela com as informações retornadas)
+Mas a orientação que eu dou para sempre que for um SQL pesado ou qualquer nó que você precise executar um SQL mas que não dependa de parâmetros, usar o nó SELECT.
+O nó SELECT ele só faz SELECT pronto, ele não tem a passagem de parâmetros, então vale ressaltar isso. Então eu não poderia colocar aqui um dois pontos, WHERE dois pontos estab, né, pra pra buscar um um estab específico, né?
+Então a única diferença do SELECT pro SQL Script, que a gente já vai ver, é porque o SELECT ele foi feito com uma estratégia de SELECT em bancos diferente, para ele ter uma alta performance. Então por isso que para buscar dados mais pesados, que tragam mais dados, eu sempre oriento a usar o nó SELECT, tá?
+E aqui a limite, se você quer trazer um limite de linhas e tudo mais, né? Você poderia muito bem vir aqui e colocar um ROWNUM, né? Mas enfim, tem algumas opções ali também.
+Vamos para o próximo nó do banco de dados, é o... vamos falar do Script aqui primeiro.
+(AÇÃO: Substituição do nó SELECT pelo nó "SQL Script" no painel de fluxo)
+Então o nó Script ele foi feito para você executar coisas, tá? Então aqui você pode executar e passar parâmetros, tá? Então vamos supor aqui que eu tenho aqui o estab... vou pegar aqui, o estab é o 1000. Beleza. Deixa eu executar esse cara aqui.
+(AÇÃO: Abertura dos parâmetros do nó SQL Script)
+(AÇÃO: Edição do JSON no nó Manual para incluir a chave "ESTAB" com o valor "1000")
+E eu tenho estab. E aqui eu quero fazer um SELECT, mas obviamente eu quero fazer um SELECT com parâmetros, né? Então posso vir aqui fazer um SELECT * FROM filial WHERE, daí sim, estab igual a dois pontos estab. E daí aqui eu posso adicionar esse parâmetro, estab, e daí vincular aqui o estab que vai vir do nó anterior.
+Então quando eu executar esse cara aqui... ah sim, eu não passei a conexão, né? Connection string obrigatória, então é a conexão.
+(AÇÃO: A tentativa de execução resulta em erro, e o usuário reabre os parâmetros para corrigir as informações de conexão)
+Estáb não encontrado, o que que eu fiz de errado? Tem estab nessa tabela? Deixa eu ver. Deixa eu só remover aqui. Estáb... tem. WHERE estab seja igual a dois pontos estab.
+Ah, eu tava revendo a documentação aqui, na verdade foi um erro meu. Porque o que que acontece? Até eu adicionei aqui o nó Mapeamento no meio pensando que poderia ser algo relativo ao executar manual, né?
+(AÇÃO: Inserção do nó Mapeamento entre o nó Manual e o SQL Script para testar a entrada de dados)
+Mas o que que acontece? Aqui dentro a gente tem o Query, o Execute e o Exec Many. Sempre ele vai, aqui no nó anterior ele recebeu uma tabela. Tá? Então ele recebeu uma tabela. Então assim, ele sempre passa a tabela para o próximo nó. E quando eu executo uma query aqui é para quando eu tenho parâmetros fixos. Tá? Então eu tenho alguns parâmetros fixos.
+(AÇÃO: Abertura dos parâmetros do SQL Script e navegação para a aba de modo "Exec Many")
+Quando eu tenho um parâmetro variável eu tenho que usar o Exec Many, tá? Então isso foi um erro de, de esquecimento meu. Mas aqui, ó, daí ele executa agora com uma variável ali, um parâmetro estab, tá?
+Esse execute aqui ele também permite você fazer execuções dentro de BEGIN END, então se você tem alguma execução mais, eh, digamos, complexa, você também pode fazer aqui pelo execute, né? Dentro, sei lá, um, chamar uma função. Deixa eu ver se tem alguma função que daria pra nós chamar. SEQ_PRIMARY_KEY, deixa eu ver.
+(AÇÃO: Abertura de um cliente gerenciador de banco de dados para analisar procedures e functions)
+SELECT * FROM SEQ... na verdade é assim, né? Tem uma função aqui do constru, SEQ_PRIMARY_KEY, deixa eu pegar aqui.
+Então aqui, ó, eu vou pegar essa consulta. Eh, então o execute aqui ele permite você fazer esses tipos de execução.
+(AÇÃO: Retorno à interface de parâmetros do Shift, alterando a aba para "Execute" e escrevendo um bloco DECLARE/BEGIN/END)
+Então por exemplo, esse SEQ_PRIMARY_KEY aqui é uma função aqui dentro do, dentro do banco, né?
+(AÇÃO: Retorno rápido ao cliente de banco de dados para visualizar o código da função nativa)
+Então, não me lembro se é função... é uma função, pode ser função ou procedure, né? Mas o nó execute aqui permite que você encadeie essas execuções aqui, né, de declaração, BEGIN END, dentro também aqui do Shift.
+Então, aqui nesse caso ele não vai retornar nada, né, porque eu só tô mandando ele executar uma função. Vamos supor que essa função, ela fizesse alguma atualização interna e tudo mais lá, né?
+(AÇÃO: Execução concluída com sucesso do fluxo atualizado)
+Então quando é uma função eu não tenho nenhum return aqui, né, então por isso que ele não vai retornar nada mesmo. É, porque é para executar alguma coisa. Por exemplo, desabilitar alguma trigger, ou fazer uma cadeia de verificação entre tabelas. Enfim, aqui você tem essa liberdade também.
+Vamos para o próximo nó então.
+Inserção em Massa. A gente já viu, né? Então Inserção em Massa...
+(AÇÃO: Abertura dos parâmetros do nó "Inserção em Massa" mostrando conexão e seleções de destino)
+Vamos pegar nossa base... vamos fazer a Inserção em Massa olhando por aqui, ó.
+(AÇÃO: Navegação para um fluxo existente focado na Inserção de dados)
+Aqui a gente mexeu pra subfluxo. Vamos pegar daqui a Inserção.
+(AÇÃO: Cópias dos nós do fluxo alternativo e colagem, destacando o "Ler Base Interna")
+Então nosso nó de Inserção em Massa aqui.
+Então aqui tem toda aquela lá, né? Aqui a gente tem a conexão, qual o banco que a gente vai inserir, a tabela é a funcionários, né?
+(AÇÃO: Seleção da Tabela "FUNCIONARIOS" no campo de destino)
+Então aqui a Inserção em Massa ele dá a opção de INSERT, então ele sempre vai tentar inserir. UPSERT, que ele vai fazer o MERGE, inserir novos, ele vai verificar o que não existe e daí depois inserir só o que não existe. Tá?
+Eh, INSERT, né? Aqui tem o automapeamento, eu só mapeio. Aqui se eu quiser que o próprio nó faça alguma verificação, por exemplo, eu só quero eh IDs únicos, né? Então ele vai remover todos os duplicados automaticamente.
+Aqui se eu quero retornar algum dado, né? Eu quero que ele retorne o ID e o nó... o nome aqui, né? Então ele vai incluir no final esses dois. Vamos supor que eu não insiro o ID, eu insiro só nome, ativo, e-mail. E depois eu quero que ele retorne o ID e o nome. Então ele faria esse retorno aqui.
+Patch size aqui é quantos, quantos registros ele vai inserir por vez, por lote, né? Então aqui tá 1000, mas geralmente pode, quando for um fluxo muito grande, você pode usar aí uma quantidade aí de mais ou menos uns 5000.
+E aqui o timeout é só para o front end em teste, né? Quando é em produção ele não vai considerar timeout.
+Então aqui eu INSERT, UPSERT. O UPSERT a diferença é que eu defino qual que é a coluna chave para ele verificar se existe antes de inserir.
+(AÇÃO: Modificação do modo de escrita para "Upsert", habilitando o mapeamento de colunas-chave de merge)
+E o INSERIR NOVOS ele também pede isso, mas ele tem uma estratégia diferente. Que ele vai ver tudo o que tem, né, ele não vai fazer MERGE, ele faz um SELECT tudo, vê o que tem, eh e só insere o que não tem. Então tem essas opções aí que tem também.
+O INSERT a gente já, já inseriu, né? Já viu funcionar. Base interna vamos deixar...
+O Limpar Tabela. Limpar tabela, né?
+(AÇÃO: Inserção do nó "Limpar Tabela" ao invés da inserção em massa no fluxo)
+Vamos deixar isso aqui assim. E vamos voltar aqui pro nosso catálogo de nós.
+Então Limpar Tabela é como o nome já diz, né? Pra limpar tabela. Então vamos pegar ela aqui. Então eu tenho duas opções aqui dentro. Ligar aqui. Colocar nossa conexão. A nossa tabela que nós vamos limpar vai ser a nossa própria funcionários aqui.
+(AÇÃO: Abertura dos parâmetros de "Limpar Tabela" definindo as credenciais e conexões de rede)
+(AÇÃO: Seleção da tabela destino "FUNCIONARIOS")
+Então você tem duas opções: TRUNCATE, mais rápido porém não te dá nenhum tipo de verificação, né? E o DELETE ele pode, você pode colocar um WHERE, né? Então, por exemplo, WHERE, uh... coisa. WHERE que campo que nós temos lá? SELECT FUNCIONARIOS, onde departamento, vamos pegar pro departamento aqui, seja vendas, departamento igual a vendas. Então vou botar lá, WHERE DEPARTAMENTO igual a VENDAS. Executar.
+(AÇÃO: Abertura da interface do cliente de banco de dados para analisar os nomes de departamento disponíveis na tabela)
+(AÇÃO: Retorno à tela de parâmetros preenchendo a caixa WHERE com as condicionais criadas)
+(AÇÃO: Identificação de um erro de sintaxe nos resultados da execução decorrente do uso explícito da palavra WHERE)
+Opa, não precisa do WHERE aqui.
+(AÇÃO: Correção no campo de condição removendo a palavra WHERE e deixando apenas a expressão avaliada)
+(AÇÃO: O nó executa as remoções no banco e finaliza sem erros)
+Beleza. Né? Aqui ele só passa pra frente, né? Porque como é um nó que não faz nada, não retorna dados, ele só passa o anterior pra frente. Vamos dar uma olhada aqui, dentro do banco. Ó, não temos mais nenhum nó que é do tipo Vendas. Antes 255, não temos mais, 300 registros.
+(AÇÃO: Visualização do banco de dados constatando a remoção correta dos registros atrelados à condicional vendas)
+E o TRUNCATE é truncar a mesma tabela, né? Então, se a gente vir aqui, a tabela foi truncada, não tem mais dado. Então basicamente faz isso.
+(AÇÃO: Mudança do modo do nó de DELETE para TRUNCATE; limpeza total da tabela confirmada)
+Eh, outros aqui. Esse aqui eu acho que ele nem tá mais... mais para ser usado. Deixa eu só confirmar aqui. Funcionários. Esse aqui era, era uma opção a mais que a gente tinha. Eu acho que até tá funcionando, mas ele vai ser descontinuado, né? O INSERT já englobou o que ele o que ele faz.
+(AÇÃO: Exibição visual rápida dos painéis e propriedades do nó "Destino SQL" inserido provisoriamente)
+(AÇÃO: O fluxo é limpo para remover nós não utilizados focando em prosseguir com a leitura de bases internas)
+Então sobrou a parte de Tabela Interna, né? Então que é aquilo que a gente até já viu aqui, né? Se a gente vir aqui em Buscar Funcionários, então a gente tá lendo de uma Tabela Interna. Então basicamente a gente cria a tabela interna, seleciona ela, pode adicionar filtros se quiser, né? E ele vai buscar os dados de uma tabela interna.
+(AÇÃO: Mudança para um fluxo já montado contendo a engrenagem de ler e retornar tabelas internas para a demonstração)
+E o Inserir Tabela Interna é a mesma coisa, vamos, vamos pegar aqui, ó, então vamos pegar aqui, e vamos fazer uma coisa aqui pra nós conseguirmos inserir um dado fictício aqui.
+(AÇÃO: Nó "Ler Base Interna" é posicionado e atrelado para inicializar a criação do cenário de teste)
+Eu vou vir aqui, vou pegar um nó mapeamento... na verdade vou pegar um nó de filtro aqui, e vamos pegar um nome aqui, pegar o ID 7. Então vamos só filtrar só o ID 7 aqui.
+(AÇÃO: Os parâmetros do nó Filtro são configurados para localizar o registro de ID igual a 7)
+Esses aqui nós vamos ver mais depois, mas eu vou filtrar aqui o ID, pegar o 7. Beleza, isolei o 7, e vou transformar esse cara aqui em outro dado. Só pra mim não precisar ficar inserindo na mão os dados ali. Daí eu pego os campos aqui.
+(AÇÃO: Validação dos dados do ID 7 após o disparo da ação de filtro no sistema)
+(AÇÃO: Os resultados do filtro aparecem corretamente estruturados na janela de output)
+(AÇÃO: O nó "Mapeamento" é linkado no fluxo para modificar informações recebidas)
+O ID eu vou colocar 301, o nome eu vou mudar pra, sei lá, Péricles, Péricles Pereira. Péricles Pereira, tá ativo, e-mail não vou mudar, cidade vou deixar tudo igual, só vou mudar o ID ali e o nome.
+(AÇÃO: As diretrizes do mapeamento são redigidas alterando os dados ID e nome)
+Vamos executar aqui. Beleza, já fizemos o cadastro aqui do Péricles.
+(AÇÃO: Execução finalizada constando os dados alterados da nova matriz exibida na aba Outputs)
+E agora a gente vai pegar o nosso nó de Gravar na Base Interna, né?
+(AÇÃO: A ferramenta adiciona o nó de "Gravar Base Interna" encadeado na solução)
+Então aqui no Gravar a gente vai ter o Inserir, UPSERT, vou fazer UPSERT. Selecionar a base funcionários aqui. A coluna chave do UPSERT é essa aqui, automapear. Beleza.
+(AÇÃO: Conexão e parametrização do upsert na base de funcionários referenciando os IDs automapeados)
+Vou dar um executar aqui. Show. Ele já deu aqui, que gravou.
+(AÇÃO: Fluxo é acionado, gravando os dados com um status ok no quadro final)
+Vamos até pegar aqui e adicionar um Ler de tabela interna de volta pra nós ver. Vamos pegar aqui funcionários e vamos adicionar o filtro que eu quero só o 301 no final, que é o que a gente inseriu.
+(AÇÃO: Finalizando o circuito com a introdução do "Ler Base Interna")
+(AÇÃO: Parametrização da busca pelo ID específico 301 como verificação do envio)
+Vamos ver se ele trouxe o Péricles, tá lá o Péricles.
+(AÇÃO: Tabela final da verificação lista o contato 301 validando o Péricles)
+Então, um nó de, se a gente vir aqui dentro da Base de Dados lá no Funcionários, pegar aqui pelo ID igual a 301. Tá ali nosso cadastro.
+(AÇÃO: Exibição completa migrando para a listagem original em 'Bases de dados > Funcionários' identificando a inserção real)
+Então basicamente os nós aí de Banco de Dados são esses aí que a gente consegue fazer essas informações aí.
+Então a gente viu Gatilhos, já viu Entradas, viu manipulação de Banco de Dados, e com isso a gente encerra a Parte 2 do nosso Módulo 3. Então no próximo a gente vai falar aí das Transformações que é onde a gente consegue fazer bem mais coisa. Então até o próximo vídeo.
+(AÇÃO: A imagem reflete a mudança para o display de apresentação oficial fechando no conteúdo 'Parte 3 - Catálogo de Nós -> Transformações')

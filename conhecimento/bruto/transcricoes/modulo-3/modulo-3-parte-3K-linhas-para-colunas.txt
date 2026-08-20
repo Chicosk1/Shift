@@ -1,0 +1,28 @@
+Beleza, parando de onde a gente... eh, iniciando da onde a gente parou, na verdade, né. Agora eu vou... vamos apagar isso aqui e vamos ver qual que é o próximo da lista aqui que a gente tem que ver.
+(AÇÃO: clica, arrasta, seleciona todos os nós e aperta 'delete')
+É o "Linhas -> Colunas", tá. Eh, pra esse exemplo eu vou trazer aqui algumas informações pra gente poder usar. Então, o que que eu tenho aqui, ó.
+(AÇÃO: arrasta o nó "Linhas -> Colunas" para a área de trabalho, conectando a ele os nós "Manual" e "Linhas -> Colunas")
+Tenho aqui uma tabela onde eu tenho os meses, eu tenho o valor e eu tenho o vendedor. Eh, vamos supor que você precise... eh, pra montar você depois vai exportar isso aqui pro Excel ou a gente no futuro vai ter aí um nó de montagem de relatório que é o que tá no... no roadmap aqui, se você poder montar relatórios aqui dentro do Shift, né. Relatórios personalizados. Mas com base nas... nas extrações que você faz. Mas vamos imaginar o seguinte.
+(AÇÃO: clica em "Executar" no nó "Manual")
+Vamos supor que eu quisesse trazer aqui na verdade a... os vendedores... eh, nas linhas aqui. Então, vendedor, vendedor, vendedor. E os meses em colunas. E daí aqui o total da... das vendas cada um.
+Beleza, então pra isso a gente vai usar o nosso nó "Linhas para Coluna", tá. Então aqui no nosso nó "Linhas para Coluna" o que que nós vamos fazer? Ele é bem, bem útil nesses casos aí, pra você não precisar ficar fazendo um monte de parafernália aí com outros nós, né.
+Então aqui eu vou abrir ele aqui. E qual que vai ser nossa coluna índice, né? O que que... o que que é um índice?
+(AÇÃO: clica para configurar o nó "Linhas -> Colunas")
+Índice é isso aqui, ó. Um, dois, três. Então a coluna índice é o que vai seguir a... aqui, pra determinar como que vai gerar a... que vai determinar as linhas pra depois gerar as colunas, tá. Então é linhas para colunas.
+Então a linha índice, o que vai determinar é o vendedor. Por quê? Porque eu quero um vendedor aqui, um vendedor aqui e um vendedor aqui. Então quantos vendedores eu tenho? Eu tenho a Ana, eu tenho o Bruno e eu tenho a Carla. Como é um índice, ele não vai se repetir, tá? Então essa é a lógica.
+Então vamos pegar aqui o nosso... o nosso índice vai ser o vendedor.
+(AÇÃO: seleciona "vendedor" em "COLUNAS DO ÍNDICE")
+Eh, a coluna pivô, né. O que que vai... ah, pivô, eh, basicamente imagine assim: "beleza, eu tenho o meu índice, mas com base no que que ele vai subir pra cima aqui? O que que vai determinar o que é as colunas?". É o nosso mês.
+Então o que a gente quer transformar que tá em linha hoje para coluna, que é o que, ó, linha pra coluna, é o nosso mês. Então eu vou pegar aqui e definir o mês aqui como nossa coluna pivô.
+(AÇÃO: seleciona "mes" em "COLUNA PIVÔ")
+E a coluna valor, né. Ah, qual que vai ser o valor que eu... que eu vou ter? Nossa coluna valor é... o próprio nome diz aqui, valor, né. Então eu vou pegar aqui valor e o que que eu quero fazer? Eu quero somar, contar, pegar a média, máximo, mínimo, tá. Então no caso aqui a gente vai somar.
+(AÇÃO: seleciona "valor" em "COLUNA DE VALOR")
+Então vamos executar aqui, ó. Ó, então o que que aconteceu? Ele gerou aqui nosso índice, como eu tinha comentado. O nosso índice, a gente determinou que é o vendedor, então nunca vai repetir. Então ele pega... ah, então só tem um Ana... só tem a... Ana, tem o Bruno e tem a Carla aqui.
+(AÇÃO: clica em "Executar" no painel do nó "Linhas -> Colunas")
+Qual que foi a nossa coluna que fez a pivotagem, ou seja, saiu de linha pra coluna? Foi o mês, aqui. Então ele sempre gera assim, ó, o nome da coluna underline o que você definiu como agregação. Então aqui a soma de...
+Então ele pegou obviamente aqui e subiu fevereiro, janeiro e março, né, que era o que tava aqui em linha, né, ó.
+E daí a gente determinou, beleza, qual que é o valor, né, que vai... vai subir pra esses dados aqui. A gente determinou que é a coluna valor. Então o que que ele fez aqui? Ele transformou isso aqui em coluna. Ó, fevereiro, janeiro e março.
+E depois ele pegou e atribuiu nesses campos aqui a soma do valor de cada um. Então ele pegou Ana... pegou tudo o que é janeiro... Tudo que é janeiro somou, no nosso exemplo aqui, e jogou aqui pra uma coluna fevereiro underline sum, a mesma coisa aqui pra janeiro.
+Então a coluna linhas... a... o nó linhas pra coluna basicamente faz isso. Ele permite você definir um índice, definir qual que é a coluna que vai pivotar... qual que é as linhas da coluna... das linhas que vai pivotar pra uma coluna. E daí qual que é o índice que vai... a coluna que vai somar, ou contar, ou fazer alguma... algum cálculo, eh, pra trazer esses dados aqui.
+Então se você precisasse aí de um relatório onde as colunas deveriam ser os meses, se precisasse do total de cada mês com base no vendedor. Então o... o nó aqui linha pra coluna serve para isso.
+Então, basicamente esse é o funcionamento desse nó.

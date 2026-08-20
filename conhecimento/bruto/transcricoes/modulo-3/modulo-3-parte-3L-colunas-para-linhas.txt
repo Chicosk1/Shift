@@ -1,0 +1,35 @@
+Certo, então... aqui... vamos pra mais uma demonstração aqui. O nosso próximo nó é o "Colunas -> Linhas", né. Coincidentemente, é o inverso do "Linhas -> Colunas", né.
+Se no "Linhas -> Colunas" nós transformávamos o que antes era uma linha em uma coluna, agora a gente tem o inverso. Inclusive, vamos usar o próprio aqui, ó, pra vocês verem que é real o inverso.
+(AÇÃO: O usuário move a tela para mostrar os nós "Manual", "Linhas -> Colunas" e agora o "Colunas -> Linhas", que ele vai usar para reverter a operação do nó anterior)
+Vamos tentar com o "Colunas -> Linhas" retornar à original aqui, que é o vendedor aqui, e trazer a... o mês aqui por linhas e tudo mais, que a gente já converteu pra coluna.
+Então, antes eu vou só pegar um nó de mapeamento aqui, e vamos dar uma organizada nas nomenclaturas pra gente ter uma visualização melhor. Pegar ele aqui...
+(AÇÃO: O usuário adiciona um nó "Mapeamento" entre o "Linhas -> Colunas" e o "Colunas -> Linhas" para organizar os nomes das colunas)
+Deixa eu trazer as colunas pra cá. Vou puxar janeiro pra primeira aqui. Vamos dar o nome pra "janeiro". Aqui vou dar o nome pra "fevereiro". E aqui pra "março".
+(AÇÃO: No nó "Mapeamento", o usuário seleciona e renomeia as colunas criadas no passo anterior. "janeiro_sum" para "janeiro", "fevereiro_sum" para "fevereiro" e "marco_sum" para "março")
+Beleza. Deixa eu executar aqui. Ok, "janeiro", "fevereiro" e "março".
+(AÇÃO: O usuário clica em "Executar" no nó "Mapeamento" para confirmar a mudança dos nomes)
+Agora vamos pegar o nosso nó aqui de "Colunas -> Linhas".
+Então, aqui agora o que que eu tenho que fazer? O que que eu vou transformar em linhas? Tá? O que que eu vou transformar em linha? Qual que é o meu índice? Ainda continua sendo o vendedor, né.
+(AÇÃO: O usuário clica para configurar o nó "Colunas -> Linhas" e escolhe a coluna "vendedor" em "COLUNAS DO ÍNDICE")
+É o vendedor que vai vir aqui... um, dois, três... Então o nosso... nossa coluna índice é "vendedor".
+E o que que eu quero expandir? O que que eu quero tornar de fato as linhas? É os meses, né. Agora... é... como a gente viu antes, os meses, eles tavam em linha, então: janeiro, fevereiro, março.
+Daí ia fazer: Ana, Ana, janeiro, fevereiro, março; daí valor; daí Bruno, janeiro, fevereiro, março; valor; só que agora eles estão em colunas.
+Então o que eu quero expandir pra linha é o quê? Os meses. Então aqui, ó, na parte de "Expandir", eu vou colocar que eu quero janeiro, quero expandir fevereiro, e quero expandir março.
+(AÇÃO: O usuário seleciona as colunas "janeiro", "fevereiro" e "marco" no campo "COLUNAS A EXPANDIR")
+Agora, notem aqui que isso aqui são duas... dois valores. Dois valores. A coluna e o valor em si, tá.
+Então aqui... coluna... recebe o nome. Então, o que que vai receber o nome? É o... o que recebe nome, né, que é os meses, né? Então é... essas... esses dados aqui, ó.
+(AÇÃO: O usuário aponta para as colunas "janeiro", "fevereiro" e "marco" na visualização da tabela para explicar)
+Como que vai ser o nome dessa... da coluna que vai receber essas linhas aqui... janeiro, fevereiro e março? É "mês", né? Então eu venho aqui e coloco "mes".
+(AÇÃO: O usuário digita "mes" no campo "Coluna que recebe o nome")
+Eh... E qual que é a coluna que vai receber os valores? Porque esses valores também, que aqui hoje estão em coluna, ó, eles vão ser convertidos pra linhas. Então, a gente vai chamar de "faturamento".
+(AÇÃO: O usuário digita "faturamento" no campo "Coluna que recebe o valor")
+Então eu vou dar um "Executar" aqui. Aqui se você quiser converter o valor, né? Tipo... Ah, quero converter pra texto, decimal, inteiro, tá. Que é essa... o cara "valor" aqui, esse carinha aqui. Beleza.
+(AÇÃO: O usuário clica em "Executar" e depois mostra a opção "CONVERTER VALORES PARA (OPCIONAL)")
+Vamos ver o que que gerou aqui, ó. Então, percebam que... agora o que antes era colunas virou linhas, ó... E os valores de cada uma dessas colunas aqui, ó, virou linha também.
+(AÇÃO: O usuário mostra a aba "Tabela" com os dados do "Colunas -> Linhas", comparando como os meses que estavam em colunas ("janeiro", "fevereiro", "marco") passaram a ser valores em uma nova coluna "mes", e os valores passaram a ficar na coluna "faturamento")
+Então, "Ana", janeiro, 1500; Ana, fevereiro, 1500... Ana... eh... fevereiro, 1500; Ana... fevereiro, 1500...
+Então... se a gente pegar até o nosso início lá... aqui é porque tava meio misturado, ó. Mas a mesma coisa, ó. Ele retornou pra mesma coisa que estava inicialmente.
+(AÇÃO: O usuário clica no nó "Manual" e mostra a tabela original para mostrar que o nó "Colunas -> Linhas" reverteu o que o nó "Linhas -> Colunas" tinha feito, embora a ordem esteja um pouco diferente)
+Então... Então um parentesinho interessante, né? Que a gente fez uma conversão com o "Linhas -> Colunas" e daí com o próprio "Colunas -> Linhas" conseguiu reverter pro estado inicial.
+Então elas são... fazem ações inversas umas às outras, né. Então é basicamente isso.
+Você consegue configurar aqui pra tornar, né, colunas... né... trazer o que é hoje em colunas, aqui no caso nossos meses, pra linhas, aqui, ó. Beleza? Então, basicamente esse é o funcionamento desse nó.

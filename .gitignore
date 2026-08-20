@@ -1,0 +1,24 @@
+# --- Segredos: nunca versionar ---
+.env
+.env.*
+*.key
+*.pem
+segredos.*
+**/credenciais*
+.claude/settings.local.json
+
+# --- Sistema operacional ---
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# --- Temporários / editores ---
+*.tmp
+*.bak
+*~
+.vscode/
+.idea/
+
+# --- Exports brutos do Shift que forem descartáveis ---
+# (fluxos/**/fluxo.yaml é versionado de propósito — ver docs/convencoes.md)
+*.log

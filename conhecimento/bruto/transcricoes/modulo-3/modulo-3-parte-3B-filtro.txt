@@ -1,0 +1,30 @@
+Beleza. Eh, continuando aqui, agora nós vamos ir para o nó de Filtro.
+(AÇÃO: O usuário adiciona o nó "Filtro" ao fluxo, conectando-o ao nó "Ler Base Interna")
+Então, aqui o nó de Filtro, então como o nome já diz, você consegue filtrar dados aqui.
+Então, vamos supor que eu quero trazer todos os... eh... vamos pegar aqui... todos os funcionários que são de Manaus.
+(AÇÃO: O usuário abre a tabela de dados "funcionários" e analisa a coluna "cidade", copiando o valor "Manaus")
+Então vou copiar aqui "Manaus", posso vir aqui, então vou usar qual o campo? Cidade, arrasto para cá.
+(AÇÃO: O usuário arrasta a coluna "cidade" para o campo de configuração do Filtro)
+Eh... Então eu quero pegar todos que são de Manaus, tá? Então posso informar aqui. E aqui é o "E", né? E... que são... de... Belo Horizonte.
+(AÇÃO: O usuário adiciona a condição "é igual a" "Manaus" e clica em "Adicionar condição")
+Então, também quero pegar... Todos que são de Manaus e Belo Horizonte, tá?
+(AÇÃO: O usuário arrasta novamente a coluna "cidade" e adiciona a condição "é igual a" "Belo Horizonte")
+Aqui... aqui você pode adicionar outras opções, né? Mas... geralmente o Filtro você vai usar só isso aqui.
+(AÇÃO: O usuário clica no dropdown da condição para mostrar as outras opções como "é diferente de", "contém", etc.)
+(AÇÃO: O usuário executa o nó e abre a aba "Output" para verificar os resultados)
+Então vamos ver aqui o resultado. Ó. Então, eu não tenho... você percebe aqui, ó. É Manaus e Belo Horizonte. Eu quero filtrar quem é de Manaus e Belo Horizonte. Eu não tenho ninguém que é de Manaus e Belo Horizonte, então teria que ser o "OU" aqui, né?
+(AÇÃO: A tabela de resultados está vazia. O usuário retorna às configurações do Filtro e altera a lógica de "AND" para "OR")
+Então, Manaus ou Belo Horizonte.
+(AÇÃO: O usuário executa novamente o nó e a aba "Output" exibe a tabela com os resultados)
+Ó. Então... eh... é muito importante isso. Eu não tenho ninguém que é de Manaus e Belo Horizonte, eu tenho quem é de Manaus e quem é de Belo Horizonte. Então é Manaus ou Belo Horizonte.
+Eh... Então aqui... eh... o filtro basicamente é isso, você vai adicionando condições aqui. Eh, outra situação usando o "E" aqui. Eu quero... todo mundo que é de Manaus...
+(AÇÃO: O usuário remove a condição de "Belo Horizonte", volta a lógica para "AND" e adiciona uma nova condição)
+Deixa eu ver como estão os números aqui de Manaus. Vamos só rodar assim, Manaus... Para nós usarmos um "E" aqui.
+(AÇÃO: O usuário executa o filtro apenas com a condição de "Manaus" para analisar a coluna "salario")
+Eh... Manaus e tem o salário maior do que 5.000. Vamos pegar os caras que ganham bem aqui, ó.
+(AÇÃO: O usuário arrasta a coluna "salario" e adiciona uma nova condição)
+Então, salário de Manaus e que é maior que... maior ou igual, vamos pegar, 5.000. Vamos executar.
+(AÇÃO: O usuário configura a condição "maior ou igual a" 5000 e clica em "Executar")
+Então, agora sim, eu tenho gente que é de Manaus e que ganha mais que 5.000.
+(AÇÃO: A aba "Output" exibe a tabela filtrada corretamente)
+Tá? Então, o filtro basicamente é isso, é bem, bem tranquilo aí, é mais para você precisar fazer filtragens de dados aí, você consegue aqui dentro mesmo fazer essas filtragens.

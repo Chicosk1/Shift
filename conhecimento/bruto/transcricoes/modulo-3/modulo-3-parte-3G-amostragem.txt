@@ -1,0 +1,60 @@
+(AÇÃO: Tela do editor de fluxo da plataforma exibindo os nós "Ler Base Interna" e "Mapeamento" já interligados.)
+Beleza, vamos vamos continuar aqui, então, eh, o nosso próximo nó aqui da lista é o nó de amostragem, tá.
+(AÇÃO: Clique no ícone de mais no menu lateral esquerdo e clique na opção "Amostragem" para adicionar o nó ao fluxo.)
+Pra que que serve esse nó? Esse nó, na parte de migração, ele é um vai ser um pouco mais raro, né.
+Isso aqui geralmente a gente vai usar pra quando a gente precisa de alguma análise estatística, alguma coisa que a gente precisa de de amostragem em cima de uma, uma base de dados, mas a gente não, a gente quer usar alguns métodos de amostragem estatística além do pega as primeiras tantas linhas, tá.
+Por mais que aqui dentro a gente tenha o pegue tantas linhas, né.
+(AÇÃO: Clique duplo no nó "Amostragem" recém-criado para abrir o painel de parâmetros do lado direito.)
+Então, aqui a gente pode pegar as, sei lá, dez primeiras linhas.
+(AÇÃO: Preenchimento do campo "QUANTIDADE DE LINHAS (N)" com o valor 10.)
+Então, amostragem, basicamente, ele vai trazer as dez primeiras linhas.
+(AÇÃO: Clique no botão "Executar" e exibição dos resultados em forma de tabela na aba direita.)
+Eu posso de definir um aleatório, tá.
+(AÇÃO: Seleção da opção "Aleatória (com seed)" no menu suspenso do campo "MODO".)
+Então, uma quantidade de linhas e adicionar um seed de repro reprodutibilidade, que é uma, uma expressão matemática estatística aí.
+(AÇÃO: Cursor do mouse posicionado sobre o ícone de informação ao lado de "SEED (REPRODUTIBILIDADE)", exibindo um balão de texto explicativo.)
+Até aqui tem uma descrição do que que é, né, ó.
+Então, o seed é uma semente numérica usada pelo sorteador aleatório. Como o computador gera aleatórios a partir dessa semente, fixar o número faz com que o mesmo conjunto de linhas sempre seja escolhido.
+Mesma execução, mesma amostra, tá.
+Então, o seed, ah, ele sempre vai usar essa mesma reprodutibilidade, ele sempre vai reproduzir esses mesmos dados.
+Quan quando manter o mesmo? Ao depurar um fluxo, comparar resultados entre execuções ou reproduzir relatórios reprodu reproduzir relatórios reprodutíveis, tá.
+Então, o seed aqui ele sempre vai manter a mesma reprodutibilidade de dados, tá.
+E quando trocar? Quando quiser uma amostra diferente.
+Então, se você quiser amostras diferentes, você pode, ah, preciso testar algo aqui que ele não, eu tenho que testar chegando dado diferente.
+Só que eu não posso testar tudo com os com os dados totais de uma vez só.
+Então você vem aqui, roda com um seed, depois roda com outro, e ele vai gerando amostragens aleatórias, tá.
+Então, basicamente, é uma um método aí estatístico de amostragem.
+Então aqui, com esse seed 42, ele trouxe os dez, e ele vai manter aqui, ó.
+Se eu executar de volta...
+(AÇÃO: Clique no botão "Executar".)
+Tá.
+Se eu executar de volta...
+(AÇÃO: Clique no botão "Executar" novamente.)
+Executar mais uma vez.
+(AÇÃO: Clique no botão "Executar" novamente.)
+Ó, ele sempre tá mantendo, ó.
+Prestem atenção, Ana, Helena Gomes. Ana Silva e Helena Gomes.
+Se eu mudar aqui, sei lá, pra 35 a reprodutibilidade...
+(AÇÃO: Preenchimento do campo "SEED (REPRODUTIBILIDADE)" apagando o valor 42 e inserindo 35, seguido de clique no botão "Executar".)
+Agora ele mudou, tá.
+Então, é basicamente isso, ele ele gera os N resultados e você pode definir uma reprodutibilidade aqui.
+Então, sempre que você usar o valor 35, ele sempre vai retornar esses cara aqui.
+Se você usar o 42, que é o que tava, se eu não me engano, né, vamos rezar pra que seja porque eu já esqueci...
+(AÇÃO: Preenchimento do campo "SEED (REPRODUTIBILIDADE)" alterando o valor de 35 para 42, seguido de clique no botão "Executar".)
+Ele vai retornar a Ana, Helena Gomes, Ana, Helena Gomes.
+Então, é uma questão matemática, ele sempre com a a numeração que você fixa, ele sempre vai conseguir garantir a reprodutibilidade daqueles dados.
+E o percentual, percentual é percentual, né.
+(AÇÃO: Seleção da opção "Percentual" no menu suspenso do campo "MODO".)
+Eu vou pegar aqui 10% dos dados.
+(AÇÃO: Preenchimento do campo "PERCENTUAL (%)" com o valor 10 e clique no botão "Executar".)
+É, ó, então, 10%, quando ah, tem 301, 10% deu 31. O que ele tem, né, ó.
+(AÇÃO: Cursor do mouse posicionado sobre o ícone de informação ao lado de "PERCENTUAL (%)", exibindo um balão de texto explicativo.)
+Cada linha do dataset tem essa probabilidade em percentual de entrar na amostra. Por isso, o número final pode variar levemente entre execuções.
+Um dataset de 1000 linhas com 10% pode retornar 98 ou 105, por exemplo, tá.
+Use quando o tamanho exato não importa, mas você quer manter a proporção do dataset. Para um número fixo, use aleatória com seed, tá.
+É, então aqui ah, ele faz um cálculo matemático do percentual de chance que cada opção teria que pra entrar na amostra.
+E daí depois ele traz ali a o resultado, tá.
+Então não é um percentual ah tem tem mil então vai trazer 10%. Então se tem mil linha 10% ele seria 100.
+Não, ele pode ser 98 ou 105, dependendo do peso que aquele registro tem dentro do da da amostra, tá.
+Então é só pra não ter essa confusão.
+Então o o nó de amostra basicamente você consegue gerar amostras aleatórias aí, eh, e não aleatórias, né, pra você fazer análise de dados.

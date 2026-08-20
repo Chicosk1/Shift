@@ -1,0 +1,36 @@
+Então estamos aqui em mais um treinamento, vamos ver qual que é o nosso próximo aqui da lista. É o "Texto para Linhas", tá? Então o que que eu vou fazer aqui?
+(AÇÃO: O usuário seleciona e deleta os nós que estavam na tela, deixando apenas o nó "Manual")
+Eu vou deletar o que a gente tinha feito aqui, a gente já usou esses nós aqui. E vamos... eh... pegar aqui novos dados que eu fiz aqui.
+(AÇÃO: O usuário clica no nó "Manual", deleta o conteúdo existente e cola um novo JSON no campo "PAYLOAD DE TESTE (OPCIONAL)")
+Então como que funciona o "Texto para Linhas", tá?
+Eh, então aqui o que que acontece, eu tenho aqui nesses dados, eu tenho uma tabelinha aqui que tem o número de um pedido, o nome do cliente e aqui eu tenho, eh, uma... uma coluna chamada "produtos".
+(AÇÃO: O usuário clica em "Executar" no nó "Manual" e mostra a tabela gerada, apontando para as colunas "pedido", "cliente" e "produtos")
+Mas ao invés de eu ter os produtos em linha, ó, eu tenho... eh... um produto aqui... cada produto separado por vírgula. Então eu tenho aqui notebook, aqui só tem um, aqui eu tenho cadeira, vírgula, webcam.
+Então isso aqui seria um problema. Como que eu vou validar, vamos supor que isso aqui fossem IDs ainda, né? Como que eu vou validar isso por texto, né? Não... não posso. Então não posso colocar um "like" aqui, posso esquecer que tem espaço e tudo mais... Enfim. Eu preciso transformar isso em linhas.
+Então pra isso mesmo que serve o "Texto para Linhas". Então aqui você pode ligar ele...
+(AÇÃO: O usuário arrasta o nó "Texto -> Linhas" para a área de trabalho e conecta a saída do nó "Manual" a ele)
+E aqui eu posso selecionar qual que é a coluna a dividir, né? Então aqui no nosso caso, se a gente for ver aqui, a coluna que a gente vai dividir é a "produtos", né, que tem vários e eu quero dividir eles. Então, "produtos".
+(AÇÃO: O usuário clica no nó "Texto -> Linhas" e no campo "COLUNA A DIVIDIR" seleciona "produtos")
+Eh, qual que é o delimitador? Então tem aqui, ó. É a vírgula, tá? Ah, e se vier um delimitador... é difícil, né, mas se vier vários delimitadores aí aleatórios, você vai ter que usar um "substituir" lá pra colocar um delimitador só. Eh, lá dentro do "mapeamento", né.
+(AÇÃO: O usuário aponta para o campo "DELIMITADOR", onde a vírgula já está preenchida por padrão)
+Então, o delimitador aqui é a vírgula. E o nome da coluna que vai ser gerado, vai ser "produtos" mesmo, né? Então... "produtos".
+(AÇÃO: O usuário digita "produtos" no campo "NOME DA COLUNA DE SAÍDA (OPCIONAL)")
+Ali ele até dá uma sugestão, né. Aqui se eu quero remover espaços, então, por exemplo... aqui, ó, se eu ver, ele vai ter um espaço antes da... antes do teclado ali, né, e depois da vírgula.
+(AÇÃO: O usuário aponta para a opção "Remover espaços (trim)" que já vem marcada)
+Então é bom sempre manter esse cara aqui. E aqui "Manter partes vazias" seria se eu tivesse um monitor, vírgula, vírgula, né, que seria uma parte vazia e, sei lá, webcam.
+(AÇÃO: O usuário aponta para a opção "Manter partes vazias", que está desmarcada)
+Então se você marcar isso aqui, ele manteria como uma linha aquela parte vazia. Nesse caso, a gente vai deixar desmarcado, a gente nem tem parte vazia aqui, né.
+Eh... mas vamos... até vamos rodar aqui pra ver. Aqui, se tiver um limite, né, nesse caso não vai precisar.
+(AÇÃO: O usuário aponta para o campo "LIMITE DE LINHAS DE SAÍDA (OPCIONAL)" e clica em "Executar")
+Então o que que ele fez aqui? Ele quebrou aqui... notebook, mouse e teclado para a Ana. Então aqui, ó... Ana tem o notebook, tem o teclado, mouse e notebook, ó.
+(AÇÃO: O usuário mostra a tabela de saída, apontando para as linhas que foram geradas a partir do texto que estava na coluna "produtos")
+Eh... O Bruno só tinha o monitor. Então ele veio aqui, ó, Bruno... monitor. E... eh... Carla, cadeira e webcam, né? Então a Carla... cadeira...
+Eh... Vamos supor aqui que tivesse aqui... no monitor aqui, vírgula, vírgula, e tivesse, sei lá, aqui... eh... mouse, tá? Vamos executar.
+(AÇÃO: O usuário volta ao nó "Manual", edita o JSON na linha de produtos do "Bruno", alterando "Monitor" para "Monitor, , Mouse", e clica em "Executar" para mostrar a mudança)
+Ó. Então agora eu tenho ali um espaço em branco, ó. Então, se eu rodo isso aqui e deixo desmarcado esse cara... ele não manteve nenhum espaço em branco.
+(AÇÃO: O usuário mostra o espaço em branco na tabela e, em seguida, volta ao nó "Texto -> Linhas", clica em "Executar" com a opção "Manter partes vazias" desmarcada, e mostra que a linha em branco foi ignorada)
+Agora, se eu marco esse cara aqui... Ó, tá vendo? Então, Bruno... que ele tinha o monitor, espaço em branco e mouse. Então ficou: Bruno, monitor; Bruno, espaço em branco; e mouse, tá?
+(AÇÃO: O usuário marca a opção "Manter partes vazias" no nó "Texto -> Linhas", clica em "Executar" e mostra a tabela resultante com a linha em branco agora presente para o "Bruno")
+Então... eh... pra isso que serve esse "Manter partes vazias", tá.
+Então, o "Texto para Linhas" é basicamente isso. Quando você tem alguma... alguma coluna que tenha um texto com determinadas informações e você precisa quebrar ele em linhas, você pode fazer isso através do "Texto para Linhas", tá?
+Então, basicamente a funcionalidade desse nó é pra esse tipo de situação.

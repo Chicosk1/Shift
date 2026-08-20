@@ -1,0 +1,37 @@
+Certo, então agora vamos para outro nó de transformação. Então se nós pegarmos aqui, vamos para o nosso nó agregador.
+(AÇÃO: O usuário remove o nó "Filtro", arrasta o nó "Agregador" para a tela e o conecta ao nó "Ler Base Interna")
+Então o que que o nó agregador faz? É basicamente um group by. Então nós temos aqui, vamos ver o que que nós podia agrupar aqui, ó.
+Nós podia contar quantos funcionários estão ativos ou quantos funcionários a gente tem por cidade.
+Ótimo, vamos fazer por cidade. Então eu vou pegar aqui, agrupar por, eu vou agrupar por cidade.
+(AÇÃO: O usuário clica em "Adicionar coluna de agrupamento" e seleciona a coluna "cidade")
+Qual que é o tipo da agregação? Eu quero somar uma coluna? Eu quero contar? Pegar o AVG, o max, o min? Eu quero contar. Quero contar coluna nome, né?
+(AÇÃO: O usuário clica em "Adicionar agregação", seleciona o tipo "COUNT", escolhe a coluna "nome" e define o alias como "count_nome")
+Então eu vou colocar aqui count_nome, que basicamente eu vou saber aí quantos clientes eu tenho por, eh, cidade. Vamos rodar aqui.
+(AÇÃO: O usuário clica em "Executar" e a aba "Output" mostra os resultados agregados)
+Ó, então aqui ele já gerou, ó. Então eu tenho 27, eh, clientes em Recife, tenho 32 em Fortaleza, tenho 27 em Salvador, tenho 30 em Curitiba, né, eu tenho 33 em Brasília. Eh, então eu quero fazer um agrupamento, eu vou aumentar aqui o agrupamento, cidade e departamento.
+(AÇÃO: O usuário clica novamente em "Adicionar coluna de agrupamento", seleciona "departamento" e executa o fluxo)
+E quero contar os nomes ainda.
+Ó, então, agora ele já deu dois, ó. Então, ainda nós temos aquele nulo, né? Eh, mas tudo bem.
+Ó, então aqui ele já trouxe mais, né. Então, até eu vou adicionar um filtro aqui, ó, vamos pegar só de Brasília.
+(AÇÃO: O usuário adiciona um nó "Filtro" e o conecta após o "Agregador")
+Ainda vou adicionar o filtro que a gente viu anteriormente, ó. Vou pegar aqui só a cidade de Brasília aqui para nós dar uma olhada, ó. Então, eh, pegar aqui cidade, igual a Brasília.
+(AÇÃO: O usuário configura a condição do filtro para "cidade" "é igual a" "Brasília" e clica em "Executar")
+Então em Brasília, em Marketing eu tenho quatro. Suporte eu tenho três. Operações eu tenho quatro. Eh, RH eu tenho seis. TI eu tenho seis. Logística eu tenho três. Ó, então ele agrupou aí por cidade e por departamento.
+Vamos ver outra cidade aqui. Que a gente poderia pegar São Paulo. Vamos pegar São Paulo aqui, ó. Então eu quero ver o que que eu tenho em São Paulo.
+(AÇÃO: O usuário altera a cidade no filtro para "São Paulo" e executa novamente)
+Ó, então, a mesma forma, aqui eu podia colocar um "OU" aqui, né? Caso, ou São Paulo ou Porto Alegre, né, trazer os dois.
+(AÇÃO: O usuário altera a lógica do filtro para "OR", adiciona uma nova condição "cidade" "é igual a" "Porto Alegre" e executa)
+Ó. Então eu tenho aqui. Eh, então tem aqui as opções, né. Então basicamente o filtro, ele te permite, o agregador, desculpa, ele te permite você fazer agregações.
+Eh, vamos supor que eu quisesse fazer um outro tipo de agregação aqui que pode acontecer, né. Eh, somar o custo que eu tô tendo de folha por departamento.
+(AÇÃO: O usuário remove o nó "Filtro" e retorna aos parâmetros do nó "Agregador")
+Então a gente poderia simplesmente vir aqui, pegar para agrupar por departamento, e agora ao invés de contar eu vou somar a coluna salário. Ó, então vou dar um executar aqui.
+(AÇÃO: O usuário remove a coluna "cidade" do agrupamento, deixando apenas "departamento")
+(AÇÃO: O usuário muda a agregação de "COUNT" para "SUM", seleciona a coluna "salario", altera o alias para "sum_salario" e executa)
+Ó, então no departamento de Logística eu tô gastando uma grana aí, ó. Aqui, eh, no departamento de Vendas também, então aqui ele já traz o valor, depois obviamente você poderia arredondar isso ali para a frente e tudo mais. Mas aqui, né, até aqui dá para adicionar, né?
+Talvez uma melhoria que a gente pode colocar aqui é no SUM aqui ter o arredondamento do valor, boa. Mas, eh, até vou anotar aqui que é uma boa, gostei da ideia.
+(AÇÃO: O usuário abre um bloco de notas e digita: "Nó Agregador: no SUM poder arredondar")
+Outra vantagem de ser uma ferramenta nossa, né, o que a gente quiser fazer a gente faz. Ok, então basicamente a gente pode agregar, somar, eh, pegar qual que é a média salarial?
+Então vou pegar um AVG aqui, né?
+(AÇÃO: O usuário volta para a plataforma, altera a agregação de "SUM" para "AVG", renomeia o alias para "avg_salario" e executa)
+A média, o povo tá ganhando bem hein, oito, oito mil e pouco a média. Tá bem, tá bom o salário.
+Então, basicamente o agregador ele permite você fazer agregações como se fosse um GROUP BY do banco de dados.

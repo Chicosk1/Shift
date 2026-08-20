@@ -1,0 +1,215 @@
+Então agora aqui no módulo dois, nós vamos para a terceira parte, que é a parte de criar uma conexão de borda.
+É, e também que não tá aqui a gente vai ver a conexão por arquivo e conjunto de dados também. E eu vou dar um, um, no início, né, eu vou demonstrar a parte do TNS rapidamente.
+Então vamos lá. Vamos vir para o nosso Shift aqui.
+(AÇÃO: O apresentador muda da tela de apresentação para a tela do sistema Shift, que está em uma aba do navegador)
+O que que acontece... Deixa eu apagar isso aqui.
+(AÇÃO: O apresentador clica no ícone de lixeira para excluir uma conexão chamada "ConstruShow TNS" e confirma a exclusão)
+O que que acontece? Eu tenho aqui, é, uma conexão remota, que é um... é uma máquina na nossa cloud, tá?
+(AÇÃO: O apresentador abre o Oracle SQL Developer e depois minimiza, mostrando a área de trabalho do Windows)
+Porém eu vou conseguir simular nela duas coisas: a conexão via TNS e a conexão via, é, aplicação de borda.
+Então aqui eu tenho o SQL Developer e se a gente vier aqui nas propriedades da conexão, tem aqui, ó.
+(AÇÃO: O apresentador clica com o botão direito na conexão "CONSTRUSHOW" no SQL Developer e seleciona "Properties")
+Ela tá aqui, ó: TNS, e o network network alias DECO. Só que aqui só tem isso, tá?
+Como que eu vou saber qual que é as a description? Aqui inclusive tem, né, já foi tentado usar, era só vir aqui e copiar.
+Mas eu vou... Deixa eu conectar aqui e ver se tá funcionando isso aqui, né. Testar... ok, conectou.
+(AÇÃO: O apresentador clica no botão "Test" e depois em "Connect" na janela de propriedades da conexão, inserindo a senha em seguida)
+É, o que que eu vou fazer? Eu vou conect... eu vou primeiro pegar a descrição do tnsnames.ora, tá?
+É, pra gente conseguir, é, colar lá dentro do sistema.
+Então como que funciona? Geralmente as instalações do Oracle, né, no padrão que a gente usa, elas vão ficar aqui em APP,
+(AÇÃO: O apresentador abre o Windows Explorer e navega pelas pastas C:\app\client...)
+né, eu vou ter aqui a instalação, eu digo não o banco de dados, as configurações de, de conexão via TNS.
+Ela vai ficar aqui geralmente client32, se você não achar ou não tiver o... se eu tentar ir pra frente aqui eu nem consigo acessá-lo. Então ele tá usando o 32.
+É, tá dentro de, então, client32, viasoft, product, e aqui a versão do Oracle, client_1, ele vai tá dentro da pasta network, admin, e tá aqui tnsnames.ora, ó.
+Então eu vou dar um edit aqui. Então aqui tá, ó, o DECO lá, e a description. Então eu sempre vou pegar a partir, é, da description, nunca o nome junto o DECO.
+(AÇÃO: O apresentador clica com o botão direito no arquivo tnsnames.ora, seleciona "Edit com Notepad++" e seleciona o texto da description)
+Então eu vou vir aqui, vamos vir aqui criar uma nova conexão. Eu vou colocar aqui ConstruShow TNS.
+(AÇÃO: O apresentador volta para a tela do Shift no navegador e clica no botão "+ Nova Conexão")
+Com o sistema ConstruShow, Oracle, beleza.
+Esse aqui eu vou colocar que é um de homologação. Aqui é a mesma coisa, VIASOFTMCP,
+(AÇÃO: O apresentador preenche o campo "Ambiente" com "Homologação" e o "Usuário" com "VIASOFTMCP")
+VIASOFTMCP.
+(AÇÃO: O apresentador preenche o campo "Senha" com "VIASOFTMCP")
+Aqui eu vou mudar para TNS Description. Vou colar aquilo lá que a gente pegou, e aqui os schemas, né.
+(AÇÃO: O apresentador seleciona "TNS Description" no formato de conexão, cola a descrição no campo "TNS Descriptor" e preenche os "Schemas adicionais")
+VIASOFTMCP_VIASOFTBASE_VIASOFTFIN. E vou criar.
+(AÇÃO: O apresentador clica no botão "Criar")
+Criou com sucesso, agora eu vou testar, vamos ver se vai funcionar, né, ó.
+(AÇÃO: O apresentador clica no botão "Testar conexão")
+Então eu consegui fazer uma conexão, é, via TNS de maneira, é, direta também, usando, né, um...
+Porque assim, isso aqui tá na nossa cloud, mas ele tá não tá na nossa rede interna, ele é uma rede separada, tá, lá dentro da Oracle, é, dedicada aos clientes.
+Então se eu simplesmente tentasse pegar aqui, ó, até... ué. Pegar o IP aqui, pegar aqui cmd, ipconfig,
+(AÇÃO: O apresentador abre o Prompt de Comando do Windows e digita "ipconfig")
+não ia funcionar. Por quê? Porque esse esse banco aqui ele é o ele é o IP mas tem toda uma questão de redirecionamento interno que acontece nessas bases que são de clientes que são cloud.
+Então por isso que até aqui, é, então é outra vez, eu sempre uso o Developer como norte.
+(AÇÃO: O apresentador volta para a tela do Oracle SQL Developer)
+Se aqui tiver definido como TNS, você tem que criar por TNS lá dentro do Constru, tá. Se tiver, se for nosso cloud, obviamente.
+Se tiver aqui Basic, daí você pode criar Basic, tá. Então, é... eu fiz aqui para vocês poderem ve- verificar a parte de conexão.
+Agora eu vou explicar aqui como que funciona a parte da, da conexão de borda, tá.
+(AÇÃO: O apresentador volta para a tela do Shift e fecha a janela de edição de conexão)
+Então, e como que funciona isso. Então o TNS é dessa forma, pelo TNS Descriptor, agora a gente vai entender um pouquinho o que que é essa aplicação de borda. Então bora lá.
+Então, como que eu vou simular aqui? Eu vou simular como se a minha máquina ela fosse um... é, um on-premise, tá?
+Então por mais que ela tá na minha rede, vocês vão ver que, que vai funcionar igual, tá. É...
+Então vamos supor que a minha máquina aqui, eu vou fazer isso aqui pelo, é, criar aqui um treinamento pelo oficial, tá?
+(AÇÃO: O apresentador volta para a tela inicial do Shift, entra em um workspace e clica em "Criar novo workspace")
+Que daí isso vai isolar melhor. Então eu tô lá no no oficial, eu vou criar uma conexão de borda aqui dentro.
+(AÇÃO: O apresentador preenche o nome do workspace como "Treinamento" e clica em "Cadastrar")
+É... como que funciona, tá?
+Quando você vai criar uma conexão de borda, tá, a gente tem, é, algumas premissas aqui. Vou desenhar aqui.
+(AÇÃO: O apresentador abre o site excalidraw.com para fazer um desenho esquemático)
+Então nós temos aqui o Shift, e nós temos aqui o banco, tá.
+(AÇÃO: O apresentador desenha dois retângulos no Excalidraw, um amarelo representando o Shift e um azul representando o banco de dados)
+Nós vamos ter que sempre instalar na máquina lá no ambiente do cliente em uma máquina que tenha acesso ao banco de dados, senão não adianta, né.
+É, então a gente vai ter que instalar, aqui a rede onde tá o banco de dados do cliente, eu tenho que instalar lá, seja Linux ou seja Windows.
+(AÇÃO: O apresentador desenha um pequeno círculo dentro do retângulo azul, representando a instalação do relay)
+No meu caso, eu vou simular o Shift na nuvem é esse aqui e a minha máquina vai ser como se fosse esse aqui, tá. É... beleza.
+(AÇÃO: O apresentador desenha setas conectando o Shift (retângulo amarelo) à aplicação de borda (círculo) no banco de dados (retângulo azul))
+Primeira coisa: pra mim saber, pro Shift saber quem é esse cliente aqui, eu preciso gerar um token, que a gente fala, tá?
+Então aqui dentro do Shift, a gente vai ter, é, entrar aqui dentro do, do grupo econômico, vou cadastrar aqui um Viasoft Soluções.
+(AÇÃO: O apresentador volta para a tela do Shift, clica em "Grupo Econômico", depois em "Adicionar" e preenche o nome como "Viasoft Soluções")
+Isso vale pra ne... pra espaço também funciona, tá. Mas eu vou... geralmente você vai quando é comunicação de borda sempre vai ser dentro do cliente, porque se você tá fazendo uma comunicação de borda é um banco de dados quente, né.
+Então criei aqui meu cliente e vou, é, vir aqui em conexões...
+(AÇÃO: O apresentador clica em "Criar", entra no grupo econômico criado e clica no menu "Relays")
+Ah, primeira aqui, ó, parte de conectividade. Antes de ir lá em conexões, eu preciso criar esse Relay.
+Esse Relay aqui é a, é o que o próprio iconezinho mostra aqui, ele é uma tomadinha que vai ligar o Shift com o banco de dados, tá.
+Então eu vou vir aqui em Relay, vou adicionar um novo e vou dar um nome pra ele. Vou colocar aqui... tem que ser um nome que depois você vai usar, tá?
+(AÇÃO: O apresentador clica em "+ Novo Relay" e preenche o nome como "Local")
+É... vou colocar aqui Local, por exemplo. E vou criar.
+(AÇÃO: O apresentador clica em "Criar")
+Ele vai gerar essa chave aqui, é uma chave única e você só consegue pegar ela uma vez, então, ó, aqui até diz, ó, uma única vez.
+Então você já clica em copiar e eu já vou adicionar aqui, é, aqui no nosso... no nosso Notepad aqui pra mim não perder esse cara aqui que depois nós vamos usar. E vou dar um concluir.
+(AÇÃO: O apresentador clica no botão de copiar a chave, abre o Notepad++ e cola a chave em um arquivo de texto, depois volta ao Shift e clica em "Concluir")
+Então primeiro aqui, antes de eu, é, instalar, eu preciso aqui definir as aplicações, os bancos de... as, os schemas, né? Na verdade é schema o nome certo.
+(AÇÃO: O apresentador clica no ícone de escudo (Tabelas permitidas na borda) no relay recém-criado)
+Então se o banco, é, tiver schemas, você tem que definir... você pode definir quais tabelas a borda vai permitir que o Shift conecte. Isso é pra dar uma segurança maior.
+Ah, eu quero todas as tabelas? Então você só vem aqui e coloca VIASOFTMCP., VIASOFTBASE. e VIASOFTFIN.. E dou um salvar, ó.
+(AÇÃO: O apresentador digita os nomes dos schemas seguidos de "." no campo de texto e clica em "Salvar")
+Então aqui, é, sempre ele diz aqui, ó, só essas tabelas podem receber... né, é, então aqui como eu coloquei .* todas as tabelas desse schema vão ser aceitas, todas dessas e todas dessas, tá.
+Então vocês notem aqui que ainda tá offline. É... por que que tá offline, tá?
+Aqui dentro quando eu vou criar uma conexão... opa, tô dentro do cliente aqui...
+(AÇÃO: O apresentador navega pelos menus do Shift tentando encontrar a opção de download do instalador, clica em "Conexões", "Relays" em diferentes níveis)
+Acho que ainda não tá na versão oficial. Aqui dentro, quando eu for criar uma conexão... desculpa, é aqui. Aqui em, é, configurações, Relay...
+(AÇÃO: O apresentador vai até as configurações do Shift, menu "Relays")
+Ah sim, não tá aparecendo porque eu não não tinha subido o instalador aqui. Deixa eu su- subir ele.
+(AÇÃO: O apresentador clica em "Substituir Instalador" e seleciona um arquivo compactado no computador)
+Publicar, beleza.
+É, então aqui pra vocês quando vocês forem na parte de conexões aqui, é, desculpa, na parte de geral Relay, tá, ele vai ter esse aqui, ó, baixar instalador.
+(AÇÃO: O apresentador volta para a tela do grupo econômico "Viasoft Soluções", menu "Relays" e mostra o botão "Baixar instalador")
+Deixa eu ver se lá dentro do grupo econômico tá da mesma forma só pra mim ver se... é, tá aqui, ó.
+Então você vai ter esse baixar instalador aqui. Então esse instalador ele vai ser um serviço que será instalado na máquina onde o banco de dados vai estar, né.
+Aqui tem o instalador, por enquanto ele tem o Windows. Mas já vai ser disponibilizado aí nas próximas versões pra instalação em servidores Linux também, tá.
+Então eu vou dar um baixar aqui.
+(AÇÃO: O apresentador clica no botão "Baixar instalador")
+Então ele já veio aqui, então ele é um instalador. Deixa eu vir aqui nos meus downloads, pra ver, pra vocês verem.
+(AÇÃO: O apresentador abre a pasta Downloads do Windows e clica duas vezes no arquivo baixado "shift-relay-installer.exe")
+Vou dar um executar aqui, né. Aqui é só dar um executar mesmo assim.
+(AÇÃO: O apresentador confirma a execução na tela do Windows Defender SmartScreen clicando em "Executar mesmo assim")
+Então ele traz, é um instalador Windows normal. Então bem-vindo ao assistente instalador do Shift Relay, este instalará o Shift Relay versão 1.0 no seu computador, é recomendado que você feche todos os outros aplicativos antes de continuar, não precisa fechar, né, isso é padrão aí do instalador, né.
+(AÇÃO: O apresentador lê as informações na tela do instalador e clica em "Avançar")
+Então aqui tá o nosso token. Então o que que eu vou fazer? Eu vou pegar o nosso token que nós tínhamos salvo aqui.
+(AÇÃO: O apresentador vai até o Notepad++, copia o token e cola no campo "Token" do instalador)
+Então o token é importante, né, e vou colocar o nome aqui Local também.
+(AÇÃO: O apresentador digita "Local" no campo "Nome" e clica em "Avançar")
+Aqui é só onde ele vai salvar, c:\ProgramData\Shift\Relay.
+(AÇÃO: O apresentador clica em "Avançar" na tela de local de instalação)
+E aqui eu vou colocar o banco de dados, né. Então o banco de dados tá aqui no... pegar meu IP.
+(AÇÃO: O apresentador preenche os dados de conexão do banco no instalador: Host, Nome da conexão, Porta, Porta do gateway, Database service, Usuário, Senha e Allowed tables)
+Então é 192.168.91.89. Aqui é o nome, né, desculpa, também vou botar Local.
+A porta 1521. E aqui a porta do gateway, tá.
+A porta do gateway é importante que você sempre use, é, uma porta aleatória, tá? É, por quê? Porque isso aqui é, e uma porta obviamente não utilizada.
+Então por convenção geralmente utiliza-se aqui o, é, o um na frente, né. Então aqui no caso a porta é 1521, vou botar 11521.
+Aqui o service name vai ser o VIASOFT3, né. Mesma coisa, aqui o usuário VIASOFTMCP.
+Aqui tá... aqui a mesma coisa, quais que são as tabelas lá que você autorizou, VIASOFTBASE., VIASOFTMCP. e VIASOFTFIN.*.
+E eu venho aqui em adicionar banco, ele já vem pra cá e vou dar um avançar.
+(AÇÃO: O apresentador clica em "Adicionar banco cadastrado" e depois em "Avançar")
+Aqui só onde ele vai salvar outras informações e vou dar um instalar.
+(AÇÃO: O apresentador clica em "Instalar" e aguarda a barra de progresso)
+Beleza, ele instalou.
+(AÇÃO: O apresentador clica em "Concluir")
+Se nós viermos aqui dentro do, de serviços do Windows agora,
+(AÇÃO: O apresentador abre o menu Iniciar do Windows, digita "Serviços" e abre o aplicativo)
+é, nós vamos ter aqui um novo serviço, na letra S aqui, vamos achar ele. Aqui ó, Shift Relay, tá? Então agora a gente tem esse cara aqui.
+(AÇÃO: O apresentador localiza o serviço "Shift Relay" na lista de serviços do Windows, que está com status "Em Execução")
+Agora nós podemos voltar lá pra dentro do Shift.
+(AÇÃO: O apresentador volta para o navegador na tela do Shift)
+Vamos atualizar a página aqui ó, e já viu que ele tá online.
+(AÇÃO: O apresentador atualiza a página e o status do relay muda de "OFFLINE" para "ONLINE")
+Ou seja, o túnel de conexão entre o Shift e a minha máquina foi estabelecido.
+Mas esse é só o túnel, a conexão ainda não foi criada. Então agora aqui dentro de conexões, eu venho aqui em nova conexão, coloco aqui Local,
+(AÇÃO: O apresentador clica no menu "Conexões" na barra lateral esquerda, clica em "+ Nova Conexão" e preenche o nome como "Local")
+O sistema, ah o que eu criei agora, esse é aqui né, pra gente usar, só vou adicionar o ConstruShow aqui pra nós testar.
+(AÇÃO: O apresentador tenta selecionar o sistema, mas precisa cadastrá-lo antes. Vai em configurações do workspace, clica em "+ Novo Sistema", seleciona "Oracle", digita "CONSTRUSHOW" e cadastra)
+É obrigatório ter um sistema tá.
+Então vamos voltar lá dentro do nosso cliente Viasoft, adicionar conexão, nova conexão, Local,
+(AÇÃO: O apresentador volta em Grupos Econômicos > Viasoft Soluções > Conexões e clica em "+ Nova Conexão", preenchendo o nome como "Local")
+É bom sempre usar o mesmo nome tá? É... se você colocou Local lá dentro da instalação do Shift, o nome dessa, do, da instalação aqui do Shift Relay aqui, daquele executável que nós rodamos, não é bom tá, é é obrigatório que seja o mesmo tá, senão não vai conseguir se se encontrar.
+Oracle, beleza, vou colocar aqui é o que que eu quero pegar.
+(AÇÃO: O apresentador seleciona o sistema "CONSTRUSHOW", o tipo "Oracle", preenche Usuário e Senha com "VIASOFTMCP")
+Usuário, meu IP, que é 192.168.91.89.
+(AÇÃO: O apresentador preenche o "Host" com o IP)
+Quando é por relay você pode sempre deixar easy connect aqui tá, quando é por aplicação de borda.
+Vou colocar aqui VIASOFT3, VIASOFTMCP, VIASOFTBASE, VIASOFTFIN.
+(AÇÃO: O apresentador preenche "Banco de dados" com "VIASOFT3" e os "Schemas adicionais" com os nomes dos schemas)
+E agora aqui né, diferente da de conexão no- normal vou colocar aqui que é tem uma conexão relay.
+(AÇÃO: O apresentador marca a opção "Conexão de relay (banco on-premise)" e seleciona o relay "Local")
+E lembram daquela porta do gateway que a gente colocou lá, com um na frente? Então é aqui que a gente usa também, 11521.
+(AÇÃO: O apresentador preenche o campo "Porta no gateway" com "11521" e clica em "Criar")
+Vou criar. É, o que que eu deixei sem informar aqui. Deixa eu ver.
+(AÇÃO: O apresentador tenta criar, mas ocorre um erro. Ele pausa a gravação para verificar)
+É, então e- eu pausei aqui só pra ver o que tava acontecendo. É porque eu já... antes tava aqui 15521 né, porém eu já tava usando essa porta e vou ter que só melhorar a mensagem ali pra ele gerar uma nova porta.
+Então a única coisa que eu fiz foi o quê? Eu vim aqui no Shift Relay, parei ele né, parar, e daí ele sempre vai salvar as informações dele onde, lá no se você mudar lá nas instalações ele tem o local, mas por padrão sempre vai ser Disco C, Arquivos de Programas, Shift Relay e nós temos esse arquivo aqui que é as configurações dele tá.
+(AÇÃO: O apresentador mostra a tela de Serviços do Windows com o serviço Shift Relay parado, depois abre o Windows Explorer no caminho C:\Program Files\ShiftRelay)
+Então você pode vir aqui abrir o editor e eu mudei a porta que nós tínhamos definido pra 18521. É, porque a outra já tava sendo usada em outra instalação que eu tenho aqui tá.
+(AÇÃO: O apresentador abre o arquivo relay.yaml no Notepad++ e mostra a linha "gateway_port: 18521")
+Então basicamente foi isso. Mas no e- em produção eu vou ajustar pra essa mensagem ficar mais clara, ele gerar algumas portas aqui de sugestão pra vocês usarem.
+É, mas agora mudando a porta aqui né, é ainda aqui ó, conexão relay online, daí eu se eu salvar aqui e testar a conexão,
+(AÇÃO: O apresentador volta para o Shift, muda a "Porta no gateway" para 18521, clica em "Salvar" e depois em "Testar conexão")
+já vai dar conexão bem-sucedida.
+Então assim a gente fez uma conexão, é, de borda, tá.
+Então, é, basicamente o quê? Instalar o serviço do Shift, configurar ali as informações, subir ele né, junto com o relay que você configurou,
+né, essa chave aqui você pode ou revogar ela ou excluir, e daí a partir daí você não vai mais conseguir obviamente eh conectar nesse banco né.
+Sempre configurar a nível de, é, cliente. Principalmente se for conexão de cliente né, porque se você conectar a nível de espaço, aqui lembrando que todos vão poder é acessar essa conexão.
+(AÇÃO: O apresentador mostra que o relay foi criado dentro do grupo econômico, não no nível do espaço/workspace)
+Então isso é muito muito importante né, pra você não ter nenhum acidente aí de colocar uma conexão quente de cliente no espaço e daí alguém tá testando usa aquela conexão tá.
+É, então sempre utilize de maneira muito inteligente obviamente as suas conexões aí. Então essa conexão aqui tá dentro desse cliente Viasoft.
+Se eu tiver outro cliente aqui ó, vamos criar mais um cliente. Adicionar o sei lá, SpaceX.
+(AÇÃO: O apresentador vai em Grupos Econômicos, clica em "Adicionar", preenche o nome como "Space X", clica em "Criar")
+Então esse aqui já ele já tá em produção tá. E aqui ob- obviamente a SpaceX não vai ter as conexões daquele cliente tá.
+(AÇÃO: O apresentador entra no grupo econômico "Space X", clica em "Conexões" e mostra que a lista está vazia)
+Então por isso que é muito importante você sempre segregar essas é conexões.
+Outra forma de conexão que a gente tem aqui, tá, aqui em conexões, é, eu vou voltar aqui eu tô dentro de treinamento, é, eu vou voltar lá pro nosso teste aqui, é, em homologação, tá, pra mim não poluir ali o ambiente de produção.
+(AÇÃO: O apresentador sai do grupo econômico, volta para a tela inicial do workspace "Treinamento", depois muda de aba no navegador para o ambiente de homologação do Shift)
+Outra coisa que nós temos aqui dentro de conexões é a possibilidade,
+(AÇÃO: O apresentador entra no workspace "ConstruShow" no ambiente de homologação e clica em "Conexões")
+vamos lá no nosso treinamento... possibilidade de, é, criar conexões a partir de arquivos, tá.
+(AÇÃO: O apresentador entra no workspace "Treinamento" no ambiente de homologação e clica em "Arquivos")
+É, o que que são essas conexões a partir de arquivos? É... mui-tas é muitas vezes você pode ter esses banco que eu já comentei em alguma em um treinamento anterior, que são arquivos esses .dbf por exemplo aqui,
+(AÇÃO: O apresentador abre o Windows Explorer em uma pasta com vários arquivos .dbf)
+ou muitas vezes o cara quer te mandar uma planilha, eu tenho algumas planilhas aqui ó de exemplo, por exemplo eu tenho aqui uma planilha de cadastro de pessoa.
+(AÇÃO: O apresentador navega no Windows Explorer até uma pasta "samples" que contém arquivos CSV e planilhas)
+Então muitas vezes o cara tem lá essa essa planilha com dados e ele precisa te mandar de alguma maneira pra você usar ele.
+Você vai ter nós dentro do fluxo de ler dados de planilha, tá? Então planilha eu vou usar como exemplo, mas é seria mais para situações em bancos mais antigos como esses .dbf.
+Mas aqui dentro do da plataforma, você vai poder entrar aqui dentro do cliente. Deixa eu entrar dentro de um cliente aqui.
+(AÇÃO: O apresentador volta para a tela do Shift, clica em "Grupos Econômicos", entra no "Cliente XPTZ" e clica em "Arquivos")
+É, e vai poder aqui subir arquivos.
+Então vou vir aqui no menu né Arquivos, vou criar uma nova pasta aqui, e quando eu criar essa pasta, s- se esse cara for utilizado pra ser convertido em um banco de dados, você tem que deixar marcado isso aqui.
+(AÇÃO: O apresentador clica em "Nova pasta" e marca o checkbox "Conjunto")
+Então eu vou colocar aqui sis... shift... sei lá, sis sh... shift. Criar.
+(AÇÃO: O apresentador preenche o nome da pasta como "SISHIFT" e clica em "Criar")
+Dentro dessa pasta que é um conjunto de dados, agora eu posso incluir os meus arquivos.
+(AÇÃO: O apresentador entra na pasta "SISHIFT", clica no botão "Incluir", e abre o explorador de arquivos)
+Então eu vou pegar aqui umas tabela de... pegar aqui... tenho esse PESSOA, tem um de VENDAS aqui, nem sei o que que tem mas vamos usar esses dois aqui.
+(AÇÃO: O apresentador seleciona os arquivos "PESSOA.xlsx" e "vendas.xlsx" e clica em Abrir)
+Então tô fazendo o upload delas.
+Então tenho aqui pessoas e vendas dentro desse conjunto de dados.
+Todas as pastas... esses arquivos aqui eles vão servir pra outras coisas tá. Eu vou falar primeiro sobre a parte de com- quando ele é um conjunto de dados. Se você cria só uma pasta desmarcada isso aqui, depois você vai poder usar lá dentro dos dos fluxos né.
+Mas quando você cria uma pasta que é uma é um conjunto de dados, tá, aqui dentro das conexões você pode criar uma conexão a partir de um conjunto.
+(AÇÃO: O apresentador clica em "Conexões" no menu lateral, depois em "A partir de um conjunto")
+E criar essa conexão.
+(AÇÃO: O apresentador seleciona o conjunto "SISHIFT" e clica em "Criar conexão")
+Óbvio, ele não vai ter esse botão aqui de de testar né a conexão porque ele é arquivo.
+Mas ele vai ter o playground da mesma forma que depois a gente vai ver- verificar como que funciona o playground aqui dentro.
+Mas você vai poder executar consultas em documentos como se fosse um banco de dados. Então você vai poder fazer SQL dentro de uma planilha. SQL dentro de um CSV. SQL dentro de um arquivo .dbf que é no caso daquele cliente ali que tem aqueles arquivos .dbf.
+Então ah, você pode criar uma conexão também a partir de um conjunto de dados que seriam arquivos.
+É, deixa eu ver aqui... da parte é 3 aqui seria isso que nós vamos ver e na próxima nós vamos ver aqui sobre criar é bases de dados interna, tá.
+(AÇÃO: O apresentador muda para a aba da apresentação no Canva)
+(AÇÃO: O apresentador avança para o slide "Parte 4 - Criando uma base de dados interna")

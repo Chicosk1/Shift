@@ -1,0 +1,40 @@
+Então continuando aqui no nosso... no nosso treinamento, o nosso próximo nó aqui é o desaninhar, tá?
+Então pra isso aqui, eu peguei aqui, gerei uma lista...
+(AÇÃO: clica no nó "Manual" na área de trabalho, abrindo um painel lateral)
+Deixa eu apagar essa linha aqui...
+(AÇÃO: apaga uma linha vazia no editor de código JSON)
+gerei uma lista aqui como se fosse uma... uma API respondendo, né?
+Que ela mandou o id_pedido, cliente e os itens ela veio dentro de um array aqui com vários itens, né?
+É...
+Se eu olhar isso em tabela, ó...
+(AÇÃO: clica na aba "Tabela")
+O sistema ele vai vir assim, aqui eu tenho coluna, id_pedido e aqui eu tenho um texto aqui com um monte de coisa dentro, ó...
+que é o array aqui dos itens, né?
+É...
+(AÇÃO: clica no botão "X" para fechar o painel)
+E como que eu faço pra transformar esses itens em colunas? Eu uso o desaninhar.
+(AÇÃO: clica no nó "Desaninhar" na área de trabalho, abrindo um painel lateral)
+Então aqui dentro do desaninhar, qual que é o... qual que é o... a coluna dessa tabela aqui que eu quero desaninhar?
+(AÇÃO: clica no campo "selecionar campo do tipo lista" abaixo de "CAMPO A DESANINHAR")
+Tornar o que tá hoje um array aqui dentro em linhas. Então é o itens.
+(AÇÃO: seleciona a opção "itens" na lista suspensa)
+Então aqui o prefixo é se você quiser colocar algum prefixo, né... da... das colunas filhas, né?
+E o carregar todas as colunas do pai é se você quiser manter as colunas pai.
+Ou seja, a coluna pai de itens é a que tá aqui, né, que é id_pedido e cliente.
+Se eu não quiser manter, ele... aqui eu posso marcar e daí selecionar o que que eu quero mandar pra frente.
+(AÇÃO: clica na lista suspensa abaixo de "COLUNAS DO PAI")
+Senão, deixo todas aqui.
+E daí quando eu rodar isso...
+(AÇÃO: clica no botão "Executar")
+ó, notem que o que era item aqui, ele se tornou uma linha e coluna, né?
+Todas as opções dentro do array, ó... a... as... os índices deles aqui, né, que seria o nome das colunas, ó, se tornaram colunas.
+E daí o valor se tornou uma linha, ó.
+Então, a Ana Costa aqui, ó... que ela tem dois itens, ó, zero e um...
+então se tornou duas linhas.
+O Bruno aqui, que tinha um item só, se tornou uma linha, tá?
+Então aqui você consegue desaninhar.
+Isso aqui é mais usado pra situações de integração, geralmente você vai receber um JSON nesse formato aqui...
+por exemplo, quando você fizer uma... uma requisição HTTP request, o retorno geralmente vai ser esses dados aqui.
+E daí com esses dados você vai ter que... pra conseguir trabalhar, né, fazer esse desaninhamento aí.
+(AÇÃO: clica no botão de fechar para ocultar o painel)
+Então, basicamente o desaninhar funciona dessa maneira.

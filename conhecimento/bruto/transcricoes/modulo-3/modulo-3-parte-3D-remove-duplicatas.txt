@@ -1,0 +1,72 @@
+Beleza, iniciando mais um vídeo aqui, vamos pro próximo nó de transformação.
+(AÇÃO: O nó "Agregador" é removido e a tela passa a exibir apenas os nós "Manual" e "Ler Base Interna")
+Vamos remover aqui o nosso agregador que nós tinha feito. Usando ainda a nossa graciosa tabelinha de funcionários...
+(AÇÃO: A lista de nós disponíveis é exibida na lateral esquerda da tela)
+Vamos para o próximo nó aqui na nossa lista, também indo em ordem, nó Remover Duplicados.
+(AÇÃO: O nó "Remover Duplicados" é adicionado ao fluxo e conectado após o nó "Ler Base Interna")
+Então aqui, como o nome já diz, ele vai remover dados duplicados. Para isso a gente precisa primeiro dos dados, tá? Então eu vou pegar e vou fazer um mapeamento aqui, eu vou pegar só as cidades.
+(AÇÃO: O nó "Mapeamento" é adicionado ao fluxo e conectado entre os nós "Ler Base Interna" e "Remover Duplicados")
+(AÇÃO: As configurações do nó "Mapeamento" são abertas)
+Então eu vou passar pra frente aqui só as cidades. Então vamos supor que eu tenha... Vou pegar aqui, vou deixar maiúsculo, vou remover acentos e remover especiais.
+(AÇÃO: O campo "cidade" é adicionado ao mapeamento com as transformações "Maiúsculo", "Remover acentos" e "Remover caracteres especiais" aplicadas)
+Tá? Então deixa eu executar ele aqui.
+(AÇÃO: O nó "Mapeamento" é executado)
+Então vamos supor que eu tenho um cadastro de cidade, e daí eu vou receber essa caralhada de cidade aqui.
+(AÇÃO: A aba "Output" do nó "Mapeamento" é exibida, mostrando a lista de cidades com as transformações aplicadas)
+Então, se eu inserir assim no banco vai ficar um monte de cadastro repetido, se... vamos supor que o nome da cidade fosse uma chave já ia dar na trave, né?
+Então, remover duplicados aqui, serve basicamente pra isso. Você vem aqui e remove os duplicados. Então aqui, no caso, a gente tá deixando só a cidade, né?
+(AÇÃO: As configurações do nó "Remover Duplicados" são abertas)
+(AÇÃO: O campo "cidade" é adicionado como "Chave de Duplicidade")
+Aqui, se você tiver um... aqui é pra critério de desempate, né? Eh, então se você tiver uma situação em que a condição de duplicidade seja duas colunas ali, que ele vai remover, ele, ele desempata através dessa coluna aqui.
+Mas aqui a gente só tem uma, depois já dá até pra a gente expandir isso, tá? Eh... Ó, então aqui mostrando da forma mais simples aqui, a gente tem aqui que antes estava dessa maneira, ele transforma pra essa maneira aqui.
+(AÇÃO: O nó "Remover Duplicados" é executado e o Output é exibido, mostrando a lista de cidades sem duplicatas)
+Então a parte de... A parte aqui de remover duplicados, da maneira simples, é bem... é isso, você isola o dado que você quer, tá?
+E se você tiver mais de um dado, eu vou... eu vou verificar aqui, vou mostrar agora. Eu vou subir uns dados aqui pra gente verificar.
+(AÇÃO: O editor de fluxo é limpo e um novo fluxo é configurado com dois nós "Manual" e um nó "Remover Duplicados")
+Então pro desempate, o que que eu vou fazer aqui? Eu não quero estragar isso aqui, porque depois nós vamos usar. Vou selecionar aqui e vou desativar. E vou... vamos começar aqui, eu vou adicionar um nó manual, tá? E eu vou colocar um json aqui.
+(AÇÃO: Os nós "Ler Base Interna", "Mapeamento" e o primeiro "Remover Duplicados" são selecionados e desativados)
+(AÇÃO: Um novo nó "Manual" é adicionado e configurado com um payload de teste (json) contendo dados de cidades, responsáveis e datas de cadastro)
+Que é bem parecido com aquilo que a gente tem, mas ele só tem menos dados aqui que eu acho que fica mais fácil da gente executar.
+Então aqui eu tenho dados de São Paulo, quem é o responsável por aquela cidade e a data, tá? Eh, então como que funciona, tá?
+Eu vou pegar aqui, vou fazer um... um nó de mapeamento... Não, não precisa de mapeamento, vamos direto em remover duplicados aqui.
+(AÇÃO: Um novo nó "Remover Duplicados" é conectado ao novo nó "Manual")
+Então eu vou ligar aqui e ainda a nossa remoção será por cidade.
+(AÇÃO: A configuração do novo nó "Remover Duplicados" é aberta e "cidade" é adicionada como "Chave de Duplicidade")
+Só que agora aqui... Aqui eu tenho a parte de desempate, tá? Eu vou, se eu colocar aqui... se eu deixar qualquer, ele vai, eh, vai pegar uma linha por cidade aqui. A primeira ali que ele encontrar por cidade ele vai, vai deixar uma linha por cidade. Se a gente ver aqui a gente tem a Ana e o Bruno, né, eh, de São Paulo. A gente tem no Rio de Janeiro a Helena e o Diego. A gente tem em Curitiba o Felipe, que é só ele. Em São Paulo, o Bruno e a Carla. Tá?
+(AÇÃO: A configuração "Desempate" é aberta e deixada como "qualquer linha do grupo")
+Então se a gente coloca aqui a... o critério de desempate, a data do cadastro, a gente pode definir o desc ou asc.
+(AÇÃO: "data_cadastro" é adicionada em "Coluna" dentro da configuração "Desempate")
+O desc, ele vai sempre manter o mais recente. Tá? Então, por exemplo aqui, ó. Vamos pegar São Paulo. Um do 10 de 2024 e o outro é 22 do 3 de 2024. Vamos executar aqui para ver.
+(AÇÃO: O payload de teste do nó "Manual" é exibido novamente para comparar as datas)
+(AÇÃO: O nó "Remover Duplicados" é executado com "data_cadastro" como critério e "Primeiro (ASC)" selecionado)
+Então, ele manteve em São Paulo 5 do 6 de 2024, porque esse aqui é mês 1. Então, ele manteve o mais...
+Eh, São... Ah, não, aqui embaixo tem outro, né. O mais recente, né, que é o mês 6, tá certo? É a Carla.
+Se eu defino aqui o critério de desempate quando tem dois na mesma cidade, é, por exemplo, ASC, ele vai manter o mais antigo.
+(AÇÃO: O botão "Primeiro (ASC)" é clicado na configuração de desempate e o nó é executado)
+Então, eu vou pegar aqui, ó. Então, ele manteve em São Paulo a Ana, que é do mês 1.
+Se eu faço aqui, eh... então, o critério de desempate, geralmente é esse, né. Se eu boto o responsável aqui, não ia acontecer, né, mas se eu colocar o responsável, colocar o ASC, ele vai pegar por ordem alfabética, né? Então ele vai pegar a Ana provavelmente, né? Ó. Porque ela começa com a letra A.
+(AÇÃO: A coluna de desempate é alterada para "responsavel", o botão "Primeiro (ASC)" é clicado e o nó é executado)
+Se eu colocar DESC, sei lá, é o D, não São Paulo... A, B, C, D... é a Carla. Ah, então São Paulo ele pegou a Carla.
+(AÇÃO: O botão "Último (DESC)" é clicado e o nó é executado)
+Então, o critério de desempate basicamente permite você fazer esse tipo de desempate quando você tem... ah, porventura, se tiver esses dados, o que que vai desempatar? Porque, por padrão, ele sempre vai pegar o primeiro.
+Então, tipo... eh, o primeiro foi São Paulo, ele vai manter São Paulo. Tá? Então, isso não te dá a possibilidade de decidir com base em algum critério de desempate, tá? Então, essa parte de desempate funciona basicamente dessa maneira.
+Mas ainda a gente tem a opção aqui de fazer algumas combinações, né? Então... aqui, ó. Então até aqui tem na descrição, ó: linhas com a mesma combinação desses valores serão consideradas duplicadas.
+(AÇÃO: A aba de configurações do nó "Remover Duplicados" é aberta na seção "Chave de Duplicidade")
+Então, o que que acontece? Se eu rodo assim, "cidade", eu tenho só Curitiba, São Paulo e Rio de Janeiro, tá? Três linhas.
+(AÇÃO: O nó "Remover Duplicados" é executado com "cidade" como única chave de duplicidade. A aba "Output" mostra 3 resultados: Curitiba, São Paulo e Rio de Janeiro)
+Agora, se eu combino também o "responsável", ó. Eu posso combinar aqui.
+(AÇÃO: A coluna "responsavel" é adicionada na seção "Chave de Duplicidade")
+Até eu poderia arrastar, né, mas aqui ele te dá a opção, né, eu poderia ter vindo aqui simplesmente e combinado assim.
+Então o que que vai acontecer? A chave se torna essas duas aqui. Então, tudo que tiver esses dois aqui ele vai manter.
+(AÇÃO: O nó "Remover Duplicados" é executado novamente)
+Então nesse caso aqui, como a gente tem seis registros aqui, ele manteve os seis. Porque eu não tenho nenhuma duplicação de Curitiba e nome, né? Igual. Então, por isso que ele vai manter as informações dessa forma.
+(AÇÃO: A aba "Output" exibe os 6 resultados, pois não há registros com a mesma combinação de "cidade" e "responsavel")
+E também se eu colocar aqui critério de desempate, sei lá, a data de cadastro aqui. Também, né? Ele não vai alterar por que? Porque eu não tenho dados duplicados.
+(AÇÃO: A coluna "data_cadastro" é adicionada como critério de desempate e o nó é executado novamente. O output continua com 6 resultados)
+Agora, se eu vier aqui, vamos colocar aqui mais uma linha. Colocar mais uma linha da mesma aqui, só que agora aqui eu vou colocar que essa Carla tem o, a Carla do mês 1, e tem a Carla do mês 6.
+(AÇÃO: O nó "Manual" é configurado para adicionar um novo registro idêntico a um existente (São Paulo, Carla), mas com "data_cadastro" diferente (2024-01-10))
+Tá? Se eu executar aqui e está ASC, né, que é do mais antigo para o mais novo, ele vai manter a Carla do mês 1.
+(AÇÃO: O nó "Remover Duplicados" é configurado com "Primeiro (ASC)" no desempate e executado)
+Agora, se eu mudar para DESC, ele vai manter a Carla do mês 6. Ó.
+(AÇÃO: A configuração do desempate é alterada para "Último (DESC)" e o nó é executado. A aba "Output" mostra o registro da Carla com a data mais recente)
+Tá? Então, assim, a parte de remover duplicadas, ela é bem... bem funcional aí para situações que você precisa manter dados únicos, né? Então ela te dá essa possibilidade aqui diretamente dentro do Shift, de maneira bem simples.

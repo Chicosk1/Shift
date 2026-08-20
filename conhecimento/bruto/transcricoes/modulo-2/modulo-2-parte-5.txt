@@ -1,0 +1,112 @@
+(AÇÃO: Tela exibindo apresentação com a logo "SHIFT", "DATA IN MOTION", "MÓDULO 2", "Parte 5 - Usando o playgroud e salvando consultas", "VIASOFT")
+Beleza, então vamos pra última parte do nosso módulo 2, que é a parte 5, e nós vamos falar agora sobre o playground e as consultas, como a gente salva consultas e reutiliza isso, eh, lá dentro dos fluxos.
+Então, sem mais delongas, vamos lá.
+(AÇÃO: O apresentador sai da apresentação e vai para a interface web do "SHIFT")
+Então aqui a gente tá no nosso espaço treinamento, né, que nós estamos aí criando várias coisas. Eh, nós temos aqui o nosso cliente XPTZ e aqui nós tínhamos as nossas conexões que a gente criou lá na conexão direta, essas duas na TNS, e a do CIS SHIFT aí da última aula que a gente utilizou através de conjunto de dados.
+Então todas elas, independentemente do formato de conexão, a não ser base de dados, né, que eu já expliquei o porquê, né, porque lá dentro do fluxo você tem nós específicos pra isso.
+Mas todos os outros métodos você vai tá aqui dentro da conexão e você vai ter essa opção playground.
+(AÇÃO: Clica no ícone "Playground" na conexão "Conexão Etrade")
+O que que acontece? Quando você clica, geralmente na primeira vez que você clica é um pouco mais demorado, porque o sistema vai conectar nesse banco e pegar todo o schema desse banco de dados.
+Aqui é muito parecido com o SQL Developer, né. Basicamente é bem parecido com o SQL Developer, mas não se engane.
+O playground ele foi feito pra teste e auxílio na resolução de consultas, ele não foi feito pra ser um SQL Developer.
+Então se você precisa rodar processos... e ele só roda select, tá. Então se você precisa rodar processos pesados e tudo mais, ainda o caminho é as IDEs nativas pra esse tipo de coisa.
+O playground aqui, o que que ele permite? Ele permite você fazer algumas consultas, e o mais importante, utilizar o nosso copiloto.
+Mas antes de usar o nosso copiloto, vamos conectar num banco que a gente conhece aqui, o ConstruShow.
+(AÇÃO: Clica no botão "Voltar", depois clica no ícone "Playground" da conexão "ConstruShow TNS")
+Então o que que eu posso fazer aqui? Eu posso fazer select, select * from filial, por exemplo.
+(AÇÃO: Digita SELECT * FROM FILIAL no editor)
+Posso dar um control espaço pra, pra rodar ou clicar em rodar aqui, ó.
+(AÇÃO: Clica no botão "Run" e os dados aparecem em formato de tabela abaixo)
+Tá? Então aqui eu posso montar as minhas consultas, posso montar, eh, consultas mais pesadas. Deixa eu ver se eu tenho o pessoa aqui nessa base.
+(AÇÃO: Apaga a consulta anterior e digita SELECT * FROM)
+Pessoa doc.
+(AÇÃO: Seleciona PESSOADOC no autocompletar)
+Ó, então eu tenho aqui pessoa doc. Então eu tenho, ó, aqui é importante mencionar essa mensagem aqui, ó. Eu vou executar de novo pra vocês verem.
+(AÇÃO: Clica em "Run" e um aviso amarelo aparece no canto inferior direito)
+Essa mensagem, ele diz, ó: "Resultado truncado. Exibindo 500 de n linhas.".
+Então assim, o playground ele sempre vai trazer só 500 linhas, não interessa se você não coloca o where, ele sempre vai quebrar essa consulta.
+Como eu falei, ele não foi feito pra ser o SQL Developer. Ele tá aqui pra você conseguir conectar em bancos do concorrente e fazer análises rápidas, né, pra verificar o que que tem nessa coluna, 500 primeiros registros já são mais do que suficientes.
+Precisa verificar como tá ficando um dado específico? Where IDPES = 5847.
+(AÇÃO: Digita WHERE IDPES = 5847 na consulta e executa)
+Um dado que não tá trazendo, tá. Então assim, ele foi feito pra ser rápido. Pra ser rápido e pra ser verificável.
+Além disso, a gente pode, eh, retornar linhas aqui, né, e tem um, tem um filtro aqui dentro mesmo.
+Uma coisa, ele não aceita ponto e vírgula no final, vai dar isso aqui, então não... não precisa de ponto e vírgula.
+(AÇÃO: Adiciona ; no final da consulta, executa e um erro aparece)
+Eu não consigo rodar várias consultas concatenadas, então ele é uma coisa mais simples mesmo, tá.
+Ó, então eu tiro aqui, ele vai rodar.
+(AÇÃO: Remove o ;, executa e os dados aparecem novamente)
+E o que que acontece? Aqui dentro é pra mim utilizar pra mim fazer testes, vamos supor que eu tenho aquele banco Etrade ali e não tenho uma IDE do DBeaver que conecta com o SQL Server, né, você pode utilizar aqui.
+Eh, aqui eu tenho alguns atalhos também pra ajustar colunas, se eu quero melhor ajuste, é o conteúdo ou o cabeçalho.
+(AÇÃO: Mostra as opções de ajuste de colunas clicando no menu de três pontos)
+Se eu quero quebrar o texto, né, quebrar a linha de texto, um texto muito grande aqui, ó, ao invés dele ficar cortado, eu quero que ele quebre a linha, ó.
+(AÇÃO: Clica no botão "Quebrar texto em múltiplas linhas" e o texto se ajusta)
+Eh, definir se eu quero visualizar uma coluna x ou y ou z, né.
+(AÇÃO: Abre o menu de seleção de colunas clicando no botão "Gerenciar colunas")
+Mas isso aqui é mais pra, exportar como CSV, é copiar como CSV ou exportar como CSV. Então algumas funcionalidades aí rápidas pra você poder usar esses dados, mas sempre lembrando que ele vai truncar em 500, vai cortar, né, em 500 linhas.
+Mas, daí você vai me falar: "Beleza, mas então se ele trunca em 500 linhas, ó, qual que é a ideia do playground?". A ideia do playground é essa aqui. Que eu pegue um banco de concorrente, conecte ele utilizando o SHIFT, e utilize o copiloto.
+(AÇÃO: Clica em "Voltar", clica em "Playground" da conexão "Conexão Etrade" e abre o painel do Copiloto no lado direito)
+Então aqui, o que que eu posso fazer? Eu posso pedir pra ele: "Preciso que...". Opa. "Preciso que você traga dados de clientes."
+(AÇÃO: Digita "Preciso que você traga dados de clientes" no chat do copiloto e envia)
+O que que vai acontecer aqui? O sistema ele vai utilizar uma inteligência artificial pra varrer esse banco de dados e buscar informações de clientes.
+A gente tem esse banco aqui, ele é, tem até os nomes aqui: estoque atual, etiqueta, expedição, financeiro, ele é até bem organizadinho, né?
+Mas da mesma forma, você poderia bater aqui um CLI_FOR e não ser cadastro de cliente que nem ele tá dizendo aqui, poderia ser outra coisa. Eh, você poderia vir caixas aqui e ser outra coisa, entende?
+Então, a inteligência artificial, ela tem ferramentas dentro dela que elas vasculham esse banco de dados buscando os dados que você tá solicitando.
+Então ela já te traz aqui a informação, dados disponíveis na tabela CLI_FOR. Se tivesse mais de uma ela traria joins e tudo mais, né.
+Eh, e daí ela te dá um, um SQL aqui, você pode aplicar no editor e rodar aqui pra ver se tá tudo certo.
+(AÇÃO: Clica em "Aplicar no editor" no código gerado pelo copiloto e depois em "Run")
+Então já trouxe aqui os dados com base no que você pediu. E te dá outras sugestões aqui. "Você gostaria de algo mais específico? Por exemplo: Cidade por cliente UF, clientes bloqueados e inativos, clientes com limite de crédito." Vamos ver aqui, ó, vamos testar ó, esse aqui.
+(AÇÃO: Clica na sugestão "Clientes com limite de crédito")
+E vamos ativar o raciocínio profundo.
+(AÇÃO: Clica no ícone de cérebro "Raciocínio" e envia a sugestão)
+Então aqui ele vai fazer uma análise um pouco mais profunda e, obviamente, aqui o meu usuário tá como ilimitado, né? Mas a gente tem uso de, eh, créditos, então, isso aqui, use com sabedoria, né.
+Eh, então beleza, ela trouxe aqui, aparentemente não foi nada muito maior, né, ela só viu aqui que tem o campo limite de crédito e adicionou maior, né? Mas aqui ela, ela ajuda muito. Ó, então só tenho dois aí que tem limite de crédito maior que zero.
+(AÇÃO: Clica em "Aplicar no editor" e executa a consulta gerada)
+Então ela ajuda muito a vasculhar, principalmente essas situações em que você não conhece o banco de dados.
+Eh, deixa eu pedir aqui, qual tabela tem informações de notas fiscais. Vamos ver se ela acha.
+(AÇÃO: Digita "Qual tabela tem informações de notas fiscais" no chat e envia)
+Esse teste eu não fiz, vamos lá. Vamos aguardar, ele tá pensando. Aqui você pode ver o que ele tá analisou, né, o que ele pensou.
+(AÇÃO: O copiloto exibe as etapas de raciocínio, como "Listar tabelas...", "Obter colunas...", etc.)
+A gente vai dar uma olhada aqui, o que que ele trouxe.
+Eh... as informações de notas fiscais estão distribuídas em algumas tabelas, aqui está o resumo. Então, ela tem a tabela de movimentos, 195 colunas, tabela principal de movimentos: vendas, compras e tudo mais, dados específicos de nota.
+Então, o que que eu quero? Eu preciso de informações relativos ao documento fiscal, ou seja, à nota fiscal, junto obviamente com o XML. Consegue construir um SQL para mim trazendo esses dados?
+(AÇÃO: Digita a solicitação acima no chat e envia)
+Vamos ver o que que ele vai fazer.
+Então ele tá dando uma explorada ali nas tabelas.
+Explorou, tá trazendo ali. Trouxe agora uma consulta um pouco mais complexa, né, com inner join e tudo mais.
+Então aqui ele traz, ó, o que a consulta retorna: a identificação da nota, número, série, modelo, chave de acesso, as datas (emissão, autorização e cancelamento), o status lá na Sefaz, a situação, os valores, a operação e o XML. Então vamos aplicar no editor aqui.
+(AÇÃO: Clica em "Aplicar no editor" e executa a consulta gerada)
+E vamos rodar. Opa, vamos dar uma olhada aqui. Ó, então ele trouxe realmente datas, olha que legal, que são aparentemente, de... Obviamente, né, você sempre deve validar esses dados, se é isso mesmo que você quer, né? Eh, assim a IA ajuda, mas você não pode terceirizar a decisão.
+Então aqui ela trouxe, ó, dados de notas fiscais e tudo mais, e por último aqui, o XML.
+Então, digamos que você quer, depois pra você não precisar reescrever esse SQL, você quer salvar ele. Então você pode vir aqui, salvar, e definir aqui, eh, Notas Fiscais.
+(AÇÃO: Clica em "Salvar consulta" no painel do copiloto, e preenche o nome "Notas Fiscais")
+Aí eu vou dar um salvar aqui, vou botar a descrição: Busca dados de notas fiscais do cliente.
+(AÇÃO: Preenche a descrição e clica em "Salvar")
+Salvar. Deu um erro aqui. Ixi.
+(AÇÃO: Um erro vermelho aparece no canto inferior direito. O apresentador fecha a mensagem, clica em "Salvar" novamente, fecha o modal, abre novamente e tenta salvar)
+Ok, tem algum probleminha aqui, deve ser da minha base local, mas basicamente você poderia salvar esses dados aqui.
+Mas vamos fazer da forma, vou verificar isso depois, vamos fazer aqui dentro do fluxo. Vamos usar, eh, como essa conexão tá dentro do cliente, né, então eu vou ter que fazer dentro de um projeto.
+(AÇÃO: Vai para Projetos -> Implantação, depois Fluxos, clica em "+ Novo Fluxo", seleciona "Em branco" e preenche o nome "Pegar Notas Fiscais Etrade")
+Vou criar um fluxo aqui. Novo fluxo. Pegar notas fiscais Etrade. Vou criar.
+Ok, eh, vou vim aqui, vou adicionar um manual, vamos colocar uma conexão aqui de, vou pegar de um banco de dados e agora sim vamos simplesmente conectar aqui.
+(AÇÃO: Arrasta os nós "Manual" e "SELECT", liga os dois e clica no "SELECT")
+Vou deixar select mesmo, a gente não vai fazer muita coisa. Vou selecionar uma conexão que é a nossa Conexão Etrade, e as queries salvas, elas aparecem aqui, tá?
+(AÇÃO: Seleciona "Conexão Etrade" no campo "Conexão")
+Eh, só vou analisar o que pode tá acontecendo lá, que não salvou, mas elas vão aparecer aqui.
+Então aqui eu vou colocar o SQL na unha aqui. Isso aqui é mais pra reutilização, né? Se você vai usar só uma vez, não tem problema nenhum você trazer aqui.
+(AÇÃO: Cola o código SQL gerado anteriormente no campo "SQL PERSONALIZADO")
+Só que aqui ele botou um TOP 100, não quero TOP 100, quero todas. E vou dar um executar.
+(AÇÃO: Remove TOP 100 do código e clica em "Executar")
+Então o sistema vai lá, vai conectar com esse banco de dados que já tá configurado pra nós e vai trazer esses dados, só que agora não com TOP 100, né, a IA ela gerou com TOP 100 pra ser mais rápido, né? Mas aqui eu tirei o TOP 100, vamos esperar ele terminar aqui.
+Como eu tirei o TOP 100, provavelmente ele vai trazer bem mais dados.
+Ó. Eh... trouxe 500 linhas por quê, tá?
+(AÇÃO: Os dados aparecem e mostram que 500 itens foram retornados)
+Quando tá em teste aqui, ele sempre também, que a gente sempre prioriza a velocidade, tá?
+(AÇÃO: O apresentador aponta para o toggle "Teste / Produção" no canto superior direito do nó)
+Eh, então quando tá em teste ele nunca vai trazer mais do que 500 dados. Então mesmo que você rode, sei lá, você tem um fluxo de inserir nota fiscal no sistema, se você deixar como teste, ele vai sempre inserir só 500, por mais que a consulta tenha 50.000 registros, tá?
+Então esse é um ponto importante e por isso a diferença entre teste e produção.
+Ok. Então aqui eu já pude utilizar a minha conexão, né, e utilizei a consulta que quem gerou foi o nosso copiloto de SQL lá dentro do, do nosso, eh, do nosso playground.
+Então vocês percebam o poder que isso dá pra você fazer mineração de dados em bancos de concorrente, né. Você poder vir aqui e ter todo um copiloto pra te auxiliar nessas análises e tudo mais, então isso é de um ganho exponencial.
+E daí, obviamente, salvar essas conexões, reutilizar ou simplesmente vir aqui, copiar e jogar lá dentro do fluxo pra você poder usar esses dados aí.
+Ok? Então a parte de playground, eh, e consultas, né, é basicamente isso, a gente com isso encerra o nosso módulo de conexões.
+Então o que aprendemos? Aprendemos fazer conexões diretas, a conexão a partir da borda, conexão a partir de arquivo, criar bases de dados internas, utilizar isso dentro do fluxo, e mais importante de tudo, como usar ali o nosso copiloto pra conseguir buscar dados de um banco de dados que a gente não conhece.
+Então, vamos para o próximo módulo nos próximos vídeos.

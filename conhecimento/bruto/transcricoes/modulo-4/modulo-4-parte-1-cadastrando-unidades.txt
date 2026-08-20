@@ -1,0 +1,327 @@
+Então agora, nós vamos iniciar aí o módulo quatro e o módulo quatro vai ser a prática em si, tá.
+Eh, então a gente vai junto aqui criar o primeiro fluxo de migração. Nós vamos simular aqui a situação de uma migração de dados de cadastro de itens.
+Eh e eu acredito que esse vídeo vá ser bem grande, então eh se você quiser acelerar aí no dois x eh ou um ponto cinco você pode ficar à vontade porque a gente vai criar desde o zero.
+Vamos pegar um banco de concorrente que eu tenho aqui.
+Vamos usar o copiloto pra eh extrair alguns dados, vamos olhar aqui no banco do Construshow. Eu vou simular com o banco do Construshow.
+E vamos decidir quais dados a gente precisa trazer pra dentro do nosso sistema.
+Beleza então bora lá.
+E se você tá assistindo esse vídeo é porque deu certo que senão eu não teria disponibilizado. Então bora.
+(AÇÃO: Navegação para a tela da plataforma Viasoft Shift, mostrando um dashboard com estatísticas de execuções)
+Eh então aqui dentro do Shift a primeira coisa eu tenho que saber o que que eu preciso importar.
+(AÇÃO: Abertura da janela do Oracle SQL Developer)
+Então aqui eu tenho o meu banco de dados.
+A gente, eu já mencionei que nós vamos eh importar itens, né. Então aqui a a tabela item do Construshow é a tabela principal de item, então vocês podem ver aí que ela está eh vazia.
+Então quando você faz uma migração é importante que você saiba tudo o que você precisa pra importar um produto, né, ou nesse caso aqui eh uma pessoa, uma duplicata. Então você tem que ter pelo menos o mínimo de conhecimento da tua estru- da estrutura do nosso software aqui pra saber o que que a gente tem que trazer lá do concorrente ou lá do outro sistema, né.
+Ok, eu vou pegar um outro banco aqui que eu tenho acesso que tem dados.
+(AÇÃO: Seleção de uma aba diferente no SQL Developer executando uma query)
+O que que nós vam- vamos precisar entender primeiro? Eu tenho aqui uma caralhada de coluna. Mas o que que realmente eu preciso trazer aqui, tá?
+Então eu vou pegar uma que tenha dados aqui eh pra gente dar uma olhada o que que tem.
+Então vou olhar aqui por exemplo a parte de item.
+(AÇÃO: Digitação do comando SELECT * FROM ITEM no SQL Developer e execução da query)
+From item.
+Então eu sei que eu preciso ter, eu já vou até anotando aqui as colunas que eu vou precisar.
+(AÇÃO: Digitação de nomes de colunas no editor SQL)
+Que é estab, id item, descrição, eh nro codebar,
+nro codebar, eh unidade, tipo, ncm, esse est ipi aqui a maioria tá nulo, não vou usar.
+Cod de serviço também a maioria tá zero ou tá nulo, não vou usar. Iat não vou usar, não vou usar, uti alt eu vou usar mais pra atualizar. Uti acho que tem até trigger pra isso aqui, não vou fazer.
+Eh importado aqui ó, é um é importante ó ele tá fu- default, ele pode tá tá sempre sem nada aqui ó, mas o default dele é n. Então vou vou usar ele também. Importado.
+Eh peso líquido, tem alguns que tem, isso aqui vai depender muito se vai ter lá dentro do meu concorrente, né, mas eu vou trazer, peso líquido.
+Eh peso bruto.
+Id comissão pr-, esse aqui é a comissão do produto, então vou colocar aqui id comis prod.
+Informação adicional eh vai depender também se vai ter lá dentro do cliente, né. Então vamo trazer aqui. Info adic.
+Então o que que eu vou fazer? Eu vou pausar aqui o vídeo e vou olhar todas as colunas que a gente tem aqui que serão necessárias e eu retorno aqui até pra não deixar o vídeo tão grande.
+(AÇÃO: Corte no vídeo, retornando com a tela do SQL Developer exibindo a lista completa de colunas necessárias)
+Beleza, eu voltei aqui, pra vocês foi rápido, pra mim levou um tempinho, mas aqui tá, então todas as colunas que eu vou eh alimentar aqui.
+(AÇÃO: Ajuste na largura das colunas do resultado da query no SQL Developer)
+Deixa eu diminuir essa coluna aqui que a de informação tá muito grande.
+O que que eu vou fazer agora? Então eu já sei qual que é as colunas que eu vou trabalhar. Só que tem o seguinte, é óbvio que vocês aí vão fazer da forma que vocês, né, têm conhecimento do banco que vocês vão estar inserindo esse dado, mas assim, tem campos aqui que eles têm valores default. Tipo o n aqui, eh o id tipo prod aqui, porque eu conheço o que é necessário ter.
+Eh quantidade e volume, né, vai depender muito se vai vir, isso aqui em informação geralmente não vem. Mas assim, tem algumas coisas, ó, por exemplo, isso aqui, que é um monte de n s aqui, eh são coisas que provavelmente não vão vir no no concorrente.
+Mas se todo cadastro ele tá setado um n aqui ou um s, significa que é um default da aplicação. Então seria muito arriscado eu não manter esse default também na minha migração. Porque daí às vezes isso aqui se tiver nulo a tela não trata, pode dar algum erro. Então é sempre bom você ter uma ciência do que você tá inserindo.
+É óbvio que eh você não precisa inserir todas as colunas, né, ou verificar todas as colunas, você tem que verificar aquilo que é necessário para a configuração inicial num caso de migração, né?
+Então para a tabela de clientes são essas colunas aí que a gente vai trabalhar. Ah, clientes não, desculpa, item.
+Eh, beleza, então o primeiro passo, né. Até vamo anotar aqui os passos.
+(AÇÃO: Abertura do aplicativo Notepad++)
+Depois vocês podem tirar print aí e tudo mais.
+Então o primeiro passo. Conheça a tabela que irá inserir dados. Beleza.
+(AÇÃO: Retorno para a janela do SQL Developer)
+Eh, com tudo isso pronto, agora eu preciso saber o que que dessa tabela ela é proveniente de outra, né. Porque eu tenho, dentro do banco eu tenho chaves estrangeiras.
+Então eu posso dar um control aqui ó pra ele habilitar esse link, clicar aqui, dar um duplo clique aqui ó, aqui eu consigo ver que eu não tô eh eu tô dentro de um sinônimo aqui. Então vou dar um clique aqui ó pra abrir a tabela.
+(AÇÃO: Navegação nas propriedades da tabela no SQL Developer, visualizando as colunas e abrindo a aba Constraints)
+Eh e aqui eu tenho todas as colunas. O que me importa é esse constraints aqui. Então o que que é que vem de outra tabela? Obviamente o código do estabelecimento, que é um fk foreign key, que vem da tabela filial.
+O tipo do produto também, tá, vem aqui da tabela tipo do produto.
+Eh e a unidade também vem aqui da tabela unidade. Então vamos dar uma olhada na tabela tipo do produto e unidade, tá.
+Aqui no Constru o dump padrão de de migração de dados ele já vem com os tipos de produtos padrão. Então tipo, como que é o nome da tabela que eu esqueci? Tipo prod.
+(AÇÃO: Digitação e execução do comando SELECT * FROM TIPOPROD no SQL Developer)
+Então aqui ó se nós pegarmos a tipo prod aqui provavelmente eu já tenho dados ó. Tá? Então aqui eu vou tratar elas.
+Eh eu já sei aqui obviamente então por isso que é importante o conhecimento, né. O Construshow sei que quando é nacional eu tenho que deixar nulo esse campo aqui, né. Mas a gente vai ver lá no banco do do cliente se a gente consegue usar alguma coisa eh a nosso favor a respeito disso.
+E a outra aqui é a unidade. Então a unidade geralmente não não vem, né. Vamos ver aqui como que tá. Unidade.
+(AÇÃO: Digitação e execução do comando SELECT * FROM UNIDADE no SQL Developer)
+Então a unidade tá vazia a gente também vai ter que cadastrar as unidades.
+Beleza, outra coisa que eu sei que eu preciso, óbvio, a tabela item do Construshow pra vocês terem uma ideia, ela tem todas essas tabelas aqui.
+(AÇÃO: Visualização de arquivo de texto no Notepad++ com lista extensa de queries)
+Deixa eu achar aqui que eu tenho todas as tabelas do Constru pra cá.
+Aqui ó. Então são mais de quarenta e sete tabelas.
+Óbvio que se a gente for fazer um vídeo aqui pra fazer o fluxo de tudo isso aqui vocês vão ficar seis horas no vídeo. Porque a primeira vez pra você mapear, pra você entender teu sistema, eh ou se você já tem processos que façam isso você só vai copiar obviamente.
+Mas no nosso caso a gente vai inserir então o que que a gente vai inserir? A gente vai inserir a item, que é a principal, a item categoria, que é onde fica a classificação mercadológica do Construshow. E daí óbvio pra mim ter as categorias eu vou precisar ter a unidade, a marca, departamento, sessão, grupo do item e subgrupo. E a comissão do produto né que isso aí também precisa ter.
+Então nós vamos inserir essas tabelas aí.
+(AÇÃO: Digitação de várias queries SELECT * FROM no SQL Developer para as tabelas listadas)
+Então, eh select asterisco from item categoria. Select asterisco from unidade. Select asterisco from grupo item. Subgrupo. Marca. Sessão. E departamento.
+Tá, então a gente vai precisar inserir. Então todas essas tabelas aqui ó elas tão zeradas e os dados vão vir do concorrente.
+Certo, mas a minha principal aqui eu já tenho, então primeiro eu vou resolver essa aqui.
+Eh, certo, então vou aqui dentro do nosso Shift.
+(AÇÃO: Navegação para a aba do navegador com a plataforma Viasoft Shift)
+E a gente tem o nosso grupo econômico lá, nosso cliente XPTZ que a gente tá usando aí nos últimos treinamentos. E a primeira coisa que nós temos que fazer é ver da onde que vai vir esses dados.
+Então aqui dentro desse cliente a gente já tem uma conexão ó. Conexão Etrade. Então a gente vai pegar desse concorrente que é um SQL Server.
+(AÇÃO: Visualização do Microsoft SQL Server Management Studio com dados do concorrente)
+Inclusive aqui ó tem a tem o banco dele aqui, né. Então a gente vai usar esse cara aí.
+E eu vou só testar a conexão, ver se tá tudo ok.
+(AÇÃO: Clique no botão Testar conexão na plataforma Shift)
+Conexão bem sucedida, vou abrir abrir o playground aqui. Então sem mais delongas vamos abrir o nosso copiloto e vamos pedir pra ele aqui.
+(AÇÃO: Abertura do Playground de consultas SQL no Shift e acesso à aba do Copiloto SQL)
+Preciso eh preciso de dados de produtos, também de da marca, unidade de medida, grupos e subgrupos, departamentos e tudo relacionado a cadastro de produtos ou itens. Que seriam mercadorias para revenda.
+Então quanto mais você detalhar aqui melhor, né.
+(AÇÃO: Seleção do botão de enviar no Copiloto SQL da plataforma Shift)
+Então vou até ativar o raciocínio aqui pra ele fazer uma verificação mais profunda e vamos ver o que que ele vai responder aí pra nós.
+(AÇÃO: O Copiloto SQL processa a solicitação e exibe a estrutura das tabelas relacionadas a produtos)
+Então ele já tá trazendo aí pra montar a estrutura pra nós.
+Então ele já descreveu várias vezes as tabelas aí pra ele ver o que que tem.
+Certo, fez uma bela consulta aqui, vamos ver se ela funciona primeiro depois a gente vai ver se é o que a gente precisa.
+(AÇÃO: Aplicação do código gerado pelo Copiloto no editor SQL e execução da consulta)
+Deixa eu tirar esse, é sempre bom não ter, até eu vou ter que arrumar o prompt dele e não botar essas observações aqui tá.
+Eu vou tirar esse tipo aqui, eu vou pegar só o que tá inativo igual a zero, vou dar uma ajustada aqui.
+(AÇÃO: Ajuste manual na query SQL gerada pelo Copiloto, removendo e comentando algumas linhas do código)
+Não preciso saber do que que vem isso aqui. Pesos e dimensões, preço e custo, unidade medida, marca, família. Eu vou implementar pra ele ignorar essas esses comentários aqui.
+Beleza. Certo, então a gente já tem aqui. Eh, então vamos ver se a gente tem tudo o que a gente precisa, né.
+Então uma coisa que é que dá pra fazer é você fazer o seguinte. Essa aqui é as estab vai depender aqui do meu sistema, né. Eu vou dividir minha tela aqui. Vou fazer o seguinte, pra gente conseguir ver uma validação melhor.
+(AÇÃO: Divisão das janelas do Windows, com a plataforma Shift de um lado e o SQL Developer do outro)
+Vou diminuir minha tela aqui. Botar lado a lado aqui pra nós ter uma visão melhor aqui.
+Então código, então é o nosso id item.
+Já vou até já dar o alias que eu quero né, id item.
+(AÇÃO: Alteração do código SQL no Shift para incluir aliases AS iditem, etc.)
+Que daí lá quando eu rodar essa consulta já fica melhor pra mim, né.
+Eh código ean é o código de barras.
+Eu na verdade assim, eu vou mandar pra ele aqui ó, eh renomeie as colunas com base nessas descrições aquilo que você achar que casa.
+(AÇÃO: Envio de novo prompt para o Copiloto SQL pedindo para renomear os aliases das colunas)
+Renomeie os aliases das colunas baseado nessas que estou te passando caso você entenda que faça sentido e que elas tenham relação.
+Melhor, né, do que ficar escrevendo.
+(AÇÃO: O Copiloto SQL processa a requisição e começa a gerar um novo código com os aliases atualizados)
+Vamo aguardar ele gerar aí pra nós.
+Tá gerando aí.
+Eu acho até que nem é a o comentário, acho que era aquele outro where que ele tinha colocado lá. Tirar esse tipo aí.
+Ó, então ele entendeu aqui ó, id, tralálá. Alguns campos que você não tem correspondência direta, tralálá. Beleza, não tem problema.
+(AÇÃO: Aplicação do novo código gerado no editor SQL do Shift e ajuste manual do código)
+Vamo voltar aqui a nossa consultinha, ai meu Deus.
+Tirar só esse tipo aqui. E o order by aí também não coloquem aqui que é só pra pesar, tá? Se precisar fazer ordenação, faz lá dentro do fluxo.
+Ótimo. Beleza. Vamo ver aqui se o salvar tá funcionando, que ele tava dando um errinho e não lembro se eu ajustei. Produtos.
+(AÇÃO: Tentativa de salvar a consulta SQL como Produtos, ocorre um erro)
+É, ele tá dando um errinho aqui ainda. Eu vou ajustar isso quando vocês forem fazer já vai estar funcionando, mas vou dar um control c aqui.
+(AÇÃO: Abertura de uma nova aba no navegador acessando a página inicial do Shift)
+Vou abrir outro Shift pra mim aqui que daí eu não preciso sair do playground lá, é só preciso voltar.
+Então beleza, o que que a gente precisa ter em mente aqui? Sempre que eu for eh importar um, for fazer uma migração de dados, o core da nossa aplicação sempre vai ser a mesma, tá?
+Então o que vai mudar é a entrada. Então primeiro eu vou construir o meu core.
+Eh então vamos lá, então vou criar uma nova pasta aqui chamada Migração de Produtos.
+(AÇÃO: Criação de nova pasta Migração de Produtos na tela de Fluxos do Shift)
+E vou colocar aqui dentro tudo o que eu preciso.
+Então eu vou vim aqui, vou criar um fluxo eh Insere Itens - Core.
+(AÇÃO: Criação de um novo fluxo em branco com o nome Insere Itens - Core)
+Beleza. Eu vou começar isso aqui sendo um nó manual, tá. Depois eu vou transformar isso aqui num subfluxo tá. Mas inicialmente vamos começar sendo um nó manual e com select.
+(AÇÃO: Adição de nó Manual e nó SQL no canvas do editor de fluxo)
+Então vamos trazer os nossos dados lá. Vou pegar por enquanto a minha conexão vai ser a etrade. Ah já vou trabalhar com variável, né. Sim bem que nós vamos depois tirar isso aqui pra fora, mas tudo bem, pra vocês entenderem as variáveis. Eu vou criar aqui uma variável.
+(AÇÃO: Acesso ao menu de variáveis de Workflow e criação de uma nova variável)
+Eh do tipo conexão, que eu vou chamar conn, concorrente. Aqui sem espaço, sem caractere especial tá. Ele vai ser do tipo SQL Server e vou usar a conexão etrade como designer.
+Beleza. Criei minha variável. Agora eu habilito aqui, vou adicionar minha variável, e vou colar a nossa consulta.
+(AÇÃO: Configuração do nó SQL usando a variável criada e colando o código SQL feito no Playground)
+Ok, vamo ver se tá rodando a nossa consulta.
+(AÇÃO: Execução do workflow)
+Hum, nenhuma conexão compatível.
+(AÇÃO: Fechamento do modal de execução e tentativa de salvar o fluxo)
+Salvar aqui. Ah sim, é porque isso aqui é importante, né, eu tô criando o itens core só que a minha conexão cês lembram que tá aqui dentro do cliente. Então eu não vou, eu não tenho como eh acessar essa conexão. Mas como é uma conexão eh de teste, eu vou tá adicionando ela lá fora, tá.
+(AÇÃO: Visualização e cópia das credenciais da conexão Conexão Etrade no cliente XPTZ)
+Deixa eu ver aqui o que eu coloquei aqui, tralálá, etrade, sa, beleza. Eu vou conectar ela, vou adicionar ela a nível de espaço que daí assim eu consigo criar lá por fora do do meu do meu cliente, né, por conta daquela do nosso isolamento de conexão.
+(AÇÃO: Criação de nova conexão Conn Etrade na tela principal de conexões do Shift a nível de espaço)
+Então vou colocar aqui conn etrade, sistema etrade, eh vou colocar aqui homologação, sa, viasofit, 127.0.0.1. Tá restaurada aqui na minha máquina, e aqui eu tô local né, se eu fosse no no oficial daí eu colocaria no no meu IP. O banco é etrade, e isso aí. Acho que é isso, vamos testar. Ok.
+Eh, só recarregar aqui o playground, tudo certo.
+(AÇÃO: Retorno à aba do fluxo Insere Itens - Core e reconfiguração do nó SQL)
+Agora sim lá dentro do meu fluxo. Deixa eu puxar pra cá. Do meu fluxo itens core.
+Agora ele vai carregar a minha conexão, ó.
+(AÇÃO: Clica em Executar e seleciona a conexão Conn Etrade)
+Eu vou colocar aqui pra lembrar pra mim não precisar ficar toda hora selecionando.
+Vamos ver se ele vai rodar a nossa consulta.
+Show de bola. Temos a nossa consulta aqui.
+(AÇÃO: Verificação do resultado JSON de saída do nó SQL)
+Essas tabelas aqui não, essas, eh esses dlt tal aqui, não se assustem porque é a própria aplicação que gera isso aqui, que é uma questão interna do do Shift, tá, essas que têm dlt no nome. Vocês podem tá ignorando elas.
+Beleza, então a primeira coisa que eu tenho que ter em mente é que nós tínhamos lá aquelas tabelas lá que são que são paralelas, né. Que é a questão da unidade. Então a primeira coisa que a gente vai fazer é fazer uma uma coisa aqui que nós precisamos eh separar as unidades pra gente cadastrar.
+Vamos dar uma olhada lá dentro da tabela unidades, o que que ela tem pra nós. Então select unidades.
+(AÇÃO: Retorno ao SQL Developer e execução do comando SELECT * FROM UNIDADE)
+Então ela tem um unidade, descrição, decimais, e geralmente é isso aí. User id, hora de gravação, uti alt, beleza.
+O que que eu tenho de unidade aqui, vamos dar uma olhada. Eh unidade, unidade, id item, descrição. Unidade, então tá aqui, unidade código e unidade eh descrição. Que é o que exatamente a gente precisa aqui, unidade e descrição.
+(AÇÃO: Visualização das colunas retornadas no nó SQL no Viasoft Shift)
+Então o que que eu vou fazer? Eu vou separar essas unidades. Tá? Então vou vim aqui, vou criar um nó de mapeamento.
+(AÇÃO: Adição de um nó Mapeamento conectado ao nó SQL no fluxo)
+Criar um nó de mapeamento. Vim aqui, vou colocar aqui map_unidade.
+O que que eu quero aqui? Unidade, descrição da unidade. Então unidade código e unidade descrição. Que eu vou renomear pra unidade e descrição.
+(AÇÃO: Configuração do nó Mapeamento selecionando os campos unidade_codigo e unidade_descricao e os renomeando para UNIDADE e DESCRICAO)
+Descrição.
+Vamos rodar pra ver se vai pegar.
+(AÇÃO: Execução do fluxo até o nó de mapeamento)
+Temos aqui. Mas ele tá tudo junto, né. Mas não tem problema.
+(AÇÃO: Visualização dos dados mapeados)
+Como unidade ele é um cadastro, subcadastro, né, se um dia mudar alguma coisa, eu teria que ir em todo o fluxo, ir lá e alterar. Então o que que nós vamos fazer? Nós vamos criar juntos aqui um sub, um subfluxo de unidade. Tá?
+Eh, então vamos salvar esse cara aqui por hora, ele vai ficar assim.
+(AÇÃO: Salvamento do fluxo Insere Itens - Core)
+Que que eu vou fazer? Eu sempre vou passar isso aqui pra lá, então já vou baixar esse, esse exemplo aqui pra mim, ó. Map unidade, que eu vou usar lá na criação do novo fluxo.
+(AÇÃO: Download do JSON de saída do nó Map Unidade)
+Então vamos criar um novo fluxo aqui. Eu vou chamar ele de Unidade-Cadastro.
+(AÇÃO: Criação de novo fluxo em branco chamado UNIDADE - CADASTRO)
+Que aqui dentro nós vamos colocar a lógica de cadastro de unidades.
+O que que ele vai ser? Ele vai ser um subfluxo, eu vou chamar ele lá a partir do outro. Então, quando é subfluxo o gatilho é sempre entrada de subfluxo.
+(AÇÃO: Adição de nó Entrada do Fluxo)
+O que que eu espero, o que que eu espero desse que venha lá dentro do de, que venha lá do outro cadastro? Eu espero que venha aqui um esquema de input, eu espero que venha uma tabela que eu vou chamar ela de unidades.
+(AÇÃO: Acesso às configurações do nó Entrada do Fluxo e definição de schema de input)
+Unidades. E que deixe eu pensar aqui que seja uma tabela de referência, que vai vir uma tabelinha de lá.
+(AÇÃO: Seleção do tipo de variável como table_reference)
+E o que que vai ter nessa tabela? Vamo olhar lá no banco.
+(AÇÃO: Voltou ao SQL Developer e executa DESC UNIDADE)
+Desc unidade. Desc unidade, beleza.
+Então vou esperar uma unidade que é até 6 caracteres.
+(AÇÃO: Retorno à plataforma Shift e inserção da tela do SQL Developer ao lado, ajustando a visualização)
+Deixa eu ver se consigo trabalhar com meia tela aqui ó, que daí fica até melhor pra nós.
+Deixar o, esse aqui um pouquinho, é menor.
+(AÇÃO: Ajuste do tamanho das janelas divididas na tela)
+Show. Então eu preciso de um unidade, que é do tipo eh varchar, então é string, essa é obrigatória.
+(AÇÃO: Adiciona a coluna UNIDADE do tipo string no schema de input)
+Eu preciso da descrição. Tá?
+(AÇÃO: Adiciona a coluna DESCRICAO do tipo string no schema de input)
+Eh, também vai ser do tipo string e eu preciso de decimais.
+(AÇÃO: Adiciona a coluna DECIMAIS)
+Colocar aqui decimais, que é do tipo number 38. Number 38 se eu não me engano quando é number 38, deixa eu ver aqui, eu acho que é inteiro. Desc nota item. Deixa eu ver o que que é um um quantidade é inteiro eh...
+(AÇÃO: Executa comando DESC NOTAITEM no SQL Developer para ver tipos de dados)
+É, tá certo. Number 38 é inteiro e quando é só number ele é decimal. Então aqui é um inteiro. Beleza.
+(AÇÃO: Define a coluna DECIMAIS como integer na plataforma Shift)
+Deixa eu limpar aqui pra nós ficar melhor a nossa visualização.
+(AÇÃO: Limpa a tela de output do SQL Developer)
+Então decimais, unides... unidade cte, se cê precisar. Nesses caso eu não vou adicionar. Uti alt eh sempre que eu rodar ele vai cadastrar uti alt então não precisa vir de da origem esse dado. User id também hora de gravação também. Tá basicamente é isso. Unidade, descrição e decimais.
+Show de bola. Então vamos definimos aqui, vamos aplicar.
+(AÇÃO: Clica em Aplicar nas configurações do nó Entrada do Fluxo)
+Eh só que lá naquela nossa planilha de teste a gente não tem a decimal, né. Então ele vai dar um erro aqui.
+Inclusive lá vamos ver se a gente consegue adicionar decimal depois. Eu vou colocar aqui decimais, decimais, como que eu escrevi lá? Decimais assim, né. Copiei daqui.
+(AÇÃO: Abertura do arquivo Excel com o mock de dados baixado anteriormente)
+(AÇÃO: Adição manual da coluna DECIMAIS na planilha do Excel e preenchimento com valor 0 em todas as linhas)
+Colocar decimais, eu vou deixar por enquanto todo zero tá. Não vai ter decimal, deixar assim por hora.
+Beleza, vamos voltar pros nossos nossos shift aqui.
+E definimos nosso esquema, unidade, descrição e decimais, agora a gente vai carregar nossa planilha mock de teste.
+(AÇÃO: Nas configurações da Entrada do Fluxo, clica para importar o arquivo de mock na opção MOCK INPUTS TESTE)
+Tá lá em download, que ela vai simular como vai chegar esses dados aqui. Já vamos rodar ele aqui.
+(AÇÃO: Clica em Executar fluxo)
+Show de bola. Tá?
+Primeira coisa que eu faço sempre, né, é uma opção. Eu vou fazer um mapeamento aqui e vou normalizar os dados. Normalizar. Normalizar dados.
+(AÇÃO: Adiciona um nó Mapeamento nomeado Normalizar Dados)
+Certo. O que que eu vou fazer aqui? Eu vou pegar todos os campos, a unidade eu já vou truncar pra ter uma segurança. Então eu trunco pra 6. Descrição também já vou truncar. Pra ter uma segurança. Eh 40.
+(AÇÃO: No nó Normalizar Dados, seleciona todos os campos de entrada e aplica a transformação Truncar com tamanho 6 para UNIDADE e tamanho 40 para DESCRICAO)
+E a decimais não precisa fazer nada.
+Eu vou também deixar, vai que vem uma unidade maiúscula, minúscula, né, vou deixar padrão maiúsculo eh sem espaços. E só. E sem caractere especial talvez. Será que vai vim alguma unidade com acento? É muito difícil, né. Vamo deixar aqui, eh remover acento se tiver.
+(AÇÃO: Adiciona transformações adicionais: Maiúsculas, Sem espaços e Remover acentos no campo UNIDADE)
+Mesma coisa aqui pra descrição, tem uns que, isso é um padrão de cada um, né, eu gosto de deixar um padrão mais limpo. Vamo ver até nessa tabela aqui que a gente tinha, que é de backup. Ó, aqui até tem ó, peça, tá. Então aqui a única coisa a gente vai deixar maiúsculo se vir com cê cedilha e sem espaço, né, se tiver espaço em branco aqui, tipo no final tiver um espaço ele já retira. E não vamo remover acento nem caractere especial. Beleza.
+(AÇÃO: Adiciona as transformações Maiúsculas e Sem espaços no campo DESCRICAO)
+Vamo rodar aqui. Ótimo. Já estamos aqui.
+(AÇÃO: Execução do fluxo até o nó Normalizar Dados)
+Só que a gente tem uma um problema, né, a gente tem dados duplicados. Então vamos adicionar aqui um remover duplicados. Remove duplicados. Sempre nomeie os teus nós, tá.
+(AÇÃO: Adiciona o nó Remover Duplicados nomeando-o Remove Duplicados)
+Chave é a unidade e descrição, tá. Ou poderia ser só unidade. Pode ser também.
+(AÇÃO: Configura o nó Remover Duplicados selecionando os campos UNIDADE e DESCRICAO como chave)
+Mas aqui ó, então eu tenho só quatro, né. Então tem toda aquelas linhas lá, mas na verdade isso tudo aqui é quatro registros. Unidade, quilograma, metro...
+(AÇÃO: Visualiza os dados de saída, notando que sobraram apenas 4 linhas distintas)
+Ah Kleber, por que que cê já não traz certo? Eu gosto de deixar lá onde vai ser chamado o dado sempre bruto e deixar pra fazer o tratamento dentro do cadastro onde você tá fazendo o negócio, tá. Porque se algum dia, vamo supor que você tenha lá três quatro fluxos que usem esse cadastro, e você precisa mudar alguma coisa, você teria que entrar nesses três quatro fluxos mudando. E quando você faz aqui, você vai mudar aqui e depois os fluxos que usam esse, esse cadastro já vão ser utilizados da mesma forma, né. Então tem isso.
+Eh, beleza, remove duplicados. Certo.
+Então agora o que que nós precisamos fazer? Já temos aqui. Eh agora bem simples, né. Nós vamos simplesmente fazer o insert eh desses dados lá dentro do banco. Então vamos pegar aqui um nó de insert. Insert unidade, que é o nome da tabela. Pegar aqui, vou ligar aqui.
+(AÇÃO: Adiciona nó Inserção em Massa nomeado Insert UNIDADE, conectando-o ao Remove Duplicados)
+Conexão, opa aqui nós temos um ponto. A conexão do Construshow vai ser variável, se eu vou reutilizar isso, né, nunca será a mesma conexão. Então vou criar mais uma, vou criar uma variável aqui, né. Essa aqui não tem nenhuma ainda, né. Criar uma variável aqui do tipo conexão, um ponto importante.
+(AÇÃO: Acessa variáveis de Workflow e cria nova variável do tipo Conexão nomeada Conn_Construshow)
+Priorizem sempre manter o mesmo nome das variáveis, por exemplo se você tá inserindo dado no Construshow, usa o nome Conn_Construshow. E sempre que você precisar fazer uma conexão com o Construshow e utilizar uma variável, utilize o mesmo nome. Sempre priorize, coloque aí um padrão nos teus, nos teus fluxos para você determinar um mesmo nome, tá.
+Porque daí isso aqui é muito importante, porque senão se você coloca aqui Conn_Construshow, daí no outro, num outro subfluxo Construshow, daí em outro subfluxo Constro. O que que vai acontecer? Quando você executar você vai ter que inserir Conn_Construshow, Conn eh Construshow e Conn Constro, né. Então você vai ter que ficar inserindo. Então se você utiliza o mesmo nome você informa uma vez e ele já vale pra todos que são da mesma do mesmo nome, tá.
+Eh, então aqui é do tipo Oracle e o de design vai ser o meu local aqui. Salvar.
+(AÇÃO: Define a variável de conexão como tipo Oracle, com valor de conexão local e salva)
+Beleza, vou adicionar aqui a variável, vamos carregar ela aqui, Vars Conn Construshow e vou pegar nossa tabela unidade.
+(AÇÃO: Volta ao nó Insert, insere a variável configurada em Conexão e seleciona a tabela de destino UNIDADE)
+Nós vamos fazer um upsert, a chave sempre vai ser a unidade, fazer o automapeamento.
+(AÇÃO: Configura modo de escrita Upsert, chave da etapa UNIDADE e seleciona Auto mapear)
+O que que outras colunas nós temos aqui? Eh, nós temos a... deixa eu ver aqui... eh desc unidade, né. Nós temos essa uti alt e user id e hora grav, né. Eu acho que eu vou inserir esses cara, vamo ver como que vem aqui o uti alt... ele vem um datetime. Beleza.
+(AÇÃO: Volta a janela do SQL Developer, visualizando informações das colunas na aba)
+Então vamo antes de inserir aqui vamos trazer pra cá e vamos adicionar esses caras aí. Então eu preciso de um uti alt, eu acho que eu vou usar o now aqui, não tem... Deixa eu ver se tem... se tiver trigger não precisa, né. Deixa eu ver se tem trigger. Tabela unidade.
+(AÇÃO: Insere um novo nó de Mapeamento antes do nó Insert e verifica o SQL Developer na aba Triggers da tabela)
+Insert e update. Vamo ver o que que ele faz.
+Ah, já tem ó, o uti alt... Ah nem precisa. E user id, então vamos fazer, o user id eu vou colocar pra a gente saber, fixo viasoft. Tipo string.
+(AÇÃO: Configura no novo nó de mapeamento o campo USERID, marcando-o como Expressão e atribuindo texto estático VIASOFT, ignorando UTI_ALT)
+Hora grav eu acho que não precisa. Então esses aí só.
+Deixa eu desativar e rodar aqui.
+(AÇÃO: Desativa nó Insert e executa o fluxo até o novo nó de mapeamento)
+(AÇÃO: Reativa o nó Insert e edita mapeamento do Insert para capturar o campo USERID recém criado)
+Beleza, aqui ok. Deixa eu rodar. Vamo rodar ver o que que vai acontecer. Selecionar a conexão do Construshow.
+(AÇÃO: Executa fluxo escolhendo a conexão Construshow)
+Alguma coisa não deu, tá muito lento. Vou parar aqui e vamos fazer... vamos fazer um mini teste aqui só pra ver aqui... ah sim, já sei o que que é.
+(AÇÃO: Paralisa a execução porque estava lento. Abre tela de Conexões)
+Eh, eu não testei minha conexão, né, nem vi se ela tá ativa. Deixa eu ver, Construshow. É a minha conexão, vamo esperar dar o erro de timeout da conexão aqui, vamo ajustar, eu devo ter alguma coisa errada por isso que não tava rodando.
+Beleza, deu falha aqui. Show.
+(AÇÃO: Edita a conexão Construshow no painel de conexões)
+Como é a homologação tem uma questão de token aí que ele muda, produção não acontece. Ah e aqui eu preciso preciso ser localhost 127.0.0.1, tá, é só por por ser ambiente de homologação.
+(AÇÃO: Altera host para 127.0.0.1 na configuração da conexão Construshow e salva/testa)
+Então já deu teste conexão ok, beleza vamo voltar lá pro nosso fluxo. Unidades cadastro vamo abrir aqui.
+(AÇÃO: Volta para edição do fluxo UNIDADE - CADASTRO e aciona o Executar)
+Eh aqui é o upsert unidade. Vamos rodar agora. Agora tem que ir.
+(AÇÃO: Fluxo executa e salva no banco de dados com sucesso)
+Show, vamo fazer um select aqui pra ver. Tá aí.
+(AÇÃO: Faz consulta SELECT na tabela UNIDADE do SQL Developer)
+Como é upsert não teria problema a gente rodar de volta né, então vamo rodar de volta pra ver. Vamos ver se não duplicou nada. Show de bola.
+(AÇÃO: Re-executa fluxo inteiro e confirma no banco que não houve duplicidade)
+Eh, mas assim às vezes eu posso já ter cadastro ou vim coisa nova. Então aqui aqui ele retorna só o que ele de fato cadastrou, né. Então, eh pra minha saída eh eu vou preferir que ela saia com os dados atualizados.
+(AÇÃO: Adiciona nó SQL no final para retornar a base com tudo, cria nó de saída Saída do Fluxo)
+Então vou colocar aqui uma uma definição aqui de saída também. Então, eh primeiro vamos pegar aqui, eu quero os dados atualizados, então depois que eu insiro vou fazer um select. Vou vir aqui... seleciona seleciona unidade. Vamos usar a nossa mesma variável, e aqui um select unidade, descrição, decimais, from unidade.
+(AÇÃO: Configura nó SQL nomeado Seleciona UNIDADE, utilizando variável Construshow, com o código SELECT UNIDADE, DESCRICAO, DECIMAIS FROM UNIDADE)
+Vamos rodar.
+(AÇÃO: Executa novamente o workflow)
+Show, é isso que a gente precisa.
+Eh... só que ele vem com esses dlt né, infelizmente é um é uma necessidade que tem pra performance né, mas vamo mandar só o que a gente quer. Não quero mandar esse dlt lá, então só vou adicionar um mapeamento aqui não tem nenhum tipo de ah adicionar vários mapeamento vai influenciar? Praticamente nada.
+(AÇÃO: Adiciona nó Mapeamento nomeado Mapeamento Final para remover as colunas _dlt_id)
+Mapeamento final. Aqui basicamente vai pegar essas colunas só excluindo aquelas ali que eu não quero né.
+(AÇÃO: Configura os campos UNIDADE, DESCRICAO, DECIMAIS, removendo USERID e IDs de dlt)
+E obviamente agora eu tenho que dar uma saída. Então vou adicionar aqui um schema de saída pra retornar esse cara lá pra mim.
+(AÇÃO: Adiciona configuração no schema de Saída chamando de unidades_cadastradas tipo table_reference)
+Colocar aqui output que é unidades cadastradas. Do tipo tabela. Não vou especificar coluna aqui pra ele mandar tudo o que tem. E aqui eu vou adicionar a saída do fluxo.
+(AÇÃO: Adiciona nó Saída do Fluxo ligando-o ao Mapeamento Final e mapeando para output unidades_cadastradas)
+Vou rodar que ele vai dar erro né, mas vou rodar só pra ele chegar até aqui, pra mim pegar o schema pra arrastar. E o que que eu vou jogar pra lá? Mapeamento final.
+(AÇÃO: Executa apenas esse trecho para disponibilizar os campos de arrastar no Output e arrasta)
+Show de bola. Temos tudo o que precisamos. Agora só precisamos vir aqui publicar. E mudar pra produção porque tá pronto o nosso fluxo.
+(AÇÃO: Clica no botão Publicar versão no Shift, e muda a flag do workflow para Produção)
+E agora voltamos aqui para o nosso Insere Itens - Core, pra gente chamar esse camarada aí.
+(AÇÃO: Volta para o canvas do fluxo Insere Itens - Core)
+Então agora a gente vai, eh, chamar esse subcadastro, né, passando as nossas unidades.
+Então vou vim aqui, chamar subfluxo.
+(AÇÃO: Adiciona o nó Chamar Fluxo)
+Vou desativar aqui só pra mim rodar até aqui. Vai fazer a consulta no concorrente, mapeamos nossas unidades. O que que nós vamo chamar aqui? É unidades cadastros.
+(AÇÃO: No fluxo principal desativa temporariamente o nó Chamar Fluxo, executa até Map_Unidade e reativa. Configura nó Chamar Fluxo buscando UNIDADE - CADASTRO)
+Ele tá aparecendo ali unidade cadastro, vou colocar aqui um uma descrição... Treinamento.
+(AÇÃO: Abre a outra tela e renomeia o fluxo para TREINAMENTO - UNIDADE - CADASTRO e atualiza)
+Ele tá parecendo o fluxo de outro local ali que não deveria. Depois vamos ajustar isso. Aqui também já vamos mudar... Treinamento.
+(AÇÃO: Renomeia o fluxo principal para Treinamento Insere Itens - Core)
+Show de bola. Deixa eu ativar esse cara aqui.
+(AÇÃO: No nó de Chamar Fluxo, limpa a busca, pesquisa de novo e seleciona TREINAMENTO - UNIDADE - CADASTRO)
+Vai dar erro aqui porque não tá mapeado nada. Deixa eu pegar tudo que tem treinamento. Unidade.
+Tá esperando uma tabela, vai vir aqui. Então ah da onde vai vir essa tabela? Da mapa de unidade.
+(AÇÃO: Mapeia o campo de entrada do nó com a saída de MAP - UNIDADE)
+Eh só que lembra a gente tem a questão da unidade, né. Que a gente não tá passando, e ele espera. Então vamos ver aqui se tem isso. Senão a gente tem que definir um default, né.
+(AÇÃO: Abre os dados que chegaram para ver se existe decimal)
+Não tem muito o que fazer. Unimento.
+É acho que não tem.
+Ah aqui ó, tem sim ó decimais ó. Show de bola. Então a gente precisa também da coluna decimais. Daqui. Decimais.
+(AÇÃO: Visualiza JSON e confirma que DECIMAIS existe. Ajusta o nó MAP - UNIDADE para incluir a coluna DECIMAIS com valor estático 0)
+Vamos executar, vamos até deletar nossa unidade aqui.
+(AÇÃO: Volta pro SQL Developer e executa DELETE FROM UNIDADE;)
+Delete from unidade. Opa não tem asterisco, né. Só delete from unidade.
+(AÇÃO: Retorna pro Shift e clica em Executar no fluxo Treinamento Insere Itens - Core)
+Vamos executar. Então aqui ó, como eu tenho uma variável dentro do subfluxo eu tenho que selecionar também.
+(AÇÃO: Seleciona as duas conexões Etrade e Construshow no painel de execução e dispara)
+Aqui já aparece a chamada do subfluxo. Finalizou. Tudo com sucesso.
+(AÇÃO: Confirma sucesso visualmente no Dashboard)
+Vamos dar uma olhada na nossa tabela unidade. Tá tudo lá.
+(AÇÃO: Executa SELECT na tabela UNIDADE e exibe dados salvos)
+Então a parte da unidade está ok. Então no próximo vídeo aí a gente vai dar sequência no decorrer do nosso fluxo de migração de produtos. Até o próximo.

@@ -1,0 +1,81 @@
+(AÇÃO: Tela com o slide "SHIFT - Módulo 2 - Parte 2 - Criando uma conexão direta" é exibida)
+Então agora nós vamos eh, pra parte dois, do módulo dois, que é a "Criando uma conexão direta". Então como vocês já entenderam os... os contextos de conexões com bancos que nós podemos ter em diferentes cenários, nós vamos pela que vai ser mais simples e... e digamos assim, mais eh, talvez recorrente aí, eh, no nosso dia a dia, que é uma conexão direta.
+(AÇÃO: Tela do sistema Shift é exibida)
+Então aqui dentro do Shift, eu tenho... como eu tô na rede da Viasoft, eu tô aqui dentro da Viasoft, né? Eh, eu tenho o meu banco de dados.
+(AÇÃO: Tela do DBeaver com um banco de dados aberto é exibida)
+Então aqui eu tenho o banco de dados onde a gente criou aquele... aquele... a primeira... no primeiro treinamento lá na tabela "funcionarios" e aqui eu tenho essa... esse banco de dados instalado aqui na minha máquina.
+(AÇÃO: Menu Iniciar do Windows é aberto e o usuário digita "Serviços")
+Então, se a gente vir até aqui em "Serviços", ó...
+(AÇÃO: Janela "Serviços" do Windows é aberta)
+Vocês vão poder visualizar que esse banco, ele tá rodando eh, localmente aqui. Então eu tenho aqui várias instâncias, mas a única em execução aqui é o "Viasoft 3", tá?
+(AÇÃO: Tela do DBeaver é exibida novamente)
+Então como ele tá na rede, eh... na rede interna da Viasoft, e o Shift também, eu simplesmente posso conectar através das propriedades de conexão, tá? Eh, então, por exemplo, aqui... eu vou... só dar uma visualizada aqui, Viasoft MCP, eu sei a senha, eh... eu tenho a porta aqui, qual que é o... o serviço. Certo, então vamos lá. Eh... vou abrir o Shift aqui.
+(AÇÃO: Navegador é aberto, com as guias do Shift visíveis, mas o usuário navega rapidamente por outras áreas)
+Só fechar essas coisas aqui. E vou vir aqui, eh, em "Conexões". Eu não tenho nenhuma conexão ainda.
+(AÇÃO: Botão "Nova Conexão" é clicado)
+Vou criar uma nova conexão. Eu vou dar um nome aqui. Essa minha conexão, ela é do ConstruShow, né? Então eu vou colocar aqui "ConstruShow". E vou colocar aqui qual que é o sistema. Então o sistema é ConstruShow. Como eu... eu tipei o banco aqui, ele já traz aqui. Que eu posso definir se é pública ou privada. Primeiro, os... primeiro vamos definir ela como sendo privada, tá? Eh... e óbvio, esse "privada" aqui é nível de usuário, né, visível apenas para você, tá? Aqui o ambiente, se é um ambiente de Sandbox, Homologação ou Produção, né, para você ter uma visualização, né? A temperatura disso aqui é mais para definir, eh, uma pontuação de risco de execução nesse banco. Então, quando for um cliente quente, né? Então, Produção, ele já muda aqui para Hot, tá? Eh, Homologação, você pode fazer várias coisas. Sandbox, você pode até dropar esse banco, né, digamos assim.
+Então aqui eu vou colocar o usuário. Como é um banco do ConstruShow, é o "viasoftmcp". A senha eu já coloquei aqui. E aqui que eu falei, ó: se é o nosso cloud, você vai vir aqui por TNS, daí você vai passar lá a... a... o TNS Descriptor que já é utilizado para a conexão lá dentro do SQL Developer, né? Eh, você pode até ver, geralmente no... no... quando é TNS, ele vai estar assim no SQL Developer, e você vai ter aqui, ah, o alias de rede, que lá dentro vai ter o descriptor, né?
+Então, eh, aqui por dentro do SQL Developer também você já vai conseguir verificar isso. Então sempre utilize ele como, eh, como se fosse um... um helper aí para você dar uma olhada em como que tá essa conexão. Sempre tente conectar primeiro nele, né?
+Então beleza. Eu vou... A minha aqui vai ser "Easy Connect", eu vou colocar o IP da minha máquina.
+(AÇÃO: Menu Iniciar do Windows é aberto e o usuário digita "cmd" ou busca pelo terminal)
+Deixa eu abrir um terminal aqui pra mim pegar o IP dela. Então tá aqui... "ipconfig".
+(AÇÃO: Terminal "Windows PowerShell" é aberto e o comando "ipconfig" é executado)
+Então tá aqui.
+(AÇÃO: Janela do DBeaver com propriedades da conexão "ConstruShow" é exibida brevemente)
+Deixa eu pegar ela aqui. 192.168.91.89. A porta é 1521, o nosso banco de dados, como podemos ver aqui, é o "VIASOFT3".
+(AÇÃO: Tela do sistema Shift, modal "Nova conexão", é exibida novamente)
+Então vamos lá... VIASOFT3. E aqui os esquemas. Eh, por padrão, aqui, por padrão nós temos vários esquemas, né? Porque se nós viermos aqui, ó, dentro do banco de dados do ConstruShow, por exemplo...
+(AÇÃO: Tela do DBeaver com a árvore de esquemas do banco Oracle "ConstruShow" é exibida)
+Nós temos aqui em usuários todos os esquemas possíveis dentro desse banco. Então aqui é para você selecionar quais você quer ler.
+(AÇÃO: Tela do sistema Shift, modal "Nova conexão", é exibida novamente)
+Então eu vou colocar aqui "VIASOFTMCP", vou colocar aqui "VIASOFTBASE", vou colocar aqui "VIASOFT... VIASOFTFIN", vou colocar aqui "VIASOFT... eh... CTB", que é do Contábil, que eu quero também trazer, o "VIASOFTFISCAL", que é do fiscal, eh, a parte fiscal. E "VIASOFTCP", que é do Patrimônio. Eu acho que é esse daqui, CP, Fiscal que eu quero. Se você vai trabalhar só com o ConstruShow, geralmente é esses três aqui só, né? Inclusive, eu vou ignorar esses três aqui. Opa, saí sem querer.
+(AÇÃO: Campos do modal "Nova conexão" são preenchidos novamente)
+ConstruShow... eh, bom, né, não deixar sair sem salvar. Pô, vamos já implementar essa melhoria. "viasoftmcp". Pegar meu IP aqui novamente... 192.168.91.89. VIASOFT3. VIASOFTMCP, VIASOFTBASE, VIASOFTFIN. Eu acho que é esses aí, os principais aí pra... pro funcionamento do ConstruShow. Eh... pra aquilo que a gente vai usar.
+Então beleza, defini aqui como privada, né, antes, e vou... aqui, essa aqui, "Conexão via relay", a gente usa só pra quando é uma conexão de borda, até que ele diz, ó: "Banco on-premise", beleza? Eh, com isso eu posso vir em clicar em "Criar".
+(AÇÃO: Botão "Criar" é clicado e uma mensagem de sucesso é exibida)
+E ele já dá a mensagem aqui de "Criada com sucesso", tá? Aqui dentro eu tenho testar a conexão, mas eu tenho aqui também aqui fora, tá? Então aqui fora ele já vem aqui a opção, eu posso vir aqui e clicar em... eh... "Testar conexão".
+(AÇÃO: Botão "Testar conexão" (ícone de raio) é clicado)
+Ó, "Conexão bem sucedida". Então aqui eu já consegui fazer a criação da minha primeira conexão direta.
+Eu tenho outro banco aqui, eh, que ele é um banco de concorrente, tá? A gente tem um banco de um concorrente aqui, que ele é... ele é da E-Trade, o nome do cliente.
+(AÇÃO: Menu Iniciar do Windows é aberto e o usuário digita "dbeaver")
+Deixa eu abrir aqui, eu acho que ele tá no DBeaver. Nós vamos tentar conectar nele também, tá?
+Então assim, é aquela história: se você tem o banco dentro da tua... dentro da tua máquina e a tua máquina está dentro da rede da Viasoft, você não precisa de nenhuma conexão de borda. Você consegue conectar direto nesse banco.
+(AÇÃO: Tela do DBeaver com o banco de dados "ETrade" é exibida)
+Então, eu tenho aqui, por exemplo, o E-Trade, ele é um banco, eh, se não me engano, ele é um banco SQL Server, isso mesmo, ó, ele é um banco SQL Server, tá? Eu restaurei ele aqui na minha máquina. Ele tem aqui toda... toda a estrutura do banco desse concorrente aí, as tabelas dele, ó. Então não é um banco tão grande. Vamos cadastrar ele também por conexão direta, por quê? Porque eu estou na rede da Via e ele tá restaurado aqui dentro da minha máquina. Deixa eu fechar essas outras abas aqui. Eh, aqui ele tá demorando para carregar...
+(AÇÃO: Arquivo SQL é aberto no DBeaver)
+Eu vou vir aqui em abrir... Ah, ele já abriu aqui, ó. Então, tem um zilhão aqui de tabela, né, dentro do... Acho que eu tenho aqui... "select * from CLI_FORN" que eu vi ali. "FORN", acho que é assim. Ah, não. Vamos ver aqui o nome certinho. É "CLI_FOR". "CLI_FOR". Então vamos rodar ele aqui. Então, eh, já retornou aqui a consulta, ó, então é um cadastro aí, digamos, de... de funcionários desse... desse concor... de clientes e fornecedores desse concorrente aqui. Então a gente já tem aí o nosso banco. Beleza. Vamos lá tentar cadastrar ele.
+(AÇÃO: Tela do sistema Shift é exibida)
+Então nesse caso aqui, eu vou vir aqui no nosso Shift, vou adicionar uma nova conexão. É importante, obviamente, aqui dentro do espaço, ter o concorrente, né, o sistema, no caso. Aqui, no caso, é um sistema dessa concorrente chamada "Trae". Tá setada aqui com SQL Server, tá? Vamos lá.
+(AÇÃO: Botão "Nova Conexão" é clicado)
+Conexões, Nova Conexão. Vou colocar aqui: "Conexão ETrade". Poderia ser qualquer nome, né? E... E percebam... até, antes de nós conectar, percebam que eu tô aqui em nível de espaço.
+(AÇÃO: Menu "Grupos Econômicos" é clicado)
+Tá? Eh... se eu vier aqui dentro de um grupo econômico, vou colocar aqui... eh... "Cliente XPTZ", vou cadastrar. Tá, vou colocar que ele tá em "Implantação". Vou lá dentro do cliente. Ó... por que que apareceu? Tá? Por mais que seja privada? Porque sou eu mesmo! Fui eu que criei esse banco. Então... Então, por isso que ele aparece para mim, tá? Então, você perceba que ele vem como herdado aqui, ó. "A visibilidade herdada". Então, como eu mesmo criei, eu consigo ver, tá?
+Eh, se nós entrássemos com outro usuário, ele não teria esse acesso. E também lá, se eu vir aqui em "Conexões", se eu pegar um projeto, eu vou criar um novo projeto aqui chamado "Implantação". E entrar aqui, também, ó, eu tenho aqui o menuzinho Conexões sempre por essa... por essa tomadinha. Também tá aqui como herdado, ó. Beleza? Posso vir aqui, ó, ele conecta normal.
+(AÇÃO: Retorno para a aba de "Conexões" na raiz do Workspace)
+Show. Vamos voltar lá pro... pro nosso nível de espaço, aqui, e à parte de conexões. Estamos aqui, vamos criar nossa conexão ETrade.
+(AÇÃO: Modal "Nova conexão" é aberto)
+Vou colocar aqui: "Conexão ETrade". Eu vou logar com outro usuário aí pra... para vocês verem. Eh... vou colocar aqui que é ETrade, vou colocar "Privada". E vou colocar... ele já tá aqui "SQL Server", tá? Aqui, se eu não me engano, é "sa", o usuário é "viasoft", a senha.
+O host tá aqui na minha máquina. Então eu vou colocar aqui o meu IP. Sempre prefiram o IP... eh, sempre não, tem que ser o IP da máquina, né? Se você tá... eh, quando você estiver no Shift, aqui eu tô no "localhost", mas no Shift oficial você vai estar na internet. Tá? Você vai estar aqui. Então, ele não vai entender "localhost". Então é sempre o teu IP, por mais que você esteja na rede da Viasoft, é o teu IP. Eh, vou colocar aqui, certo, sa, Viasoft.
+Então meu IP é 192.168.91.89. A porta é essa aqui mesmo, se não me engano é... 1433, padrão do SQL Server. Aqui, se eu não me engano, o banco é "eTrade", com o 'e' maiúsculo, é, ó: eTrade. eTrade.
+Aqui o esquema eu vou deixar em branco para ele pegar... que ele só tem... eh... esquema público aqui, né, "dbo", então não vou nem setar, ele sempre pega todos. E vou dar um "Criar".
+(AÇÃO: Botão "Criar" é clicado e depois "Testar conexão")
+Clicar em "Testar", vamos ver se eu acertei. Ó. Teste de conexão bem sucedida. Então aqui a gente criou o nosso banco, o nosso cliente aqui.
+(AÇÃO: Navegador é aberto em modo anônimo (Incognito))
+Deixa eu abrir outra página aqui, só pra mim ver se eu consigo... vai ter que ser numa página anônima, né? Porque senão vai deletar... vai derrubar o meu login.
+(AÇÃO: Acesso ao sistema Shift na janela anônima)
+Vou logar no "localhost" aqui. Eu acho que eu tenho um outro funcionário aqui cadastrado. "tonho@viasoft.com.br", se não me engano, que é o nome do meu cachorro. Eu tenho ele, só que ele não tá... ele não tem acesso àquele... àquele espaço lá. Eu vou dar acesso rapidamente aqui.
+(AÇÃO: Retorno para a janela normal do navegador)
+Vou logar com a minha... com a minha conta oficial, né? Eu vou fazer por lá, porque daí já está salvo. Deixa eu sair rapidamente aqui. Daí já vem com as contas aqui, não precisa estar...
+(AÇÃO: Navegação para a área de configurações de acesso da organização)
+Eu só vou adicionar aqui esse "Tonho", né, esse funcionário "Tonho", eh, com acesso ao espaço. Então vou vir aqui em Treinamento, parte de Configurações, e aqui o Antônio eu vou conceder a ele acesso ao espaço de Treinamento aqui, como Administrador inicialmente. Depois a gente vai falar de direitos de acesso. Certo. Vou sair daqui, vou voltar pro nosso usuário "Cleber" lá, que é o... o outro usuário que eu tenho. Pronta.
+(AÇÃO: Acesso ao Workspace "Treinamento" com a conta "Cleber")
+Então agora nós estamos aqui, vou marcar o "Tonho" aqui favorito Treinamento também.
+Se nós viermos aqui em conexões, nada. Por quê? Eu defini como privada. Se nós viermos aqui dentro do grupo econômico, cliente XPTZ, ele tem acesso, mas, conexões... nada. Tá? Então esse isolamento é... de privada ou pública, tá?
+(AÇÃO: Retorno à janela principal do navegador, ainda como "Cleber")
+Se nós viermos... como eu criei essa conexão aqui... e eu vou tornar primeiro ambas públicas. Eu vou deixar essa aqui como pública. Beleza.
+E vou voltar lá para... o nosso nível de espaço e transformar aquela que eu criei lá no espaço como pública também.
+(AÇÃO: Navegação para a janela anônima, onde a conta "Tonho" está logada)
+Vamos dar uma olhada o que vai acontecer. Se nós viermos aqui em "Conexões" do espaço, vocês já percebam que não apareceu a da E-Trade. Então aquele isolamento que eu falei na primeira... no primeiro vídeo, de baixo pra cima... Ou seja, eu criei lá no... no grupo econômico, ele não aparece aqui. Já tá funcionando. Agora só pra gente ver aqui, ó: se eu vier aqui pra as conexões do espaço, agora aparece! E se eu vier lá dentro do cliente, as conexões dele... aparecem ambas. Tá?
+Então, é... é essa eh subdivisão aí que nós temos para... eh... conexões que foi comentada e mostrando agora na prática, né? Eh, se eu tivesse cadastrado dentro do projeto Implantação aqui, a segregação seria maior ainda, porque que eu vejo? Porque... de... quando eu cadastro em eh... ramificações superiores, ele sempre vai aparecer pra baixo se estiver obviamente pública, né, eh, pra outros usuários, no caso, de pública ou privada, né? Eh, mas o que eu cadastrar aqui, ele não vai aparecer nem pra cliente nem pra espaço. Então... nós criamos aí agora a nossa primeira conexão direta.
+(AÇÃO: Retorno para a janela principal do navegador)
+Muito simples, né? Botão... menu Conexões, Nova Conexão e, pelo botão de testar, você consegue verificar se houve uma conexão bem-sucedida. Então, até o próximo módulo.

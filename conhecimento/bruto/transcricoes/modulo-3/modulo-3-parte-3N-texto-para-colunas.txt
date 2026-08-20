@@ -1,0 +1,51 @@
+Certo, continuando aqui então nossos vídeos, nosso próximo nó aqui é o Texto -> Colunas. Então bastante parecido com o Texto -> Linhas, só que ao invés de linhas, né, como o próprio nome já diz, colunas.
+Então em que contexto isso acontece... é, para você usar? Tá? É... deixa eu pegar um... um exemplo aqui, ó. Eu vou adicionar aqui uma nova tabelinha aqui para nós trabalharmos.
+(AÇÃO: O usuário seleciona todos os nós no fluxo de trabalho e os deleta. Em seguida, adiciona um nó "Manual")
+Ó, eu tenho aqui, é, uma linha e aqui na linha eu tenho: caneta, é... eu tenho 2.50, e tem 1.
+(AÇÃO: O usuário cola um código JSON no campo "PAYLOAD DE TESTE (OPCIONAL)" do nó "Manual" e clica em Executar. A tabela resultante tem 3 linhas com valores concatenados separados por um pipe '|')
+Então todos eu tenho a mesma lógica, ó: caderno, é... valor, aqui deveria ser, sei lá, talvez quantidade. Mochila, valor, quantidade. Tá?
+Então como que... isso aqui, transformar em linha não ficaria muito legal, né? Até vamos pegar aqui, ó... Se a gente fosse usar esse conceito aqui de Texto -> Linhas, ó, não ficaria muito legal.
+(AÇÃO: O usuário arrasta o nó "Texto -> Linhas" para o fluxo, conectando-o à saída do nó "Manual")
+Então se eu pegasse aqui, qual que é a que eu quero dividir? É a linha. O delimitador é vírgula...
+(AÇÃO: No nó "Texto -> Linhas", o usuário seleciona "linha" em "COLUNA A DIVIDIR" e digita "," em "DELIMITADOR")
+Nome da coluna, sei lá, vou colocar "novo" aqui, ó. Então o que que aconteceria?
+(AÇÃO: O usuário digita "novo" no campo "NOME DA COLUNA DE SAÍDA (OPCIONAL)" e clica em "Executar")
+Ele teria uma misturança aí de coisas que não têm nada a ver, ó. Tá?
+Então nesses casos, o ideal é a gente utilizar o Texto -> Colunas.
+(AÇÃO: O usuário arrasta o nó "Texto -> Colunas" para o fluxo, substituindo o nó "Texto -> Linhas" anterior)
+Então aqui no Texto -> Colunas, o que que ele vai fazer, ó? Eu vou selecionar aqui qual a linha, vou definir o delimitador que é vírgula...
+(AÇÃO: No nó "Texto -> Colunas", o usuário seleciona "linha" em "COLUNA A DIVIDIR" e digita "," em "DELIMITADOR")
+E daí eu posso definir aqui... é... o nome das colunas, vai ser Automático com o prefixo 'campo'. Então ele geraria: campo_1, campo_2, campo_3.
+Isso aqui é... é interessante quando você tem uma variação aqui de opções. Por exemplo, aqui tem duas opções, aqui tem seis opções, aqui tem sete opções, né? Então você não tem como saber... e, óbvio, se as opções elas não estão dentro da mesma ordem, beleza, né?
+Mas aqui, nesse caso, eu tenho a ordem Explícita. Então eu posso botar aqui como Explícito, a primeira coluna o nome vai ser "produto", a segunda "preço" e a terceira "quantidade". Tá. Vamos executar aqui.
+(AÇÃO: O usuário altera "NOMES DAS COLUNAS" para "Explícito" e adiciona três campos: "Produto", "Preço" e "Quantidade", clicando em Executar a seguir)
+Então o que tava aqui nas primeiras aqui, ó, ele jogou para produto; o que tava na segunda para preço; e o que tava na terceira aqui, pra quantidade.
+É... aqui há número de colunas, opcional. Teto de Segurança, é... "falha se a divisão gerar mais colunas que este limite". Tá? Então, tipo, tiver muita coluna aí, né... tipo, muita vírgula, bota um limite aí porque às vezes... você tem lá, sei lá, umas 1.000 vírgulas aqui e colocar pro cara rodar aqui vai estourar o teto, né? Então pode acontecer.
+(AÇÃO: O usuário mostra os campos de "TETO DE SEGURANÇA" e depois clica na opção "Ignorar vazio das bordas")
+É... "Ignorar vazios de borda", se tiver... é... campo vazio aqui, por exemplo. Se começasse com uma vírgula aqui, ele ia entender que tinha um vazio pro lado de cá. Daí se você é... deixar desmarcado ele vai manter. Eu já vou trazer um exemplo com isso.
+E o "Manter coluna de origem" é basicamente... é... pra você... vir aqui e manter uma coluna com o dado que tá original aqui, ó. Então aqui, ó... 'linha', tá? Então é... dessa forma que funciona.
+(AÇÃO: O usuário marca "Manter a coluna de origem", clica em "Executar" e mostra a coluna "linha" original sendo mantida na tabela de saída)
+Isso aqui também é muito usado em situações... por exemplo, se a gente pega do dia a dia, eu vou pegar aqui um... um exemplo aqui... dentro de um registro C170 do SPED aqui, que é de notas, de detalhamento dos itens da nota, ó.
+(AÇÃO: O usuário deleta o JSON no nó "Manual" e cola um novo contendo exemplos de registros SPED C170, separados por pipe '|')
+Então lá dentro do SPED ele gera assim, ó: tem o C170, o número do registro, aqui deve ser... sei lá, aqui é exemplo, né? Aqui o código do produto, aqui o produto, quantidade, unidade de medida, preço, desconto, tá?
+É... Então geralmente lá no SPED vem assim, ó. Então você manda pra lá assim, e vamos supor que você precisasse de alguma maneira ler isso lá de... do SPED de um cliente que te manda e vai precisar fazer alguma coisa com aquilo. Então você poderia carregar esse arquivo, né... que viria tudo numa coluna assim...
+(AÇÃO: O usuário clica em "Executar" no nó "Manual" para mostrar a tabela gerada e em seguida clica no nó "Texto -> Colunas")
+E daí você poderia usar o Texto -> Colunas pra resolver isso aí. Tá? É... remover tudo aqui...
+(AÇÃO: O usuário exclui os campos "Produto", "Preço" e "Quantidade" adicionados anteriormente no nó "Texto -> Colunas")
+Nesse caso aqui eu poderia abrir lá o SPED e ver o que é cada coluna... o nome de cada coluna, né. É... aqui sempre vai ser... vai ter a mesma quantidade aí, ó...
+Então aqui eu sei que é registro, aqui eu sei que é índice, ou sequência, aqui eu sei que é o código do produto, aqui eu sei que é o... produto... Aqui eu sei que é... então enfim. Aqui eu sei o que que é, né, mas no caso se eu não soubesse eu vou deixar aqui como Automático.
+Então eu vou selecionar aqui, a gente só tem uma coluna que é de 'registro', o delimitador aqui é pipe '|'.
+(AÇÃO: O usuário altera a "COLUNA A DIVIDIR" para "registro", o "DELIMITADOR" para "|" (pipe) e o "NOMES DAS COLUNAS" para "Automático")
+É... o prefixo, eu vou colocar 'campo' mesmo. Aqui não vou deixar nada. E aqui eu vou deixar assim, ó... sem... sem desmarcar nada. Vocês vão ver o que que esse cara aqui faz, ó.
+(AÇÃO: O usuário desmarca "Ignorar vazio das bordas" e "Remover espaços (trim)")
+Como ele começa com um pipe, ele entende que aqui tem um registro. E quando ele finaliza, ele... tem a opção de você entender que aqui tem um registro.
+Então, se eu deixar esse cara desmarcado, nesse cenário aqui, o que que vai acontecer, ó? Então ele gerou, ó, 1, 2, 3... tem 10 campos. Né? Ó, e ele gerou cada campo aqui em um. Então aqui... ele gerou...
+(AÇÃO: O usuário clica em Executar no nó "Texto -> Colunas" e mostra os 10 campos criados na tabela, sendo o primeiro e o último campos vazios, indicando que os pipes no início e fim foram considerados como delimitadores de campos vazios)
+Só que como aqui eu deixei desmarcado isso aqui, ó... como tem um pipe aqui ele entende que... sempre entre um e outro ele entende que tem um registro. Se aqui não tivesse o pipe, ele não geraria isso aqui.
+(AÇÃO: O usuário seleciona a opção "Ignorar vazio das bordas" e clica em Executar, mostrando que o campo inicial vazio desapareceu)
+Mas nesses casos eu posso simplesmente clicar aqui em "Ignorar vazio das bordas"... e daí ele vai gerar certinho.
+Então aqui eu poderia pegar aqui, ó, agora, e ir... melhorar aqui, ó. Vamos colocar, deixar 'Explícito' aqui. E eu vou colocar aqui, o primeiro como 'Registro'. O segundo eu vou colocar como 'Sequência'. O terceiro eu vou colocar como 'Código'. É... código, o terceiro, vou colocar como 'Descrição'.
+(AÇÃO: O usuário altera para "Explícito", adiciona os nomes "Registro", "Sequência", "Código", "Descrição", "Quantidade", "Unidade", "Preço", e procura a descrição do campo C170 do SPED em outra aba para preencher o último campo com "Desconto")
+Beleza. Já deixei tudo certo aqui. Deixei pra ele ignorar as bordas, né... E agora sim, eu tenho... eu tenho aqui a minha... o meu SPED aqui, né... em tabela. Né? O registro C170 em tabela.
+E daí aqui, agora sim, eu consigo trabalhar, consigo fazer cálculos, consigo fazer substituições, diferentemente de quando ele tá desse formato aqui, né?
+Então o Texto -> Colunas, ele é muito útil nesses casos que você precisa trabalhar com esses campos aí que vêm é... dentro de um txt assim separado por algum tipo de delimitador. Beleza?

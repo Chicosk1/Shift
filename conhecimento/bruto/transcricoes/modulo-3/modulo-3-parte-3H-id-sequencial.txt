@@ -1,0 +1,116 @@
+Beleza, indo para o próximo nó da nossa lista, vamos ver qual que é aqui, é o ID sequencial. Beleza.
+(AÇÃO: clique no item "ID Sequencial" no menu lateral esquerdo)
+O ID sequencial também é um nó bastante usado, tá? Então eu vou ligar ele aqui. Eu vou mudar esse aqui, esse nome aqui para id_antigo. Para a gente poder reproduzir isso de maneira melhor e não, que não haja confusão.
+(AÇÃO: conecta o nó "Mapeamento" ao nó "ID Sequencial")
+(AÇÃO: clica no nó "Mapeamento" e altera o nome do campo "id" para "id_antigo")
+Então começou aqui, tá? Mas vamos supor que esse id aqui é o id do cliente.
+Mas lá no meu banco, é... sei lá, eu já estou no id 1000.
+Então o ID sequencial ele permite que você adicione um novo... uma nova coluna de id. E ele pode ser a partir de um valor fixo, ou eu posso ir lá no banco fazer um select na sec primary key e continuar a partir dele, né?
+Então por exemplo aqui ó, vamos supor que eu fui lá, eu tenho que criar um novo id a partir do último id que vai ter aqui, né? Então... é... eu poderia ir lá... vamos supor aqui ó, eu vou fazer um exemplo mais... mais real aqui.
+Então eu vou vir aqui, e vou fazer um filtro... é... não, é um agregador, né? Eu vou pegar o maior id aqui.
+(AÇÃO: arrasta o nó "Agregador" do menu lateral para a área de trabalho)
+Então vamos supor que eu fui lá no banco de dados, vamos supor que não era essa tabela. Mas eu fui lá no banco de dados, e olhei qual que é o último id que eu tinha...
+Opa. O último id que eu tinha lá dentro da minha tabela.
+(AÇÃO: configura a agregação no nó "Agregador", selecionando a operação "MAX" e a coluna "id")
+Tá, então... é... aqui o id ele está como texto aqui? Ah tá. Que ele está vindo lá da nossa tabelinha como texto, né?
+Vamos adicionar um nó de mapeamento para fazer a conversão. Forçar essa conversão aqui.
+É... incluir todos... Na verdade vamos mapear aqui.
+(AÇÃO: arrasta o nó "Mapeamento" para a área de trabalho)
+Vamos mudar para inteiro... e o salário decimal. Acho que é os únicos que tem valor aí.
+(AÇÃO: configura o nó "Mapeamento", selecionando os campos e alterando o tipo do campo "id" para "Inteiro" e "salario" para "Decimal")
+Beleza, nosso id se tornou um número, antes estava texto, agora tá número.
+E vamos ligar ele... é, aqui eu tinha um mapeamento... tudo bem. Vamos ligar ele aqui. Não tinha percebido.
+(AÇÃO: conecta o nó "A Base Interna" ao novo nó "Mapeamento_1" e, em seguida, ao nó "Agregador")
+Nosso agregador então... então vai ser a coluna id.
+(AÇÃO: reconfigura o nó "Agregador", selecionando a coluna "id" para a operação "MAX")
+Então eu estou pegando aqui o MAX do meu id, né? É... aqui na verdade tem que ser... não... na verdade aqui eu deixo sem nada, né? Certo, só quero o MAX, desculpe.
+(AÇÃO: remove a configuração do campo "AGRUPAR POR" no nó "Agregador" e clica em Executar)
+Ó, então eu tenho aqui o meu MAX id que é o 301. Que se eu coloco alguma coluna aqui ele vai fazer o MAX e agrupar pela coluna, né?
+Beleza. É... então aqui eu tenho o MAX coluna... e agora aqui eu vou ligar assim.
+E daí eu quero que essa nova coluna de id, ela comece a partir do meu MAX. Então eu venho aqui solto aqui. Tá.
+(AÇÃO: no nó "ID Sequencial", tenta selecionar o campo "max_id", mas percebe que precisa juntar as tabelas antes)
+E basicamente é isso, vamos executar para ver o que que vai dar.
+(AÇÃO: clica em Executar no nó "ID Sequencial")
+Ó, então, ah... então tem um ponto aqui.
+Eu vou duplicar essa coluna aqui, que a gente tem que estar no mesmo nível aqui. Então eu preciso desses dados aqui igual...
+(AÇÃO: duplica o nó "Mapeamento_1" criando o "Mapeamento_2")
+Colocar mapeamento underline 2 aqui. Preciso dessa coluna aqui igual. Deixa eu executar até aqui.
+(AÇÃO: renomeia para "Mapeamento_2" e conecta "A Base Interna" a ele, em seguida executa)
+Vamos ver se o que eu estou pensando aqui vai dar boa. Então eu tenho aqui todos os dados que eu preciso, e agora aqui eu vou fazer... uma coisa aqui que a gente vai... é... ver depois, né, mas eu já vou fazer.
+Só vou adicionar esse MAX id aqui... é... aqui junto.
+(AÇÃO: adiciona o nó "Junção (Join)", tenta configurar e depois o remove)
+Acho que é o full join. Acho que vai dar certo. Ah, condição right, left... não, não é inner, não, não é esse aqui que eu quero.
+Então é o combinar que tem o cross.
+Cruzar... cross.
+(AÇÃO: arrasta o nó "Combinar" para a área de trabalho)
+Ele vai... ele vai manter tudo das duas, tá? Vamos ver se vai funcionar.
+(AÇÃO: configura o nó "Combinar" no modo "Cruzar" e tipo "Cross join cartesianos", conectando os nós "Agregador" e "Mapeamento_2" a ele)
+Ok, isso que eu queria. Então o que que eu fiz aqui? Tá? É... eu peguei, busquei o último id, que é o 300...
+(AÇÃO: clica em Executar no nó "Combinar")
+E depois eu tenho aqui os meus dados, tá? Depois eu usei esse nó combinar, que nós vamos ver mais para frente, só para mim adicionar a coluna MAX id e eu ter aqui a minha base com tudo que eu preciso.
+E daí agora sim eu vou vir aqui... e vou vincular aqui. Então a minha nova id, ela vai começar a partir do MAX id.
+(AÇÃO: conecta o nó "Combinar" ao nó "ID Sequencial", e neste último seleciona a opção "Campo" em "INICIAR EM" e escolhe a coluna "max_id")
+Vamos ver se eu não estou ficando maluco.
+Então a gente só não renomeou aqui, né? Deixa eu colocar aqui underline id antigo.
+(AÇÃO: clica em Executar no nó "ID Sequencial")
+(AÇÃO: no nó "ID Sequencial", no campo "NOME DA COLUNA DE ID", estava "id" e ele apaga e depois vai no "Mapeamento_2" e altera o nome do campo "id" para "id_antigo", executando em seguida)
+A gente não se confundir. Então aqui agora vamos ver o que que aconteceu aqui ó. Então eu tenho o id antigo 1, 2, 3... daí eu fui lá no meu banco e falei não, mas o meu novo id, eu tô lá no último id que é o 301.
+Então, eu preciso inserir a partir desse dado. Então aqui eu gerei um novo id, tá? E daí coloquei para ele contar a partir do MAX id.
+Então o MAX id ele sempre vai pegar o primeiro aqui, então o primeiro é 300... por isso que ele mantém aqui reproduzindo o 301 aqui, né? Porque aqui o nó Combinar, quando você passa uma tabela que tem mais de um dado ele vai pegar sempre o primeiro. Então ele pegou 301.
+E aqui se eu queria somar... se eu queria somar, então por exemplo... é, eu coloquei 0 aqui, então o último id é 301, ele começa do 301. Mas se eu quisesse a 301 mais 1, né? Daí ele vai começar a partir do 302.
+(AÇÃO: no nó "ID Sequencial", preenche o campo "Adicionar ao campo" com o valor "1" e executa)
+Ó, 302. Aqui eu posso colocar também um reiniciar... reiniciar por algum grupo.
+(AÇÃO: no nó "ID Sequencial", seleciona a coluna "cidade" no campo "REINICIAR POR GRUPO (PARTITION BY)" e executa)
+Então por exemplo... sei lá, sempre que trocar a cidade, reinicie.
+Vamos ver o que que vai acontecer. Ó, então ele 302, 3, 4, 5... onde é que está a cidade para nós ver melhor aqui? Ó, então ele até ordena aqui ó.
+Ó, então ele começou aqui ó 302, 3, 4... tudo Curitiba até 31. Mudou aqui ó, mudou o grupo que eu defini, ó, ele vai reiniciar, quando você quiser, né? Não sei em que situação usaria isso, mas tem.
+Você quer quando é Belo Horizonte você quer reiniciar de volta, 302, 3, 4, 5, 6... tá? Então aqui você consegue definir, ah, esse número ele vai contando até mudar de tal grupo para tal grupo. Então aqui você... esse é reiniciar por grupo serve para isso.
+(AÇÃO: no nó "ID Sequencial", remove a coluna "cidade" do campo "REINICIAR POR GRUPO", e adiciona a coluna "nome" no campo "ORDENAR ANTES DE NUMERAR (ORDER BY)", executando em seguida)
+E daí se você quer fazer alguma ordenação antes de começar... começar a fazer a contagem dos ids, né?
+Ó, então ele puxou os Ana, com as letra A que tem primeiro em Fortaleza, porque ele ordenou primeiro, né, por ordem alfabética. Então começou aqui por Fortaleza, tá?
+Então... mas geralmente você vai usar mais assim, né? Geralmente aqui no nosso caso aqui nesse agregador seria um select na tabela sec primary key da... sei lá, tabela notas aí, vai lá, pega qual que é a próxima sec primary, qual que é o próximo id da tabela nota...
+E daí você vem aqui e faz essa... tem que ter essa jogada aqui, tá? E daí você vai ter esse a opção de adicionar esse id. Ou, né, mais fácil, eu sei qual que é o número, vem aqui, né? Mas isso aqui é muito difícil, você não vai saber o número sempre, né?
+(AÇÃO: no nó "ID Sequencial", altera "INICIAR EM" para "Valor fixo", digita "301" e executa)
+Então você poderia colocar aqui 301 e executar. Dá a mesma coisa. Então ele vai começar... quando é aqui por fixo ele sempre vai considerar esse último, tá? Então por isso que ele começou 302, 3...
+Tá, ele não tem esse offset que nem tem aqui, tá? Então, a parte de id sequencial é usada mais para isso, sei lá você está fazendo migração de dados, né?
+Então você quer definir ali se vai reiniciar o idpes... está importando pessoas... vai reiniciar o idpes ou vai manter o id do sistema antigo, né?
+Então isso aqui você poderia fazer, ó. Então você pode criar uma variável que quando você executa... execute esse campo ele alimenta uma coluna, aqui dentro do mapear...
+Então por exemplo aqui no mapeamento ó, eu poderia vir aqui... criar um reset idpes... reset idpes. Tá? Eu vou criar aqui... Deixa eu só criar a variável primeiro.
+(AÇÃO: abre o menu "Variáveis do Workflow" e cria uma variável do tipo Booleano com o nome "reset_idpess")
+Então eu viria aqui, ó, variáveis. Vou criar uma variável de... booleana... vou colocar aqui... texto... não vou colocar booleano aqui. Vou colocar aqui reset idpes...
+Daí aqui você pode colocar um valor padrão para sempre como não. É... Deseja reiniciar o idpes... sei lá que é o código interno, né, do conshow aqui no caso. Eu coloquei aqui, criei uma variável, beleza.
+E vou adicionar aqui no mapeamento uma coluna de reset, vou adicionar aqui ó, variáveis reset idpes. Show, vamos executar aqui e vamos ver o que vai acontecer.
+(AÇÃO: no nó "Mapeamento_1", adiciona um campo "reset_idpess" e o mapeia para a variável criada, executando em seguida)
+(AÇÃO: na tela de execução, seleciona a opção "Sim" para a variável "Deseja Reiniciar o IDPESS?" e clica em Executar)
+Vou executar, deseja reiniciar, vou colocar como sim, tá? Então aqui dentro, ó, dentro do mapeamento 1 a gente vai ter a coluninha aqui ó, que vai sempre vir como true, ó, tá?
+E daí aqui, quando você for fazer o mapeamento final, sei lá, é antes de inserir para o banco, daí você pode vir aqui e fazer o mapeamento final ó. Deixa eu só voltar aqui para nós colocar assim, ó. Tá. É...
+Então vamos supor aqui, eu vou fazer, deixa eu rodar até aqui, né obviamente, rodar aqui de volta... como não... ver se chegou até aqui, né... é não chegou, porque eu não devo ter passado para a frente.
+É... deixa eu ver onde ele se perdeu. Aqui no mapeamento tá aqui, no agregador beleza tá aqui, e aqui eu acho que depois eu não passei para a frente, né? Então só vamos passar ele para a frente aqui. Show. Rodar de volta.
+(AÇÃO: no nó "Mapeamento_2", adiciona o campo "reset_idpess" e clica em Executar)
+Agora tenho aqui, tenho aqui, tenho aqui. Então aqui no id sequencial ó, então a última coisa que eu tenho aqui eu defini, eu gerei um id sequencial, né, eu tenho o id antigo e tenho o id sequencial.
+Se o cara definiu que ele tem que resetar a senha, então ele vai começar do 302, né? Vamos supor, porque geralmente aqui de sistema antigo vêm outra numeração.
+(AÇÃO: abre o bloco de notas e digita a lógica: reset_idpess = True Usa o ID antigo; reset_idpess = False usa o ID)
+Então aqui na nossa lógica a gente vai considerar isso aqui, ó: então reset idpes igual a true começa... é... como usa o id antigo. E se o reset idpes for igual a false usa o novo id, tá? Então vamos fazer assim.
+Beleza. Como que a gente traduz aquilo lá para cá. Então aqui no mapeamento eu poderia fazer o seguinte, eu vou passar para a frente... eu vou pegar aqui o id, tá? E vou fazer aqui... é...
+(AÇÃO: arrasta um novo nó "Mapeamento" para o final do fluxo e conecta o nó "ID Sequencial" a ele)
+Deixa eu ver aqui eu acho que daria para a gente fazer uma... de/para... deixa eu ver se de/para... o de/para aqui eu não consigo colocar valor, né?
+Eu faria o que? Um case. É, vamos tentar fazer... vamos tentar fazer com expressão aqui ó. Tá. Vamos arriscar, ver se a gente consegue fazer. Então eu vou colocar aqui um case e um end.
+(AÇÃO: no novo nó "Mapeamento", adiciona o campo "id" e seleciona o tipo "Expressão")
+(AÇÃO: digita a expressão "CASE WHEN reset_idpess = 'True' THEN id_antigo ELSE id END")
+O que que vai ter dentro desse case aqui? Se... é... use o when, né. Se o reset idpes for igual a... true...
+É... então a gente vai usar o id antigo. Eu já vou lá conferir na nossa cola. Então eu vou usar o id antigo. Senão... daí eu vou usar o id. Tá? É isso que nós tinha combinado, né? Vamos ver aqui.
+É... reset true, usa o id antigo, senão, se for false ele vai usar o id. Beleza.
+(AÇÃO: mapeia os campos "nome", "ativo", "cidade", "salario" e "departamento" no nó "Mapeamento")
+E daí vamos passar para a frente só o nome... que daí é só o que eu precisaria aqui para inserir no banco, né? Eu não vou incluir todos aqui, vou passar só o que eu quero passar mesmo. Salário... e departamento. Tá. Então eu vou executar e vamos ver o que que vai acontecer.
+(AÇÃO: clica em Executar no nó "Mapeamento", seleciona "Não" para a variável na janela que aparece, e confere os dados gerados na tabela de saída, verificando a coluna 'id')
+Então você quer reiniciar o idpes? Não. Então vai ser false. Vamos ver o que que pegou de id? Não. Vai pegar o... se for false ele vai pegar o id. Ó, pegou certo.
+Vamos agora executar de volta e vamos marcar, agora eu quero, quero reiniciar o idpes. Ó, então pegou o 1.
+(AÇÃO: clica em Executar no nó "Mapeamento", seleciona "Sim" e verifica os dados gerados na tabela de saída, notando que a coluna 'id' agora começa do 1)
+Então, eh, vejam que a gente consegue, né, também... é fazer várias, eu eu nem sei, nem lembro mais como que a gente chegou nisso, né, nós estávamos falando do do id sequencial, mas assim, eu só queria mostrar assim num contexto geral, né? Ah, como que eu posso usar, quando que eu vou usar isso, né?
+Geralmente, né, que me vem à cabeça é essas situações aí, onde você tem o o sec ali da tabela, mas você pode ter definição do cliente, ah, tem cliente que quer reiniciar a numeração, não, tem cliente que quer manter o código antigo, tá?
+Então você pode usar essa junção, né, eh... usando variáveis, né? E daí essas variáveis elas fazendo com que o fluxo tome decisões diferentes.
+Que no nosso caso a gente decidiu que se o cara definiu que vai resetar o idpes, ele vai manter o que é do sistema antigo, é meio contraintuitivo, né, mas é uma lógica que a gente fez aqui.
+Mas assim, poderia ser outras lógicas. É... o cara quer reiniciar a numeração? Sim, ele vai começar 1, 2, 3, 4, 5, 6, 7. Até, talvez seria o contrário, né? Seria assim, né, mais logicamente melhor.
+Você quer reiniciar as pessoas? Não. Ele vai manter o id antigo. Que a gente definiu que o id antigo é a partir dos 3... o id antigo é a partir do 1, né?
+Ah não, você quer reiniciar as pessoas? Sim, ele pode começar do zero, então ah, do zero para mim aqui nesse cenário é a partir do 301. Então ele vai gerar aqui a partir do 302 em diante.
+Então o id sequencial ele é bem legal para esse ponto, né, para você poder fazer essas definições sequenciais, né, principalmente de chaves primárias aí de tabelas. É isso.

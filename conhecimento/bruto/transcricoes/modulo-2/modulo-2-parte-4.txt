@@ -1,0 +1,128 @@
+(AÇÃO: Tela exibindo apresentação com a logo "SHIFT", "DATA IN MOTION", "MÓDULO 2", "Parte 4 - Criando uma base de dados interna", "VIASOFT")
+Então chegamos à parte 4 do nosso segundo módulo que é de conexões e vamos falar agora sobre uma funcionalidade que temos aqui que é criar uma base de dados interna, tá?
+(AÇÃO: Transição de slide para "MÓDULO 2", "Parte 5 - Usando o playgroud e salvando consultas")
+É, então bora lá.
+(AÇÃO: O apresentador sai da apresentação e vai para a interface web do "SHIFT")
+Então aqui dentro do SHIFT, nós temos aqui em nível de espaço, junta com o menu dados aqui, a parte de bases de dados.
+(AÇÃO: O apresentador clica na opção "Bases de Dados" no menu lateral esquerdo)
+O que que são essas bases de dados? As bases de dados nada mais são do que bancos de dados internos e dentro do SHIFT, tá?
+É, óbvio que se ele tem limitações, você não consegue criar uma base de dados interna aqui com sei lá 50 Giga de dados, 3 Giga de dados, 2 Giga de dados.
+Ele foi feito para situações em que você precisa, tem dados fixos, imutáveis e sempre vai usar esses mesmos dados em determinado fluxo.
+Então ao invés de você ter um banco de dados com aqueles dados ali, você pode adicionar eles aqui como uma base de dados interna e depois utilizar pra inserir ou buscar esses dados dentro dos fluxos, tá?
+Então aqui por exemplo eu vou criar uma nova base de dados, eu vou chamar ela de, eh, sei lá, CEP, CEPs ou endereços, endereços.
+(AÇÃO: O apresentador clica no botão "+ Nova Base" no canto inferior esquerdo)
+(AÇÃO: Preenche o campo "Nome da base" com "endereços")
+Sempre é bom até aqui eu já fiz assim mas eu até vou botar uma validação nisso é deixar em minúsculo e sem caractere especial, tá?
+(AÇÃO: Corrige o nome da base para "enderecos" minúsculo e sem cedilha)
+Aqui você pode definir uma, uma descrição, se é privada, se é pública, se permite inserir, atualizar ou excluir, né? Tem algumas permissões aqui.
+(AÇÃO: Marca a caixa "Pública", e as caixas "Permitir insert", "Permitir atualizar" e "Permitir excluir")
+Se você deixar desmarcado as pessoas só vão poder ler, né? Então vou marcar aqui, posso fazer tudo e vou dar o primeiro nome aqui.
+(AÇÃO: Preenche o campo "nome_coluna" com "CEP")
+Vou colocar o nome, eh, o que, só CEP aqui que é um texto que é obrigatório, e vou colocar também endereço.
+(AÇÃO: Clica em "+ Adicionar coluna" e preenche o nome com "ENDERECO")
+Vou colocar número, cidade, bairro e UF.
+(AÇÃO: Clica em "+ Adicionar coluna" várias vezes e preenche os nomes com "NUMERO", "CIDADE", "BAIRRO" e "UF")
+O único que é obrigatório é o endereço. Eu posso vir aqui e criar base.
+(AÇÃO: Marca a caixa de obrigatoriedade para a coluna "ENDERECO" e clica no botão "Criar base")
+Então agora aqui, se vocês perceberem já vem aqui pro lado, ó.
+(AÇÃO: A base "enderecos" aparece na lista à esquerda)
+E aqui eu tenho uma base de dados interna.
+Eh, isso aqui não é um banco de dados, tá? Eu não vou ter ah, eu consigo fazer relacionamento, eu consigo criar índice, eu consigo criar chave primária. Não.
+Isso aqui é uma base bem simples para você, quando você tem dados eh, que você precisa inserir ou validar ou sei lá criar um repositório de conhecimento e você precisa disso tudo aqui para não precisar criar um banco externo, tá?
+Daí você utiliza isso. Ele não foi feito para você criar uma, sei lá, uma base de dados, eh, digamos assim, com um zilhão de dados.
+Inclusive vamos fazer um teste aqui, tá?
+Vamos fazer o seguinte, eu vou criar uma base de dados, eh, para nós utilizar aqui e vamos utilizar ela dentro de um, de um fluxo.
+Eh, deixa eu só pegar o arquivo aqui.
+Então, eh, lembram daquela, daquele CSV que a gente carregou no primeiro treinamento lá?
+(AÇÃO: O apresentador mostra uma ferramenta de banco de dados com a tabela "FUNCIONARIOS" e os dados de um arquivo)
+A gente criava no banco esse, essa tabela de funcionários. Vamos fazer a mesma coisa, só que agora com uma base de dados.
+(AÇÃO: O apresentador volta para a interface do SHIFT, na tela de Bases de Dados)
+Então vou criar aqui. Colocar aqui o nome funcionários.
+(AÇÃO: Clica em "+ Nova Base" e preenche "Nome da base" com "funcionarios")
+Vou colocar aqui que eu posso fazer tudo nela e vamos adicionar as colunas aí.
+(AÇÃO: Marca as permissões de inserir, atualizar e excluir)
+Deixa eu pegar elas aqui. Então a primeira é um id.
+(AÇÃO: Preenche a primeira coluna como "id")
+Que é do tipo inteiro, vai ser obrigatório.
+(AÇÃO: Seleciona o tipo "Inteiro" e marca a caixa de obrigatoriedade)
+Eu vou pegar aqui o nome, texto. Tem também e-mail, tem também departamento, salário.
+(AÇÃO: Adiciona as colunas "nome" (Texto), "email" (Texto), "departamento" (Texto), "salario" (Texto))
+Que é do tipo número, né, porque tem decimal.
+(AÇÃO: Altera o tipo da coluna "salario" de "Texto" para "Número")
+E temos também a cidade e, tá bom. E se tá ativo ou não.
+(AÇÃO: Adiciona as colunas "cidade" (Texto) e "ativo" (Texto))
+Acho que tá bom. Id, nome, e-mail, departamento, salário e cidade, não vamos precisar usar todas aquelas colunas que a gente tem, vou criar essa base.
+(AÇÃO: Clica em "Criar base")
+Então tá aqui a nossa base de funcionários, eh, em branco ainda.
+Agora vamos lá dentro de fluxos.
+(AÇÃO: Clica em "Fluxos" no menu lateral)
+Vamos criar o nosso fluxo aqui, Inserir Funcionários.
+(AÇÃO: Clica em "+ Novo Fluxo", seleciona "Em branco", preenche o nome "Inserir Funcionarios" e clica em "Criar")
+Ele vai abrir aqui o canvas. Vou adicionar aqui a mesma coisa que a gente fez, um nó manual.
+(AÇÃO: O apresentador arrasta o nó "Manual" do menu esquerdo para o canvas)
+Vou carregar de um CSV, tá.
+(AÇÃO: Arrasta o nó "CSV" para o canvas)
+Vou fazer a ligação desses caras aqui.
+(AÇÃO: Liga o nó "Manual" ao nó "CSV")
+Vou, eh, enviar, né, porque estava lá na construções em outro espaço, né, quando a gente testou por primeiro.
+(AÇÃO: Seleciona o nó "CSV", clica na aba "De enviar" no painel direito e clica na área de upload)
+Então tá aqui o nosso CSV de funcionários.
+(AÇÃO: Seleciona o arquivo "funcionarios.csv" no explorador de arquivos do sistema)
+E vamos executar aqui.
+(AÇÃO: Clica em "Executar" no painel direito)
+Ok, carregamos. Agora, vamos popular a nossa tabela lá interna.
+Então vou vir aqui, na parte de banco de dados, a gente tem o ler base interna e o gravar base interna.
+(AÇÃO: Rola o menu esquerdo até a seção "Banco de Dados")
+Então a gente quer gravar na base interna.
+(AÇÃO: Arrasta o nó "Gravar Base Interna" para o canvas)
+Dá um duplo clique aqui.
+(AÇÃO: Liga o nó "CSV" ao nó "Gravar Base Interna" e clica neste último)
+Eh, qual que é a base interna que eu quero gravar? É funcionários.
+(AÇÃO: Seleciona "funcionarios" no campo "Base de Dados" do painel direito)
+Eu vou inserir.
+(AÇÃO: Seleciona "Insert (inserir)" no campo "Operação")
+Eh, aqui eu vou dar um auto mapear.
+(AÇÃO: Clica no botão "Auto mapear")
+Então já pegou aqui por com pelo nome, né.
+E vou dar um fechar aqui, salvar e executar.
+(AÇÃO: Fecha o painel do nó, clica em "Salvar" e depois em "Executar" no canto superior direito)
+Ok, terminou. Eh, isso aqui é normal, tá?
+Tem artefatos que ele não salva a pré-visualização. Então, por que? Porque é o mesmo dado que tá aqui atrás, tá.
+Eh, mais pra economia de recursos aí de, de hospedagem, de armazenamento.
+Beleza, vamos dar uma olhada lá na nossa base de dados agora?
+(AÇÃO: Clica em "Bases de Dados" no menu lateral)
+Então se nós vir aqui em funcionários, opa, tá aí ó.
+(AÇÃO: Clica na base "funcionarios" e os dados aparecem em formato de tabela à direita)
+Então agora eu tenho uma base de dados interna populada.
+Aqui ele sempre essa parte inicial ela sempre vai vir assim fixa tá, mas você pode usar por exemplo sei lá...
+where departamento.
+(AÇÃO: Edita a consulta SQL no topo da tela digitando WHERE departamento)
+Se você precisar verificar alguma coisa né, seja igual a vendas.
+(AÇÃO: Completa a consulta digitando = "Vendas")
+Where departamento seja igual a vendas.
+(AÇÃO: Clica no botão "Executar")
+Hum, o que que deu aqui? Ah eu botei aspas duplas aqui, perdão.
+(AÇÃO: Corrige a consulta mudando aspas duplas para aspas simples em 'Vendas' e executa novamente)
+Ó, então ele trouxe tudo que tem departamento vendas aí.
+Então aqui tem é mais pra filtragem né. Se você tem, eh, se você tem muitos dados aqui né ele vem paginado.
+Então, eh, se você precisar ver mais coisas, ele vem, eh, dividiu em 6 páginas aqui, então vem, não vem muitos dados na página para não pesar, né?
+Mas você pode estar fazendo filtros aí. E da mesma forma que a gente consegue ler, vamos supor que você tivesse um, uma situação aí que você precisasse buscar esses funcionários.
+(AÇÃO: Volta para a tela "Fluxos", clica em "+ Novo Fluxo", seleciona "Em branco" e digita o nome "Busca Funcionarios")
+Busca Funcionários.
+(AÇÃO: Clica em "Criar")
+Da mesma forma você poderia aqui eh, inserir um manual e daí você usaria o ler base interna, né.
+(AÇÃO: Arrasta o nó "Manual" e depois o nó "Ler Base Interna" para o canvas)
+Eh, deixa eu ligar esses dois pontos aqui. Vamos configurar, vou pegar de funcionários.
+(AÇÃO: Liga os nós, abre as propriedades de "Ler Base Interna" e seleciona a base "funcionarios")
+Aqui eu posso adicionar filtros, se eu quiser. Por exemplo, ah, quero pegar tudo que é departamento que é igual a vendas.
+(AÇÃO: Clica em "+ Adicionar filtro", seleciona "departamento" no primeiro campo, "Igual a" no segundo e digita "vendas" no terceiro)
+Posso executar.
+(AÇÃO: Clica em "Executar" no painel direito)
+Então, já tá aí nossa base de dados.
+Eh, posso remover o filtro e executar de novo.
+(AÇÃO: Remove o filtro criado e clica em "Executar" novamente)
+E tá aí nossos dados.
+Então assim, o a base de dados interna, né, para você criar você não cria uma conexão, né?
+Ela tá aqui dentro do módulo de conexão, mas ela não é uma conexão em si, né. Que você pode, eh, você até tem ali as opções de filtragem em SQL, mas assim, a proposta da base de dados é para que em situações que você tem dados que são padrões, né, que você utiliza, eh, dentro de fluxos, para você não setar ou se você precisa fazer uma verificação, né?
+Pra você não precisar ficar criando loop, criando várias coisas, um monte de nó aqui dentro, você simplesmente pode criar uma base de dados com esse, com esses dados aqui, e depois utilizar lá dentro dos fluxos de maneira como se fosse um banco de dados normal.
+Então, eh, a demonstração que eu queria dar sobre bases de dados é basicamente essa.
