@@ -84,6 +84,11 @@ respectivamente, ou se são outra coisa.
   `CAST({{vars.capital}} AS DOUBLE)`.
 - **Nomes de variável são case-sensitive** — usar exatamente o `name` declarado.
 
+> ⚠️ **Contraste que engana (D9):** `sql_database` e `sql_script` usam `:nome` + `parameters`, que
+> é **bind de verdade, sem interpolação de texto**. O `mapper` usa `{{vars.X}}`, que é
+> **substituição literal**. Parecem a mesma forma de parametrizar e têm segurança oposta. Nenhuma
+> aula ou documento registra a diferença.
+
 ## Entradas esperadas
 
 Um dataset tabular upstream. `[UI-OBSERVADA]` O nó **carrega o schema do nó anterior**

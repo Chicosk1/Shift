@@ -158,7 +158,13 @@ com `CREATE TABLE` no gerenciador de banco. — `m1:71-76`
    idempotência** (L6). Permitem que reprocessar o mesmo pedido não sobrescreva campos que o
    fluxo não deveria tocar, sem depender de lógica condicional no fluxo.
 2. **`returning_columns`** permite capturar o valor gravado — insumo para a trilha de auditoria
-   pedida em §5 do plano.
+   pedida em §5 do plano. Mas **onde gravar a auditoria é uma lacuna aberta** (L28): a base interna
+   tem teto de 200 mil linhas, e o nó de Conjunto de Dados que o próprio MCP recomenda para
+   histórico **não aparece em `list_nodes`**.
+3. **Alternativa para atualizar preço:** `sql_script` em modo `execute_many` itera sobre o
+   upstream — o exemplo do próprio contrato é `UPDATE pedidos SET status = ... WHERE id = :id`.
+   Diferenças que importam: `sql_script` tem risco **`unknown_write`**, `timeout_seconds` padrão
+   de **60 s** (contra 3600 s do fluxo), e usa **bind real** em vez de substituição literal.
 3. **`unique_columns`** deduplica **antes** do insert, o que ataca a duplicação criada de
    propósito pela margem de sobreposição da janela incremental (§5.1).
 4. `append_safe` é a única estratégia com semântica transacional ("desfaz tudo se uma linha

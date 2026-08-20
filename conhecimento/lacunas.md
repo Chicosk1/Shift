@@ -23,18 +23,38 @@ sobreposição? Se permite, existe primitiva de trava?
 **Impacto: alto.** O plano (§5.4) exige dry-run como modo padrão para o fluxo que escreve
 preço. Não há recurso equivalente na plataforma. O toggle Teste/Produção limita a 500 linhas,
 mas **não** suprime escrita — é limite de volume, não de efeito.
-**PRIMITIVA ENCONTRADA (MCP, 2026-08-20):** `if_node` tem **gate mode** — sem upstream tabular,
-avalia condições contra metadata e ativa um único ramo. Com uma variável booleana `dry_run`, isso
-desvia do nó de escrita para um de registro. `switch_node` faz o mesmo em N ramos.
-**Rebaixada para: médio.** Não é recurso pronto, mas a peça existe. Falta validar o padrão na
-prática (Fase 5).
+**PRIMITIVA CONFIRMADA (Fase 2, 2026-08-20):** além do gate mode, `if_node` tem
+**`decision_mode`**: `per_row` (padrão, reparte cada linha entre V/F) e **`single`** — *"avalia SÓ
+a 1ª linha e envia a tabela inteira por um único ramo (decisão de lote)"*.
 
-### L3 — Watermark e carga incremental
-**Impacto: alto.** Termo com **zero ocorrências** nas 26 transcrições e nos 40 documentos.
-O plano (§5.1) depende disso inteiramente.
-**Hipótese a validar:** base de dados interna (teto de 200 mil linhas) como armazenamento do
-watermark, lida/escrita por subfluxo `sub-obter-watermark`. Precisa confirmar leitura e escrita
-na mesma execução sem condição de corrida.
+`decision_mode: single` **é** o dry-run: uma condição sobre `{{vars.dry_run}}` manda o lote inteiro
+para o ramo de registro ou para o ramo de escrita.
+**Rebaixada para: baixo.** A peça existe e é adequada. Falta só exercitar na Fase 5.
+
+### L3 — ~~Watermark e carga incremental~~ RESOLVIDA — **é NATIVO** (2026-08-20, Fase 2)
+**Status: fechada pelo MCP.** O termo tem zero ocorrências em 380 KB de transcrição e 40
+documentos — mas **o recurso existe no nó**, só não é chamado de watermark.
+
+`describe_node('sql_database')` `[CONFIRMADO-MCP]`:
+
+| Parâmetro | O que faz |
+|---|---|
+| `incremental_column` | Coluna de corte (data, timestamp ou sequencial crescente) |
+| `initial_value` | De onde começar na **primeira** execução. Vazio = lê tudo |
+| `reprocess_window` | **Recuo aplicado ao marco a cada execução** — dias se data/hora, unidades se sequencial. *"Existe para pegar lançamento retroativo"* |
+
+Os nomes `incremental_from`, `shift_p_lo` e `shift_p_hi` são **reservados pelo motor** e recusados
+como nome de parâmetro — o marco é gerenciado internamente.
+
+**`reprocess_window` é exatamente a "margem de sobreposição" que §5.1 do plano manda somar à
+mão.** Não é preciso construir `sub-obter-watermark` nem guardar marco em base interna.
+
+> ⚠️ Armadilha declarada: `incremental_column` **precisa de índice na origem** — *"sem ele o
+> incremental vira varredura completa e o ganho some"*. Verificar o índice na tabela de pedidos
+> do ERP antes de confiar.
+
+`[LACUNA remanescente]` Onde o marco é persistido, e o que acontece com ele quando a execução
+falha no meio. Isso decide se §5.1 ainda precisa de algo manual.
 
 ### L4 — Margem: onde está cadastrada no ERP
 **Impacto: alto.** O termo "margem" **não aparece em nenhuma fonte** — nem aula, nem doc. É
@@ -50,10 +70,11 @@ marca d'água; se há histórico de preço.
 ### L5 — Teto de variação e disjuntor
 **Impacto: alto.** §5.4 pede limite de variação percentual por item e limite de itens
 alterados por execução. Nenhum dos dois existe como recurso.
-**PRIMITIVAS ENCONTRADAS (MCP, 2026-08-20):** teto de variação via `filter` sobre coluna
-calculada em `math`; disjuntor via `aggregator` (COUNT) + `if_node` em gate mode. E `loop` tem
-**"políticas de erro e limite de iterações"** — segundo mecanismo de contenção, nativo.
-**Rebaixada para: médio.** Segue sem nó explícito de "falhar/abortar" — ver L10.
+**PRIMITIVAS CONFIRMADAS (Fase 2, 2026-08-20):** teto de variação via `filter` sobre coluna
+calculada em `math` — que **cria** coluna, preservando o valor original. Disjuntor via
+`aggregator` (COUNT) + `if_node` com **`decision_mode: single`**, que é decisão de lote: exatamente
+a semântica de disjuntor. E `loop` tem políticas de erro e limite de iterações.
+**Rebaixada para: médio.** As peças existem. Segue sem nó explícito de "falhar/abortar" — L10.
 
 ---
 
@@ -151,12 +172,36 @@ Várias descrições já trazem pegadinha declarada (ex.: `stat_transition` exig
 período e "devolve um número plausível e errado, sem erro nenhum" se receber eventos).
 **Ação:** `describe_node` em cada um, na Fase 1 ou 2.
 
-### L20 — Qual workspace a API Key alcança
-**Impacto: médio.** `list_projects` devolveu "Nenhum projeto encontrado no workspace". Pode ser
-workspace vazio, ou a chave apontar para outro workspace que não o `Treinamento` das aulas.
-Bloqueia qualquer validação que dependa de ler fluxo ou conexão real.
-**Como resolver:** `list_connections` e `listar_bases_internas` para triangular; se vazio
-também, é a chave que aponta para outro lugar.
+### L20 — ~~Qual workspace a API Key alcança~~ RESOLVIDA (2026-08-20, Fase 2)
+Workspace **`fd9cff30-2988-48db-a19b-9faba7ea06c4`**, com **apenas 2 conexões Oracle** e nada
+mais: zero projetos, fluxos, webhooks e bases internas. Não é o `Treinamento` das aulas.
+
+| Nome | Tipo | Host | Porta | Banco | Usuário | Pública |
+|---|---|---|---|---|---|---|
+| Viasuper Padrão - Gabriel | oracle | 192.168.90.218 | 30200 | ORCL | VIASOFTMERC | Sim |
+| Viasuper Titan - Gabriel | oracle | 192.168.90.218 | 30100 | ORCL | VIASOFTMERC | Sim |
+
+**Consequência:** o piloto começa em ambiente limpo. Não há fluxo existente de onde reaproveitar
+padrão, e **não há base interna** — o que exigiria `criar_base_interna` (escrita) se a auditoria
+fosse por ali. Ver L28.
+
+### L28 — Onde gravar a trilha de auditoria ⚠️
+**Impacto: ALTO.** O plano (§5, item 5) pede registrar antes/depois de cada alteração de preço.
+Por natureza é **histórico que cresce sem parar**. Não há destino óbvio:
+
+- **Base interna:** teto duro de **200.000 linhas** (`INTERNAL_DATA_MAX_ROWS`), e o contrato do
+  `internal_data_write` é explícito — *"Ela é para CADASTRO"*. Pior: a recusa por volume **só
+  aparece na execução, depois de o usuário já ter aprovado o fluxo**.
+- **O que o próprio contrato recomenda não existe:** o mesmo texto diz que para histórico *"o
+  destino certo é o nó **'Gravar em Conjunto de Dados'** (parquet, lido como tabela pelos
+  fluxos)"*. **Esse nó não aparece em `list_nodes`.** Verifiquei com busca por `conjunto` e por
+  `parquet dataset gravar` — nada.
+- **Tabela própria no Oracle** via `bulk_insert` é a alternativa que sobra, mas cria objeto no
+  banco do ERP.
+
+**O que falta descobrir:** o nó de Conjunto de Dados existe na interface? Se sim, por que
+`list_nodes` o omite? Se não, a auditoria vai para tabela dedicada no Oracle?
+**É decisão de arquitetura do piloto, não detalhe.**
 
 ### L21 — Nós de banco: contrato real de config
 **Impacto: médio-alto.** `describe_node` existe e devolve "contrato completo: campos de
@@ -231,9 +276,13 @@ mostra acesso direto sem relay quando o backend está na mesma rede.
 têm dialeto **declaradamente só Oracle** (`apply_dialect: oracle`, `extract_dialect: oracle`,
 "Escopo Fase 1: só Oracle"). Se o ERP é Oracle, **os recursos avançados de borda se aplicam** —
 deixam de ser curiosidade e passam a ser possibilidade real de desempenho.
-**O que falta descobrir:** o Oracle do ERP é alcançável direto pela nuvem, ou precisa de relay?
-E as flags `RELAY_EXTRACT_ENABLED` / `RELAY_APPLY_ROW_TOLERANCE_ENABLED` /
-`UPSERT_STAGING_MERGE_ENABLED` — todas **OFF por default** — estão ligadas neste ambiente?
+**RESPONDIDO EM PARTE (Fase 2, 2026-08-20):** `test_connection` retornou **SUCESSO** nas duas
+conexões Oracle, e nenhuma indica relay nos metadados. Para essas conexões, o Oracle em
+`192.168.90.218` é alcançável **direto — relay não é necessário**.
+`[LACUNA remanescente]` As duas apontam para o mesmo host, provavelmente desenvolvimento. Falta
+confirmar o Oracle de **produção**. E as flags `RELAY_EXTRACT_ENABLED` /
+`RELAY_APPLY_ROW_TOLERANCE_ENABLED` / `UPSERT_STAGING_MERGE_ENABLED` — todas **OFF por default** —
+seguem sem verificação neste ambiente.
 
 ### L27 — Bug conhecido de Oracle + dlt
 **Impacto: médio-alto** (novo, por causa do escopo Oracle).
@@ -245,9 +294,12 @@ leitura particionada paralela do `sql_database` pode não valer para Oracle.
 **O que falta descobrir:** qual é o bug, se já foi corrigido, e se a leitura particionada
 funciona contra Oracle na prática.
 
-### L15 — Sintaxe cron livre
-A UI oferece frequências prontas (mínimo 5 min) e gera `cron_expression`. Não está documentado
-se é possível **digitar** uma expressão arbitrária.
+### L15 — ~~Sintaxe cron livre~~ RESOLVIDA em parte (2026-08-20, Fase 2)
+`describe_node('cron')` `[CONFIRMADO-MCP]`: o nó tem **um único parâmetro** — `cron_expression`
+(string, obrigatório), exemplo `'0 8 * * 1-5'`. **Sem piso e sem lista de valores permitidos.**
+O piso de 5 minutos é da **interface**, não do contrato.
+`[LACUNA remanescente]` Se o backend valida o intervalo mínimo ao salvar. **Não testável sem
+operação de escrita** — ver `divergencias.md §4.2`. Irrelevante para o piloto, que pede 5 min.
 
 ### L16 — Referência de API pública
 Endpoints aparecem espalhados por vários documentos (`/workflows/{id}/execute`,

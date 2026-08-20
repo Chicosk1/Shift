@@ -121,7 +121,11 @@ connection string guardado. Senhas **nunca trafegam em texto claro de volta** pa
 — `conceitos.md § Conexão`
 
 `[CONFIRMADO-MCP]` `get_connection` devolve nome, tipo, host, porta, banco e usuário, e declara
-explicitamente: *"Nunca retorna senhas, tokens ou strings de conexão"*.
+explicitamente: *"Nunca retorna senhas, tokens ou strings de conexão"*. **Verificado na prática
+em 2 conexões Oracle reais** (Fase 2) — nenhuma credencial retornada.
+
+`[CONFIRMADO-MCP]` **Conexão Oracle funciona sem relay:** `test_connection` retornou SUCESSO em
+duas conexões Oracle diretas (host `192.168.90.218`). Ver `divergencias.md §0`.
 
 **Escopo** `[CONFIRMADO-DOC]` — toda conexão pertence a **exatamente um** dono:
 
@@ -133,6 +137,11 @@ explicitamente: *"Nunca retorna senhas, tokens ou strings de conexão"*.
 
 Regra de bolso declarada: na dúvida, **grupo econômico**, porque o banco quase sempre é do
 cliente. — `conceitos.md § Conexão`
+
+> ⚠️ **CONFLITO (D10)** — o MCP não expõe esse escopo de 3 valores. `get_connection` devolve
+> **`Publica: Sim/Não`** e **`Workspace: <uuid>`**, sem nenhum campo de grupo econômico ou
+> projeto. `[LACUNA]` Falta saber se `Publica` + ausência de `client_id`/`project_id` **é** a
+> representação do escopo "Espaço", ou se o MCP só não expõe os outros dois.
 
 `[VÍDEO]` Credencial sozinha não faz nada — "ganha vida dentro de um fluxo". — `m1:38`
 
@@ -176,8 +185,16 @@ descrição e tag. — `m1:59-60`
 `[VÍDEO]` Regra de forma: todo nó tem uma entrada e uma saída, **exceto os de gatilho**, que só
 têm saída. — `m1:39`, confirmado na prática em `m1:65`
 
-`[CONFIRMADO-MCP]` Cada tipo de nó tem **nível de risco** declarado (`read_only` ou `write`) e
-pode ter "armadilhas conhecidas" no próprio contrato — visíveis via `describe_node`.
+`[CONFIRMADO-MCP]` Cada tipo de nó tem **nível de risco** declarado e pode ter "armadilhas
+conhecidas" no próprio contrato — visíveis via `describe_node`. São **três** níveis observados:
+
+| Risco | Significado | Exemplos |
+|---|---|---|
+| `read_only` | Não escreve | `manual`, `cron`, `csv_input`, `mapper`, `math`, `filter`, `if_node`, `sql_database` |
+| `write` | Escreve | `bulk_insert`, `internal_data_write` |
+| **`unknown_write`** | A plataforma **não sabe estaticamente** se escreve | `sql_script` (SQL arbitrário) |
+
+`unknown_write` não aparece em nenhuma documentação — ver `divergencias.md` D11.
 
 | Interface | MCP/API |
 |---|---|
