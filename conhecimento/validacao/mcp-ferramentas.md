@@ -1,14 +1,32 @@
 # Inventário do MCP do Shift
 
-> **Status: NÃO CONECTADO** — levantado em 2026-08-20 (Fase 0).
+> **Status: REGISTRADO NO CAMINHO CORRETO — AGUARDANDO APROVAÇÃO** — atualizado em 2026-08-20 (Fase 0).
 > Este arquivo é um **gabarito derivado da documentação**, não um dump real.
-> Ele deve ser substituído pelo dump real assim que o servidor for registrado.
+> Ele deve ser substituído pelo dump real assim que o servidor for aprovado e carregado.
 
 ---
 
 ## 1. Situação
 
-O servidor MCP do Shift **existe e está configurado**, mas no **escopo de projeto errado**:
+O servidor foi registrado no escopo correto via `claude mcp add --scope project`, que gravou
+`C:\Shift\.mcp.json`. **Mas as ferramentas ainda não carregam**, por dois motivos somados:
+
+1. Servidor declarado em `.mcp.json` exige **aprovação explícita por projeto**. Hoje
+   `enabledMcpjsonServers` está `[]` em `~/.claude.json` — nem aprovado, nem recusado.
+2. A sessão em curso foi aberta antes do registro. É preciso **reabrir a sessão** e aceitar o
+   prompt de aprovação do servidor `shift`.
+
+**Pegadinha encontrada no caminho:** o `claude mcp add` reportou gravar em
+`C:\Shift\.mcp.json`, mas o arquivo apareceu depois em `C:\Shift\.claude\.mcp.json` (mesmo
+tamanho e mtime — foi movido, não reescrito). Nessa localização o Claude Code **não o detecta**,
+e por isso nem chega a exibir o prompt de aprovação. Corrigido movendo de volta para a raiz.
+Se o servidor "desaparecer" no futuro, conferir a localização do arquivo antes de qualquer outra
+hipótese.
+
+**Diagnóstico útil:** um GET pelo navegador em `https://shift.viasoftcloud.com.br/mcp` responde
+`{"code":-32600,"message":"Not Acceptable: Client must accept text/event-stream"}`. Isso **não é
+falha** — é um servidor MCP Streamable HTTP recusando corretamente uma requisição sem o header
+`Accept: text/event-stream`. Serve para confirmar que o endpoint está vivo.
 
 | Item | Valor |
 |---|---|
@@ -16,29 +34,21 @@ O servidor MCP do Shift **existe e está configurado**, mas no **escopo de proje
 | Transporte | `http` |
 | Endpoint | `https://shift.viasoftcloud.com.br/mcp` |
 | Autenticação | header `Authorization: Bearer <API KEY>` |
-| Escopo registrado | `C:/WINDOWS/system32` |
-| Escopo necessário | `C:\Shift` |
+| Arquivo | `C:\Shift\.mcp.json` (241 bytes) |
+| Escopo | projeto `C:\Shift` — correto |
+| Aprovação | **pendente** (`enabledMcpjsonServers: []`) |
 
-Consequência: o projeto `C:\Shift` não tem chave `mcpServers`, então **nenhuma ferramenta
-`mcp__shift__*` é carregada** nas sessões abertas aqui. Não houve como fazer introspecção.
+**Nada foi executado contra o MCP** — nem leitura, nem escrita, nem chamada HTTP ao endpoint.
 
-**Nada foi executado contra o MCP nesta fase** — nem leitura, nem escrita, nem chamada HTTP
-direta ao endpoint.
+> ⚠️ **`.mcp.json` contém a API Key em texto puro** e fica na raiz do repositório. Foi
+> adicionado ao `.gitignore` antes de qualquer commit — verificado com `git check-ignore` e com
+> busca por fragmento do token em todo o histórico. **A chave nunca entrou em commit.**
+> Ainda assim, a chave já circulou em terminal e em captura de tela: **recomenda-se rotação**.
 
-### Correção
+### O que falta
 
-Em terminal interativo, na raiz `C:\Shift` (a chave já existe em `~/.claude.json`; reaproveite
-o valor de lá em vez de digitar um novo):
-
-```
-claude mcp add --scope project --transport http shift https://shift.viasoftcloud.com.br/mcp --header "Authorization: Bearer <API_KEY>"
-```
-
-Depois, reabrir a sessão e regerar este arquivo com o dump real.
-
-> **Higiene de segredo:** a API Key está em texto puro em `~/.claude.json`. Vale rotação.
-> O valor **não** é reproduzido neste repositório, e o `.gitignore` bloqueia `.env*`,
-> `*.key`, `*.pem` e `.claude/settings.local.json`.
+Reabrir a sessão em `C:\Shift` e **aprovar o servidor `shift`** quando o prompt aparecer.
+Depois disso, regerar este arquivo com o dump real e preencher as colunas `[LACUNA]`.
 
 ---
 

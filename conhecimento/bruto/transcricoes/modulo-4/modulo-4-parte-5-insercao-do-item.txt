@@ -1,0 +1,434 @@
+00:00 Então iniciando mais um vídeo aqui,
+00:02 né, na nossa saga de migração de dados, a gente tem praticamente tudo pronto para
+00:08 iniciar a inserção dos dados dos itens, né.
+00:11 Uma coisa que eu vou fazer aqui,
+(AÇÃO: O usuário clica na barra de busca da biblioteca de nós no menu esquerdo)
+00:14 eh, eu vou adicionar um "Aguardar Todos" porque a gente sabe que
+00:18 temos bastante dados aqui, oh.
+00:20 Mas o que eu quero passar para frente,
+00:23 né, a gente tem tudo isso aqui, mas eu quero passar para frente
+00:26 só o resultado do nosso último "Join" aqui,
+00:29 que é onde tá tudo que a gente precisa.
+00:31 Então eu vou vir aqui, vou
+(AÇÃO: O usuário arrasta o nó "Aguardar Todos" para a tela de fluxo)
+00:33 adicionar, opa, não é esse, um "Aguardar Todos", né.
+00:37 Vou posicionar ele aqui no meio.
+(AÇÃO: O usuário move o nó "Aguardar Todos" e conecta a saída do nó "Junção Marca" a ele)
+00:44 E vou chamar nosso "Join" aqui para trazer ele aqui.
+00:49 Eh, e os nossos "Joins" eu vou agrupar eles.
+00:54 Vou vir aqui,
+(AÇÃO: O usuário seleciona todos os nós de "Junção" arrastando o mouse)
+00:56 vou
+(AÇÃO: O usuário clica com o botão direito e seleciona "Agrupar selecionados")
+00:58 agrupar.
+00:59 Vou dar uma cor aqui, sei lá,
+01:02 verde.
+(AÇÃO: O usuário altera a cor do grupo para verde e digita "Junções" no nome)
+01:03 E aqui eu vou colocar o nome de
+01:06 junções.
+01:08 Vamos diminuir ele aqui. Agora eu tenho
+(AÇÃO: O usuário clica para contrair o grupo "Junções")
+01:12 uma organização melhor aqui do meu
+01:15 fluxo,
+01:17 né, bem mais
+01:18 enxuto.
+01:20 Aqui eu vou colocar aguarda...
+(AÇÃO: O usuário clica e renomeia o primeiro nó "Aguardar Todos" para "Aguarda SubCadastros")
+01:23 vou mudar o nome aqui para aguarda...
+01:26 aguarda...
+01:27 subcadastros.
+01:30 E aqui,
+(AÇÃO: O usuário clica e renomeia o segundo nó "Aguardar Todos" para "Aguarda Junções")
+01:33 aguarda
+01:35 junções.
+01:37 E no meu aguarda junções, eu vou passar para frente só
+(AÇÃO: O usuário clica no nó "Aguarda Junções" e abre o painel de parâmetros à direita)
+01:41 o nosso último junção,
+01:43 que é o junção marca.
+(AÇÃO: O usuário seleciona a opção "Junção Marca" no campo "Campos de saída" e fecha o painel)
+01:45 Então agora a gente vai ter os dados aí necessários para nós
+01:50 fazermos a inserção na tabela item.
+01:53 Então aqui, na tabela item,
+01:57 eh, vamos começar a mapear o nosso...
+02:02 as nossas colunas, né.
+02:04 Então
+(AÇÃO: O usuário abre a janela do software Oracle SQL Developer)
+02:06 vamos pegar aqui...
+02:11 eh, deixa eu ver aqui, eu acho que eu até executei
+02:14 aquela vez... aquele dia lá, né...
+02:20 hum, deixa eu achar...
+02:23 que eu esqueci de salvar o nosso mapeamento que a gente tinha feito.
+02:29 Deixa eu achar aqui.
+(AÇÃO: O usuário alterna para outra aba no SQL Developer, exibindo as colunas da tabela ITEM)
+02:31 Então eu achei aqui
+02:33 as... a parte de inserção da tabela item aqui.
+02:37 Então tem vários campos que eu tenho valores
+02:41 default, se eu não tiver a coluna lá na nossa consulta eu vou
+02:44 definir um default, né, porque
+02:46 são campos de gerenciamento às vezes interno só do nosso sistema, né.
+02:51 Mas os principais aqui, né, a gente tem aqui a informação.
+02:55 Beleza, então com isso em mãos,
+02:57 eu vou adicionar isso aqui oh, desse ladinho aqui.
+(AÇÃO: O usuário redimensiona a janela do SQL Developer para dividir a tela com o navegador)
+03:01 E vamos tentar trabalhar aqui com a tabela... a... com a tela separada aqui
+03:07 em duas.
+03:08 E aqui eu vou colocar o mapeamento para...
+03:11 pros itens, né.
+03:13 Então vou vir aqui,
+(AÇÃO: O usuário arrasta o nó "Mapeamento" para o fluxo e clica para renomear)
+03:15 map...
+03:17 mapeia...
+03:18 mapeia item.
+03:22 Certo.
+03:24 Então o que que eu vou fazer aqui?
+03:26 Eh...
+03:30 aqui eu tenho que mapeia... mapear o item, né.
+03:33 E aqui eu vou pegar também o... fazer o... o select da... usando o D lá
+03:41 da tabela
+03:44 item, né.
+03:46 Usa de item.
+03:48 Então aqui eu vou adicionar...
+(AÇÃO: O usuário adiciona um nó "Usade ITEM" no fluxo e abre outra aba do Viasoft Shift)
+03:53 usa de item, aqui eu vou fazer um...
+03:55 não lembro agora o que que nós usamos, deixa eu salvar aqui rapidinho.
+(AÇÃO: O usuário salva o fluxo atual e clica em voltar para acessar a lista de fluxos)
+03:59 Deixa eu ver o que que nós usamos aqui em uma dessas aqui.
+(AÇÃO: O usuário abre o fluxo "TREINAMENTO - SUBGRUPO - CADASTRO")
+04:03 A gente usou esse aqui mesmo, né. Select usando D.
+04:07 Ah, usou o próprio select, tranquilo. Então vamos lá.
+(AÇÃO: O usuário volta para o fluxo "Treinamento Insere Itens - Core")
+04:12 Item score.
+04:14 Vamos lá para frente.
+04:16 Vamos mudar aqui então pro select.
+(AÇÃO: O usuário remove o nó "Usa de ITEM" e adiciona um novo nó "SELECT")
+04:22 Select...
+(AÇÃO: O usuário clica e renomeia o nó "SELECT" para "Select USANDODE")
+04:29 select
+04:33 usando D.
+04:36 Aqui vamos fazer...
+(AÇÃO: O usuário clica no nó "Select USANDODE" e abre o painel de parâmetros)
+04:39 colocar a variável do constru show.
+(AÇÃO: O usuário preenche o campo "Variável" com a expressão "{{vars.Conn_ConstruShow}}")
+04:42 Fazer o select estab usad...
+(AÇÃO: O usuário preenche o campo "SQL Personalizado" com a query SELECT)
+04:45 E aqui vamos fazer o mapeamento.
+04:47 O mapeamento... vamos só...
+04:51 como a gente saiu aqui
+04:53 eu vou ter que rodar novamente...
+04:58 deixa eu desativar esses dois aqui.
+(AÇÃO: O usuário desativa os nós "Mapeia ITEM" e "Select USANDODE" e clica no botão verde "Executar")
+05:01 Deixa eu rodar novamente aqui para nós pegar os esquemas.
+05:06 Então ele rodou aqui.
+05:09 Então já peguei aqui, vou guardar junções. Deixa eu
+05:12 ativar novamente aqui o nosso mapeia item.
+(AÇÃO: O usuário ativa o nó "Mapeia ITEM" e abre seu painel de parâmetros)
+05:15 E aqui a gente vai começar o mapeamento com base na nossa
+05:19 tabela real, né. Então vamos ver... vir aqui oh...
+(AÇÃO: O usuário ajusta o layout das janelas na tela dividida)
+05:27 Beleza, então a primeira coisa que a gente vai precisar é o estab, mas por hora a gente não vai ter aqui.
+05:31 Então vamos pro id_item.
+05:33 Então o primeiro aqui vai ser o id_item.
+(AÇÃO: O usuário clica em "Adicionar campo" e digita "IDITEM")
+05:37 Que eu vou colocar aqui, daí a descrição,
+05:40 que é essa aqui.
+(AÇÃO: O usuário adiciona mais um campo e digita "DESCRICAO")
+05:42 Já vamos deixar tudo nas nomenclaturas certa porque depois também facilita lá na
+05:47 na parte de de mapeamento com o insert.
+05:51 Então número de código de barra,
+05:53 é esse aqui, nro_codibar.
+(AÇÃO: O usuário adiciona mais um campo e digita "NROCODIBARR")
+05:58 A unidade...
+06:00 então é a nossa unidade_codigo aqui.
+(AÇÃO: O usuário adiciona mais um campo e digita "UNIDADE")
+06:06 Daí depois nós temos o tipo,
+06:09 que é esse aqui.
+(AÇÃO: O usuário adiciona mais um campo e digita "TIPO")
+06:12 Depois nós temos o ncm.
+(AÇÃO: O usuário adiciona mais um campo e digita "NCM")
+06:16 Vou pausar o vídeo aqui, eu vou fazer aqui para não ficar muito longo, daí eu já volto.
+(AÇÃO: O vídeo realiza um corte; a tela volta com vários campos de mapeamento preenchidos e uma transformação aplicada em "DESCRICAO")
+06:21 Beleza, então eu fiz todo o mapeamento aqui, né.
+06:25 Aqui é sempre bom, para não estourar a tabela, por exemplo,
+06:30 essa descrição aqui, por padrão é 120 caracteres.
+06:34 Se você quiser deixar sem truncar para forçar um erro, né,
+06:38 né, daí você pode deixar, mas em... por exemplo aqui, descrição, aqui,
+06:42 se vier mais do que 120 caracteres, eu já corto, eu já trunco aqui, né,
+(AÇÃO: O usuário clica no campo "DESCRICAO" e mostra a opção de transformação "Truncar" configurada com tamanho 120)
+06:47 coloquei a transformação de truncar,
+06:49 para que daí eu não tenha um erro na hora de inserção do do dado, né.
+06:53 Então eu posso fazer dessa maneira.
+06:55 Então aqui eu já mapeei as colunas que eu queria,
+06:58 vou dar um salvar aqui para não perder, né.
+(AÇÃO: O usuário fecha o painel, salva o fluxo e clica em Ativar no nó "Select USANDODE")
+07:01 Ativar aqui também.
+07:08 Vamos executar aqui pra gente ver o resultado.
+(AÇÃO: O usuário clica no botão "Executar" e o fluxo inicia o processamento)
+07:13 Então terminou a execução aqui.
+07:15 Então o nosso mapeamento aqui ficou...
+07:20 eh, vamos ver...
+07:22 ficou 100%.
+07:28 Ah ele não... eu acho que eu tinha deixado desativado esse aqui,
+(AÇÃO: O usuário clica com o botão direito e ativa o nó "Select USANDODE" novamente)
+07:32 antes de salvar.
+07:33 Deixa eu executar de volta.
+(AÇÃO: O usuário salva o fluxo e clica em "Executar")
+07:38 Beleza, agora ele executou tudo, então nós temos o nosso...
+07:42 nossa tabela
+07:44 eh, usando D também da tabela aqui.
+07:48 Mas só vamos colocar aqui um where...
+(AÇÃO: O usuário abre os parâmetros do nó "Select USANDODE" e clica no campo "SQL Personalizado")
+07:54 na nossa questão de estab, né.
+07:57 estab
+07:59 seja maior ou igual a 1000, né.
+08:02 Tinha esquecido desse detalhe.
+08:04 Vamos só rodar de volta, então.
+(AÇÃO: O usuário salva e executa o fluxo novamente)
+08:11 Ah, aqui ele deu um errinho, vamos ver o que que eu errei aqui no meu...
+(AÇÃO: O usuário abre novamente os parâmetros do nó "Select USANDODE")
+08:16 where... ah, faltou... botei dois where aqui.
+08:19 Eita.
+(AÇÃO: O usuário edita a query substituindo a segunda palavra "WHERE" por "AND")
+08:21 Então onde a tabela seja ITEM
+08:25 e o ESTAB seja maior ou igual a 1000, né. Porque
+08:28 a gente não tem os outros estabelecimentos por padrão. Então...
+08:32 agora vai.
+(AÇÃO: O usuário salva as alterações e clica em Executar)
+08:34 Vamos executar de novo.
+08:38 Beleza. Agora eu acho que deu tudo certo. Vamos ver aqui.
+(AÇÃO: O usuário clica no nó "Select USANDODE" e verifica os resultados na aba "Dados")
+08:42 Beleza, temos o nosso estab. Vamos só isolar o nosso
+08:46 usa de do item, né.
+08:48 Como a gente só tem um, se tivesse mais de um, mas no caso a gente só tem um.
+08:52 Eh...
+08:54 vamos isolar ele e depois remover os duplicados.
+(AÇÃO: O usuário arrasta os nós "Isolar" e "Remover Duplicados" da biblioteca e renomeia)
+09:00 Isola
+09:04 usa de item.
+09:10 Então vou pegar só o usa de,
+(AÇÃO: No nó Isola, o usuário seleciona o campo "usade" e o renomeia para "ESTAB" na interface)
+09:14 que eu vou chamar ele novamente de estab.
+09:19 E depois a gente vai ter
+09:28 o remove duplicados.
+(AÇÃO: O usuário renomeia o nó de remover duplicados para "Duplicados USADE ITEM")
+09:37 Beleza, vamos ligar aqui, vamos rodar para atualizar.
+(AÇÃO: O usuário conecta os três nós recém-criados, salva e clica em Executar)
+09:44 Show, ele rodou aqui, ele deu erro aqui no duplicados porque a gente não tinha configurado, né.
+(AÇÃO: O usuário abre as configurações do nó "Duplicados USADE ITEM" e seleciona a chave "ESTAB")
+09:49 A gente está fazendo aqui para recuperar os dados.
+09:51 Agora sim a gente tem os duplicados aqui,
+09:54 vamos atualizar nosso esquema e daí por último a gente vai fazer
+09:58 a... vamos jogar o estab para junto aqui dos nossos itens, né,
+10:02 e daí a gente vai poder fazer a inserção na tabela item normalmente.
+(AÇÃO: O usuário salva o fluxo e clica em Executar)
+10:08 Vamos executar aqui pra gente atualizar os dados.
+10:12 Certo. Então temos aqui o nosso usa de isolado, né. No caso a gente só tem um.
+10:19 É muito tentador deixar e setar direto 500, né, mas nunca se sabe
+10:24 quando a gente pode ter outro, né. Às vezes o cara utiliza o construshow, mas ele tem duas empresas e quer os cadastros separados.
+10:31 Daí ferrou, né. Se você tem o 500 setado por padrão, ele vai vai fazer tudo
+10:37 como se fosse da mesma empresa.
+10:39 Beleza, eu tenho os itens, agora eu só tenho que jogar o estab ali pra junto
+10:44 do... eh...
+10:46 dos itens, né.
+(AÇÃO: O usuário adiciona um nó "Combinar" no fluxo)
+10:50 Então aqui basicamente eu vou cruzar com um cross.
+10:54 Para somente adicionar...
+(AÇÃO: O usuário renomeia o nó de combinar para "Combinação Item Com Usade")
+10:58 colocar aqui combinação
+11:00 item usade.
+11:07 Então é o cross aqui, vou escolher o estab, tudo certo aqui.
+(AÇÃO: O usuário abre as configurações de combinar, escolhe "Cross", seleciona o campo "ESTAB" e fecha)
+11:15 Salvar.
+11:16 E vamos executar para nós ver o resultado.
+(AÇÃO: O usuário clica em Salvar e Executar)
+11:20 Beleza, temos a nossa combinação feita. Vamos ver se jogou o nosso estab lá pro fundo.
+(AÇÃO: O usuário clica no nó combinado e rola a aba "Dados" para a direita para verificar o campo)
+11:29 Tá aí, oh. Óbvio que eu não fiz nenhuma lógica aqui de atualizar o id item ou não, né.
+11:37 Isso poderia ser adicionado também. Ele tá pegando tudo que vem lá do sistema antigo.
+11:42 Então isso poderia ser adicionado uma... uma verificação com if, se quer resetar ou não. Até fiz um exemplo lá no...
+11:50 em algum dos treinamentos ali.
+11:52 Mas aqui a gente vai manter o id que tá lá dentro do do cadastro atual do cliente.
+12:00 Então beleza, agora sim eu posso finalmente chegar, né, depois de nossas de todos os nossos tratamentos e inserir
+12:08 na item.
+(AÇÃO: O usuário adiciona um nó "Destino SQL" e renomeia para "Insert Item")
+12:12 Então aqui eu vou ligar.
+(AÇÃO: O usuário liga a saída do nó "Combinação Item Com Usade" ao nó "Insert Item")
+12:15 Vou fazer aqui a variável, colocar construshow.
+(AÇÃO: O usuário abre as configurações e preenche a conexão com "{{vars.Conn_ConstruShow}}")
+12:20 Vamos pegar a nossa tabela item.
+12:26 eh, tem que ser a só item, né. viasoft...
+(AÇÃO: O usuário pesquisa e seleciona "VIASOFTBASE.ITEM" na lista de tabelas)
+12:30 viasoft base.item.
+12:34 É upsert.
+(AÇÃO: O usuário altera a "Modo de Escrita" para "Upsert")
+12:37 Né, nós temos que fazer upsert, porque se eu for fazer insert eu tenho que fazer o delete e depois o insert.
+12:44 Tá. É... se eu não quero fazer o delete, né, é mais rápido, tá, isso é até importante. O upsert é mais lento do que você fazer um truncate e depois insert.
+12:54 Porque o upsert ele tem que verificar se existe e daí depois inserir, tá.
+12:59 Então, tem essa... tem essa questão aí.
+13:03 Mas eu vou fazer o upsert aqui. Nossa chave são estab e id_item.
+(AÇÃO: O usuário clica e seleciona "ESTAB" e "IDITEM" em "Chaves Upsert")
+13:09 E vamos fazer o automapear aqui, porque daí como nós deixamos os nomes das colunas iguais,
+13:14 ele já consegue fazer o casamento sozinho.
+(AÇÃO: O usuário clica em "Auto mapear" e todas as colunas são alinhadas na interface)
+13:19 Então, aí já ficou tudo certinho.
+13:24 Agora sim a gente pode vir aqui,
+13:27 dar um salvar,
+13:29 e executar em teste, né. Ele vai executar e vai inserir 500 itens só. Mas daí a gente já vai conseguir fazer uma... ter uma visualização e depois vamos rodar em produção pra nós ver
+13:39 como que vai se comportar.
+13:41 Então vamos executar em teste aqui.
+(AÇÃO: O usuário clica em Executar no modo "Teste")
+13:44 E dar uma olhada o que que vai acontecer lá no banco quando ele finalizar.
+13:48 Então ele finalizou aqui, deu ok.
+(AÇÃO: O usuário clica na janela do Oracle SQL Developer)
+13:51 Vamos dar uma olhada, né.
+13:53 Vamos ver se ele inseriu realmente no banco.
+13:56 Vamos fazer um select na item.
+(AÇÃO: O usuário executa o comando "SELECT * FROM ITEM;" no SQL Developer)
+13:59 E está aí, nossos 500 itens, né, como a gente rodou em teste, provavelmente vai ter só 500. Vamos até a última linha aqui.
+(AÇÃO: O usuário rola a barra de rolagem da tabela de resultados até o final)
+14:16 hum... adicionou 36.000, oh.
+14:20 Vamos ver se tem algum que tá... ah não, eu tô no banco errado. Perdão.
+14:24 Me deu até um susto aqui, porque esse aqui é o nosso banco que nós estava usando como padrão de visualização, né.
+(AÇÃO: O usuário alterna a conexão na barra de ferramentas do SQL Developer e executa a query novamente)
+14:30 Esse é o nosso banco zerado.
+14:36 Então agora sim tá aí os nossos 500 itens, né.
+14:41 Bastante sem código de barras, né, isso é uma questão lá da base do cara que tem...
+14:46 ou a gente pegou do campo errado, né, então é uma questão a...
+14:50 a... porque sempre tem que ser validado, né. Você pode pegar aqui...
+14:54 né, eu vou rodar em... vamos rodar em produção agora até aqui pra gente ver.
+14:58 Então vou pegar aqui e vou...
+(AÇÃO: O usuário abre uma nova guia no SQL Developer)
+15:03 fazer um delete aqui também.
+15:05 Delete from item.
+15:09 Só que aqui vai ser por primeiro, né.
+(AÇÃO: O usuário executa o comando "DELETE FROM ITEM;")
+15:14 Então vamos deletar a item aqui oh, e vamos rodar em produção.
+(AÇÃO: O usuário volta ao Viasoft Shift e liga o botão "Produção")
+15:19 Beleza, rodamos. Agora eu não vou dar pause pra vocês acompanharem.
+15:25 Como é produção, eu preciso vir aqui publicar a versão pra ele pegar a última versão publicada.
+(AÇÃO: O usuário clica em "Publicar versão", preenche "v2" e confirma)
+15:31 Ótimo. Vou rodar.
+(AÇÃO: O usuário clica em Executar no modo de Produção)
+15:34 E vou acompanhar aqui pela aba de execuções.
+(AÇÃO: O usuário clica na aba "Execuções" do menu superior)
+15:39 Dar um auto refresh.
+(AÇÃO: O usuário ativa a chave "Atualizar")
+15:42 Já tá aqui rodando.
+15:46 Vamos acompanhar e ver quanto tempo ele vai levar, quantos itens ele vai inserir.
+15:52 Ó, então ele pegou aqui um total, no busca produtos, de 4.165 linhas.
+(AÇÃO: A tela atualiza os logs da execução em andamento)
+16:04 Vamos acompanhando aqui, ele já tá inserindo os subcadastros.
+16:08 Vamos aguardar ele inserir os subcadastros.
+16:12 Primeira vez rodando em produção, então aqui é como se a gente tivesse fazendo a carga total dos itens.
+16:19 Da tabela item, né.
+16:21 É... pra esse novo banco aí que seria o do constru, né.
+16:26 Então ele já fez toda a parte das junções.
+(AÇÃO: O usuário clica manualmente no botão "Atualizar")
+16:32 Aqui eu posso forçar, ele é a cada 10 segundos, mas se eu clicar aqui ele força, tá.
+16:36 Então já tá inserindo o item, oh.
+16:42 Então tá inserindo o item. Ah, então inseriu 4.165 linhas.
+16:47 A... aqui eu posso verificar, se eu precisar ah, você precisa enviar algum relatório, algum dado pro cliente do que que foi inserido.
+16:54 Você pode vir aqui em ver resultado.
+(AÇÃO: O usuário clica no botão "Ver resultado" ao lado do nó "Insert Item")
+16:56 Aqui ele vai mostrar só 100 registros, tá, mas você pode vir aqui na opção... nessa aqui ele vai baixar a visualização.
+17:03 É sempre aqui em cima, oh. Csv, parquet ou xlsx. Ele vai baixar os itens na totalidade daí.
+17:11 Então vamos clicar aqui em xlsx, ele leva um pouquinho mais de tempo mesmo.
+(AÇÃO: O usuário clica em "XLSX", o download inicia e em seguida clica para abrir o arquivo gerado)
+17:16 Ó, e se você ver aqui, daí eu vou ter os 4000 e tralalá de item.
+(AÇÃO: O usuário abre a planilha no Microsoft Excel e rola a tabela para baixo)
+17:21 Então esses 4000 e tralalá de item aqui...
+17:25 4166 porque tem o cabeçalho, você pode fazer as suas verificações, a validação junto ao cliente e tudo mais pra auditar, né.
+17:35 Eh, e lá no banco, vamos ver como que tá lá.
+(AÇÃO: O usuário retorna ao Oracle SQL Developer)
+17:38 Fazer um select na nossa tabela item.
+17:48 from item.
+17:50 Então tá aí nossos itens. Vamos fazer um count aqui também.
+(AÇÃO: O usuário escreve a query "SELECT COUNT(IDITEM) FROM ITEM;" e executa)
+17:57 item.
+18:00 Então ali, ó. 4164.
+18:04 Eh, ele parece que ele não inseriu uma, né.
+(AÇÃO: O usuário volta para a plataforma Viasoft Shift e rola os logs JSON para verificar os números)
+18:10 Vamos ver aqui... ele recebeu 4165. Pode ser que algum item tava duplicado, né.
+18:16 Como a gente não fez uma... uma remoção de item com base no id_item, né, pode ser que tenha algum id_item duplicado lá no meio.
+18:28 Até se a gente pegar a própria planilha aqui dá pra nós ter uma olhada.
+18:32 Porque o que nós pegamos aqui foi 4165.
+(AÇÃO: O usuário abre o Explorador de Arquivos do Windows na pasta "Downloads")
+18:39 Se nós viermos aqui... é difícil, né. Como é banco de concorrente e tudo, pode acontecer.
+18:45 Se nós viermos aqui, eh, e vamos colocar aqui uma regra mais rápida aqui pra realce
+18:53 valores duplicados.
+(AÇÃO: O usuário seleciona a coluna A no Excel e acessa Formatação Condicional -> Realçar Regras das Células -> Valores Duplicados)
+18:56 Deixar em vermelho. Só que aqui vai ser ruim de nós achar, né.
+19:00 Na verdade...
+(AÇÃO: O usuário aplica a formatação mas percebe que a busca seria trabalhosa)
+19:08 Que que eu poderia fazer... já sei. Vamos usar o próprio Shift para resolver nosso problema para a gente não precisar ficar aqui olhando, né.
+19:16 Aqui dentro do Shift, eu vou pegar essa planilha aí, vou só renomear ela aqui pra...
+19:23 deixa eu fechar ela aqui senão ele não deixa eu renomear.
+(AÇÃO: O usuário fecha o Excel, volta à pasta Downloads e renomeia o arquivo para "Produtos_Importados.xlsx")
+19:27 Vou renomear ela aqui pra produtos...
+19:31 produtos_importados.
+19:35 Então ela é uma planilha, vamos ver se vai dar certo o que eu tô imaginando.
+19:40 Eu vou vir aqui em arquivos.
+(AÇÃO: O usuário clica na aba "Arquivos" na interface do Viasoft Shift)
+19:43 Vou subir uma...
+(AÇÃO: O usuário cria uma nova pasta e digita "Conjunto Importação")
+19:48 vou criar aqui uma nova pasta. Conjunto eh importação.
+19:54 Vou definir ela aqui como um conjunto de dados.
+(AÇÃO: O usuário clica na opção de definir a pasta como Conjunto e em seguida faz o upload do arquivo Excel para a pasta)
+19:58 A gente viu isso lá no treinamento de conexões.
+20:00 Colocar aqui com produtos importados.
+20:06 Beleza, vamos lá na nossa conexão, eu vou criar um conjunto a partir do nosso conjunto de dados... uma conexão a partir do nosso conjunto de dados.
+(AÇÃO: O usuário vai em "Conexões" e clica no ícone "Criar conexão" na linha do conjunto criado)
+20:13 Vou vir aqui no playground.
+(AÇÃO: O usuário abre a área do "Playground" de SQL da nova conexão)
+20:16 E vou pegar aqui um... vamos ver se vai funcionar.
+20:20 Select... deixa eu ver qual que é o nome que ficou ali da coluna.
+20:28 Vamos fazer um count
+20:33 id_item
+20:36 from produtos_importados.
+(AÇÃO: O usuário escreve a query SQL inicial no Playground)
+20:43 Vamos pegar aqui por id_item.
+20:46 Fazendo um...
+20:48 group
+20:50 by id_item.
+20:54 Vamos ver se vai dar certo.
+(AÇÃO: O usuário clica em "Run")
+20:57 Hum, só que aqui ele trunca. Então a gente tem que fazer ainda...
+21:03 vamos fazer assim.
+21:05 Quantidade.
+21:07 É a primeira vez que eu faço isso aqui, nem sei se vai funcionar.
+(AÇÃO: O usuário refaz a query utilizando uma subquery para poder ordenar o resultado agregado)
+21:11 Select
+21:14 from...
+21:19 asterisco
+21:23 X order by
+21:28 X.quantidade
+(AÇÃO: O usuário executa novamente a query)
+21:40 Order by desc. Acho que é desc tem que ser.
+(AÇÃO: O usuário adiciona "DESC" ao final da query e a executa)
+21:48 O asc... não, é des... oh, aí que tá.
+21:51 4350. Por isso que inseriu a menos, então eu tava certo.
+21:55 Tem um item, não sei como nessa base de dados aí,
+22:00 4350, que simplesmente tem dois registros.
+22:05 Então vamos copiar aqui oh...
+(AÇÃO: O usuário seleciona e copia o valor "4350")
+22:08 E vamos lá no nosso banco do concorrente.
+22:12 Select asterisco from produto where codigo... acho que é codigo.
+(AÇÃO: O usuário abre o Playground da conexão "Conn_Construshow" e começa a escrever um SELECT)
+22:25 Ai ai, deixa eu lembrar o nome da coluna do código. Oh, é código mesmo.
+(AÇÃO: O usuário finaliza a query e clica em Executar)
+22:37 4350.
+22:44 Oh, tem dois mesmo. E os dois é um produto aí de tipo vale.
+22:51 Mas tudo bem, o que que a... esse caso aqui você poderia até ignorar. Como é um produto de vale, deve ser alguma coisa pra gerencial mesmo, né.
+23:01 Eh... o que que o sistema aconteceu? Ele pegou o primeiro, inseriu, e quando chegou o segundo ele atualizou, como a gente fez upsert, né.
+23:09 Então a gente não teve nenhum tipo de prejuízo. Mas daí como a gente auditou essa diferença, né, lá dentro do
+23:17 do sistema aqui do shift falou que...
+23:20 aqui né na nas execuções...
+(AÇÃO: O usuário navega de volta para a aba "Execuções" dentro do fluxo no Viasoft Shift)
+23:43 falou que na parte da...
+23:46 da execução antes do insert, ele tinha recebido 4.165, mas no insert ele gravou somente 4.166, né.
+23:59 Mas aqui no insert ele gravou só 4.165, eh... significa então que tinha essa questão aí de... de um... de um item duplicado.
+24:08 Então, através aqui da própria... dos próprios logs de execução, também proporcionou que a gente conseguisse fazer essa análise, tá.
+24:17 Então agora a única coisa que falta ali da nossa proposta é fazer a parte da inserção aqui da item_categoria também, que vai ser bem simples e a gente vai fazer juntos aí na... no próximo vídeo pra a gente encerrar.
+24:29 Óbvio que a tabe... as tabelas de item aqui no ConstruShow são mais de... sei lá quantas tabelas tem a lista aqui. Mais de 47 tabelas que envolvem itens.
+24:41 A gente teria um treinamento gigantesco, mas aqui você já consegue ter a noção de como que funciona a criação de uma migração. E o melhor, você faz isso aqui uma vez só.
+24:53 A única coisa que vai mudar é que, quando chegar um novo concorrente, né, a gente vai transformar o core depois aqui num subfluxo e a gente sempre as entradas aqui vão mudar, né.
+25:04 Então aqui, basicamente é isso. E na próxima vamos fazer a parte de inserção dos do item categoria.

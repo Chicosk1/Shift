@@ -1,0 +1,711 @@
+(AÇÃO: Cursor do mouse se move na tela do Shift, a partir do nó 'Manual')
+Então, vamos continuar no nosso treinamento aqui para nós fazer uma migração de dados de produtos, né?
+Então, é, no último vídeo a gente já fez a parte do cadastro de unidades e
+agora, a próxima etapa é nós fazermos o cadastro das marcas dos produtos.
+(AÇÃO: Navegação para a aba 'VIASOFTMCP 4 - C42525' no Oracle SQL Developer)
+Então, aqui a tabela de marcas,
+né, vamos pegar aqui uma tabela populada para ter uma ideia, ó.
+(AÇÃO: Seleção da primeira linha da tabela de resultados no Oracle SQL Developer)
+Então, nós temos um ID,
+é, uma descrição,
+multialt, idvec e a última alteração.
+Então, o que pra nós importa, né,
+é basicamente o idmarca e a descrição.
+Então,
+é, da mesma forma que nós trabalhamos,
+é, com o cadastro de unidades,
+(AÇÃO: Navegação de volta para a aba 'Treinamento Insere Itens - Core' no Shift)
+nós também vamos trabalhar aqui
+com o cadastro,
+é,
+de marcas.
+Então eu vou rodar aqui para nós carregar nossos,
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+aqui eu já tinha deixado para lembrar,
+(AÇÃO: Clique no botão 'Executar' no modal 'Executar workflow')
+carregar os nossos dados aqui.
+Beleza.
+Não tem problema ele reexecutar porque a gente fez upsert, né?
+A primeira coisa que eu vou fazer,
+eu vou rodar em paralelo, como são todos subcadastros e são independentes, não tem problema rodar eles em paralelo.
+Então,
+(AÇÃO: Clique no nó 'Mapeamento' no painel esquerdo)
+eu vou adicionar aqui um mapeamento,
+vou colocar aqui o nosso padrão de nome aqui, vou colocar map-marca,
+(AÇÃO: Clique no título do nó 'Mapeamento' para editar)
+(AÇÃO: Digitação de 'MAP - MARCA' no título do nó)
+e vamos puxar a marca da nossa origem.
+(AÇÃO: Clique e arraste para criar uma conexão do nó 'SQL Console Erade' para o nó 'MAP - MARCA')
+(AÇÃO: Clique no nó 'MAP - MARCA' para abrir as configurações)
+Então nós temos aqui,
+vamos ver onde está a marca
+da nossa consulta.
+Então eu tenho,
+vamos ver, aqui, ó.
+Tenho marca_codigo.
+Vamos ver aqui na tabela se nós temos
+preenchido esse campo.
+(AÇÃO: Rolagem da tabela de dados de entrada '100 itens' no nó 'MAP - MARCA')
+Departamento, vamos aumentar aqui um pouquinho.
+Unidades,
+Não, não, não, não,
+decimais,
+aqui, ó.
+Então têm umas marcas aqui, algumas estão nulas, outras tem marca informada.
+Hum,
+Então,
+vamos
+(AÇÃO: Navegação de volta para a visualização do fluxo no Shift)
+adicionar aqui um mapeamento.
+(AÇÃO: Clique no nó 'MAP - MARCA' para abrir as configurações)
+Pegando então, o nosso
+(AÇÃO: Clique no botão '+ Adicionar campo' no painel 'OUTPUT')
+código marca,
+(AÇÃO: Digitação de 'marca_codigo' no campo 'Nome' do input)
+que eu vou renomear aqui pro nome da nossa tabela,
+(AÇÃO: Navegação para a aba 'VIASOFTMCP 4 - C42525' no Oracle SQL Developer)
+que é IDMARCA.
+(AÇÃO: Navegação de volta para a aba 'Treinamento Insere Itens - Core' no Shift)
+(AÇÃO: Digitação de 'IDMARCA' no campo 'Nome' do output)
+Aqui a gente, praticamente nem vai usar, então,
+hã,
+é muito difícil manter o código da mesma marca, né,
+então a gente vai fazer aqui por nome.
+(AÇÃO: Edição do campo 'Nome' do input para 'marca_nome')
+Colocar aqui, ó, marca.
+(AÇÃO: Edição do campo 'Nome' do output para 'MARCA')
+Se bem que eu acho que eu vou,
+(AÇÃO: Clique no botão '+ Adicionar campo' no painel 'OUTPUT')
+vou levar o id.
+Lá dentro eu trato.
+(AÇÃO: Edição do campo 'Nome' do output para 'IDMARCA')
+IDMARCA.
+(AÇÃO: Digitação de 'marca_nome' no segundo campo 'Nome' do input)
+E,
+descrição.
+(AÇÃO: Digitação de 'DESCRICAO' no segundo campo 'Nome' do output)
+Des-cri-
+ção.
+(AÇÃO: Digitação de 'DESCRICAO' no segundo campo 'Nome' do output)
+Beleza.
+Inicialmente eu vou fazer só isso,
+(AÇÃO: Navegação de volta para a visualização do fluxo no Shift)
+depois a gente vê se precisa algum tratamento,
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+a gente faz lá dentro do subcadastro.
+(AÇÃO: Clique no botão 'Executar' no modal 'Executar workflow')
+Beleza, então já temos aqui
+nosso mapeamento da marca
+e,
+vamos trabalhar lá dentro do nosso su-, subfluxo.
+Então, vamos adicionar um novo aqui.
+(AÇÃO: Clique no menu de sanduíche no canto superior esquerdo para abrir o painel de fluxos)
+(AÇÃO: Clique no botão '+ Novo Fluxo')
+Vamos adotar o mesmo padrão, treinamento, nome do, ca-, e o cadastro, né?
+Então,
+(AÇÃO: Digitação de 'TREINAMENTO-' no campo 'NOME DO FLUXO')
+TREINAMENTO-MARCA-CADASTRO.
+(AÇÃO: Digitação de 'MARCA-CADASTRO' no campo 'NOME DO FLUXO')
+Vamos criar aqui.
+(AÇÃO: Clique no botão 'Criar')
+Show.
+Então como é um subfluxo,
+Ah, uma coisa que a gente poderia ter salvo lá é o, o mock de teste, né?
+Mas vamos já adicionar aqui o
+(AÇÃO: Clique no nó 'Entrada do Fluxo' no painel esquerdo)
+entrada de subfluxo
+e colocar o que a gente espera
+(AÇÃO: Clique no nó 'Entrada do Fluxo' para abrir as configurações)
+de input.
+Vou adicionar aqui,
+(AÇÃO: Clique no botão '+ Adicionar input' no painel 'INPUTS')
+é, a gente espera uma tabelinha, né,
+(AÇÃO: Seleção do tipo 'table_reference' no dropdown 'TIPO')
+que vai ter o
+(AÇÃO: Digitação de 'ID' no campo 'NOME' da primeira coluna)
+idmarca,
+(AÇÃO: Digitação de 'IDMARCA' no campo 'NOME' da primeira coluna)
+(AÇÃO: Seleção do tipo 'integer' no dropdown 'TIPO' da primeira coluna)
+e
+(AÇÃO: Clique no botão '+ Adicionar coluna')
+a des-
+descrição.
+(AÇÃO: Digitação de 'DESCRICAO' no campo 'NOME' da segunda coluna)
+(AÇÃO: Seleção do tipo 'string' no dropdown 'TIPO' da segunda coluna)
+Não é obrigatório porque a gente pode resetar aqui o,
+(AÇÃO: Desmarcação da opção 'Obrigatório')
+colocar aqui, marcas.
+(AÇÃO: Digitação de 'MARCAS' no campo 'NOME' do input)
+Aplicar, vamos salvar.
+(AÇÃO: Clique no botão 'Aplicar')
+(AÇÃO: Clique no botão 'Salvar' no canto superior direito)
+Vamos voltar lá,
+(AÇÃO: Clique no menu de sanduíche no canto superior esquerdo para abrir o painel de fluxos)
+Deixa eu só já mover isso aqui pra dentro.
+(AÇÃO: Movimentação do fluxo 'TREINAMENTO - MARCA - CADASTRO' para a pasta 'Migração de Produtos')
+Vamos voltar aqui só pra
+(AÇÃO: Abertura do fluxo 'Treinamento Insere Itens - Core')
+a gente rodar aqui e pegar a
+a saída aqui do mapeamento
+porque daí nós conseguimos utilizar lá como um teste.
+(AÇÃO: Ajuste do zoom na visualização do fluxo)
+(AÇÃO: Clique no nó 'MAP - MARCA' para abrir as configurações)
+Deixa eu pegar aqui, ó.
+Map marca.
+Então aqui tá com vários null, não tem problema baixar.
+(AÇÃO: Clique no ícone de download no painel 'Dados')
+Beleza, pegamos o mapeamento.
+Vamos lá pro nosso subfluxo de marca
+(AÇÃO: Abertura do fluxo 'TREINAMENTO - MARCA - CADASTRO')
+e,
+Então uma das diferenças que tem a marca da unidade,
+é que a unidade, se nós pegarmos aqui, ó,
+(AÇÃO: Navegação para a aba 'VIASOFTMCP 4 - C42525' no Oracle SQL Developer)
+select
+asterisco from unidade.
+(AÇÃO: Digitação de 'SELECT * FROM UNIDADE' no editor SQL)
+(AÇÃO: Execução da consulta SQL)
+A chave era uma, um varchar, né?
+Só que a marca,
+ela tem um id
+controlado por uma seq_primary_key.
+Então se nós pegarmos aqui a tabela
+seq
+primary
+key.
+Acho que é assim que escreve.
+(AÇÃO: Digitação de 'SELECT * FROM SEQ_PRIMARY_KEY' no editor SQL)
+(AÇÃO: Execução da consulta SQL)
+Não, não é assim que escreve.
+Deixa eu pegar aqui o nome dela.
+Assim.
+(AÇÃO: Correção do nome da tabela para 'SEQPRIMARYKEY' e execução da consulta)
+(AÇÃO: Ajuste na consulta e execução novamente)
+Ó, então aqui nós temos, não sei se os demais,
+é, ERPs, né, como controlam id,
+mas no Construshow a gente tem,
+provavelmente seja igual, mas no Construshow a gente tem a seq_primary_key aqui,
+que é onde a gente controla as,
+as chaves, né, primárias.
+Então se eu pegar aqui um where tabela
+igual unidade,
+é, marca,
+(AÇÃO: Digitação de 'WHERE TABELA = 'MARCA'' no editor SQL)
+(AÇÃO: Execução da consulta SQL)
+Ó, então nós temos aqui
+que o último id da marca é o 518. Beleza.
+Então a gente precisa ter esse id em mãos,
+pra que não tenha uma,
+quando for fazer o insert, uma, um erro de restrição de chave, né?
+Então,
+nós vamos montar aqui a primei-, o primeiro
+(AÇÃO: Navegação de volta para a visualização do fluxo no Shift)
+passo, nós vamos usar,
+é, o SQL Script.
+Então, como eu falei, quando é uma consulta pesada,
+sempre rodar
+o select.
+Quando você precisa rodar alguma consulta, rodar alguma função, rodar alguma procedure,
+o SQL Script.
+Então vou ligar ele aqui.
+(AÇÃO: Criação de um nó 'SQL Script' e conexão do nó 'Entrada do Fluxo' para ele)
+Eu vou chamar o,
+colocar aqui Seq
+Seq
+Seq Marca.
+(AÇÃO: Digitação de 'Seq Marca' no título do nó 'SQL Script')
+clicar aqui
+(AÇÃO: Clique no nó 'Seq Marca' para abrir as configurações)
+e vamos rodar uma
+funçãozinha interna que tem no banco, que é pra retornar
+o último id
+de uma,
+de uma tabela dentro do Construshow, tá?
+Então é a função seqprimarykey_int,
+(AÇÃO: Colagem da consulta SQL 'SELECT SEQPRIMARYKEY_INT( 'MARCA', ' ', 'IDMARCA' ) SEQ FROM DUAL' no campo 'SCRIPT SQL')
+passando o nome da tabela, aqui é, é um valor que eu posso ter e a marca.
+Certo.
+É, vamos também aqui,
+(AÇÃO: Navegação de volta para a visualização do fluxo no Shift)
+rodar,
+vamos carregar o nosso mock de teste, né, antes.
+(AÇÃO: Clique no nó 'Entrada do Fluxo' para abrir as configurações)
+Então map_marca.
+(AÇÃO: Clique em 'Escolher planilha (.xlsx, .csv, .tsv)' e seleção do arquivo 'MAP - MARCA_2026-07-20_0838.xlsx')
+(AÇÃO: Confirmação do upload do arquivo)
+Então com o marca,
+o nosso mock de teste aqui
+é,
+setado,
+vamos rodar isso aqui pra ver o que que vai acontecer.
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+Ó.
+Ah, eu não coloquei uma conexão, né?
+(AÇÃO: Observação de erro indicando falta de conexão)
+Então, a gente tem que lembrar da nossa,
+(AÇÃO: Fechamento do painel de erro)
+até eu não lembro aqui, eu vou entrar aqui na de
+(AÇÃO: Clique no menu de sanduíche e seleção da pasta 'Migração de Produtos')
+unidades pra gente lembrar qual que é o nosso nome padrão da variável de conexão do Construshow.
+(AÇÃO: Abertura do fluxo 'TREINAMENTO - UNIDADE - CADASTRO')
+(AÇÃO: Clique em 'Variáveis' no painel 'Produção')
+Então é esse aqui,
+eu vou copiar ele aqui
+(AÇÃO: Cópia do nome da variável 'Conn_Construshow')
+pra que quando a gente rodar eu não tenha um Construshow 1, Construshow 2 e precise setar mais um banco, o mesmo banco mais de uma vez, né?
+(AÇÃO: Navegação de volta para o fluxo 'TREINAMENTO - MARCA - CADASTRO')
+Então vamos selecionar aqui, a, vamos criar nossa variável primeiro.
+(AÇÃO: Clique em 'Variáveis' no painel superior)
+Adicionar, uma variável de conexão
+(AÇÃO: Clique no botão '+ Adicionar' e seleção de 'Conexão')
+que chamará Conn_Construshow,
+(AÇÃO: Digitação de 'Conn_Construshow' no campo 'NOME')
+é Oracle
+(AÇÃO: Seleção de 'Oracle' no dropdown 'Qualquer tipo')
+e a gente vai usar como referência o nosso conexão local.
+(AÇÃO: Seleção de 'Construshow' no dropdown 'VALOR PADRÃO')
+Por que que tem essa referência, tá?
+É,
+pra que
+a gente consiga
+é,
+pra que a gente consiga
+carregar as tabelas. Então eu tenho que ter uma, uma conexão de design, que eu falo, pra que eu, ah, a conexão não vai ser essa, mas vai ser igual a essa,
+pra que eu consiga carregar as tabelas, né, de algum lugar.
+Então salvei aqui.
+(AÇÃO: Clique no botão 'Salvar')
+Show de bola.
+Vamos rodar.
+(AÇÃO: Clique no botão 'Executar')
+Ah, é.
+Criei mas não adicionei aqui, né.
+(AÇÃO: Fechamento do painel de erro)
+(AÇÃO: Abertura das configurações do nó 'Seq Marca')
+Adicionar uma variável,
+Construshow.
+(AÇÃO: Seleção de 'vars.Conn_Construshow' no dropdown 'CONEXÃO')
+Aqui não tem tabela nem nada porque ele é uma,
+query, né?
+(AÇÃO: Navegação de volta para a visualização do fluxo)
+Executar,
+(AÇÃO: Clique no botão 'Executar')
+selecionar Construshow, colocar pra lembrar.
+(AÇÃO: Seleção de 'Construshow' no dropdown e marcação de 'Lembrar de todo valor nesta aba do neste navegador')
+(AÇÃO: Clique em 'Executar')
+Beleza.
+Temos aqui a nossa seq 1, por quê? A nossa tabela, aqui no nosso banco onde nós vamos setar ela, né,
+(AÇÃO: Navegação para a aba 'VIASOFTMCP 4 - C42525' no Oracle SQL Developer)
+ela está
+vazia, né?
+(AÇÃO: Navegação de volta para o Shift)
+Show de bola.
+Segunda coisa que a gente tem que fazer é remover
+os duplicados, né. Mas antes de remover os duplicados,
+eu vou fazer um tratamento aqui.
+(AÇÃO: Abertura do fluxo 'Treinamento Insere Itens - Core')
+Aqui,
+a gente viu que tem várias marcas
+que elas vêm como nula na consulta.
+Então, até vou, até pra ser mais rápido aqui, eu vou desativar esse aqui que tá
+validado e pronto, né?
+(AÇÃO: Desativação do nó 'TREINAMENTO - UNIDADE - CADASTRO')
+E vou executar o restante
+aqui.
+(AÇÃO: Clique no botão 'Executar')
+Beleza, ó. Então o que que nós temos aqui? Nós temos várias marcas aqui, ó, onde tem,
+é, dados aqui,
+que estão em branco.
+Então o que que acontece, nós temos vários itens aqui que vem como null, né?
+Então eu vou fazer aqui, ó,
+(AÇÃO: Abertura das configurações do nó 'MAP - MARCA')
+na parte da descrição,
+uma transformação,
+que quando vier, eu vou des-, definir um padrão. Que quando vier vazio ou null eu quero que ele
+sete como padrão.
+(AÇÃO: Adição de transformação 'Fallback' na coluna 'DESCRICAO' com o valor 'PADRAO')
+Tá?
+(AÇÃO: Clique no botão 'Executar' dentro do nó)
+(AÇÃO: Clique em 'Executar' no modal)
+Pra não ficar nenhum produto sem marca, até porque
+não pode, né?
+Então beleza, aqui o id eu vou ignorar, não tem problema, eu vou
+considerar só a descrição. Então tudo que estava como null ficou como padrão.
+É,
+eu vou baixar esse novo mock aqui de teste, porque é assim que vai chegar lá pra nós.
+(AÇÃO: Clique no ícone de download)
+Vou vir aqui na
+na marca
+(AÇÃO: Abertura do fluxo 'TREINAMENTO - MARCA - CADASTRO')
+e vamos
+subir o nosso novo
+mock de teste.
+(AÇÃO: Abertura das configurações do nó 'Entrada do Fluxo')
+(AÇÃO: Seleção e upload do arquivo 'MAP - MARCA_2026-07-20_0842.xlsx')
+Beleza.
+Tenho aqui,
+vou executar só pra ver se vai carregar corretamente.
+(AÇÃO: Clique em 'Executar' no canto superior direito)
+Show de bola.
+Agora, eu preciso,
+é, eu vou desativar aqui, eu preciso
+(AÇÃO: Desativação do nó 'Seq Marca')
+remover o que tá duplicado, né?
+Então eu vou
+selecionar aqui, remover duplicados.
+(AÇÃO: Adição do nó 'Remover Duplicados' ao fluxo)
+(AÇÃO: Conexão do nó 'Entrada do Fluxo' ao nó 'Remover Duplicados')
+Vou puxar a nossa descrição, que a gente vai usar
+(AÇÃO: Abertura das configurações do nó 'Remover Duplicados' e seleção da coluna 'DESCRICAO' em 'CHAVE DE DUPLICIDADE')
+como chave, né?
+É, e vamos executar aqui.
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+Beleza. Então já tenho aqui HD, Telesc, Placas do Brasil, FCC e Stam,
+nesse nosso mock
+de teste. Então o nosso próximo passo agora,
+é
+pegar o id aqui e combinar, né, a nosso último id. Então nós vamos usar aqui o nó Combina,
+(AÇÃO: Adição do nó 'Combinar' ao fluxo)
+por quê? É,
+porque aqui ele tem o cross, né, a gente vai usar
+bastante. Então eu vou colocar aqui, é,
+Duplicados
+marca.
+(AÇÃO: Digitação de 'Duplicados - Marca' no título do nó 'Remover Duplicados')
+Sempre bom colocar as descrições. Então, esse aqui vai vir aqui, esse aqui vai vir aqui.
+(AÇÃO: Conexão do nó 'Seq Marca' e do nó 'Duplicados - Marca' ao nó 'Combinar')
+Deixa eu desativar aqui e rodar só pra ele carregar o seq porque ele tava desativado quando a gente rodou a última vez. Ótimo.
+(AÇÃO: Desativação do nó 'Combinar' e execução do fluxo)
+Então eu vou ativar,
+(AÇÃO: Ativação do nó 'Combinar')
+eu vou colocar aqui
+Combina
+marca
+e Seq.
+(AÇÃO: Digitação de 'Combina Marca e Seq' no título do nó 'Combinar')
+(AÇÃO: Abertura das configurações do nó 'Combina Marca e Seq')
+Então vou usar aqui o cruzar e o cross, que daí o cross, ele,
+(AÇÃO: Seleção de 'Cruzar' no tipo de junção e 'Cross' no tipo de cruzar)
+o que que ele faz aqui, né?
+Ele é cartesiano, cada linha da esquerda versus cada linha da direita, sem chave.
+Então, ele vai simplesmente
+jogar tudo junto.
+É,
+então aqui
+eu já coloquei, a,
+vamos colocar pra rodar aqui.
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+Vamos executar.
+(AÇÃO: Clique em 'Executar' no modal)
+Ah, tá, tá, tá.
+Deixa eu ver aqui,
+que que faltou eu adicionar.
+Ah, eu não liguei aqui.
+(AÇÃO: Conexão do nó 'Seq Marca' ao nó 'Combina Marca e Seq' corrigida)
+(AÇÃO: Abertura das configurações do nó 'Combina Marca e Seq')
+(AÇÃO: Clique no botão 'Cruzar')
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+Porque quando você muda aqui em cima, ele,
+por uma questão de segurança, ele reseta aqui as ligações, tá?
+(AÇÃO: Configuração do nó 'Combina Marca e Seq' sendo ajustada)
+Porque eu posso ter o empilhar e o cruzar aqui. O empilhar, ele é como se fosse o union, ele tem várias opções aqui e o cruzar é como se fosse o join.
+Mas o cross eu,
+cross só tem aqui dentro do Combina, não tem lá dentro do join.
+Então por isso que eu tô usando ele.
+(AÇÃO: Clique em 'Executar' no modal)
+Ótimo. Então eu tenho o último id,
+aqui vocês podem estar se perguntando, 'tá, por que que é quatro?' Porque essa função aqui,
+que a gente tá usando da seq_primary_key,
+ele sempre que é executado, além dele pegar o último ele atualiza.
+Então, é, por isso que ele sempre vai incrementando, tá?
+Então por isso que ele tá assim.
+Então, beleza. Temos aqui nossa sequencial.
+É,
+como a gente quer usar
+pra marca, é muito difícil a gente deixar aqui os, os ca-, os códigos antigos, né, no Construshow, pelo menos,
+eu vou resetar
+né, essa marca pra gente usar só a, o novo id.
+Então eu vou vim aqui, ó,
+vou pegar um mapeamento,
+(AÇÃO: Adição de nó 'Mapeamento' ao fluxo)
+colocar só aqui pra gente, é,
+(AÇÃO: Digitação de 'Organiza Com ID' no título do nó 'Mapeamento')
+Organiza com id.
+Tá.
+É, não, antes eu vou fazer o seguinte:
+Eu vou,
+eu vou adicionar o id sequencial primeiro.
+(AÇÃO: Exclusão do nó 'Organiza Com ID' e adição do nó 'ID Sequencial')
+Pra gente já adicionar aqui.
+Então o meu id sequencial eu vou colocar aqui,
+vou colocar aqui, Adiciona
+ID Seq.
+(AÇÃO: Digitação de 'Adiciona ID Seq' no título do nó)
+O que que eu vou fazer aqui?
+(AÇÃO: Abertura das configurações do nó 'Adiciona ID Seq')
+Eu vou pegar de um valor, que é o nosso seq lá, né, que é o último,
+e sempre fazendo o offset de um. Então ele vai, seq aqui tá 4, eu vou começar no 5, 6, 7 e assim por diante. Vamos executar ele aqui.
+(AÇÃO: Configuração do offset no nó 'Adiciona ID Seq')
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+(AÇÃO: Clique em 'Executar' no modal)
+É, ó, então aqui como que ficou.
+Nosso seq último é o 5, vai começar 6, 7, 8, 9, 10 e 11. Beleza, agora
+basta eu fazer a organização aqui,
+do mapeamento final, pegando só o que eu vou precisar pra tabela.
+Então eu vou pegar aqui nosso mapeamento,
+(AÇÃO: Adição de nó 'Mapeamento' ao fluxo)
+colocar aqui Map
+Final.
+(AÇÃO: Digitação de 'Map Final' no título do nó)
+Vou pegar só o que eu preciso, que é o
+novo id aqui.
+Mudar pra IDMARCA.
+(AÇÃO: Abertura das configurações do nó 'Map Final' e seleção de '_id' em inputs, renomeando para 'IDMARCA')
+E a nossa descrição.
+(AÇÃO: Adição do campo 'DESCRICAO' nos outputs)
+Descrição.
+(AÇÃO: Digitação de 'DESCRICAO' no input e output)
+Beleza.
+Vou rodar aqui pra nós ver.
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+Ó.
+7, 8, 9, 10... Porque ele sempre vai incrementando lá, né?
+Tudo bem, não tem problema.
+O que importa a gente ter aqui nossa,
+nossos ids.
+E por último,
+né, é,
+nosso insert.
+Vamos inserir na nossa tabela.
+(AÇÃO: Adição de nó 'Inserção em Massa' ao fluxo)
+Colocar aqui
+Insert Marca.
+(AÇÃO: Digitação de 'Insert Marca' no título do nó)
+Vamos ligar aqui.
+(AÇÃO: Conexão do nó 'Map Final' ao nó 'Insert Marca')
+Pegar a nossa variável de conexão do Construshow,
+(AÇÃO: Abertura das configurações do nó 'Insert Marca' e seleção de 'vars.Conn_Construshow' no dropdown 'CONEXÃO')
+e a nossa tabela é a MARCA.
+(AÇÃO: Seleção de 'VIASOFTBASE.MARCA' na tabela de destino)
+Aqui a gente não vai envolver o estabelecimento ainda porque o,
+Construshow, a tabela marca, unidade, são,
+é,
+são únicas, né?
+Então vou colocar aqui o upsert,
+(AÇÃO: Seleção de 'Upsert' em 'MODO DE ESCRITA')
+eu vou colocar a chave
+como idmarca e descrição.
+(AÇÃO: Seleção das colunas 'IDMARCA' e 'DESCRICAO' no mapeamento e como chave de upsert)
+Ah, mas na verdade deixa eu pensar. Porque se a gente colocar upsert,
+é,
+a chave,
+se a gente deixar o idmarca, ele sempre vai mudar,
+por conta da seq_primary_key. Então a gente vai colocar a descrição só como chave.
+(AÇÃO: Remoção de 'IDMARCA' da chave de upsert)
+Pra sempre manter a mesma descrição.
+E vamos colocar aqui só pra inserir só os novos. Então ele vai verificar se tem uma descrição nova, insere, se não, nem mexe. Acho que é, assim é mais seguro pra nós.
+(AÇÃO: Seleção de 'Inserir apenas não existentes' no nó)
+Ah, aqui esse aqui não precisa porque a gente já tá removendo duplicados lá na frente. Acho que é isso aí.
+Vamos rodar pra ver se vai dar algum tipo de problema.
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+Ó, inseriu, vamos lá no nosso banco dar uma olhada, um select marca.
+(AÇÃO: Navegação para a aba 'VIASOFTMCP 4 - C42525' no Oracle SQL Developer)
+(AÇÃO: Digitação e execução de 'SELECT * FROM MARCA' no editor SQL)
+Ó, está aí, ó. 8, 9, 13, 11, 12, uhum.
+Vamos rodar de volta pra ver se
+(AÇÃO: Navegação de volta para o Shift)
+ele não vai duplicar ou mudar o id.
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+(AÇÃO: Navegação para a aba 'VIASOFTMCP 4 - C42525' no Oracle SQL Developer)
+(AÇÃO: Execução da consulta 'SELECT * FROM MARCA' novamente)
+Manteve.
+Show de bola. Então é basicamente isso aqui que a gente precisava,
+é, e aqui no Construshow,
+a gente por padrão aqui na parte de migração, a gente sempre limpa a tabela seq_primary_key
+por uma questão basicamente de, de ele resetar assim, por exemplo, ah, a gente foi lá e limpou a tabela, né,
+é, ele resetar pra que daí depois, se a gente, é, reinserir, ele comece a partir do um de volta.
+Então por isso que hoje ele sempre vai... ó, começou a partir do oito, né. Se eu limpasse a tabela aqui e inserisse de volta, ele ia começar a partir do 11 aqui que foi o último, ou do 14 aqui, porque o último id foi o 13, né.
+Então a gente faz isso pra
+sempre começar a partir do um. Então, por uma questão aqui, des-, des-, desse formato, eu já vou botar aqui pra ele limpar a tabela,
+aqui junto.
+É,
+Vou colocar... limpar a tabela seq,
+(AÇÃO: Adição do nó 'Limpar Tabela' ao fluxo e alteração do título para 'Limpar Tabela Seq')
+E vou selecionar aqui, é,
+na verdade
+Não, é, eu vou usar esse aqui. Eu vou usar aqui a variável,
+(AÇÃO: Abertura das configurações do nó 'Limpar Tabela Seq' e seleção de 'vars.Conn_Construshow' no dropdown 'CONEXÃO')
+vou colocar Construshow, vou selecionar a tabela MARCA aqui,
+(AÇÃO: Seleção de 'VIASOFTBASE.MARCA' na tabela)
+vou fazer um DELETE,
+(AÇÃO: Seleção de 'DELETE' em 'MODO')
+e vou colocar aqui, é, onde a
+TABELA
+seja igual a MARCA.
+(AÇÃO: Digitação de 'TABELA = 'MARCA'' no campo 'WHERE')
+Aí.
+Então basicamente isso. TABELA seja igual a MARCA.
+Salvar.
+Depois que a gente fa-, fazer o, ah, fez essa parte, eu preciso retornar esses dados lá pra, pra minha,
+pro meu fluxo pai porque depois eu vou precisar pra pegar os ids, né?
+A gente precisa pra pegar os ids. Então junta aqui,
+eu vou adicionar mais o nó de saída, né, pra que ele retorne pra nós os dados lá.
+Então eu vou vim aqui, saída do fluxo.
+(AÇÃO: Adição do nó 'Saída do Fluxo' ao fluxo)
+Vou f-, ah não, é,
+antes eu vou pegar os dados, né, porque se já tiver algum na tabela, eu quero pegar os dados frescos. Porque lembra o que é que ele só retorna,
+quando faz o insert, o que ele inseriu. Então se já existia alguma coisa aqui, ele não vai retornar. Então por isso que é sempre importante, se eu vou retornar dados, eu usar aqui com segurança o select porque eu tenho certeza que ele vai retornar tudo que tem nessa tabela aí.
+Então vou colocar aqui,
+select marca.
+(AÇÃO: Adição do nó 'SQL Script' e alteração do título para 'Select Marca')
+É, ah, antes aqui no nosso
+Deixa eu desativar ele aqui.
+E aqui basicamente eu vou fazer o quê? O Select,
+(AÇÃO: Abertura das configurações do nó 'Select Marca' e seleção de 'vars.Conn_Construshow' em 'CONEXÃO')
+colocar aqui a variável Construshow, né, sempre trabalhando com variáveis. Select idmarca,
+descricao from marca.
+(AÇÃO: Digitação de 'SELECT IDMARCA, DESCRICAO FROM MARCA' no campo 'SCRIPT SQL')
+Salvar.
+Nosso esquema de saída aqui, de output,
+(AÇÃO: Configuração do esquema de saída no nó 'Saída do Fluxo')
+vai ser também
+aqui eu vou dar o nome de
+marca,
+marcas_cadastradas,
+(AÇÃO: Digitação de 'marcas_cadastradas' no nome do output)
+vou colocar aqui do tipo table,
+(AÇÃO: Seleção de 'table_reference' no tipo de output)
+e vai receber a coluna IDMARCA,
+(AÇÃO: Adição da coluna 'IDMARCA' ao output)
+que é um inteiro,
+(AÇÃO: Seleção de 'integer' para a coluna 'IDMARCA')
+e a DESCRICAO.
+(AÇÃO: Adição da coluna 'DESCRICAO' ao output)
+que é uma string.
+(AÇÃO: Seleção de 'string' para a coluna 'DESCRICAO')
+Ambas obrigatórias.
+É...
+vou salvar, vou rodar até aqui.
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+Ó, o nosso select ro-, ah. É, a,
+identificador inválido.
+TABELA. Será que eu errei o nome? Vamos pegar lá nossa... Ah, é.
+(AÇÃO: Abertura das configurações do nó 'Limpar Tabela Seq')
+Aqui eu selecionei a tabela errada, é a SEQPRIMARYKEY.
+(AÇÃO: Alteração da tabela de destino para 'SEQPRIMARYKEY' no nó 'Limpar Tabela Seq')
+Hum, não tô carrega-, ah, é porque a seq_primary_key tá no VIASOFTSYS.
+E a gente não carregou o schema nesse banco VIASOFTSYS. Não tem problema.
+É,
+ao invés de usar o
+o Limpar Tabela, eu vou usar o
+o script. Né, porque eu não preciso referenciar a tabela.
+(AÇÃO: Substituição do nó 'Limpar Tabela Seq' por um nó 'SQL Script' com o mesmo nome)
+Limpa seq.
+Então isso aqui aconteceu porquê? Porque lá na nossa conexão, onde eu defino os
+os schemas que eu quero ler, eu não coloquei o VIASOFTSYS, e o seq_primary_key ele tá dentro do VIASOFTSYS.
+Mas, como o meu usuário que eu tô conectando é o VIASOFTMCP e ele tem acesso a executar coisas no VIASOFTSYS, a gente não tem esse problema, tá?
+Então aqui a única coisa que eu vou fazer é pra ele executar
+(AÇÃO: Configuração do nó 'SQL Script' com a query de DELETE)
+DELETE FROM SEQPRIMARYKEY WHERE TABELA
+igual a MARCA.
+(AÇÃO: Digitação de 'DELETE FROM SEQPRIMARYKEY WHERE TABELA = 'MARCA'' no campo de script)
+Ótimo. É, agora eu posso ligar aqui.
+(AÇÃO: Conexão do nó 'Insert Marca' ao nó 'Limpa Seq' corrigido e ao nó 'Select Marca')
+Vamos executar novamente.
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+Conexão faltou, né.
+(AÇÃO: Adição de 'vars.Conn_Construshow' à conexão do nó 'Limpa Seq')
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+Eita.
+É que aqui ele trabalha com um param-, ah não, é o execute, né. Se eu tô executando, a, a,
+o query é pra select, o execute que é delete.
+(AÇÃO: Alteração do modo do nó 'Limpa Seq' de 'Query' para 'Execute')
+Agora vai.
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+OK, tá executando o select. Vamos ver se ele retorna o que a gente precisa.
+Idmarca e descrição, ótimo.
+Como, nós,
+como nós temos aí as colunas de LT, não tem problema, a gente pode ir direto aqui pro... eu poderia só setar o idmarca e descrição, por questão de organização, não tem nenhum perca de performance, mas eu já vou vir direto aqui. E aqui ele perde de onde que vai vir, né, vai vir do select_marca.
+(AÇÃO: Configuração do nó 'Saída do Fluxo', referenciando 'Select Marca')
+Então o select_marca será devolvida como
+uma tabela.
+Só que o que que acontece:
+Como eu defini as colunas aqui, ó,
+eu defini que eu quero só a idmarca e descrição,
+né, e eu tô passando mais colunas aqui, ele vai dar erro. Então vamos adicionar o mapeamento aqui só pra gente passar pra frente só o que precisa.
+(AÇÃO: Adição do nó 'Mapeamento' entre 'Select Marca' e 'Saída do Fluxo', renomeado para 'Mapeamento Entrega')
+Colocar aqui mapear, o nome, vou colocar Mapeamento entrega.
+Opa, escrevi errado.
+Mapeamento entrega.
+Então só vou ligar aqui.
+(AÇÃO: Conexões sendo atualizadas com o novo nó 'Mapeamento Entrega')
+Vou adicionar só o que a gente quer.
+(AÇÃO: Configuração do nó 'Mapeamento Entrega' com 'IDMARCA' e 'DESCRICAO')
+idmarca,
+e a descrição.
+Descrição.
+Idmarca e descrição.
+E agora sim eu vou ter uma segurança maior aqui.
+(AÇÃO: Nó 'Saída do Fluxo' referenciando 'Mapeamento Entrega')
+Vamos executar, ver se não vai dar nenhum tipo de erro.
+(AÇÃO: Clique no botão 'Executar' no canto superior direito)
+Show de bola. Temos o nosso cadastro sendo entregue.
+Podemos agora salvar,
+(AÇÃO: Clique no botão 'Salvar')
+vir aqui, publicar a nossa versão recente, tem que sempre publicar e mudar pra produção.
+(AÇÃO: Clique no ícone de versionamento e publicação do fluxo, mudando o estado para 'Produção')
+Ótimo. Agora aqui,
+no, na nossa marca,
+no nosso item_core, a gente já pode utilizar o nosso subfluxo.
+(AÇÃO: Navegação de volta para o fluxo 'Treinamento Insere Itens - Core')
+Então vamos vir aqui, colocar pra chamar um subfluxo, um fluxo, né?
+(AÇÃO: Adição do nó 'Chamar Fluxo' e ligação a partir de 'MAP - MARCA')
+Vamos vir aqui.
+Vamos executar, ele vai dar um errinho ali porque
+ainda não adicionamos.
+Nós já podíamos ter adicionado, né, mas tudo bem.
+(AÇÃO: Abertura das configurações do nó 'Chamar Fluxo')
+E vamos adicionar aqui que é o nosso,
+nós colocamos aqui como treinamento, né, que é a nossa marca.
+(AÇÃO: Seleção de 'TREINAMENTO - MARCA - CADASTRO' no nó 'Chamar Fluxo')
+Da onde que vai vir, vai vir do mapeamento da marca. Os dados iniciais.
+(AÇÃO: Seleção de 'MAP - MARCA' como origem de dados no nó 'Chamar Fluxo')
+Salvar, vamos ativar aqui.
+(AÇÃO: Ativação dos nós 'MAP - UNIDADE' e 'TREINAMENTO - UNIDADE - CADASTRO')
+E vamos
+limpar as duas tabelas que a gente já tem pronto. DELETE FROM MARCA,
+(AÇÃO: Navegação para a aba 'VIASOFTMCP 4 - C42525' no Oracle SQL Developer)
+e DELETE
+FROM
+UNIDADE.
+(AÇÃO: Digitação e execução de 'DELETE FROM MARCA' e 'DELETE FROM UNIDADE' no editor SQL)
+Seis linhas excluídas, quatro linhas excluídas.
+Salvar e executar,
+(AÇÃO: Navegação de volta para o Shift, clique em 'Salvar' e depois em 'Executar')
+aqui nós já setamos.
+Fazendo a conexão no banco do concorrente,
+e executando agora os subfluxos. Aqui em baixo você consegue ir acompanhando,
+tudo que aconteceu.
+Tudo ok. Vamos fazer um select agora em nossas tabelas.
+(AÇÃO: Navegação para a aba 'VIASOFTMCP 4 - C42525' no Oracle SQL Developer)
+Ver se adicionou os, dois tudo certinho.
+UNIDADE.
+Então UNIDADE... Tão lá, nossas unidades,
+(AÇÃO: Execução de 'SELECT * FROM UNIDADE')
+E tá lá as nossas
+(AÇÃO: Execução de 'SELECT * FROM MARCA')
+marcas. Ah, por que que tem tão pouca, tá?
+Porque a gente ainda tá rodando
+em teste. Em teste, ele automaticamente, se aqui no SQL retornou dez mil linhas,
+aqui a gente colocou o TOP 100, né, mas por mais que se
+aqui retornasse 10 mil linha, quando tá em teste, ele sempre vai truncar pra 500 linhas, tá?
+Então isso é padrão. Quando eu quero rodar isso aqui full, cadastrar tudo mesmo, daí eu vou mudar isso aqui pra produção, que é o que a gente vai fazer quando a gente tiver o nosso fluxo todo validado e da forma que a gente quer.
+Então... agora a gente conseguiu aqui, ó, vou
+tirar esse 'chamar' aqui e deixar só treinamento aqui que daí aparece o nome completo.
+(AÇÃO: Edição do título do nó 'Chamar Fluxo' para remover a palavra 'Chamar')
+Então agora a gente já fez aí a parte do subcadastro de marcas, ainda a gente tem,
+é, departamento, fluxo, subfluxo.
+É, temos um caminho aí.
+Eu vou tentar
+fazer mais um aqui e daí os outros eu vou trazer pronto pra gente já avançar aí também, porque a maioria são bem parecidos.
+Vou me focar... a-, fazer aí na pr-, no próximo vídeo a parte... Deixa eu ver. Vamos fazer
+a parte do cadastro de departamentos. Daí departamento, depois seção, grupos, subgrupo e, e comissão, eu vou trazer pronto aqui. É, porque vai ser a mesma coisa, só vai mudar o nome da tabela. Então, até o próximo vídeo.

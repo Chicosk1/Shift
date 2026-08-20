@@ -1,0 +1,234 @@
+Então vamos iniciar, mais um vídeo continuando aqui na nossa migração de dados de item.
+É, o que que acontece agora? Nós vamos entrar na parte da classificação mercadológica do ConstruShow, tá? São as tabelas
+(AÇÃO: O usuário acessa o Oracle SQL Developer e escreve comandos SQL)
+from
+departamento
+deixa eu copiar aqui que fica mais rápido
+sessão
+grupo
+subgrupo
+Se eu não me engano é esses aí.
+Só que aqui a gente já vai ter, vamos pegar aqui no nosso banco que tem dados, pra gente dar uma olhada aqui.
+(AÇÃO: O usuário clica na aba do Oracle SQL Developer com resultados de consultas)
+A gente já tem um ponto que diverge do que a gente fez até agora, tá? Que vai, é, ser comum para todos. Então, é, eu vou selecionar aqui departamento, eu vou começar por departamento, depois eu vou pausar e vou inserir esses aqui pra esse vídeo não ficar tão grande, porque basicamente vai ser a mesma ideia pra sessão, grupo, item e subgrupo. A única diferença é que vai mudar a tabela, né? Então vou fazer departamento e daí pro vídeo ficar mais rápido eu vou já deixar pronto sessão, grupo e subgrupo.
+E só mostrar como que ficou internamente.
+Mas aqui a gente tem um novo conceito. O que que acontece? Essas tabelas aqui, elas não têm só ID e descrição.
+Elas têm o estab, tá?
+E esse estab, ele não é, aqui no ConstruShow, não é o estabelecimento em si, tá? Ele é o usandode, o estabelecimento usandode.
+Então aqui no ConstruShow nós temos o seguinte. Nós temos a tabela usandode
+Que diz,
+usandode.
+Que diz... Vamos pegar a tabela departamento aqui. Onde tabela seja igual a departamento.
+Ah é, porque todas usam de item, né? Ó, importante você conhecer o teu banco, né?
+Então o que que acontece? Todas essas tabelas aqui, ó, se a gente pesquisar na usandode, ela não tem tabela.
+Aqui, não tem tabela. Só vamos conferir, não tem tabela.
+Não tem tabela.
+E não tem tabela. Então significa que elas sempre usam a referência de item.
+Então o que que acontece? Eu poderia aqui, ó, nesse estab tá tudo 500, né? Por padrão, geralmente o ConstruShow é assim, porque a gente tem a empresa 500, mas os estabelecimentos são vários. Então, pro estab 1000, ele vai usar o cadastro de item com referência à empresa 500.
+Tá, ao estab 500, que seria o principal, né, digamos assim. Pro 1001, o 500. Pro 1002, o 500. Por quê?
+Isso permite que se eu cadastrar um item na 500, ele vai poder ficar visível para todos. Então isso é uma questão de arquitetura do próprio ConstruShow. Porque se eu tivesse aqui 1000 e 1000, 1001 e 1001, o que eu cadastrasse aqui ficaria só na 1000, o que eu cadastrasse aqui só na 1001. Então a gente tem essa arquitetura aqui dentro do ConstruShow, e aí tem que avaliar a arquitetura de vocês também, mas no nosso exemplo a gente precisa levar isso em consideração, tá?
+Então a primeira coisa que a gente tem que saber é quantos estabelecimentos vão ter na tabela onde a gente está inserindo esses dados, tá?
+Então eu posso fazer aqui, ó, é, como eu conheço o ConstruShow, na nossa, deixa eu voltar aqui pro Shift...
+(AÇÃO: O usuário volta para a interface do editor de fluxo Shift)
+Então aqui eu vou salvar. Aqui na nossa consulta, além de buscar os dados aqui, eu posso tá pegando, eh, deixa eu pensar aqui, as filiais, né? As filiais e o que cada um usa, de quê.
+Primeiro eu vou pegar as filiais.
+Então quando eu rodar isso aqui, como que o sistema vai saber automaticamente quais os estabs que ele tem? É muito ruim eu ter que vir aqui e ficar... ele tem o 1000, 1001, ficar escrevendo.
+(AÇÃO: O usuário arrasta o nó Select para o fluxo e o conecta)
+Então nós vamos pegar aqui, vamos fazer um select, porque a essa altura do campeonato espera-se que os estabelecimentos já estejam inseridos, né?
+Então eu vou colocar aqui select filial, que é a nossa tabela onde tem os estabelecimentos.
+(AÇÃO: O usuário abre as configurações do nó Select e edita a consulta SQL)
+Então vamos fazer um select aqui, vamos colocar nossa conexão, ConstruShow...
+O que que tem nessa tabela filial? Vamos só dar uma olhada aqui.
+(AÇÃO: O usuário abre novamente a tela do Oracle SQL Developer)
+Select * from filial.
+Tem o estab, tem a empresa, tem a filial, o que a gente precisa é estab só. Estab, e razão social eu vou pegar.
+Estab, empresa e razão social.
+(AÇÃO: O usuário volta para o editor de fluxo e continua a digitar no nó Select)
+Então vou pegar aqui select estab, empresa, razao_soc from filial.
+Beleza, já estamos aqui com o nosso SQL. Daqui pra cá eu vou desativar, só pra gente verificar como está ficando aqui.
+(AÇÃO: O usuário desativa múltiplos nós no editor de fluxo)
+Beleza. Salvar, executar.
+(AÇÃO: O usuário abre um painel para execução e configura uma nova variável)
+Aqui eu coloquei o select errado, né? Coloquei com o concorrente. Mas como a gente vai precisar da conexão do ConstruShow também, vamos só pegar aqui o nosso padrão de escrita de variável das conexões do ConstruShow. E vamos criar uma nova variável que vai ser do tipo conexão, com o ConstruShow, Oracle, e o nosso design vai ser a nossa conexão local.
+Beleza. Já tenho aqui. É... e só vou mudar a variável aqui pra correta. ConstruShow.
+(AÇÃO: O usuário clica em Executar fluxo e visualiza os resultados)
+Vamos executar.
+Então já tá aqui os nossos estabelecimentos.
+Mas notem que, no ConstruShow, eu tenho 3 estabelecimentos aqui, que geralmente eles vêm na dump padrão, mas eu não utilizo, tá?
+É, então o que que eu vou fazer aqui? Por padrão, o ConstruShow só cadastra estabelecimentos aqui acima de 1000. Então eu vou colocar num where aqui pra não vir isso aqui, porque senão ele vai adicionar um departamento pra 999, um pra 1, um pra 500, que não é o intuito aqui, né? O intuito vai ser lá no departamento só 500, mas os estabelecimentos só a partir da 1000, tá?
+Então vou colocar aqui: where estab seja maior ou igual a 1000.
+(AÇÃO: O usuário altera o script SQL e clica para executar novamente)
+Dá um executar.
+Show de bola, ó. Então já tenho o que eu preciso aqui.
+Eh, beleza, então agora a gente já tem o estabelecimento, vamos, eh, fazer o mapeamento dos nossos departamentos pra mandar lá pra dentro do, da nossa, do nosso subfluxo que a gente vai criar.
+Então, vamos dar uma olhada aqui, vamos ativar de volta o nosso select aqui do concorrente, vamos executar, só pra nós vermos onde que tá a nossa coluna departamento.
+(AÇÃO: O usuário executa novamente o nó com concorrente e verifica o resultado)
+Beleza. Eh, nossa coluna departamento tá, tá aqui.
+Então nós temos aqui o departamento código e o departamento nome.
+(AÇÃO: O usuário insere um nó de Mapeamento na interface do fluxo)
+Então vamos fazer o nosso mapeamento aqui do departamento.
+Temos aqui o nosso Map Departamento.
+Certo. Aqui nós vamos pegar o nosso departamento_nome e o ID. Na verdade vamos pegar só departamento_nome, né? Porque a gente já definiu que esses subcadastros a gente nunca vai, eh, departamento, a gente nunca vai ter, eh, ID velho. A gente sempre vai resetar os IDs, né? É um padrão que a gente determinou aqui.
+Então, aqui eu posso ter também nulos, ó. Então vamos adicionar um padrão aqui pra quando tiver, colocar aqui padrão, padrão.
+(AÇÃO: O usuário preenche as informações do Mapeamento e clica em Executar)
+Ótimo. Vamos rodar aqui.
+Beleza, já temos a nossa lista de departamento.
+Eh, agora o que que eu preciso? Eu fiz o map departamento, mas ainda não vou poder passar, né? Porque eu preciso passar os estabs que eu tenho pra trabalhar, que no nosso caso aqui, eh, deixa eu rodar aqui de volta. Como eu rodei lá dentro do nó, ele só executa esse pedaço. A gente vai ter a 1000, 1002, 1003, 1004, 1005 e 1006, né? Mas tranquilo, vamos fazer o seguinte. Eu vou usar o Combinar aqui, fazendo um cross.
+(AÇÃO: O usuário arrasta o nó Combinar, vinculando-o aos passos anteriores)
+Então vou fazer aqui um cruzamento cross.
+Pra fins de teste eu vou adicionar só 2 estabs aqui, tá? Porque daí a gente consegue ter uma visualização melhor aqui pra mim mostrar. Então aqui onde é o where eu vou colocar in (1000, 1001), tá? Depois quando eu for rodar full eu vou tirar isso aqui. 1000 e 1001.
+Deixa eu desativar isso aqui. Salvar e rodar aqui pra gente ver se ele vai trazer só 2 estabs.
+Aqui retornou... Ah, não tem a 1001? Tá, então vamos adicionar a 1002.
+(AÇÃO: O usuário executa novamente o teste, verificando os dois estabs)
+Essa base eu não tenho a 1001.
+Show. Então temos os nossos estabelecimentos aí. Que que eu vou fazer aqui? Eu vou combinar esses caras aqui com o cross... pra mim... ele vai fazer o quê? Ele vai, eh, se eu tenho 10 departamentos, ele vai se tornar 20. Porque eu tenho 2 estabs, então a ideia é que ele duplique mesmo, tá?
+(AÇÃO: O usuário entra nas opções do nó Combinar e escolhe colunas de saída)
+Então aqui eu quero passar departamento. E aqui eu vou querer só esses caras aqui.
+(AÇÃO: O usuário testa o nó e verifica o cruzamento de dados)
+Vamos ver se vai funcionar o que eu tô imaginando aqui.
+Ó, então agora a gente tem departamentos aqui da 1000 tudo misturado e da 1002 tudo misturado. Então nós tínhamos 100 de cada um, né, porque ainda tá em branco, né, mas aí a gente conseguiu isso aqui, que é o que a gente queria.
+Beleza, ótimo. Agora sim a gente pode ir lá pro nosso subfluxo. E o que que ele vai esperar? Tá, a gente vai colocar que ele vai esperar um estab e o departamento só. Inclusive aqui, ó, nesse combinar a gente pode deixar só o estab, a empresa a gente não vai usar agora, talvez a gente use em outras, outras ocasiões ali.
+(AÇÃO: O usuário edita novamente o nó Combinar, removendo a empresa)
+Estab e departamento. Beleza, ótimo.
+Agora vamos criar nosso subfluxo de inserir departamentos. Então vamos colocar aqui TREINAMENTO - DEPARTAMENTO - CADASTRO.
+(AÇÃO: O usuário cria um novo fluxo e entra na tela de edição do novo fluxo)
+Ah, esqueci de pegar o nosso mock de teste, né. Deixa eu voltar aqui e pegar. Combinar, baixar, ótimo.
+(AÇÃO: O usuário carrega o arquivo de mock no novo subfluxo e o salva)
+Então vamos iniciar nosso subfluxo, vamos subir o nosso mock de teste.
+(AÇÃO: O usuário clica na entrada do fluxo e preenche as opções de variáveis de input)
+Ah, precisamos criar nosso esquema de entrada, input. Departamentos. Tipo tabela de referência. Adicionando a coluna estab, que é um inteiro. E departamento, que é uma string.
+Campos obrigatórios. Subir o nosso mock de teste.
+(AÇÃO: O usuário sobe o arquivo JSON como valor de teste e executa)
+Vamos executar. Tá aí, nosso estab e departamento. Ótimo.
+Então agora, a primeira coisa que eu tenho que saber, é o usandode desse estab, né.
+Porque lembra que nós falamos que eles usam tudo da tabela item, então eu não posso inserir departamento 100, tá, mas lá... lá já tinha a empresa. Mas beleza, mas lá a empresa não é o usandode. Lá no nosso primeiro, tá. Então lá veio o 500, mas não é o usandode. Aqui eu poderia ter um usandode diferente do que a empresa vinculada a esse estabelecimento aqui, tá? Então é por isso que a gente vai refazer esse select.
+Então eu vou até pegar ele aqui ó, porque é exatamente isso que a gente vai precisar. Então eu vou pegar aqui, vou rodar o nosso nó select...
+(AÇÃO: O usuário adiciona um nó Select e tenta colar o SQL)
+Deixa eu só pegar aqui o SQL que eu tirei do meu ctrl+c sem querer.
+Beleza, eh, pegar nosso nó select aqui. Colocar aqui Select USANDODE.
+(AÇÃO: O usuário preenche as informações e adiciona nova conexão)
+Ah, vamos cadastrar a nossa variável, né. Deixa eu pegar nossa variável lá, vou deixar anotado em algum lugar aqui pra ficar mais fácil.
+(AÇÃO: O usuário abre um bloco de notas, digita a variável e depois executa no sistema)
+Eu vou ter um cadastro de variáveis padrões. Isso é também uma melhoria aí pra frente. Então beleza. A com_construshow. Porque que eu uso o mesmo nome, tá? Só pra mostrar na prática aqui pra vocês. Porque se eu fazer isso aqui, ó, vim aqui colocar uma variável, conexão, colocar sei lá, con aqui, tipo oracle, construshow, e salvar, quando eu executar isso aqui... ele vai pedir... ah não usei, né. Ele vai pedir essa variável aqui, né. Deixa eu pegar o select.
+(AÇÃO: O usuário abre as configurações da variável de conexão)
+Ele vai pedir essa con. Só que lá nos outros subfluxos a gente usa a con_construshow. Daí ela apareceria con, embaixo con_construshow. Só que é a mesma conexão. Então não faz sentido, daí eu vou ter que setar o construshow duas vezes, tá? Então por isso que utilizar o mesmo nome de variável é sempre o indicador correto, tá?
+Então vou vir aqui, vou... deixa eu ver, a minha gravação tá tudo ok, beleza.
+(AÇÃO: O usuário corrige o nome da variável para Conn_ConstruShow)
+Vou só mudar o nome aqui. Salvar. Vim aqui setar nossa conexão, construshow, e pegar aqui usandode tabela item, tá?
+E aqui eu vou só carregar aqui os dados num mapeamento, do que vem aqui do... vou colocar aqui map inicial. Carregar o que tá vindo dali.
+(AÇÃO: O usuário adiciona um Mapeamento inicial e roda o fluxo)
+Nossa conexão construshow, botar pra lembrar. Ele vai dar erro, porque a gente não mapeou nada. Beleza.
+Então aqui eu só vou mapear isso aqui, vou reorganizar aqui porque eu gosto da sequência correta. Vamos rodar de volta.
+Ótimo, então eu tenho aqui o usandode.
+Até porque lá na minha usando de, da tabela item, select * from where tabela item. Tem retorno... Ah tá, já entendi por que. É que eu, quando eu tenho... não, mas tá certo. Deixa eu setar aqui só estab e usade.
+(AÇÃO: O usuário altera a instrução do SQL e roda o fluxo novamente)
+Vamos rodar aqui pra ver.
+Não, não tá trazendo a... ué.
+Vamos usar o nó de script então. Pô num select mais leve, a ideia de ter esse select, ele tem alguns esquemas de performance, então ele economiza em algumas colunas que tem valores nulos ou colunas que ele acha que não é importante. Esse aqui ele sempre vai trazer tudo.
+(AÇÃO: O usuário substitui o Select pelo SQL Script)
+Não, mas tá trazendo só... ué.
+Ah tá, eu tava executando no banco errado. No meu só tem o 1000 mesmo. Tudo bem. Tudo bem. Tudo bem. Deixa eu só confirmar aqui, porque aqui ele tinha... parece que tinha trazido mais. Vamos ver. Select filial. Ah, é porque eu tenho mais de uma filial. Tá certo.
+Deixa eu inserir aqui. Eu tenho mais de uma filial, mas é só nesse banco aqui. Como ele é de teste, eu inseri as filiais na mão, e ele não criou o usandode. Então eu vou fazer um insert aqui, só da 1002 pra gente ter aqui. Porque aqui eu tenho, ó, select * from filial, banco de teste, né. Ó, eu tenho as filiais ali, 1000, 1002, 1003, trarará, mas eu não tenho na usandode, tá? Então eu vou só inserir aqui, porque como eu criei essas filiais a mais, a única que eu tinha padrão nessa base era a 1000. E as demais eu inseri por banco, né, mas aí eu inseri só na filial, porque era só pra teste, né. Não fiz por... as outras tabelas que são necessárias quando você cria um estab. Então eu vou fazer um insert into aqui.
+(AÇÃO: O usuário muda para o Oracle SQL Developer e escreve um INSERT INTO na USANDODE)
+Na usandode. Usandode. Setando estab. Deixa eu ver o que que tem nas outras aqui. É, não, é assim. Values. Então eu vou setar aqui o 1002, item, 500 e null.
+Beleza, inseri. Agora nosso select tá com as duas ali que a gente vai trabalhar. Beleza, só uma questão aí do banco de teste, né.
+Vamos voltar aqui, e permanecer com o nosso nó select que é o ideal pra realizar esse tipo de select.
+(AÇÃO: O usuário volta para a ferramenta de fluxos e insere um nó Select)
+Vem aqui, select usandode.
+Ah, tem o ctrl+z aqui também, tá? Eu poderia vir aqui ctrl+z, mas tudo bem. Construshow. Aí.
+Agora sim, temos o nosso... nossos departamentos e nossos estabs que vamos trabalhar. Agora vamos juntar esses dois aí pra mim saber o que que é o usandode de cada um, né?
+Daí eu vou colocar aqui o join. Nó de join pra gente fazer uma ligação.
+(AÇÃO: O usuário puxa um nó Junta e conecta aos passos)
+Colocar aqui junta USADE. Então eu vou pegar esse com esse. Esse com esse.
+Eu vou fazer um left. Na verdade é o contrário, né. O from vai ser a partir do map. Só inverter esses caras aqui, porque a minha principal sempre tem que tá no from. O usandode eu só vou resgatar o que é usandode mesmo. Então vou vir aqui, from é o map inicial, e o join é esse aqui.
+Então as chaves é o estab que vai vir contra estab aqui. E o que que eu quero passar pra frente? Eu quero passar departamento e usade.
+(AÇÃO: O usuário executa o fluxo testando o nó Junta USADE)
+Vamos executar, vamos ver se vai dar um erro em algum ponto.
+Então tem aqui todos, né, eu só tenho um usade, né, mas é bom fazer isso porque se caso tiver você não insere errado, né. Aqui esse malabarismo todo é por conta da estrutura que o ConstruShow pede. É, eu poderia muito bem ali setar na mão 500, mas aí você tá fazendo um fluxo que pode ter algum problema, né.
+Agora sim, eu posso vir aqui, só remover o que tá duplicado. Remove duplicados.
+(AÇÃO: O usuário arrasta o nó Remover Duplicatas para o painel)
+Vamos pegar aqui pelo departamento e estab, né, os usade. Que se tiver outros aí ele vai remover também.
+Beleza, temos os nossos departamentos únicos aí.
+Agora o que tá faltando é a nossa seq primary key, né.
+Então, eu até vou, eu vou rodar ela em paralelo aqui.
+(AÇÃO: O usuário abre um guia anterior onde configurou uma SQL Script para copiar a lógica)
+Vamos pegar como que a gente fez lá nos demais, né, vamos pegar aqui na marca ó. A marca que tinha. A gente usou o script. Então vamos fazer da mesma forma. Departamento... tá aqui.
+(AÇÃO: O usuário inclui o nó SQL Script no painel do fluxo de departamentos)
+Então vamos inserir aqui o script. Ele vai rodar em paralelo aqui com o remove...
+Seq. Select seq.
+Na verdade ele vai ter que ser depois, né? Eh, deixa eu pensar, na verdade, ele vai ter que ser assim ó. Aqui vamos pegar só os estabs que a gente tem, né. Porque se a gente tiver mais de um a gente isola eles.
+(AÇÃO: O usuário configura novos mapeamentos nomeando como "Isola Estab")
+Então aqui, vamos fazer o seguinte, aqui vai ter um mapeamento. Chamar ele de isola estab usade. E aqui eu vou duplicar esse aqui... Eu vou chamar ele de passa pra frente. Vai atuar como intermediário apenas.
+Ah, deixa eu desativar esse cara aqui. Por que que eu tô fazendo isso? Porque agora no seq primary key a gente vai ter chave, né? Porque o seq primary key ele é baseado em... hum. Ele é baseado em estab, né, porque ele tem uma chave. Eu já vou mostrar ali pra vocês. E aqui vamos remover... colocar aqui estab usade únicos.
+Óbvio que eu tô usando uma linha de raciocínio, né, tem várias linhas de raciocínio que você pode adotar aí. É, eu tô usando essa.
+E aqui é só passa pra frente, né.
+Vou colocar aqui como estab, e eu já vou deixar renomeado esse cara aqui porque depois a gente vai fazer o insert direto.
+(AÇÃO: O usuário executa o fluxo novamente para visualizar os valores na tela)
+Vamos rodar.
+Ok.
+Agora aqui, o seq primary key, o que que eu vou fazer? Vou ativar ele aqui. Vou ligar ele com esse cara aqui. E aqui eu vou mudar ele pra execute many. Por que? Porque aqui ele pode, quando eu faço um query ou execute parameter, ele sempre vai pegar a primeira linha. Quando eu quero que ele faça uma vez pra cada linha, então eu tenho que usar o execute many aqui.
+(AÇÃO: O usuário configura o parâmetro Execute Many no SQL Script)
+Então que eu já peguei aqui, ó, eu vou fazer um select estab as seq_primary_key_int passando a tabela DEPARTAMENTO, chave IDDEPTO e a seq from dual. Então essa é a lógica aqui do seq primary key.
+O estab, o primeiro que eu vou passar... eu vou passar o parâmetro ó, eu vou colocar aqui que eu vou usar o estab. Tá?
+E a chave... eu vou fazer aqui ó... vou colocar aqui, mas eu vou fazer uma variável. A chave, geralmente ela é o estab escrito estab, né? Deixa eu pegar aqui. Seq primary key, departamento aqui ó. DEPARTAMENTO.
+Ó, ela é assim, estab=500. Inclusive dá até pra nós fazermos aqui ó...
+(AÇÃO: O usuário adiciona os parâmetros de Estab e Chave com a declaração "ESTAB=")
+Criar aqui já ó, chave, que daí já vem pronta ó. Então chave vai ser o quê? Escrito estab= e puxar esse cara aqui. Vamos rodar até aqui pra ver.
+Então o resultado que a gente tem aqui é o estab e a chave que a gente vai precisar lá, né.
+(AÇÃO: O usuário roda a aplicação preenchendo as informações)
+Então... vamos executar até aqui, pra gente carregar esses dados aí. Beleza, usade, nossa chave.
+Vamos aqui pro select e na nossa chave a gente liga direto aqui. Nossa conexão vai ser com construshow e vamos ver o resultado.
+Eh... então aqui nós temos o estab e a 500. Por que eu fiz isso? Porque se tivesse outros estabs ali de usade, eh, ele geraria uma linha para cada um, tá? Quando você usa o execute, ele sempre vai pegar os dados da primeira linha do resultado anterior. No caso aqui a gente só tem uma, né, mas se eu tivesse outros usandode aqui, ele acabaria pegando só do primeiro. E quando eu dou um exec many, ele executa isso aqui pra cada um e traz o resultado em uma tabela aqui também da mesma maneira.
+Então agora nós já temos a nossa sequência primária, nós já temos o que vai ser inserido aqui. Então aqui a gente só vai fazer a junção desses dois aqui...
+(AÇÃO: O usuário arrasta novamente um nó Combinar para cruzar os datasets)
+Vamos pegar aqui, o nosso nó de combinação. Pra gente utilizar o cross.
+Então deixa eu só selecionar aqui dentro, porque ele vai resetar aqui fora. Certo, aqui também. Combina com seq.
+Então agora a gente tem a nossa sequência aqui, fazendo um cross. Vamos executar.
+Ah, deixa eu pegar a última aqui. Então temos o estab, a última sequência, e o departamento.
+Agora só temos que resetar, né, o nosso id sequencial baseado na nossa última numeração.
+(AÇÃO: O usuário adiciona um nó para somar 1 ao ID sequencial)
+Então vou vir aqui... Adiciona ID Seq. Então, vai ser um valor linkado, última sequência, somando 1 acima.
+Então temos nosso ID que vai ser a partir de agora, nosso estab, e nosso departamento, tudo que a gente precisa pra nossa tabela de departamentos, tá.
+Então que é basicamente estab, iddepto e descrição.
+(AÇÃO: O usuário arrasta o nó de Inserção em Massa e edita as informações para tabela Departamento)
+Beleza, vamos começar o nosso insert, então. Fazer o insert na nossa tabela.
+Então vou pegar o nó de insert. Inserção em massa. Insert departamento.
+Vou selecionar a conexão variável, nossa tabela é departamento.
+Inserir somente os novos, a nossa chave vai ser o estab e a descrição, porque esses dois não vai mudar, mas aqui o iddepto pode mudar, tá? Aqui é só uma informação que ele falou ó... você tá usando só estab e descrição, mas lá eu vi que a tabela tem, a primary key dela também é o iddepto, né. Mas pode ignorar nesse caso aqui.
+A gente precisa do estab, e da descrição, que vai vir do departamento. Então já temos... ah tá, e temos o nosso iddepto, né? Eu até vou fazer em sequência, estab, iddepto, que é nosso ID, e a nossa descrição, que é o departamento.
+Beleza. Eh, aqui tá tudo certo, posso deixar dessa maneira.
+Vou salvar.
+Eh, depois que a gente, depois que nós inserirmos, tem toda aquela questão lá de, eh, limpar o seq primary key.
+(AÇÃO: O usuário adiciona um nó de Limpa Seq para remover a sequência)
+Então, eu vou adicionar aqui um nó de script pra deletar a nossa seq primary key.
+Limpa Seq. Por isso que eu não vou usar a o nó limpa, por conta que a gente não tá inser... não tá usando a... o schema viasoft sys, né?
+Opa não é, na verdade, é o seq primary key da tabela departamento.
+E daí por último pra retornar os nossos dados ali, a gente vai fazer um select pra retornar os, o cadastro completo dos departamentos, que caso já tenha existido algum, a gente...
+(AÇÃO: O usuário adiciona e edita um nó de Select para a tabela departamentos)
+Select... Select departamento. Beleza, então aqui vou basicamente colocar a variável construshow.
+E fazer um select estab, iddepto e descrição from departamento.
+Show de bola. Vamos executar, vamos ver se vai dar um erro em algum ponto.
+Chegou aqui no insert, inseriu, opa, deu um erro aqui. Ai, que eu não execute, né. Certo. Vamos até ver se o segundo insert vai dar algum tipo de problema.
+Não deu. Faltou um errinho aqui. Ah, sim, eu não adicionei a variável de conexão também, né?
+(AÇÃO: O usuário arruma o erro e clica em Executar fluxo)
+Vamos rodar.
+Uhum, vamos ver o nosso select. Retornou todos os nossos departamentos cadastrados.
+Vamos rodar mais alguma coisa, mais uma vez aqui, pra ver se ele vai dar algum tipo de erro.
+Estabs usando de... não mudou id, tá tudo aqui. Agora a gente vai retornar o quê?
+(AÇÃO: O usuário edita a tabela Outputs nas configurações à direita da tela)
+Nosso esquema de saída vai retornar uma tabela departamentos cadastrados, do tipo tabela de referência, que vai retornar estab, que vou chamar de estab usade pra mim saber que é usando de... Vou retornar iddepto, que é o ID do departamento, e vou também a descrição, que vai ser a string.
+Então vou retornar isso, vou fazer um mapeamento final aqui... pra pegar só o que eu quero.
+(AÇÃO: O usuário arrasta um nó de Mapeamento nomeando de Mapeamento Entrega)
+Colocar map entrega. Vou carregar tudo aqui, só que não vou querer esse, nem esse, e vou renomear aqui pra maiúsculo. iddepto, descrição. Eu tenho a impressão que eu escrevi errado aqui no... iddepto, não, tá certo.
+E por último, então, nosso nó de saída do fluxo pra ele retornar lá pro nosso nó principal os dados que ele cadastrou.
+Então ele vai vir a partir do map entrega. Ótimo, posso salvar.
+Vou rodar uma última vez aqui, esse, só pra ter certeza que não deu nenhum erro.
+Certo.
+Então já temos aqui nossa saída do fluxo, com nosso estab, iddepto e descrição, tá? Se a gente vir aqui no nosso banco...
+(AÇÃO: O usuário navega para a tela do Oracle SQL Developer com as tabelas criadas)
+Tá aqui. Então agora, pra, como a seção... o grupo, item, e o subgrupo é a mesma coisa, só mudando de tabela, né, a lógica vai ser a mesma, a gente vai criar um subfluxo aqui pra depois chamar lá dentro do fluxo... Eu vou trazer isso aqui no próximo vídeo pronto. A gente vai falar rapidamente sobre eles pra gente não ficar criando a mesma coisa, só mudando de tabela, pra gente adiantar também o vídeo.
+E depois disso a gente já vai passar pra junção, pra preparar os dados pra inserir na item e na itemcategoria.
+Então aqui só não esquecendo de publicar a versão...
+(AÇÃO: O usuário clica para Publicar versão final da sua plataforma Shift)
+Porque ele sempre vai pegar em produção a versão última publicada.
+Certo? Então, até o próximo vídeo.

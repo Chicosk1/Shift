@@ -1,0 +1,254 @@
+Então como foi comentado aí no último treinamento, nós tínhamos feito a parte do departamento, né?
+É... então fizemos a parte do departamento e eu comentei que eu ia fazer os demais ali pra até não ficarmos presos, né, só na mesma inserção, porque é basicamente a mesma coisa.
+Então, o que que eu adicionei a mais aqui? Um mapeamento de departamento. Departamento... até tá escrito errado, depart...
+(AÇÃO: O cursor do mouse se move e clica sobre o nó "MAP DEPARTAMENTO" no editor de fluxo)
+Departamento. Que é o que a gente fez. E se vocês notarem aqui, ó, tanto a parte da seção quanto a parte do grupo e quanto a parte do subgrupo, tá exatamente igual.
+O map aqui, ele tá exatamente igual à marca, porque a... o... desculpa, a comissão do produto tá igual à marca porque a tabela de comissão do produto lá também é um pouco... é... é igual à marca, ela só tem um ID e um... é um cadastro único, né? E uma descrição.
+Então ele ficou exatamente como é o processo que a gente fez aqui da marca, tá?
+(AÇÃO: O usuário clica na aba "Migração de Produtos" para visualizar a lista de fluxos)
+Então, eu só... o que que eu fiz aqui? Basicamente, eu duplicava, né? Eu pegava o departamento, duplicava e adaptei pra seção. Dupliquei seção e adaptei pra subgrupo... pra grupo item, subgrupo.
+E... e dupliquei a marca pra comissão.
+(AÇÃO: O usuário clica no fluxo "TREINAMENTO - DEPARTAMENTO - CADASTRO" para abri-lo)
+Então se a gente ver aqui, ó, departamento, tá exatamente como a gente fez, né? Usando o D.
+Depois a gente fez a junção, removeu duplicados, isolou a listagem usando o D, passamos pra frente os dados, combinamos os dois, adicionamos o ID, inserimos no departamento.
+Eh, limpamos a sequência. E selecionando o departamento e daí tem a entrega.
+(AÇÃO: O usuário volta para a lista de fluxos e abre o fluxo "TREINAMENTO - SECAO - CADASTRO")
+Até... é capaz de eu nem ter trocado aqui as descrições, ó, entrada do fluxo.
+Mesma coisa aqui, mesma coisa aqui, mesma coisa aqui. Passa para frente. Sec, ó. Combina com sec, insert seção, limpa sec, select seção, mapeamento.
+Mesma coisa.
+(AÇÃO: O usuário volta para a lista de fluxos e abre o fluxo "TREINAMENTO - GRUPOITEM - CADASTRO")
+Eh... grupo item também, é exatamente a mesma coisa, só vamos dar uma... uma revisada aqui nas descrições.
+Ó, aqui tá insert seção, então só vou colocar aqui pra ser o grupo item, né?
+(AÇÃO: O usuário clica no nó "Insert Secao" e renomeia o título para "Insert GrupoItem")
+Grupo item. Limpa sec. Select... grupo sec... grupo item.
+(AÇÃO: O usuário clica no nó "Select Secao" e renomeia o título para "Select GrupoItem")
+Grupo item. E a entrega. Vamos salvar aqui, publicar.
+(AÇÃO: O usuário clica no botão "Salvar" e depois em "Publicar", confirmando a publicação)
+A gente só trocou a descrição, mas é sempre bom deixar atualizado.
+(AÇÃO: O usuário volta para a lista de fluxos e abre o fluxo "TREINAMENTO - SUBGRUPO - CADASTRO")
+O subgrupo da mesma maneira, só vamos dar uma olhada aqui na... nas descrições.
+Aham, tudo certo. Aqui ainda tá com a seção. Esse aqui é o subgrupo.
+(AÇÃO: O usuário clica no nó "Insert Secao" e renomeia o título para "Insert SubGrupo")
+Subgrupo. Select... subgrupo.
+(AÇÃO: O usuário clica no nó "Select Secao" e renomeia o título para "Select SubGrupo")
+Subgrupo. Beleza. Vamos salvar. Publicar. E por último, a comissão lá, que é um pouco diferente, que na verdade é igual à marca, né?
+(AÇÃO: O usuário volta para a lista de fluxos, clica em "TREINAMENTO - COMISPROD - CADASTRO", abre o fluxo e clica no nó "Insert Marca")
+Insert... comisprod.
+(AÇÃO: O usuário renomeia o título do nó para "Insert ComisProd" e depois clica no nó "Select Marca")
+Limpa sec. Select comisprod.
+(AÇÃO: O usuário renomeia o título do nó para "Select ComisProd", clica em "Salvar", depois em "Publicar" e confirma)
+Beleza, vamos salvar, vamos publicar. E vamos rodar em produção agora. Pra gente ver se tá tudo funcional.
+(AÇÃO: O usuário volta para a lista de fluxos e abre o fluxo "Treinamento Inserir Itens - Core")
+Então aqui no treinamento, que é o nosso core, então ele ficou um pouco maior agora, né? Nós temos todos os subcadastros aqui, né?
+E vamos rodar ele em produção, pra gente ver como que tá.
+(AÇÃO: O usuário abre um cliente SQL e visualiza consultas de deleção de dados)
+Primeiro vamos só limpar nossas tabelas aqui.
+Então se eu dar um select aqui, ó, todas estão... deixa eu limpar aqui. Todas estão zeradas, ó. Tá?
+(AÇÃO: O usuário seleciona e executa as consultas SQL para limpar as tabelas, mostrando que os contadores retornam zero)
+Eh, e vamos rodar aqui em produção agora. Porque eu tirei aquele nosso "top 100" aqui, pra ele trazer todos os dados que tem, né, no banco de... de produtos.
+(AÇÃO: O usuário volta ao editor de fluxo, clica em "Executar", seleciona as conexões e clica em "Executar" no modal)
+Então vamos executar. Selecionei nossas duas conexões. E vamos acompanhar aqui. Prefiro acompanhar aqui pela aba de execuções.
+(AÇÃO: O usuário clica na aba "Execuções" para monitorar o andamento do fluxo)
+Então aqui eu posso colocar um auto-refresh a cada 10 segundos, ele vai atualizar, ou eu posso atualizar aqui, ó.
+(AÇÃO: O usuário clica no botão "Atualizar")
+Então ele já tá aqui... eh... nas... cadastros de unidades, marca... né? Então ele tá fazendo... isso aqui, já inseriu. Tá indo pra parte de departamento, seção, grupo item, subgrupo, né?
+Então... finalizou. Levou 25 segundos.
+(AÇÃO: O usuário volta ao cliente SQL e executa as consultas de contagem nas tabelas)
+Se nós fizermos a contagem agora, então ele inseriu 15 unidades... né, e na questão da ordem aqui, né? 45 marcas, 1 departamento, uma seção, 59 grupos de item, 12... eh... subgrupos e 1 comissão.
+Então se nós viermos aqui, ó, então dá pra nós começarmos pela unidade aqui, ó. Posso clicar aqui. E daí aqui dentro eu posso ver quantos que ele gravou aqui.
+(AÇÃO: O usuário volta para a tela do Shift, aba Execuções, clica na execução do nó "TREINAMENTO - UNIDADE - CADASTRO" e clica em "Ver sub-execução")
+Então a gente entra aqui, ó, ver... eh, execução. Então eu posso ver aqui tudo o que aconteceu.
+(AÇÃO: Na tela da sub-execução, o usuário clica no nó "Remove Duplicatas" e depois em "Ver resultado")
+Então se nós viermos aqui, por exemplo, no mapeamento antes aqui, ó, antes do insert, e nós vermos o resultado aqui, a gente viu que ele diz aqui que ele gravou... enviou, né, eh... 15 registros aqui pro cadastro da... unidade, né?
+(AÇÃO: O usuário volta ao cliente SQL, executa a contagem da tabela de unidade, confirmando 15, e depois seleciona os registros da tabela)
+Então aqui a gente pode fazer auditoria, se a gente pegar aqui, ó, unidade, tem 15 mesmo. E a gente pode ver aqui exatamente o que foi adicionado, ó. Tá?
+(AÇÃO: O usuário retorna para a tela do Shift, na aba Execuções)
+Então a gente tem aí as nossas unidades cadastradas e tudo mais. Então você pode aqui fazer toda a verificação, né?
+(AÇÃO: O usuário clica na sub-execução do nó "TREINAMENTO - MARCA - CADASTRO")
+Se tem todos... os dados aqui, ó, por exemplo, marca, diz que gravou 45. Se nós viermos e contarmos marca aqui... Não, tem 45.
+(AÇÃO: O usuário vai ao cliente SQL e executa a contagem da tabela marca, mostrando 45 registros)
+Então aqui você consegue também fazer essa validação, né, através aqui, ó... gravou um...
+(AÇÃO: O usuário volta ao Shift, apontando para a execução de outros sub-fluxos, como comissão)
+Por que que ele recebeu... quatro mil e poucos? Porque ele pegava por item, né? Então provavelmente tinha em torno de 4.165 itens, ó.
+(AÇÃO: O usuário clica no nó "SQL - Conexão Erp" na execução raiz, depois em "Ver resultado", mostrando a lista de itens)
+Quando rodou a consulta, retornou todos esses itens aí... eh, então, por isso aqui dentro do mapper... eh, a gente conseguiria ver, né?
+Beleza. Então... O que que nós vamos fazer? Posso sair aqui.
+(AÇÃO: O usuário volta para a aba "Editor" do fluxo "Treinamento Inserir Itens - Core")
+O que que nós vamos fazer agora? Agora nós vamos fazer a junção entre os resultados cadastrados com as descrições que a gente tem, porque lá na frente pra inserir o item, categoria, nós vamos precisar disso.
+Só que o que que eu vou fazer aqui? É... isso aqui tá meio ruim de visualizar, né? Então a primeira coisa que eu vou fazer aqui, é antes de agrupar, eu vou colocar um "Aguardar Todos".
+(AÇÃO: O usuário arrasta o nó "Aguardar Todos" da biblioteca de nós para a tela do editor de fluxo)
+Porque a próxima ação que eu vou fazer, eu só vou fazer depois que essas aqui terminarem. Então eu vou puxar esse aqui, vou puxar esse aqui, vou puxar todos, né, pra junto aqui do "Aguardar Todos".
+(AÇÃO: O usuário conecta as saídas de todos os sub-fluxos de cadastro ao nó "Aguardar Todos")
+Porque depois que tudo isso aqui executar, eu vou dar sequência, né? Eu não posso... ter o perigo de não ter nada cadastrado... não ter alguma coisa cadastrada quando eu for inserir algo que precisa daquele registro.
+Então, como eles são subcadastros, eu prefiro... eh... executar eles em paralelo, aguardar a finalização deles, e daí sim eu posso continuar.
+Então aqui, pra questão de visualização, como essa nossa parte aqui tá resolvida, eu vou vir aqui na setinha... vou selecionar todos... e vou agrupar.
+(AÇÃO: O usuário clica na ferramenta de seleção, arrasta para selecionar todos os nós de mapeamento e sub-fluxos, clica no menu de opções e escolhe "Agrupar")
+Vou dar uma cor aqui, sei lá... dar um... um azul... e vou chamar aqui de "Sub Cadastros".
+(AÇÃO: O usuário altera a cor do grupo para azul e renomeia o grupo para "Sub Cadastros")
+E daí sim, eu vou... diminuir aqui, agora a gente tem uma... uma visualização bem mais limpa, né?
+(AÇÃO: O usuário recolhe o grupo clicando na setinha do cabeçalho do grupo)
+Se eu precisar fazer alguma manutenção... eu posso simplesmente focar dentro desse grupo aqui, através desse botão.
+(AÇÃO: O usuário clica no ícone de expandir o grupo para mostrar que ele pode ser aberto novamente)
+Ótimo. Então aqui o "Aguardar Todos", eu vou... eu vou limpar aqui a nossa base de volta... salvar.
+(AÇÃO: O usuário volta ao cliente SQL, executa as instruções DELETE e salva as alterações no banco)
+E vou mudar pra teste aqui... novamente, pra gente pegar menos registros aqui.
+(AÇÃO: O usuário volta ao Shift, seleciona a aba de opções de ambiente no cabeçalho e altera de Produção para Teste)
+E vou executar novamente pra... a gente pegar os... os esquemas iniciais aí.
+(AÇÃO: O usuário clica em Executar no editor, seleciona as conexões e clica em Executar no modal)
+Então vamos aguardar ele executar. Tá executando.
+(AÇÃO: O usuário acompanha a barra de progresso no canto inferior esquerdo mostrando o status da execução)
+Como ele tá executando todos os subcadastros, né...
+Beleza. Então demorou aí alguns segundos. Ele demora um pouco mais em... em teste do que em produção, obviamente, tá?
+É... mas aqui, o "Aguardar Todos", ele já deu ok, e aqui nós temos um recurso do "Aguardar Todos" que é o quê, ó...
+(AÇÃO: O usuário clica no nó "Aguardar Todos", abrindo a barra lateral de configuração à direita)
+Imagina aqui que nós temos... até deixa eu mudar o nome aqui desse, acho que é o único que tá como chamar aqui, esse aqui...
+(AÇÃO: O usuário expande o grupo "Sub Cadastros", localiza o nó "Chamar TREINAMENTO" e renomeia para "TREINAMENTO - DEPARTAMENTO - CADASTRO", retirando a palavra "Chamar")
+Deixa eu tirar ele, deixa só treinamento... beleza.
+(AÇÃO: O usuário recolhe o grupo "Sub Cadastros" e seleciona novamente o nó "Aguardar Todos")
+Eh, então aqui, o "Aguardar Todos", ele tem um recurso muito legal, ó, imagine aqui que eu tenho todos esses resultados anteriores, ó. É bastante, né?
+(AÇÃO: Na barra lateral, aba Input do nó "Aguardar Todos", o usuário rola a lista para mostrar a grande quantidade de campos de entrada disponíveis)
+Só que o que eu vou precisar, é só dos resultados dos subcadastros, e da min... do meu SQL aqui de... da... dos dados do... de produto, né?
+Então eu vou vir aqui, e eu posso definir, o que que eu quero expor pra frente? Eu vou... eu quero os meus subcadastros...
+(AÇÃO: Na aba Input do nó "Aguardar Todos", o usuário clica na caixa "Expor Para Frente" para selecionar os campos desejados)
+Aqui ele ficou um "chamar" ali... eu gosto de padrão, né? Vamos ver aqui... quem ficou um "chamar"... Ele coloca esse "chamar" automático, tá.
+(AÇÃO: O usuário expande o grupo, encontra os nós com a palavra "Chamar:" no nome e os edita para remover essa palavra, mantendo o padrão)
+(AÇÃO: O usuário retorna para o nó "Aguardar Todos" e abre o menu "Expor Para Frente")
+Eh... então eu vou expor esses aqui, mas todos os subcadastros aqui, que é o call workflow aqui, que é um chamado de subfluxo, e o nosso select...
+(AÇÃO: O usuário seleciona os fluxos de treinamento de cadastro na lista de "Expor Para Frente")
+Até vamos dar um nome melhor pra ele, né, hoje ele tá aqui, vou colocar... "Busca Itens"... "Busca Produtos".
+(AÇÃO: O usuário seleciona o nó "SQL - Conexão Erp" na esquerda da tela e renomeia para "Busca Produtos")
+E daí vou dar... aqui no "Aguardar Todos", que eu também quero expor esse cara aí pra frente.
+(AÇÃO: O usuário volta ao nó "Aguardar Todos", abre a caixa "Expor Para Frente" e seleciona "Busca Produtos")
+Então busca produtos. Então agora quando eu executar aqui...
+(AÇÃO: O usuário clica em "Executar", seleciona as conexões e inicia a execução do fluxo novamente)
+A gente vai aguardar a execução.
+(AÇÃO: Ocorrência de corte na gravação, o fluxo já aparece executado)
+Não, eu dei pause aqui por questão do vídeo ficar mais... mais curto, né, mas basicamente ele finalizou a execução.
+É, e se eu utilizar agora um novo nó aqui pra frente, do... do mape... do "Aguardar Todos" aqui...
+(AÇÃO: O usuário arrasta o nó "Mapeamento" da barra lateral esquerda para a tela de fluxo, conectando-o após o nó "Aguardar Todos")
+Então eu vou ter... a visualização somente daqueles nós lá que eu... eh... que eu então fiz a... o passar pra frente lá, que tá dentro do "Aguardar... do Aguardar Todos", né?
+(AÇÃO: O usuário clica no nó "Mapeamento" e abre a aba Input para mostrar que a lista "Campos" agora só possui os itens selecionados no nó anterior)
+Beleza. Então agora eu vou precisar fazer uma reorganização desses dados. Eu vou colocar aqui... o nome de "Itens".
+(AÇÃO: O usuário clica no nó "Mapeamento" recém-criado e renomeia para "ITENS")
+Tá? Eu vou começar por ele. E vou trazer tudo o que é referente a... o "Buscar Produtos" aqui.
+(AÇÃO: Na barra lateral, aba Input do nó "ITENS", o usuário seleciona "Busca Produtos" no dropdown "Adicionar campos da entrada aqui" e clica em "Mapear todos")
+Então vou selecionar aqui e vou mapear todos. Vocês já vão entender o porquê.
+E eu vou começar aqui, a pegar a junção pel... de baixo pra cima, vou pegar a comissão do produto.
+Então eu vou vir aqui, vou adicionar mais um mapeamento... e vou definir aqui... eu vou dar um nome, só nome da tabela, ó... "Comisprod".
+(AÇÃO: O usuário arrasta um novo nó "Mapeamento" para a tela, conecta a saída do "Aguardar Todos" a ele e renomeia para "COMISPROD")
+E vou trazer pra cá tudo que é do "Comisprod". Então vou colocar aqui, "Treinamento Comisprod", tá?
+(AÇÃO: Na barra lateral do nó "COMISPROD", seleciona "TREINAMENTO - COMISPROD - CADASTRO" e clica em "Mapear todos")
+Por que que eu tô fazendo isso? Porque como a gente tá dentro aqui do agrupamento e a gente tá a partir do "Aguardar Todos", eh, é melhor eu fazer essa separação por uma questão de organização. O "Aguardar Todos", a única função dele é só expor pra frente.
+Se você vai precisar usar esses dados, sempre usa o mapeamento pra remapear esses dados, tá? Então vou ter aqui o "Comisprod".
+Agora eu vou adicionar mais um mapeamento aqui... que eu vou chamar de "Departamento".
+(AÇÃO: O usuário arrasta outro nó "Mapeamento", conecta após o "Aguardar Todos", renomeia para "DEPARTAMENTO", seleciona o campo "TREINAMENTO - DEPARTAMENTO - CADASTRO" e clica em "Mapear todos")
+Vou replicar o nosso resultado do... do mapeamento do... do cadastro de departamento aqui.
+Eu vou pegar a nossa seção...
+(AÇÃO: O usuário cria mais um nó "Mapeamento", conecta, renomeia para "SECAO", seleciona o respectivo campo na aba Input e clica em "Mapear todos")
+Uhum... Vou pegar o próximo que é o grupo item...
+(AÇÃO: O usuário cria um nó "Mapeamento", conecta, renomeia para "GRUPOITEM", seleciona o campo "TREINAMENTO - GRUPOITEM - CADASTRO" e clica em "Mapear todos")
+Opa. Não é esse aí que eu quero. É... do grupo item, esse aqui. Vamos mapear, beleza, já mapeamos.
+Vamos pegar... eh... subgrupo agora, né? Subgrupo.
+(AÇÃO: O usuário cria um nó "Mapeamento", conecta ao "Aguardar Todos", renomeia para "SUBGRUPO", seleciona o campo "TREINAMENTO - SUBGRUPO - CADASTRO" e clica em "Mapear todos")
+Beleza. E por último, a marca.
+(AÇÃO: O usuário cria o último nó "Mapeamento", conecta ao "Aguardar Todos", renomeia para "MARCA", seleciona o campo "TREINAMENTO - MARCA - CADASTRO" e clica em "Mapear todos")
+Ótimo. Por que que eu não tô ligando a unidade? Porque a unidade, a chave é a própria... a unidade que a gente pegou já do banco do concorrente pra cadastrar.
+Então a gente não vai precisar... rep... a gente só precisa cadastrar ela, tá. Inclusive, aqui nem precisava, né, a gente expor a unidade pra frente.
+(AÇÃO: O usuário clica no nó "Aguardar Todos" e desmarca o campo "TREINAMENTO - UNIDADE - CADASTRO" da lista "Expor para Frente")
+Só esses aqui porque a unidade a gente vai usar o que tiver já... definido aqui porque a unidade, como eu falei, a própria... a própria chave dela é a unidade, é diferente dos outros.
+Que lá eu só tenho a descrição, que vem no... que vem no... no concorrente, né. O ID é interno nosso.
+Então se eu pegar lá pra mim inserir depois um... asterisco from... que é item categoria... né...
+(AÇÃO: O usuário abre o cliente SQL e executa a consulta de estrutura para a tabela "itemcategoria", mostrando suas colunas)
+Ó, eu preciso dos IDs, ó. ID seção, ID grupo, ID subgrupo, ID marca, ID departamento, tá? Então por isso que nós temos essa... essa questão aí de não ter aqui... é... as informações da marca, tá.
+E agora a gente precisa começar os encadeamentos. Então, o que que é isso? Deixa eu executar aqui... vamos executar o fluxo.
+(AÇÃO: O usuário clica em Executar no fluxo novamente, seleciona as conexões e confirma no modal)
+Ah, então ele executou aqui, né? Todos, tá tudo OK.
+Então, eu já tenho aqui... todos os meus dados, ó. Os itens...
+(AÇÃO: O usuário clica no nó "ITENS", abre a barra lateral aba "Output" e clica no ícone de tabela para visualizar os resultados obtidos)
+Tá? Comissão. Tabela... departamento. Seção. Grupos, subgrupo, e marca.
+(AÇÃO: O usuário fecha a tela de resultados do nó "ITENS")
+Tá? E o que que nós vamos fazer aqui, ó. Aqui em "Itens", se nós viermos olhar aqui, ó... vou aumentar um pouquinho aqui pra ficar melhor a visualização...
+É... ó legal também que o grupo, ele também segrega aqui dentro, ó, ó... a execução que tá lá dentro dos... dos... dos subcadastros, ó. Então a tela de visualização aqui você pode diminuir pra ficar melhor.
+É... então se nós pegarmos aqui itens, a gente tem a nossa coluna aqui... ó... a nossa coluna comis, descrição.
+(AÇÃO: O usuário abre novamente os resultados do nó "ITENS" e destaca a coluna "comis_descricao")
+Mas a gente vai precisar do ID dela, né? Então pra isso, a gente vai pegar aqui, vai pegar o nó de join.
+(AÇÃO: O usuário arrasta um nó "Junção (Join)" da barra lateral, conecta as saídas dos nós "ITENS" e "COMISPROD" à sua entrada e renomeia o nó)
+Vou colocar aqui... "Junção"... Vou colocar o nome aqui "Junção Comisprod". Então vai vir a Itens sempre vai ser a "From", e eu vou fazer um Left na "Comisprod".
+(AÇÃO: Na aba de configuração do nó de junção, define "ITENS" como FROM e "COMISPROD" como Left join)
+Então o que que eu tô procurando? Eu tô procurando qual que é a... aqui... que vai vir lá do item, "comis_descricao" com a "DESCRICAO" da comissão, tá.
+(AÇÃO: O usuário configura a chave de junção relacionando "comis_descricao" da esquerda (ITENS) com "DESCRICAO" da direita (COMISPROD))
+Que que eu vou passar pra frente? Tudo que é de Itens e só o id da "Comisprod". Salvar, vou executar.
+(AÇÃO: O usuário seleciona os campos desejados, clica em Salvar no nó, e clica em Executar no editor de fluxo)
+Então agora aqui... nessa junção aqui, ó... no resultado dela, nós vamos ter lá no final o ID "Comisprod", que a gente tem baseado, ó...
+(AÇÃO: A execução termina, o usuário clica em "Ver resultados" na saída do nó "Junção ComisProd", mostrando a coluna "id_comisprod" ao final da tabela)
+Então a gente já tem isso aí pronto pra... pra inserção da... das informações.
+Até deixa eu ver aqui uma questão da marca... eh, que agora eu percebi ali que tá nulo... ah sim, sim...
+(AÇÃO: O usuário fecha o resultado, volta à edição do fluxo e clica nos nós "Select ComisProd", "Aguardar Todos", "COMISPROD" para revisar as informações)
+Porque ele já vem nulo daqui, né.
+Então aqui a gente vai fazer assim, ó... eh, se nós viermos aqui, ó, dentro dos... do... desse agrupamento, e nós pegar a marca aqui, a gente definiu que... essa... tem essa definição aqui, "PADRÃO GERAL", né, sem espaços e maiúscula.
+Então vamos fazer lá também.
+(AÇÃO: O usuário abre a aba Input do nó "MARCA" dentro do grupo de itens processados, que é diferente do nó "MARCA" dos subcadastros)
+Então aqui, ó... Vamos pegar aqui a marca... maiúsculo...
+(AÇÃO: Na aba Input do nó "ITENS", o usuário localiza a coluna "marca", seleciona e aplica as opções "Maiúsculas", "Remover espaços" e define "PADRÃO" se for vazio)
+Começar pelo padrão... sem espaços, e maiúscula, pra ele não ter aqueles campos nulos lá também, tá?
+Então isso a gente vai fazer pra marca... nós vamos fazer isso para a marca...
+Beleza, marca tá ok, vamos dar uma olhada aqui se a gente precisa fazer pra algum outro...
+Ah... deparamento, departamento. É... aqui no departamento a gente fez a mesma coisa, então é "GERAL" também.
+(AÇÃO: O usuário verifica a transformação feita no nó "DEPARTAMENTO" do grupo de subcadastros, vê que usa a string "GERAL", depois volta ao nó "ITENS")
+Então vamos pegar aqui o departamento... descrição... "GERAL"...
+(AÇÃO: Na aba Input do nó "ITENS", na coluna "departamento_descricao", aplica as transformações de "Maiúsculas", "Remover espaços" e o padrão "GERAL" se for vazio)
+É... sem espaços... maiúsculo. Eu acredito que a seção seja a mesma coisa. Então, um valor padrão que vai ser "GERAL", sem espaços, maiúsculo.
+(AÇÃO: O usuário aplica as mesmas transformações na coluna "secao_descricao" do nó "ITENS")
+Grupo item, a mesma coisa. Padrão... que é "GERAL", sem espaços e maiúsculo.
+(AÇÃO: O usuário aplica as mesmas transformações na coluna "grupoitem_descricao")
+E por último, subgrupo, marca não, acho que marca eu fiz já. Então aqui... de... o padrão, né... "GERAL", sem espaços e maiúsculo. E a marca...
+(AÇÃO: O usuário aplica as transformações na coluna "subgrupo_descricao" e então volta à edição da coluna "marca")
+Padrão... "GERAL", sem espaços e maiúsculo. Eh, marca, marca, marca... O comisprod também tem, só que o default dele é PADRÃO, se eu não me esq... se eu não me engano, é escrito PADRÃO, assim, ó.
+(AÇÃO: O usuário aplica o valor padrão "PADRÃO" e as transformações "Maiúsculas" e "Remover espaços" na coluna "comis_descricao")
+A gente já vai confirmar. Sem espaços e maiúsculo. Beleza.
+Deixa eu salvar aqui só pra garantir, deixa eu dar uma olhada aqui.
+(AÇÃO: O usuário clica nos nós de mapeamento do fluxo pós-Aguardar Todos, verificando a aba "Output" para garantir se as transformações estão corretas)
+Então eu tenho aqui unidade... unidade, beleza, não temos, né, lá. Vamos ver a marca, é GERAL... departamento é GERAL... seção é GERAL, isso caso não exista, né, uma descrição a gente coloca uma padrão de GERAL, porque não pode ser nulo no Construshow.
+GERAL... GERAL... e o comisprod, que é PADRÃO. Ótimo, então aqui o nosso subgrupo tá ok.
+(AÇÃO: O usuário recolhe novamente as visualizações dos nós)
+E a nossa junção aqui... vamos salvar e executar novamente, pra gente ver se não ficou nenhuma marca ali como nula.
+(AÇÃO: O usuário clica em Executar no topo da tela, inicia o fluxo e espera)
+Beleza, terminou de rodar aqui. Vamos dar uma olhada no nosso último nó aqui... Subgrupo, aqui...
+(AÇÃO: O usuário verifica a tabela de resultados do nó "Junção ComisProd")
+Ah, tá. É porque aqui também, né, na verdade é aqui que eu tenho que fazer. Enganei. Marca tá geral... Subgrupo é... na verdade é aqui, eu tava dando no lugar errado, mas não tem problema lá, lá não vai ter, né, nunca vai tá em branco, né, mas... não tem problema aquilo que a gente fez lá.
+(AÇÃO: O usuário clica no nó "SUBGRUPO" e na coluna "DESCRICAO", aplicando o "Valor padrão" "GERAL", "Remover espaços" e "Maiúsculas")
+Na verdade eu tava fazendo no lugar errado. O subgrupo, grupo... padrão, que é GERAL... sem espaço, maiúsculo.
+(AÇÃO: O usuário aplica a mesma regra na coluna "DESCRICAO" do nó "GRUPOITEM")
+Então grupo, subgrupo, departamento... geral... sem espaços, maiúsculo.
+(AÇÃO: O usuário aplica a mesma regra na coluna "DESCRICAO" do nó "DEPARTAMENTO")
+Departamento, seção... seção padrão aqui, então... GERAL... sem espaço e maiúsculo.
+(AÇÃO: O usuário aplica a mesma regra na coluna "DESCRICAO" do nó "SECAO")
+Então ficou certo agora... ah, tem o comisprod, que é padrão daí, né?
+PADRÃO, sem acento assim. Então nós temos o padrão, sem acento assim, sem espaços e maiúsculo.
+(AÇÃO: O usuário aplica o valor default "PADRÃO", sem espaços e maiúsculas na coluna "DESCRICAO" do nó "COMISPROD")
+Beleza, agora... agora tá tudo ok. Vamos rodar de volta aqui, salvar... rodar de volta aqui, não pode ter esses nulos aqui, ó.
+(AÇÃO: O usuário clica novamente em Executar o fluxo e aguarda a finalização)
+Então só dá um executar... beleza, então ele rodou aqui, vamos dar uma olhada, ó, agora sim não temos mais aqueles valores nulos ali.
+(AÇÃO: O usuário abre a saída do nó "Junção ComisProd", mostrando que a tabela agora tem os valores corretos e sem nulos na coluna "marca")
+Beleza, a nossa primeira junção fez... foi feita. Nós temos o ID comisprod.
+Agora a gente precisa do ID departamento, né, que é do departamento. Então, como a gente viu lá no treinamento de Join, a gente não consegue fazer em um Join todo o Join necessário, né?
+Com vários Joins. A gente precisa fazer o encadeamento.
+(AÇÃO: O usuário arrasta outro nó "Junção (Join)", conecta a saída do "Junção ComisProd" e do "DEPARTAMENTO", e o renomeia para "Junção Depto")
+Então aqui... junção depto. Então agora sim... pegar um Left.
+Então a partir da... do departamento a descrição... descrição... e a gente vai passar tudo pra cá... e aqui só o id depto.
+(AÇÃO: Configura a junção para relacionar "departamento_descricao" (esquerda) com "DESCRICAO" (direita) e seleciona as colunas a passar para a saída, deixando de "DEPARTAMENTO" apenas o "ID_DEPTO")
+Salvar, executar, e vamos ver se a gente já recupera o ID depto.
+(AÇÃO: O usuário executa novamente o fluxo)
+Então beleza, já... já rodou aqui, vamos ver... então temos o nosso ID depto.
+(AÇÃO: O usuário verifica a tabela de resultados do nó "Junção Depto" e vê a nova coluna adicionada)
+E eu vou fazer a mesma coisa esse encadeamento para todos aqui, né... e daí no final, eu retorno aqui... vou pausar o vídeo agora e retorno com os Joins feitos, só pra vocês verem o resultado, que daí nós vamos ter todos os IDs necessários pra quando a gente for obviamente inserir lá na tabela de... na tabela de... item categoria, né.
+Então... o que a gente lá no início falou, a gente vai inserir na item e depois na item categoria.
+(AÇÃO: A gravação é pausada e retorna com a tela do editor de fluxo contendo todos os nós de junção devidamente encadeados até "Junção Marca")
+Então eu vou pausar aqui e já retorno. Então, eu finalizei aqui o último join, ó. Então, como eu comentei, a gente faz o encadeamento.
+Fez o join com comis, depois departamento, seção, grupo item, subgrupo e marca.
+E agora aqui ao final, no último join, nós vamos ter todos os IDs que nós temos necessidade pra fazer as inserções depois na item categoria.
+(AÇÃO: O usuário abre a saída do nó "Junção Marca", exibindo a tabela completa com todas as colunas de ID preenchidas no final)
+Então ID comisprod, ID depto, ID secao, ID grupoitem, ID subgrupo e ID marca.
+Então, nesse treinamento, basicamente a gente fez esse processo. E agora no próximo, sim, a gente vai poder já fazer as inserções aí, eh, da tabela item, e daí posteriormente, da tabela item categoria.
+Então, até depois no próximo vídeo.
+(AÇÃO: Fim do vídeo)

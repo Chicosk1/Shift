@@ -4,6 +4,11 @@
 *.key
 *.pem
 segredos.*
+# --- Config de MCP: contém a API Key em texto puro ---
+# O `claude mcp add --scope project` grava o header Authorization aqui.
+# Versionar isto publicaria a credencial do Shift.
+.mcp.json
+
 **/credenciais*
 .claude/settings.local.json
 

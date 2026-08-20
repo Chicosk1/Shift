@@ -36,6 +36,10 @@ na mesma execução sem condição de corrida.
 ### L4 — Margem: onde está cadastrada no ERP
 **Impacto: alto.** O termo "margem" **não aparece em nenhuma fonte** — nem aula, nem doc. É
 conhecimento exclusivo do ERP, não da plataforma.
+**Agravante:** com o módulo 4 reposto, o acervo está completo — **380 KB de transcrição e
+40 documentos — e o termo "margem" continua com zero ocorrências.** Não é lacuna de
+material faltante; é conhecimento que só existe no seu ERP.
+
 **O que falta descobrir (responder na Fase 5):** tabela e campo da margem; se é por item,
 produto, categoria ou cliente; o que caracteriza "pedido novo"; qual campo de data usar como
 marca d'água; se há histórico de preço.
@@ -64,12 +68,14 @@ seção Nós", e `guias-de-uso/nos/` **não contém** `SELECT`, `SQL Script`, `I
 `Limpar Tabela` nem `Destino SQL`. Para esses cinco a **aula é a única fonte**, o que os deixa
 travados em `[UI-OBSERVADA]` — e são justamente os nós que o piloto usa para escrever.
 
-### L8 — Transcrições do módulo 4 estão vazias
-**Impacto: médio-alto.** Os 6 arquivos em `conhecimento/bruto/transcricoes/modulo-4/` têm
-**0 byte**, e não existem em nenhum outro lugar do disco. Pela nomenclatura (cadastrando
-unidades, marca, departamento, junções, inserção do item, inserção de item-categoria), é a
-**única sequência de caso de uso ponta a ponta com inserção real** do acervo.
-**Ação:** repor os arquivos. Entram como lote 6b da Fase 1, sem retrabalho nos outros lotes.
+### L8 — ~~Transcrições do módulo 4 estão vazias~~ RESOLVIDA (2026-08-20)
+**Status: fechada.** Os 6 arquivos foram repostos: **2.122 linhas / 170 KB**, formato
+consistente com o resto do acervo (593 marcações `(AÇÃO:)`, zero timestamps).
+
+**Ressalva importante:** o módulo 4 é um caso de **migração de cadastro de itens** a partir do
+banco de um concorrente (ConstruShow), com uso do copiloto para minerar o schema. **Não é o
+caso de uso de preço/margem** — o termo "preço" aparece 1 vez e "margem" nenhuma. Ele fecha a
+lacuna de "caso ponta a ponta com inserção real", mas **não** contribui para L4.
 
 ### L9 — Hierarquia divergente entre três documentos
 **Impacto: médio.** `Introducao/conceitos.md` diz Organização → Espaço → Grupo econômico →

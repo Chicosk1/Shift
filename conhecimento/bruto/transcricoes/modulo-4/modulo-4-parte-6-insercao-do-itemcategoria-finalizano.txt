@@ -1,0 +1,168 @@
+Então na nossa última tabela aqui, nós temos a item categoria.
+(AÇÃO: O usuário abre a janela do Oracle SQL Developer)
+Então vamos pegar ela aqui.
+O que que tem nessa tabela?
+Então vamos fazer um select asterisco from item categoria.
+Então vamos pegar na verdade lá no nosso... nossa base modelo pra gente ver com dados já preenchidos.
+É... então basicamente aqui a item categoria da mesma forma pelo que parece aqui ela só tem um estab, id item e as definições, né.
+Só que vamos até o último aqui pra nós ver oh, ela só tem 500, então ela usa a empresa igual, igual é feito a... o... a parte do... do... do item, né.
+Então a gente pode usar basicamente a mesma ideia aqui.
+Eh... né, e daí aqui a gente pode já inserir aqui...
+vamos ver se vai dar certo inserir direto. A parte de inserção aqui...
+Na verdade vamos fazer um tratamento, né.
+Porque daí a gente tem um controle maior dos truncate e tudo mais se precisar pra aquela tabela.
+Então eu vou colocar aqui oh... vou fazer aqui...
+pegar na verdade eu preciso daqui, né. Porque aqui eu fiz a combinação com o usando d, que é o estabelecimento lá que a gente faz, vou colocar aqui mapeamento para item categoria.
+Beleza.
+Eu vou... como eu tenho que garantir que eh, seja inserido o item antes de inserir o item categoria, eu vou colocar um aguardar todos aqui, né, pra mim brecar isso aqui e só executar...
+aguarda item.
+Porque se eu já puxar aqui, às vezes ele já chama o item categoria sem ter inserido o item, né, e a gente pode ter um erro.
+E o mapeamento, o que que nós precisamos aí?
+Vamos diminuir a nossa tela aqui e vamos tentar trabalhar com ela dupla.
+Ótimo. Então na tabela item categoria o que que nós temos? Estab, id item...
+Então a gente tem aqui o estab, que é o... esse aqui, o id item...
+eh, o id sessão...
+Ah, é que aqui a gente não vai ter, né.
+A gente pode passar, não tem problema.
+Aqui a gente mapeia para o item.
+Ah, tudo bem, vamos fazer o seguinte então.
+Eh, vamos eliminar esse cara aqui por enquanto, eliminar esse aqui e vamos puxar um mapeia... vamos puxar um mapeia aqui.
+Mapeia item categoria.
+Ótimo, vou puxar aqui, da mesma forma, só não vai ter o estab, depois a gente utiliza e faz uma outra combinação aqui usando esse aqui também.
+Então aqui no item categoria eh, a gente não vai ter o estab inicialmente, então...
+é o id item.
+id item.
+id sessão.
+o id grupo item.
+o id subgrupo.
+o id marca.
+vamos ver o que mais temos que a gente vai adicionar, o id depto.
+E é isso. Esses aqui nós não vamos adicionar, agregados não vamos adicionar.
+Basicamente isso.
+Show de bola, então temos nossa item categoria aqui.
+E daí agora a gente vai fazer uma outra combinação aqui...
+Ah, vamos pegar aqui um combina aqui em cima.
+Também vai ser do tipo cross.
+Pegando aqui do... do item isolado, do estab isolado.
+Colocar aqui combina item categoria usa d.
+Beleza.
+Vamos desativar esse aqui pra ficar mais rápido. Vamos salvar e vamos executar de volta e ver qual que vai ser o resultado que vai sair daqui.
+(AÇÃO: O usuário salva o fluxo e clica em Executar no Viasoft Shift)
+Beleza, vamos ver se tem o resultado que a gente esperava, combina item categoria, então temos o id item, id sessão, id grupo, e o estab.
+É isso aí, ó. Aqui tá aparecendo 500 porque eu coloquei um top 500 aqui pra ser um pouquinho mais rápido no nosso teste.
+Mas é isso aí que a gente precisa.
+Só que tem um ponto, eu vou colocar até aqui, ó, ele sempre junto aqui porque assim, eu tenho que garantir... é aquela questão, né.
+Tem que garantir que a item esteja inserida antes de rodar o item categoria.
+Então eu vou colocar aqui o aguardar todos novamente.
+Aguarda item.
+Vou passar pra frente só, por enquanto a gente só vai precisar do combina aqui.
+E daí depois a gente vai fazer nosso insert. Vamos rodar de volta aqui e vamos para o nosso último nó que é o nó de insert do item categoria.
+(AÇÃO: O usuário adiciona um nó "Aguarda ITEM" e conecta ao fluxo. Ele salva e executa)
+Beleza, agora rodamos e por último então vamos... eh... já temos aqui, vamos só como join a gente não colocou aqui...
+Ah não, a gente colocou, né. Como imposto aqui que é o combina item categoria.
+Eh... e daí agora aqui a gente só faz um...
+que o aguardar ele só expõe, né, mas a gente precisa de um mapeamento.
+Mapeamento final.
+Pegar aqui com base no item categoria usando d, tá aqui todos os dados que nós precisamos e o nosso insert.
+Inserção em massa.
+Então o nosso insert na verdade ele vai ser um upsert também, né.
+Então upsert.
+Insert item categoria.
+Vamos adicionar nossa variável de conexão do constru show.
+item categoria.
+Upsert, nossas chaves é estab e id item, automapear.
+É que nós não rodamos, né. O mapeamento ainda não gerou o schema. Vamos rodar aqui.
+(AÇÃO: O usuário executa novamente para gerar o schema do mapeamento)
+Então peguei o mapeamento final aqui, né, rodou, então já tem aqui, agora sim é só vir aqui ativar e fazer o nosso automapear. id item, estab, id depto, sessão. Ótimo.
+Vamos executar em teste e daí depois vamos executar em produção pra gente acompanhar.
+(AÇÃO: O usuário clica em Executar no modo Teste)
+Então agora aqui ele finalizou.
+Vamos dar uma olhada lá na nossa tabela item categoria, olhando no banco certo agora, né.
+Ó, então tá lá nossos 50 registros.
+Vamos rodar isso full, né. Vamos tirar aqui o nosso top 50.
+Tirar o nosso top 50, salvar.
+Publicar a nossa versão mais atual, porque produção ele pega a versão atual.
+Mudar pra produção, salvar e vamos limpar aqui nossa base pra gente poder acompanhar isso acontecendo.
+(AÇÃO: O usuário vai ao SQL Developer para limpar as tabelas)
+Então vamos fazer um delete from item categoria.
+Delete from item. Faltou o m.
+Deletar tudo aqui.
+Beleza, tudo deletado.
+E agora sim vamos rodar em produção.
+(AÇÃO: O usuário volta ao Viasoft Shift e clica em Executar no modo Produção)
+Vamos vir aqui na nossa aba execução pra gente começar o acompanhamento.
+E vamos acompanhar juntos aqui agora a execução. Dar um auto refresh aqui pra ele ir atualizando a tela.
+E vamos aguardar ele ir finalizando.
+Aqui no caso você não precisaria aguardar, né, como a gente tá num treinamento então por isso que a gente tá aguardando. Você simplesmente poderia vir e tomar teu cafezinho e depois vir aqui na tua última execução, né.
+Porque ele roda tudo em segundo plano, então se eu vier aqui e sair, ó, vim pra outro menu, depois voltar aqui dentro do fluxo novamente, não tem problema nenhum, ele vai tá em execução ainda.
+Então tá ali, tá executando ainda. Ele já tá na parte da junção das comissões ali.
+Tá mapeando item, mapeando item categoria.
+E já tá, ó, já inseriu o item.
+Já inseriu a item.
+E já inseriu a item categoria.
+Tá lá, ó. Então agora se a gente vier aqui, fazer o select ou um count, né, vamos fazer um count aqui.
+Select count from item categoria.
+Então na nossa item categoria inseriu a mesma quantidade da item.
+Então fizemos uma carga completa, não completa eu digo de todas as tabelas, né, a gente teria que ir tratando, adicionando as demais tabelas, mas as duas tabelas aí principais, a item e a item categoria. A item é o cadastro principal e a item categoria é a categorização, classificação mercadológica do item. Tudo rodou, né, mais de 4000 itens em cada uma das tabelas em 52 segundos, então é... é muito rápido.
+E daí, como a gente definiu isso aqui como um item core, que que a gente precisa fazer? Tá.
+Eh, eu vou duplicar esse cara aqui. Ele vai ir lá pra fora. E esse aqui eu preciso transformar ele em um eh... eu preciso transformar ele em um subfluxo, né, porque eu vou precisar reutilizar ele aqui.
+Então basicamente eu viria aqui, vou eh... só pegar essa consulta aqui, pra gente ter o nome das colunas que a gente espera, né, quando vier do subfluxo.
+Então vou deixar aqui pequenininho, porque a gente vai usar. Não é esse aqui, esse aqui.
+Tá.
+Eh... então o que que eu teria que fazer aqui?
+Deixa eu puxar um pouco mais aqui pra ele pegar as colunas.
+Então aqui eu poderia remover esse cara aqui, eu poderia remover esse cara aqui.
+Eu viria aqui e adicionaria aqui como uma entrada de subfluxo, ligaria aqui, eu teria que adicionar obviamente aqui um mapeamento. Pra pegar esses itens.
+Pega itens.
+Que vai vir aqui do nosso eh... do nosso fluxo. Deixa eu mover esses cara pra cá, porque eu vou precisar expandir esse... esse grupo aqui pra mim não fazer nenhuma cagada.
+Então aqui, deixa eu puxar isso aqui pra cima.
+Então vamos dar uma olhada aqui como que tá aqui...
+Tá indo nos joins.
+E aqui o pega itens ele vai em cada um desses aqui.
+Ótimo, agora já liguei aqui, talvez eu vou ter... ah aqui faltou aqui em cima.
+Então tá ligar... ó, quando eu passo o mouse ele fica mais forte, ó.
+Então só vou confirmar se ele tá ligado em todos.
+Tá ligado em todos. Beleza, por enquanto vamos deixar esse aqui assim.
+Por enquanto não, né, vamos adicionar nosso schema de input que a gente espera.
+Então aqui a gente espera colocar itens, né, que é o padrão da constro, é uma tabela de referência.
+E daí agora aqui sim a gente vai pegar nossas colunas de referência.
+Então eu espero uma tabela que tenha id item.
+tem a descrição,
+descrição out, departamento, sessão, grupo, subgrupo, marca, código de barras, unidade de código, unidade, decimais, tipo, ncm.
+Deixa eu finalizar aqui e já retorno.
+(AÇÃO: O vídeo faz um corte mostrando as colunas já inseridas no Viasoft Shift)
+Então aqui daí eu adicionei todas as colunas que a gente espera quando for usar esse subfluxo, né.
+Que é baseado sempre na consulta que a gente fez, mas sempre pode ser adaptado, a única coisa que vai acontecer é que sempre quando surgir uma nova integração, você tem que garantir que essas colunas cheguem até aqui, né.
+Então de... aqui onde nós tínhamos o select antes, eu coloquei o mapeamento pra ele pegar.
+E daí obviamente aqui talvez precise refazer algum mapeamento ou tudo mais, mas você pode rodar, né, peguei um mock de teste aqui e adicionei ele como uma entrada de subfluxo. Mudei aqui o nome para itens core.
+Então agora a gente pode vir aqui e publicar essa versão.
+Botar em produção. E o nosso core de itens está pronto.
+Então agora aquele que eu tinha copiado, até renomeei ele aqui pra pega itens da atrade, porque eu vou pegar isso aqui, geralmente isso aqui você vai ter só...
+os subfluxos e esse aqui você vai... eh... ter um padrão, né, para cada concorrente. Então pega itens atrade, pega itens, sei lá, outro concorrente e daí esses outros aqui sempre se mantém. E você sempre vai mudar esse aqui e quando chegar um novo concorrente você simplesmente vai definir esse aqui como um template, né, que daí você vai conseguir usar lá dentro do grupo econômico, né, e quando rodar usando as conexões daquele grupo econômico em específico.
+E aqui aquele que eu tinha copiado, que que eu fiz aqui, eu deixei só a consulta, apaguei todo o resto, ó. E agora nós vamos vir aqui, chamar o subfluxo.
+(AÇÃO: O usuário arrasta um nó "Chamar Fluxo" e o configura para chamar "TREINAMENTO ITENS CORE")
+E vamos pegar o nosso... treinamento itens core.
+Deixa eu só botar o nosso padrão aqui que nós definimos no nome.
+Treinamento. Dá um salvar aqui no nome.
+E daí aqui agora sim a gente vai pegar o nosso treinamento itens core.
+Vamos rodar a consulta aqui só pra gente referenciar a tabela.
+Beleza, vamos colocar aqui que ele vai vir dessa tabela aqui.
+Vamos salvar.
+Ah, aqui ele não identificou a variável, né. Então aqui faltou criar a variável de conexão do constro show. vars.construshow.
+(AÇÃO: O usuário adiciona a variável de conexão no fluxo)
+Vamos pegar ela aqui, temos que criar lá também, né.
+Variáveis. Ah não, é porque ela tá... criada aqui, né. Ela não pode, porque se ela não é usada, né, então ela nem precisa estar aqui porque ela vai pegar lá do subfluxo.
+(AÇÃO: O usuário remove a variável inútil do fluxo atual)
+Agora sim trouxe a do constro show também.
+Vamos só deletar lá, vou rodar em teste.
+(AÇÃO: O usuário executa um "DELETE FROM ITEM" no SQL Developer, e em seguida clica em "Executar" no modo de Teste no Viasoft Shift)
+Executar.
+E agora a gente tá chamando a nossa item score a partir de um fluxo que é só daquele concorrente ali.
+Vamos esperar ele finalizar.
+E aqui ele já finalizou, ó, inseriu todos os... as subexecuções. Se nós viermos nesse novo aqui, ó, nós temos as execuções em teste, né, mas da mesma forma ele fez todos os subcadastros aqui, ó, tá dentro do subfluxo.
+Fez todos os subcadastros que ele já fazia lá, só que agora a gente preservou nossa itens core e deixou ela padrão. Então a partir do momento, sempre eu posso vir aqui, vamos supor que chegou um novo concorrente hoje, eu posso vir aqui duplicar esse aqui,
+(AÇÃO: O usuário clica para duplicar o fluxo "Pega Itens eTrade", renomeia a cópia para "Pega Itens Outro Concorrente")
+trazer ele pra cá, abrir ele aqui, e pegar aqui sei lá por exemplo outro concorrente.
+E daí aqui eu vou conectar no banco desse concorrente, buscando as colunas, obviamente tratando a consulta aqui, trazendo o máximo de colunas que eu puder baseado eh, nas colunas que eu espero na minha itens core, mas nada me impede de trazer o que eu tenho, e daí aqui no meio, antes de chamar a itens core, fazer algum tratamento, adicionar algum valor padrão que às vezes não existe no banco, enfim, mas o fato é que a nossa itens core agora ela se tornou padrão tanto eh... ela quanto nossos subcadastros, se algum dia eu precisar mudar eu mudo nela e vai valer pra todos que né, a partir daquele momento enviarem aquele valor.
+Então é assim que funciona o reaproveitamento e o subfluxo também, e a gente fez junto aqui, né, uma migração eh completa aí de... de... de itens, né, óbvio que não todas as tabelas mas duas tabelas aí pra exemplificar como que ficaria esse processo desde a criação do fluxo até rodar ele diretamente aqui no sistema.
+Então aqui a gente já tem o nosso primeiro fluxo criado.
