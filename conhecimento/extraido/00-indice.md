@@ -17,7 +17,7 @@ Estado em 2026-08-20, ao fim da **Fase 0**. A extração estruturada é a Fase 1
 
 | Arquivo | Conteúdo |
 |---|---|
-| [lacunas.md](../lacunas.md) | **26 lacunas** ordenadas por impacto no piloto de margem. 4 fechadas ou refutadas |
+| [lacunas.md](../lacunas.md) | **27 lacunas** ordenadas por impacto no piloto de margem. 4 fechadas ou refutadas |
 
 ## ⚠️ Escopo de banco: **somente Oracle**
 

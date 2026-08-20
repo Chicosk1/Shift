@@ -222,11 +222,28 @@ a diferença entre o modo Expressão da UI e a `expression` do executor.
 de entrada, formulários, fluxos-template, nós personalizados e grupos econômicos. Falta a lista
 canônica.
 
-### L14 — Relay é obrigatório para SQL Server on-premise?
-Não documentado. O relay é agnóstico de banco (só TCP), mas as funções de **borda**
-(extract/apply em Parquet) têm allowlist e dialeto **só Oracle** (`RELAY_*_dialect: oracle`,
-e "Escopo Fase 1: só Oracle"). E `deploy-firebird.md` mostra acesso direto sem relay quando o
-backend está na mesma rede.
+### L14 — Relay é necessário para o Oracle do ERP? *(reenquadrada — escopo Oracle)*
+**Impacto: médio-alto** (era menor quando o escopo incluía SQL Server).
+Não documentado se é obrigatório. O relay é agnóstico de banco (só TCP), e `deploy-firebird.md`
+mostra acesso direto sem relay quando o backend está na mesma rede.
+
+**Mudança de leitura com o escopo Oracle:** as funções de **borda** (extract/apply em Parquet)
+têm dialeto **declaradamente só Oracle** (`apply_dialect: oracle`, `extract_dialect: oracle`,
+"Escopo Fase 1: só Oracle"). Se o ERP é Oracle, **os recursos avançados de borda se aplicam** —
+deixam de ser curiosidade e passam a ser possibilidade real de desempenho.
+**O que falta descobrir:** o Oracle do ERP é alcançável direto pela nuvem, ou precisa de relay?
+E as flags `RELAY_EXTRACT_ENABLED` / `RELAY_APPLY_ROW_TOLERANCE_ENABLED` /
+`UPSERT_STAGING_MERGE_ENABLED` — todas **OFF por default** — estão ligadas neste ambiente?
+
+### L27 — Bug conhecido de Oracle + dlt
+**Impacto: médio-alto** (novo, por causa do escopo Oracle).
+`planejamento-dlt-(extracao-insercao).md §1.4` `[CONFIRMADO-DOC]` registra **bug conhecido de
+Oracle com dlt**, e diz que **Oracle e Firebird usam fallback SQLAlchemy** em vez do caminho
+padronizado.
+**Por que importa:** o piloto lê e escreve Oracle. Se a extração cai em fallback, o ganho de
+leitura particionada paralela do `sql_database` pode não valer para Oracle.
+**O que falta descobrir:** qual é o bug, se já foi corrigido, e se a leitura particionada
+funciona contra Oracle na prática.
 
 ### L15 — Sintaxe cron livre
 A UI oferece frequências prontas (mínimo 5 min) e gera `cron_expression`. Não está documentado
