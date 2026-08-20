@@ -1,141 +1,180 @@
-# Inventário do MCP do Shift
+# Inventário do MCP do Shift — dump real
 
-> **Status: REGISTRADO NO CAMINHO CORRETO — AGUARDANDO APROVAÇÃO** — atualizado em 2026-08-20 (Fase 0).
-> Este arquivo é um **gabarito derivado da documentação**, não um dump real.
-> Ele deve ser substituído pelo dump real assim que o servidor for aprovado e carregado.
+> **Status: CONECTADO E INVENTARIADO** — 2026-08-20 (Fase 0).
+> Fonte: introspecção do servidor `shift` em `https://shift.viasoftcloud.com.br/mcp`.
+> Marcador: `[CONFIRMADO-MCP]` para tudo neste arquivo.
+>
+> **48 ferramentas expostas** — contra **15** descritas na documentação. A doc
+> (`agente-shift-funcionamento.md`, datada de 2026-04-20) está substancialmente defasada.
+> Ver `divergencias.md`.
 
 ---
 
-## 1. Situação
-
-O servidor foi registrado no escopo correto via `claude mcp add --scope project`, que gravou
-`C:\Shift\.mcp.json`. **Mas as ferramentas ainda não carregam**, por dois motivos somados:
-
-1. Servidor declarado em `.mcp.json` exige **aprovação explícita por projeto**. Hoje
-   `enabledMcpjsonServers` está `[]` em `~/.claude.json` — nem aprovado, nem recusado.
-2. A sessão em curso foi aberta antes do registro. É preciso **reabrir a sessão** e aceitar o
-   prompt de aprovação do servidor `shift`.
-
-**Pegadinha encontrada no caminho:** o `claude mcp add` reportou gravar em
-`C:\Shift\.mcp.json`, mas o arquivo apareceu depois em `C:\Shift\.claude\.mcp.json` (mesmo
-tamanho e mtime — foi movido, não reescrito). Nessa localização o Claude Code **não o detecta**,
-e por isso nem chega a exibir o prompt de aprovação. Corrigido movendo de volta para a raiz.
-Se o servidor "desaparecer" no futuro, conferir a localização do arquivo antes de qualquer outra
-hipótese.
-
-**Diagnóstico útil:** um GET pelo navegador em `https://shift.viasoftcloud.com.br/mcp` responde
-`{"code":-32600,"message":"Not Acceptable: Client must accept text/event-stream"}`. Isso **não é
-falha** — é um servidor MCP Streamable HTTP recusando corretamente uma requisição sem o header
-`Accept: text/event-stream`. Serve para confirmar que o endpoint está vivo.
+## 1. Conexão
 
 | Item | Valor |
 |---|---|
-| Nome do servidor | `shift` |
-| Transporte | `http` |
+| Servidor | `shift` |
+| Transporte | `http` (Streamable HTTP) |
 | Endpoint | `https://shift.viasoftcloud.com.br/mcp` |
 | Autenticação | header `Authorization: Bearer <API KEY>` |
-| Arquivo | `C:\Shift\.mcp.json` (241 bytes) |
-| Escopo | projeto `C:\Shift` — correto |
-| Aprovação | **pendente** (`enabledMcpjsonServers: []`) |
+| Arquivo de config | `C:\Shift\.mcp.json` (na **raiz** — obrigatório) |
+| Ferramentas carregadas | 48 |
 
-**Nada foi executado contra o MCP** — nem leitura, nem escrita, nem chamada HTTP ao endpoint.
+### Duas pegadinhas de setup
 
-> ⚠️ **`.mcp.json` contém a API Key em texto puro** e fica na raiz do repositório. Foi
-> adicionado ao `.gitignore` antes de qualquer commit — verificado com `git check-ignore` e com
-> busca por fragmento do token em todo o histórico. **A chave nunca entrou em commit.**
-> Ainda assim, a chave já circulou em terminal e em captura de tela: **recomenda-se rotação**.
+**1. O `.mcp.json` tem de estar na raiz do projeto.** O `claude mcp add --scope project`
+reportou gravar em `C:\Shift\.mcp.json`, mas o arquivo apareceu depois em
+`C:\Shift\.claude\.mcp.json` (mesmo tamanho e mtime — foi movido, não reescrito). Nessa
+localização o Claude Code **não detecta o servidor** e nem exibe o prompt de aprovação. Se o
+servidor "desaparecer", conferir a localização do arquivo antes de qualquer outra hipótese.
 
-### O que falta
+**2. Um GET pelo navegador no endpoint devolve erro — e isso é o comportamento correto.**
+`{"code":-32600,"message":"Not Acceptable: Client must accept text/event-stream"}` é um servidor
+MCP Streamable HTTP recusando requisição sem o header `Accept: text/event-stream`. Serve como
+teste de vida do endpoint, não como sinal de falha.
 
-Reabrir a sessão em `C:\Shift` e **aprovar o servidor `shift`** quando o prompt aparecer.
-Depois disso, regerar este arquivo com o dump real e preencher as colunas `[LACUNA]`.
-
----
-
-## 2. Gabarito esperado — 15 ferramentas
-
-Fonte: `conhecimento/bruto/docs/documentacao-tecnica/agente-shift-funcionamento.md` §4
-(documento datado de 2026-04-20, fases 0–7). Marcador: `[CONFIRMADO-DOC]` para nome e
-descrição; `[LACUNA]` para os parâmetros, que a doc não especifica.
-
-A doc afirma que "cada tool tem schema JSON e validação de permissão embutida", mas **não
-publica os schemas**. Por isso a coluna de parâmetros está vazia de propósito — preenchê-la
-por dedução seria exatamente o tipo de invenção que esta base de conhecimento existe para
-evitar.
-
-### Workflow (5)
-
-| Ferramenta | Descrição (doc) | Escrita? | Parâmetros |
-|---|---|---|---|
-| `list_workflows` | Lista do projeto com filtros | Leitura | `[LACUNA]` |
-| `get_workflow_details` | Detalhes + nós + última execução | Leitura | `[LACUNA]` |
-| `execute_workflow` | Executa um workflow | **⚠️ DESTRUTIVO — requer approval** | `[LACUNA]` |
-| `list_executions` | Histórico de execuções | Leitura | `[LACUNA]` |
-| `get_execution_details` | Logs, dead-letters, duração | Leitura | `[LACUNA]` |
-
-### Project (3)
-
-| Ferramenta | Descrição (doc) | Escrita? | Parâmetros |
-|---|---|---|---|
-| `list_projects` | Projetos visíveis ao usuário | Leitura | `[LACUNA]` |
-| `get_project_details` | — (doc não detalha) | Leitura | `[LACUNA]` |
-| `list_project_members` | — (doc não detalha) | Leitura | `[LACUNA]` |
-
-### Connection (3)
-
-| Ferramenta | Descrição (doc) | Escrita? | Parâmetros |
-|---|---|---|---|
-| `list_connections` | — (doc não detalha) | Leitura | `[LACUNA]` |
-| `get_connection_details` | Metadados **sem credenciais** | Leitura | `[LACUNA]` |
-| `test_connection` | Valida conectividade | Leitura (efeito de rede) | `[LACUNA]` |
-
-### Webhook (3)
-
-| Ferramenta | Descrição (doc) | Escrita? | Parâmetros |
-|---|---|---|---|
-| `list_webhooks` | — (doc não detalha) | Leitura | `[LACUNA]` |
-| `get_webhook_details` | URLs de test/prod | Leitura | `[LACUNA]` |
-| `list_webhook_executions` | — (doc não detalha) | Leitura | `[LACUNA]` |
-
-### Utilitários (1)
-
-| Ferramenta | Descrição (doc) | Escrita? | Parâmetros |
-|---|---|---|---|
-| `search_global` | Busca cross-entity | Leitura | `[LACUNA]` |
+> **Segurança:** o `.mcp.json` guarda a API Key em texto puro na raiz do repositório. Está no
+> `.gitignore` (verificado com `git check-ignore` nas duas localizações possíveis) e busca por
+> fragmento do token confirma que **a chave nunca entrou em commit**. Recomenda-se rotação.
 
 ---
 
-## 3. Regras de uso a observar quando conectar
+## 2. As 48 ferramentas
 
-`[CONFIRMADO-DOC]`, mesma fonte:
+Convenção da própria plataforma, declarada nas descrições: operação destrutiva **exige
+aprovação humana**; ferramenta read-only não passa pelo nó de approval.
 
-- **`execute_workflow` é a única ferramenta destrutiva do conjunto.** As outras 14 são de
-  leitura. A doc é explícita: "tools read-only **não** passam pelo nó de approval. Só
-  mutações/execuções."
-- **Não existe ferramenta de criação/edição de fluxo no MCP.** Nenhuma tool de `create_*`,
-  `update_*` ou `delete_*` é listada. Isso tem consequência direta para as fases seguintes:
-  a construção de fluxos provavelmente **não** é automatizável pelo MCP, só a inspeção e a
-  execução. **Confirmar contra o dump real** — se a doc estiver defasada, muda a estratégia
-  da Fase 5.
-- **A API Key limita o conjunto por whitelist** (`allowed_tools`, com wildcard `*`). Se o dump
-  real vier com menos de 15 ferramentas, a causa provável é a whitelist da chave, não ausência
-  na plataforma.
-- Chaves têm prefixo documentado `shk_`, hash Argon2, exibição do valor em claro **uma única
-  vez**, expiração de 30/60/90 dias ou nunca, e são emitidas em **Projeto → Chaves de API**.
-- Arquitetura por trás: LangGraph StateGraph de 6 nós
-  (guardrails → intent → planner → approval → executor → report), com auditoria em
-  `ai_agent_audit_log`.
+### A. Leitura — plataforma, conexões e webhooks (8)
+
+| Ferramenta | O que faz | Parâmetros (**obrigatório**) |
+|---|---|---|
+| `list_projects` | Projetos do workspace atual visíveis ao usuário | `limit` |
+| `get_project` | Detalhes do projeto: nº de workflows e conexões | **`project_id`** |
+| `list_project_members` | Membros e roles (`EDITOR` ou `CLIENT`) + data de ingresso | **`project_id`** |
+| `list_connections` | Conexões visíveis (nome, tipo, host). Nunca retorna senha | `project_id` |
+| `get_connection` | Metadados não-sensíveis: nome, tipo, host, porta, banco, usuário | **`connection_id`** |
+| `test_connection` | SUCESSO/FALHA com mensagem do banco. Abre conexão real | **`connection_id`** |
+| `diagnosticar_conexao` | Falha **por etapas** (DNS, TCP, handshake, login) com causa provável; considera relay | **`connection_id`** |
+| `list_webhooks` | Nós webhook dos workflows, com path e workflow associado | `project_id` |
+
+### B. Leitura — definição de fluxo (6)
+
+| Ferramenta | O que faz | Parâmetros |
+|---|---|---|
+| `list_workflows` | Workflows com nome, status e id | `project_id`, `limit` |
+| `get_workflow` | Nome, status, nº de nós, se é template/publicado, **parâmetros de entrada** | **`workflow_id`** |
+| `ler_estado_do_fluxo` | **Definição completa**: nós com config, arestas com handles, variáveis, io_schema | **`workflow_id`** |
+| `ler_campos_do_no` | Colunas no output de um nó. `source` = `execution` / `inferred` / `unknown` | **`workflow_id`**, **`node_id`**, `include_sample` |
+| `avaliar_fluxo` | Check-up determinístico: config inválida, nós órfãos, **SQL destrutivo sem proteção**, caminho de erro solto | **`workflow_id`** |
+| `ler_documentacao` | Documentação markdown do fluxo | **`workflow_id`** |
+
+### C. Leitura — execuções (4)
+
+| Ferramenta | O que faz | Parâmetros |
+|---|---|---|
+| `list_recent_executions` | Últimas execuções com status e timestamps | **`workflow_id`**, `limit` |
+| `get_execution_status` | `RUNNING`/`COMPLETED`/`FAILED`/`CANCELLED`/`CRASHED` + erro | **`execution_id`** |
+| `ler_execucao` | Passo a passo: por nó, status, duração, linhas in/out, erro, rejeições agrupadas. Um nível por chamada | **`execution_id`** |
+| `ler_rejeicoes` | **Dead-letter**: grupos por causa, e amostras com campo culpado e valor. Campos sensíveis mascarados | **`execution_id`**, `causa`, `node_id`, `limite` |
+
+### D. Leitura — catálogo de nós (2)
+
+| Ferramenta | O que faz | Parâmetros |
+|---|---|---|
+| `list_nodes` | Índice dos tipos de nó com categoria e descrição | `category`, `query` |
+| `describe_node` | **Contrato completo**: campos de config, transforms, exemplos. Aceita alias | **`node_type`** |
+
+### E. Leitura — bases internas (1)
+
+| Ferramenta | O que faz | Parâmetros |
+|---|---|---|
+| `listar_bases_internas` | Bases internas com id, nome e colunas. Resolve destino por nome | — |
+
+### F. Escrita direta — exige aprovação humana (10)
+
+| Ferramenta | O que faz | Parâmetros |
+|---|---|---|
+| `create_project` | Cria projeto. Requer role `MANAGER` no workspace | **`name`**, `description` |
+| `create_workflow` | Cria workflow vazio (draft). Requer `CONSULTANT` no ws + `EDITOR` no projeto | **`name`**, `project_id`, `description` |
+| `add_node` | Adiciona nó ao workflow | **`workflow_id`**, **`node_type`**, **`position`**, `config` |
+| `add_edge` | Conecta dois nós | **`workflow_id`**, **`source_id`**, **`target_id`**, `source_handle`, `target_handle` |
+| `remove_node` | Remove nó **e todas as arestas em cascata**. Irreversível | **`workflow_id`**, **`node_id`** |
+| `remove_edge` | Remove aresta por `edge_id` | **`workflow_id`**, **`edge_id`** |
+| `update_node_config` | Patch **shallow** na config do nó | **`workflow_id`**, **`node_id`**, **`config_patch`** |
+| `set_workflow_variables` | **Substitui integralmente** a lista de variáveis | **`workflow_id`**, **`variables`** |
+| `criar_base_interna` | Cria base interna. Tipos: text, long_text, number, integer, date, datetime, boolean, email, phone, cpf, cnpj | **`nome`**, **`colunas`**, `descricao` |
+| `escrever_documentacao` | **Substitui** a documentação inteira. Sem desfazer; usuário vê o diff | **`workflow_id`**, **`conteudo`** |
+
+### G. Execução — exige aprovação humana (3)
+
+| Ferramenta | O que faz | Parâmetros |
+|---|---|---|
+| `execute_workflow` | Dispara execução. Ver `get_workflow` para os parâmetros exigidos | **`workflow_id`**, `trigger_params` |
+| `trigger_webhook_manually` | Simula chamada ao webhook em modo teste | **`workflow_id`**, `payload` |
+| `cancel_execution` | Solicita cancelamento. Assíncrono, não garante efeito imediato | **`execution_id`** |
+
+### H. Build session `pending_*` — aprovação em lote no confirm (10)
+
+Modelo de trabalho distinto: as peças são propostas como *ghost nodes* numa sessão e o usuário
+**aprova tudo de uma vez**, em vez de aprovar nó por nó. É o caminho indicado para construir
+fluxo — não a família `add_node`/`add_edge` direta.
+
+| Ferramenta | O que faz | Parâmetros |
+|---|---|---|
+| `pending_add_node` | Nó pendente com `temp_id`. `parent_temp_id` coloca a etapa **dentro do corpo de um loop** (exige `body_mode='inline'`) | **`session_id`**, **`temp_id`**, **`node_type`**, **`label`**, `config`, `position`, `parent_temp_id` |
+| `pending_add_nodes_batch` | Vários nós de uma vez — **preferível** a chamadas repetidas | **`nodes`** |
+| `pending_add_edge` | Liga `temp_id` desta sessão **ou** id real de nó existente | **`session_id`**, **`source_temp_id`**, **`target_temp_id`**, handles |
+| `pending_add_edges_batch` | Todas as arestas de uma vez — **preferível** | **`edges`** |
+| `pending_remove_node` | Descarta nó pendente e suas arestas | **`session_id`**, **`temp_id`** |
+| `pending_remove_edge` | Descarta aresta por `edge_id` ou par de `temp_id` | **`session_id`** + identificação |
+| `pending_update_node` | Patch shallow na config pendente | **`session_id`**, **`temp_id`**, **`config_patch`** |
+| `pending_set_variables` | **Substitui** as variáveis pendentes. Tipos incluem `table_reference`, `connection`, `file_upload`, `secret` | **`session_id`**, **`variables`** |
+| `pending_set_io_schema` | Schema de I/O do subfluxo. **Substitui as duas listas** — mandar `inputs` E `outputs` | **`session_id`**, `inputs`, `outputs` |
+| `pending_preencher_conexao` | **Propõe** valores do formulário de conexão num cartão para aprovação. **Senha não pode ser proposta** | **`campos`**, `confirmado_pelo_usuario` |
+
+### I. Interação e diagnóstico de rede local (4)
+
+| Ferramenta | O que faz | Parâmetros |
+|---|---|---|
+| `planejar` | Apresenta plano em passos antes de construir. Read-only no canvas | **`passos`**, `resumo` |
+| `perguntar` | Perguntas de clarificação com opções clicáveis; **pausa** até resposta. Máx. 5 | `perguntas` / `pergunta` + `opcoes` |
+| `comando_para_maquina_local` | Devolve o comando a rodar na máquina do cliente e em qual máquina. **Não executa** | **`objetivo`** + contexto |
+| `ler_saida_colada` | Faz parse da saída que a pessoa colou. Formato desconhecido volta como NÃO RECONHECIDA | **`saida`**, `objetivo` |
+
+Objetivos de `comando_para_maquina_local`: `mssql_listener_ports`, `mssql_databases`,
+`windows_sql_instances`, `windows_sql_tcp_port`, `windows_enable_tcp_static_port` (**escrita**),
+`probe_destination_reachable`, `relay_log_tail`, `relay_diag_bundle`, `relay_destinos`.
 
 ---
 
-## 4. A conferir contra o dump real
+## 3. Verificação executada
 
-Lista de verificação para a próxima sessão:
+Uma única chamada de estado, read-only: `list_projects` → *"Nenhum projeto encontrado no
+workspace."* Resposta válida — o workspace alcançado pela chave não tem projetos, ou o workspace
+"atual" não é o `Treinamento` das aulas. **A confirmar na Fase 2.**
 
-1. O número de ferramentas é 15? Se menor, é whitelist da chave?
-2. Os 15 nomes coincidem com este gabarito?
-3. Existe alguma ferramenta de **escrita de definição de fluxo** não documentada?
-4. Qual o schema real de parâmetros de cada uma? (preencher as colunas `[LACUNA]`)
-5. **D6 —** o prefixo da chave em uso não é o `shk_` documentado. Divergência de doc ou tipo
-   de credencial diferente?
-6. Registrar tudo o que divergir em `conhecimento/validacao/divergencias.md`.
+`list_nodes` também foi chamada (read-only) e devolveu **63 tipos de nó** — ver
+`mcp-catalogo-nos.md`.
+
+**Nenhuma ferramenta de escrita, de execução ou `pending_*` foi executada.**
+
+---
+
+## 4. O que isto muda no projeto
+
+1. **O MCP constrói fluxo.** Havia registro em `lacunas.md` (L13) de que provavelmente não —
+   baseado só na doc. **Errado.** Existem `create_workflow`, `add_node`, `add_edge`,
+   `update_node_config` e a família `pending_*` inteira.
+2. **O caminho indicado para construir é a build session `pending_*`**, com aprovação em lote,
+   não as ferramentas diretas.
+3. **`avaliar_fluxo` detecta "SQL destrutivo sem proteção" e "caminho de erro solto".** É um
+   checklist de pré-produção que já existe na plataforma — a Fase 4 deve integrá-lo ao
+   checklist da skill em vez de reinventá-lo.
+4. **`ler_rejeicoes` é a trilha de dead-letter** pedida em §5.6 do plano, e já mascara campos
+   sensíveis.
+5. **`comando_para_maquina_local` + `ler_saida_colada`** formam um fluxo de diagnóstico de rede
+   guiado, com foco em SQL Server — diretamente relevante para conectar o ERP.
+6. **`perguntar` e `planejar` são ferramentas de protocolo**, não de dados: a plataforma tem
+   opinião sobre pausar para perguntar e planejar antes de construir. A Fase 4 deve codificar
+   isso nas convenções.

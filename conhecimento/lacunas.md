@@ -23,8 +23,11 @@ sobreposição? Se permite, existe primitiva de trava?
 **Impacto: alto.** O plano (§5.4) exige dry-run como modo padrão para o fluxo que escreve
 preço. Não há recurso equivalente na plataforma. O toggle Teste/Produção limita a 500 linhas,
 mas **não** suprime escrita — é limite de volume, não de efeito.
-**O que falta descobrir:** confirmar que não há mesmo, e validar o padrão substituto (variável
-booleana + `Filtro` desviando do nó de escrita para um nó de registro).
+**PRIMITIVA ENCONTRADA (MCP, 2026-08-20):** `if_node` tem **gate mode** — sem upstream tabular,
+avalia condições contra metadata e ativa um único ramo. Com uma variável booleana `dry_run`, isso
+desvia do nó de escrita para um de registro. `switch_node` faz o mesmo em N ramos.
+**Rebaixada para: médio.** Não é recurso pronto, mas a peça existe. Falta validar o padrão na
+prática (Fase 5).
 
 ### L3 — Watermark e carga incremental
 **Impacto: alto.** Termo com **zero ocorrências** nas 26 transcrições e nos 40 documentos.
@@ -47,9 +50,10 @@ marca d'água; se há histórico de preço.
 ### L5 — Teto de variação e disjuntor
 **Impacto: alto.** §5.4 pede limite de variação percentual por item e limite de itens
 alterados por execução. Nenhum dos dois existe como recurso.
-**Hipótese a validar:** teto de variação via `Filtro` sobre coluna calculada no nó
-`Matemática`; disjuntor via `Agregador` (COUNT) + `Filtro` que aborta. Falta descobrir **como
-abortar um fluxo deliberadamente** — não foi visto nó de "falhar" ou "parar".
+**PRIMITIVAS ENCONTRADAS (MCP, 2026-08-20):** teto de variação via `filter` sobre coluna
+calculada em `math`; disjuntor via `aggregator` (COUNT) + `if_node` em gate mode. E `loop` tem
+**"políticas de erro e limite de iterações"** — segundo mecanismo de contenção, nativo.
+**Rebaixada para: médio.** Segue sem nó explícito de "falhar/abortar" — ver L10.
 
 ---
 
@@ -85,31 +89,85 @@ afirma que Cliente **não** é nível de acesso. `entidade-cliente.md` traz uma 
 trabalho vs. permissão. Resolver no lote 2, antes que contamine o glossário.
 
 ### L10 — Como abortar/falhar um fluxo deliberadamente
-**Impacto: médio.** Pré-requisito de L5. Existe menção a `dead_letter` como tipo de nó em
-`exportar-e-importar.md` § "Cobertura V1" e a "Dead Letter" na categoria Banco de Dados em
-`conceitos.md`, mas **nenhuma aula ou página de doc** explica o nó.
+**Impacto: médio.** Pré-requisito de L5. **`dead_letter` NÃO é um tipo de nó** — `list_nodes`
+não o devolve, apesar de `conceitos.md` e `exportar-e-importar.md` citarem. Dead-letter é
+recurso de **execução**, lido via `ler_rejeicoes` (grupos por causa, amostras, campos sensíveis
+mascarados). Segue sem resposta como **provocar** falha deliberada. Candidatos a investigar com
+`describe_node`: políticas de erro do `loop`, e `sql_script` em modo `execute`.
 
-### L11 — Catálogo de tipos de variável de workflow
-**Impacto: médio.** A aula (`m3-parte-1`) mostra 10 tipos na UI: Texto, Inteiro, Número,
-Booleano, Objeto, Lista, Conexão, Arquivo, Segredo, Formulário. A doc só descreve `string`,
-`connection` e `file_upload`. Sem catálogo confirmado, a parametrização do piloto fica em
-`[UI-OBSERVADA]`.
+### L11 — ~~Catálogo de tipos de variável~~ RESOLVIDA, com pegadinha (2026-08-20)
+**Status: fechada pelo MCP.** `pending_set_variables` declara os 10 tipos: `string`, `number`,
+`integer`, `boolean`, `object`, `array`, `table_reference`, `connection`, `file_upload`,
+`secret`. Casa em número com os 10 vistos na UI (`m3-parte-1`), com uma troca: a UI mostra
+"Formulário", o MCP expõe `table_reference`.
 
-### L12 — Consolidação de nós: quando
-**Impacto: médio.** `consolidacao-de-nos-de-transformacao.md` documenta a fusão de 13 nós
-legados em `transform`/`aggregate`/`combine`. **Sem data.** A base de conhecimento foi decidida
-com o nome legado como chave primária e o sucessor anotado; se a migração chegar antes da
-Fase 6, os arquivos de nó precisam de revisão.
+**⚠️ PEGADINHA:** `set_workflow_variables` (escrita **direta**) aceita **só 6** tipos — `string`,
+`number`, `integer`, `boolean`, `object`, `array`. Ficam de fora justamente
+`connection`, `file_upload`, `secret` e `table_reference`. Usar a ferramenta direta em vez da
+build session **perde a capacidade de declarar variável de conexão ou de segredo** — que é
+exatamente o que o piloto precisa. Mais um motivo para preferir `pending_*`.
 
-### L13 — MCP não permite criar nem editar fluxo
-**Impacto: médio.** As 15 ferramentas documentadas são 14 de leitura + `execute_workflow`.
-Nenhuma de `create_*`/`update_*`. Se confirmado no dump real, a construção de fluxos é
-**manual na interface**, e o papel do Claude Code passa a ser desenhar e revisar, não construir.
-Isso muda a expectativa da Fase 5. Verificar assim que o MCP for registrado.
+Detalhes confirmados: `connection` exige `connection_type` (`postgres`/`mysql`/`sqlserver`/
+`oracle`/`mongodb`); `file_upload` tem `accepted_extensions` e a instrução explícita de **nunca
+incluir `.xls`**; `table_reference` declara `columns` com nome, tipo e obrigatoriedade.
+
+### L12 — ~~Consolidação de nós: quando~~ RESOLVIDA (2026-08-20)
+**Status: fechada pelo MCP.** A consolidação **não aconteceu como a doc previa**. `mapper`,
+`filter`, `sort`, `sample`, `record_id`, `union`, `pivot`, `unpivot` e `text_to_rows` seguem
+existindo como nós separados. Não há nó `transform` nem `aggregate`. Só `combine` foi criado,
+absorvendo `join` — cuja descrição diz "Versão legada — prefira o nó `combine`".
+**A decisão de usar o nome legado como chave primária está validada.** O único par
+legado→sucessor real a anotar é `join` → `combine (mode='join')`. Ver `divergencias.md` D-MCP-3.
+
+### L13 — ~~MCP não permite criar nem editar fluxo~~ **ESTAVA ERRADA** (2026-08-20)
+**Status: refutada pelo MCP.** Eu havia registrado, com base só na doc, que provavelmente não
+houvesse ferramenta de criação/edição. **O MCP expõe 48 ferramentas, não 15**, e entre elas
+`create_workflow`, `create_project`, `add_node`, `add_edge`, `remove_node`, `remove_edge`,
+`update_node_config`, `set_workflow_variables`, `criar_base_interna`, `escrever_documentacao`,
+mais a família `pending_*` inteira (build session com aprovação em lote).
+**Consequência:** o Claude Code pode **construir** fluxo, não apenas desenhar — muda a
+expectativa da Fase 5. O caminho indicado é a build session `pending_*`, não as ferramentas
+diretas. Ver `divergencias.md` D-MCP-1 e D-MCP-2.
+
+**Lição de método:** a doc oficial estava 4 meses defasada e me levou a uma conclusão errada
+sobre capacidade da plataforma. `[CONFIRMADO-DOC]` não substitui `[CONFIRMADO-MCP]` quando a
+pergunta é "o que existe hoje".
 
 ---
 
 ## Menores
+
+### L19 — 12 nós de estatística sem cobertura nenhuma no material
+**Impacto: médio-alto.** A categoria `statistics` (`stat_abc`, `stat_rfm`, `stat_anomaly`,
+`stat_forecast`, `stat_reorder`, `stat_cohort`, `stat_correlation`, `stat_market_basket`,
+`stat_transition`, `stat_drift`, `stat_woe`, `stat_discrimination`) **não aparece em nenhuma
+aula nem documento**. É a maior lacuna de cobertura do acervo.
+
+Relevância direta: `stat_abc` classifica em A/B/C por concentração acumulada e **cita "margem"
+como coluna de valor típica** — é a primeira e única ocorrência de "margem" em todo o material,
+incluindo o MCP. `stat_reorder` e `stat_forecast` são candidatos a rotinas futuras.
+
+Várias descrições já trazem pegadinha declarada (ex.: `stat_transition` exige snapshot por
+período e "devolve um número plausível e errado, sem erro nenhum" se receber eventos).
+**Ação:** `describe_node` em cada um, na Fase 1 ou 2.
+
+### L20 — Qual workspace a API Key alcança
+**Impacto: médio.** `list_projects` devolveu "Nenhum projeto encontrado no workspace". Pode ser
+workspace vazio, ou a chave apontar para outro workspace que não o `Treinamento` das aulas.
+Bloqueia qualquer validação que dependa de ler fluxo ou conexão real.
+**Como resolver:** `list_connections` e `listar_bases_internas` para triangular; se vazio
+também, é a chave que aponta para outro lugar.
+
+### L21 — Nós de banco: contrato real de config
+**Impacto: médio-alto.** `describe_node` existe e devolve "contrato completo: campos de
+configuração, transforms e exemplos". Isso **contorna L7** — os nós de banco não têm página de
+doc, mas têm contrato consultável pelo MCP, que é fonte melhor que a aula.
+**Ação:** rodar `describe_node` em `sql_database`, `sql_script`, `bulk_insert`,
+`composite_insert`, `loadNode`, `truncate_table`, `internal_data_write` no lote 6 da Fase 1.
+
+---
+
+## Menores adicionais
 
 ### L14 — Relay é obrigatório para SQL Server on-premise?
 Não documentado. O relay é agnóstico de banco (só TCP), mas as funções de **borda**
