@@ -41,6 +41,9 @@ Relevante porque `conceitos.md § Conexão` lista Firebird entre os bancos supor
 `[CONFIRMADO-DOC]` — suportado para **leitura**, não para escrita. Não é conflito, é assimetria
 que a doc não explicita.
 
+> **Não aplicável a este projeto.** O escopo é **somente Oracle** (decisão de 2026-08-20). O fato
+> fica registrado, mas não precisa virar alerta na skill.
+
 ## Parâmetros de configuração
 
 `[CONFIRMADO-MCP]` — `describe_node('bulk_insert')`
@@ -160,4 +163,7 @@ com `CREATE TABLE` no gerenciador de banco. — `m1:71-76`
    propósito pela margem de sobreposição da janela incremental (§5.1).
 4. `append_safe` é a única estratégia com semântica transacional ("desfaz tudo se uma linha
    falhar") — candidata natural para escrita de preço, em vez do `append_fast` padrão.
-5. **Confirmar o banco do ERP antes de qualquer coisa:** se for Firebird, este nó não escreve.
+5. **Destino é Oracle** — sem a restrição de escrita do Firebird. Em contrapartida, vale
+   verificar o bug conhecido de **Oracle + dlt** registrado em
+   `planejamento-dlt-(extracao-insercao).md`, que joga Oracle em fallback SQLAlchemy e pode
+   afetar desempenho em volume.

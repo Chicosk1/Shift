@@ -19,6 +19,24 @@ Estado em 2026-08-20, ao fim da **Fase 0**. A extração estruturada é a Fase 1
 |---|---|
 | [lacunas.md](../lacunas.md) | **26 lacunas** ordenadas por impacto no piloto de margem. 4 fechadas ou refutadas |
 
+## ⚠️ Escopo de banco: **somente Oracle**
+
+Definido pelo usuário em 2026-08-20: as automações do ERP rodam **exclusivamente sobre Oracle**.
+A base de conhecimento registra o que as fontes dizem sobre os outros bancos (é fato, e fato não
+se apaga), mas **as skills devem cobrir só Oracle** — skill inchada com caminhos que nunca serão
+usados perde eficácia no acionamento.
+
+Consequências para a extração:
+- **Sobem de prioridade** os documentos Oracle-específicos que pareciam periféricos:
+  `toleracia-a-erro-por-linha-na-borda-design.md` (usa `LOG ERRORS` do Oracle),
+  `upsert-rapido-staging-+-merge-set-based-(design).md` (usa GTT),
+  `extracao-na-borda-design.md` (**declaradamente só Oracle**). Os recursos de borda **se
+  aplicam** a este caso.
+- **Risco a verificar:** `planejamento-dlt-(extracao-insercao).md` registra **bug conhecido de
+  Oracle + dlt**, com Oracle em fallback SQLAlchemy.
+- **Descem de prioridade:** `deploy-firebird.md`, os objetivos SQL Server de
+  `comando_para_maquina_local`, e as partes de `m2p2` que criam conexão SQL Server.
+
 ## Extraído (Fase 1)
 
 ### Glossário
